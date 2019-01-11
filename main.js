@@ -20,5 +20,5 @@ app.on('ready', ()=>{
         window.show();
     });
 
-    BrowserWindow.addDevToolsExtension(path.resolve('./extension/shells/chrome'));
+    BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/shells/chrome'));
 });
