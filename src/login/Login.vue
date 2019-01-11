@@ -13,7 +13,7 @@
                 <input class="form-control" type="password" placeholder="password">
             </div>
             <div class="row m-4">
-                <button type="button" class="btn btn-info w-100">登录</button>
+                <button type="button" class="btn btn-info w-100" @click.stop="login">登录</button>
             </div>
             <div class="row m-4 operation-btn">
                 <div class="offset-1 col-5 border-right border-info">
@@ -24,16 +24,47 @@
                 </div>
             </div>
         </div>
+
+        <transition name="fade">
+            <loading v-if="isLogin === $options.login.ING"></loading>
+        </transition>
     </div>
 
 </template>
 
 <script type="text/javascript">
+    import {mapState, mapMutations} from 'vuex';
+    import { VueMutationType, CommonType } from './../enum';
+
+    import Loading from './../components/Loading';
+
     export default {
         name: "login",
-        created(){
-            console.info(this.$electron);
+        components: { Loading },
+        computed: {
+            ...mapState({
+                isLogin: 's_login'
+            })
         },
+        login: _.cloneDeep(CommonType.login),
+        data(){
+        	return {}
+        },
+        methods: {
+        	login(){
+                this.saveLogin(CommonType.login.ING);
+                setTimeout(()=>{
+                	this.saveLogin(CommonType.login.LOGIN);
+                	// 发送IPC
+                    // 存储cookie等一系列配置
+                    // 路由跳转
+                    // vue -> service|bradge -> electron -> socket|http -> router+vuex
+                }, 2000)
+            },
+            ...mapMutations({
+                saveLogin: VueMutationType.ROOT_SAVE_LOGIN
+            })
+        }
     }
 </script>
 
@@ -45,6 +76,13 @@
         100% {
             box-shadow:0 1px 35px rgba(204,204,204,1);
         }
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 
     .login-container{
@@ -69,9 +107,6 @@
         }
         .content{
             position: absolute; top: 0;
-            input:focus{
-
-            }
             .operation-btn{
                 .btn{ line-height: 1; padding: 0; }
             }
