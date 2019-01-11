@@ -12,8 +12,8 @@ app.on('ready', ()=>{
 		}
     });
 
-    // window.loadURL("http://localhost:8081");
-    window.loadFile("dist/index.html");
+    window.loadURL("http://localhost:8081");
+    // window.loadFile("dist/index.html");
     // window.loadURL("http://www.baidu.com");
 
     window.on('ready-to-show', ()=>{

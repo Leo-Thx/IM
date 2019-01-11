@@ -32,8 +32,8 @@
     export default {
         name: "login",
         created(){
-
-        }
+            console.info(this.$electron);
+        },
     }
 </script>
 
