@@ -1,24 +1,30 @@
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
+const _ = require('lodash');
+
+// 窗口配置
+const WindowConfig = require('./electron/config/window.config');
+const MainProcess = require('./electron/main.process');
+
+let mainWindow = null;	// 主要窗口
+
 
 app.on('ready', ()=>{
-    const window = new BrowserWindow({
-        show: false,
-		width: 350,
-		height: 500,
-		webPreferences: {
-			nodeIntegration: false,
-			preload: path.join(__dirname, 'electron/preload/main.preload.js')
-		}
-    });
+    mainWindow = MainProcess.crateWindow(
+    	_.merge(_.cloneDeep(WindowConfig.login), {
+			webPreferences: {
+				preload: path.join(__dirname, 'electron/preload/main.preload.js')
+			}
+		}),
+		"http://localhost:8081"
+		// "dist/index.html"
+	);
 
-    window.loadURL("http://localhost:8081");
-    // window.loadFile("dist/index.html");
-    // window.loadURL("http://www.baidu.com");
-
-    window.on('ready-to-show', ()=>{
-        window.show();
+	mainWindow.on('ready-to-show', ()=>{
+		mainWindow.show();
     });
 
     BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/shells/chrome'));
 });
+
+
