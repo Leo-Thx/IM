@@ -35,7 +35,7 @@ new Vue({
 			platform = CommonType.platform.CLIENT;
 			Vue.prototype.$electron = window.VueElectron;
 
-			const result = this.$electron.init();
+			const result = this.$electron.Class.init();
 			this.saveOS(result.os);
 		}
 		this.savePlatform(platform);

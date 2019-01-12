@@ -1,15 +1,16 @@
 const { ipcRenderer } = require('electron');
+const IPC_Event = require('./IPC_EventType');
 
 module.exports.VueElectron = new class VueElectron{
 	constructor() {
 		this.Class = VueElectron;
 	}
-	init(){
+	static init(){
 		return {
 			os: process.platform
 		}
 	}
-	login(name, pwd){
-	    ipcRenderer.send();
+	static login(account, pwd){
+	    ipcRenderer.send(IPC_Event.LOGIN, {account, pwd});
     }
 };
