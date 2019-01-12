@@ -5,7 +5,6 @@
             <div class="row avatar p-1 mt-4 mb-4 ml-auto mr-auto">
                 <img src="../../resource/user/image/avatar.jpeg"/>
             </div>
-
             <div class="row m-4">
                 <input class="form-control" v-model="username" type="text" placeholder="帐号">
             </div>
@@ -28,6 +27,11 @@
         <transition name="fade">
             <loading v-if="isLogin === $options.login.ING"></loading>
         </transition>
+        
+        <transition name="fade">
+            <message-short-tip v-if="loginError" type="info" msg="登录失败"></message-short-tip>
+        </transition>
+        
     </div>
 
 </template>
