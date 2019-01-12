@@ -7,10 +7,10 @@
             </div>
 
             <div class="row m-4">
-                <input class="form-control" type="text" placeholder="user-name">
+                <input class="form-control" v-model="username" type="text" placeholder="帐号">
             </div>
             <div class="row m-4">
-                <input class="form-control" type="password" placeholder="password">
+                <input class="form-control" v-model="password" type="password" placeholder="密码">
             </div>
             <div class="row m-4">
                 <button type="button" class="btn btn-info w-100" @click.stop="login">登录</button>
@@ -33,33 +33,38 @@
 </template>
 
 <script type="text/javascript">
-    import {mapState, mapMutations} from 'vuex';
+    import {mapState, mapMutations, mapGetters} from 'vuex';
     import { VueMutationType, CommonType } from './../enum';
 
     import Loading from './../components/Loading';
-
+    import MessageShortTip from './../components/MessageShortTip';
+    
+    import LoginInterface from './../mixin/login.interface';
+    
     export default {
         name: "login",
-        components: { Loading },
+        mixins: [LoginInterface],
+        components: { Loading, MessageShortTip },
         computed: {
             ...mapState({
                 isLogin: 's_login'
+            }),
+            ...mapGetters({
+                s_platform: 'root_get_platform'
             })
         },
         login: _.cloneDeep(CommonType.login),
         data(){
-        	return {}
+        	return {
+        	    username: '',
+                password: '',
+                loginError: false
+            }
         },
         methods: {
         	login(){
                 this.saveLogin(CommonType.login.ING);
-                setTimeout(()=>{
-                	this.saveLogin(CommonType.login.LOGIN);
-                	// 发送IPC
-                    // 存储cookie等一系列配置
-                    // 路由跳转
-                    // vue -> service|bradge -> electron -> socket|http -> router+vuex
-                }, 2000)
+                this.sendToLogin();
             },
             ...mapMutations({
                 saveLogin: VueMutationType.ROOT_SAVE_LOGIN

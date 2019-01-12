@@ -9,4 +9,7 @@ module.exports.VueElectron = new class VueElectron{
 			os: process.platform
 		}
 	}
+	login(name, pwd){
+	    ipcRenderer.send();
+    }
 };

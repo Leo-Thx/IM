@@ -2,6 +2,8 @@ export default {
 	platform: {
 		BROWSER: 'browser',	// 浏览器
 		CLIENT: 'client',	// 客户端
+        ANDROID: 'android',
+        IOS: 'ios'
 	},
 	os: {
 		MAC: 'darwin',		//

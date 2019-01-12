@@ -1,5 +1,6 @@
 // Fetch API
 import axios from 'axios';
+import ApiProtocol from './../config/api_protocol';
 
 // axios(config);
 // axios(url, [config]);
@@ -13,7 +14,7 @@ import axios from 'axios';
 // 	axios.put(url[, data[, config]])
 // 	axios.patch(url[, data[, config]])
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = ApiProtocol.HTTP.BASE_URL;
 
 const myInterceptor = axios.interceptors.request.use(function(config){}, function(error){});
 const myInterceptor2 = axios.interceptors.response.use(response=>{}, error=>{});
@@ -30,8 +31,8 @@ const NetworkHttp = {
 	get(url, config) {
 		return axios.get(url, config);
 	},
-	post() {
-
+	post(url, data, config = {}) {
+        return axios.post(url, data, config);
 	},
 	put() {
 
