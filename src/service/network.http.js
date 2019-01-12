@@ -22,7 +22,7 @@ axios.interceptors.request.eject(myInterceptor);
 axios.interceptors.response.eject(myInterceptor2);
 
 
-const NetWork = {
+const NetworkHttp = {
 	http() {
 		const instance = axios.create({});
 		instance.request({});
@@ -41,5 +41,5 @@ const NetWork = {
 	}
 };
 
-export default NetWork ;
-export { NetWork as NetWorkMixin } ;
+export default NetworkHttp ;
+export { NetworkHttp as NetWorkMixin } ;
