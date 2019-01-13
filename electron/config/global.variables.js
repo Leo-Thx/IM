@@ -2,12 +2,15 @@ const varibles = new Map();
 
 module.exports = {
     KEY_NAMES: {
-        LOGIN: Symbol('login'), // 是否已经登录
-        CURRENT_WINDOW: Symbol('current_window'),    // 当前处于哪个窗口
-        USER_INFO : Symbol('user_info')
+        LOGIN: 'login', // 是否已经登录
+        CURRENT_WINDOW: 'current_window',    // 当前处于哪个窗口
+        USER_INFO : 'user_info',
+        
+        REFERENCE_IM_WIN: 'reference_im_win',   // 主窗口实例
     },
     VAR_WINDOW_NAMES: {     // 窗口的名字
-        LOGIN: 'login'
+        LOGIN: 'login',     // 登录
+        IM_MAIN: 'im_main', // IM主窗口
     },
     set: (key, value)=>varibles.set(key, value),
     get: key=>varibles.get(key),

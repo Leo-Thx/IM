@@ -9,5 +9,5 @@ Reflect.defineProperty(window, "VueElectron", {
 });
 
 document.addEventListener('DOMContentLoaded', function(){
-    console.info(globalVariable.get(globalVariable.KEY_NAMES.LOGIN));
+    // console.info(globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN));
 });

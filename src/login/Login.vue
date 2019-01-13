@@ -68,7 +68,9 @@
         methods: {
         	login(){
                 this.saveLogin(CommonType.login.ING);
-                this.sendToLogin();
+                this.sendToLogin().then(function(result){
+                
+                });
             },
             ...mapMutations({
                 saveLogin: VueMutationType.ROOT_SAVE_LOGIN

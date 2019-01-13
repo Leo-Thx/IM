@@ -11,6 +11,12 @@ module.exports.VueElectron = new class VueElectron{
 		}
 	}
 	static login(account, pwd){
-	    ipcRenderer.send(IPC_Event.LOGIN, {account, pwd});
+	    return new Promise((resolve)=>{
+            ipcRenderer.once(IPC_Event.buildReply(IPC_Event.LOGIN), function(event, data){
+                resolve(data);
+            });
+        
+            ipcRenderer.send(IPC_Event.LOGIN, {account, pwd});
+        });
     }
 };

@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
 const { BrowserWindow, ipcMain } = require('electron');
 const IPC_Event = require('./IPC_EventType');
 

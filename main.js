@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const _ = require('lodash');
 
 // process事件类型
@@ -17,8 +17,6 @@ globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_W
 let mainWindow = null;	// 主要窗口
 
 app.on('ready', ()=>{
-    MainProcess.init();
-    
     mainWindow = MainProcess.crateWindow(
     	_.merge(_.cloneDeep(WindowConfig.login), {
 			webPreferences: {
@@ -33,12 +31,9 @@ app.on('ready', ()=>{
 	    mainWindow.show();
 	});
  
+	globalVariable.set(globalVariable.KEY_NAMES.REFERENCE_IM_WIN, mainWindow);  // 设置主要窗体实例
+	
+    MainProcess.init(); // 初始化process
+    
 	BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/shells/chrome'));
 });
-
-
-// 渲染IM_Render界面
-MainProcess.PROCESS_NAMES.LOGIN.event.on(ProcessEventType.RENDER_IM_MAIN, function(){
-    
-});
-

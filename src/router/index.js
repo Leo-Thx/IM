@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
 import Login from './../login/Login.vue'
+
+import IM_Main from './../module/main/Main'
 
 Vue.use(Router);
 
@@ -12,7 +14,7 @@ export default new Router({
 	  	component: Login
 	}, {
 		path: '/main',
-		name: 'Main',
-		component: HelloWorld
+		name: 'IM_Main',
+		component: IM_Main
 	}]
 });
