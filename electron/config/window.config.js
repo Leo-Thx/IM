@@ -6,5 +6,8 @@ module.exports = {
 		webPreferences: {
 			nodeIntegration: false
 		}
-	}
+	},
+    im_main: {
+	   
+    }
 };

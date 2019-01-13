@@ -2,6 +2,8 @@ const path = require('path');
 const { app, BrowserWindow } = require('electron');
 const _ = require('lodash');
 
+// process事件类型
+const ProcessEventType = require('./electron/Process_EventType');
 // 窗口配置
 const WindowConfig = require('./electron/config/window.config');
 // 进程监听
@@ -34,4 +36,9 @@ app.on('ready', ()=>{
 	BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/shells/chrome'));
 });
 
+
+// 渲染IM_Render界面
+MainProcess.PROCESS_NAMES.LOGIN.event.on(ProcessEventType.RENDER_IM_MAIN, function(){
+    
+});
 
