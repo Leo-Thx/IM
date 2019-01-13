@@ -16,9 +16,11 @@ module.exports = {
         // 更换窗体配置
         const win = globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN);
         
-        event.sender.send(IPC_EventType.buildReply(IPC_EventType.LOGIN), {
-            msg: '更换成功', data
-        });
+        win.setSize(1024, 650);
+        win.setResizable(false);
+        win.center();
+        
+        event.sender.send(IPC_EventType.buildReply(IPC_EventType.LOGIN));
         
         // 通知主进程窗体已经更换
         processEvent.emit(ProcessEventType.RENDER_IM_MAIN, {});

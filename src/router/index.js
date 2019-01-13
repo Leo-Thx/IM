@@ -13,7 +13,7 @@ export default new Router({
 	  	name: 'Login',
 	  	component: Login
 	}, {
-		path: '/main',
+		path: '/im_main',
 		name: 'IM_Main',
 		component: IM_Main
 	}]

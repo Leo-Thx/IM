@@ -4,8 +4,7 @@ const _ = require('lodash');
 
 // process事件类型
 const ProcessEventType = require('./electron/Process_EventType');
-// 窗口配置
-const WindowConfig = require('./electron/config/window.config');
+
 // 进程监听
 const MainProcess = require('./electron/main.process');
 /* 定义部分全局变量 */
@@ -17,12 +16,14 @@ globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_W
 let mainWindow = null;	// 主要窗口
 
 app.on('ready', ()=>{
-    mainWindow = MainProcess.crateWindow(
-    	_.merge(_.cloneDeep(WindowConfig.login), {
-			webPreferences: {
-				preload: path.join(__dirname, 'electron/preload/main.preload.js')
-			}
-		}),
+    mainWindow = MainProcess.crateWindow({
+            show: false,
+            width: 350, height: 500,
+            webPreferences: {
+                nodeIntegration: false,
+                preload: path.join(__dirname, 'electron/preload/main.preload.js')
+            }
+        },
 		"http://localhost:8080"
 		// "dist/index.html"
 	);

@@ -13,7 +13,7 @@ export default {
                     msg: '',
                     token: ''
                 })
-            }, 2000);
+            }, 1000);
         });
     }
 }
