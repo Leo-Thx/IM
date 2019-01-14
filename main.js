@@ -1,4 +1,5 @@
 const path = require('path');
+const url = require('url');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const _ = require('lodash');
 
@@ -16,21 +17,32 @@ globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_W
 let mainWindow = null;	// 主要窗口
 
 app.on('ready', ()=>{
-    mainWindow = MainProcess.crateWindow({
+    mainWindow = new BrowserWindow({
             show: false,
             width: 350, height: 500,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/preload/main.preload.js')
             }
-        },
-		"http://localhost:8080"
-		// "dist/index.html"
+        }
 	);
 
-	mainWindow.on('ready-to-show', ()=>{
+    let uri = 'http://localhost:8081';
+	/*let uri = url.format({
+		protocol: 'file',
+		slashes: true,
+		pathname: require('path').join(__dirname, 'dist/index.html')
+	});*/
+
+    mainWindow.loadURL(uri);
+
+	mainWindow.on('ready-to-show', (event)=>{
 	    mainWindow.show();
 	});
+
+	/*mainWindow.webContents.on('dom-ready', function(event){
+		mainWindow.show();
+	});*/
  
 	globalVariable.set(globalVariable.KEY_NAMES.REFERENCE_IM_WIN, mainWindow);  // 设置主要窗体实例
 	
