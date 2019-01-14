@@ -1,16 +1,20 @@
 <template>
-    <div class="im_sidebar p-2 d-flex flex-column">
+    <div class="im_sidebar p-2 d-flex flex-column position-relative">
         <div class="avatar-item">
             <avatar :url="url"></avatar>
         </div>
-        <div class="msg-item chat-item">
+        <div class="operation-item chat-item">
             <i class="zi zi_newMsg"></i>
         </div>
-        <div class="msg-item concat-item">
+        <div class="operation-item concat-item">
             <i class="zi zi_addressBook"></i>
         </div>
-        <div class="msg-item music-item">
+        <div class="operation-item music-item">
             <i class="zi zi_musicBold"></i>
+        </div>
+
+        <div class="operation-item setting-item">
+            <i class="zi zi_tmWhmcs"></i>
         </div>
     </div>
 </template>
@@ -33,13 +37,28 @@
 <style type="text/css" lang="scss" scoped>
     .im_sidebar{
         width: 7%;
+        /*justify-content: space-between;*/
         background: linear-gradient(#fff, #fff, #eee, #ddd, #ccc);
         /*background-clip: content-box;*/
         .avatar-item{
             padding: 10px;
         }
-        .msg-item{ font-size: 2rem; }
+        .operation-item{
+            font-size: 2rem; margin-top: 1rem;
+            &:hover{
+                cursor: pointer;
+                color: #ec407a;
+            }
+        }
         .concat-item{ font-size: 1.8rem; }
-        .music-item{ @extend .concat-item }
+        .music-item{
+            font-size: 1.6rem;
+        }
+
+        .setting-item{
+            position: absolute;
+            bottom: 2rem; left: 50%;
+            transform: translateX(-50%)
+        }
     }
 </style>
