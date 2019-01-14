@@ -1,7 +1,7 @@
 <template>
-    <div class="im_sidebar p-2 d-flex flex-column position-relative">
+    <div class="im_sidebar p-2 d-flex flex-column position-relative border-right">
         <div class="avatar-item">
-            <avatar :url="url"></avatar>
+            <avatar></avatar>
         </div>
         <div class="operation-item chat-item">
             <i class="zi zi_newMsg"></i>
@@ -27,21 +27,20 @@
     		Avatar
         },
         data(){
-    		return {
-    			url : require('./../../../resource/user/image/avatar.jpeg')
-            }
+    		return {}
         }
     }
 </script>
 
 <style type="text/css" lang="scss" scoped>
     .im_sidebar{
-        width: 7%;
+        width: 6%;
         /*justify-content: space-between;*/
         background: linear-gradient(#fff, #fff, #eee, #ddd, #ccc);
         /*background-clip: content-box;*/
+        .chat-item{ color: #ec407a; }
         .avatar-item{
-            padding: 10px;
+            padding: 5px;
         }
         .operation-item{
             font-size: 2rem; margin-top: 1rem;

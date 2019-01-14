@@ -21,5 +21,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .im_main{ overflow: hidden; }
 </style>

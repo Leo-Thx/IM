@@ -1,5 +1,7 @@
 <template>
-    <div class="im_chatmain"></div>
+    <div class="im_chatmain">
+
+    </div>
 </template>
 
 <script type="text/javascript">
@@ -10,7 +12,6 @@
 
 <style type="text/css" lang="scss" scoped>
     .im_chatmain{
-        background: rgba(238, 238, 238, .5);
         width: 70%;
     }
 </style>
