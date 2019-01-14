@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Login from './../login/Login.vue'
 
-import IM_Main from './../module/main/Main'
+import IM_Main from './../module/main/IM_Main'
 
 Vue.use(Router);
 
