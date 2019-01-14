@@ -43,15 +43,15 @@
             padding: 5px;
         }
         .operation-item{
-            font-size: 2rem; margin-top: 1rem;
+            font-size: 1.8rem; margin-top: 1rem;
             &:hover{
                 cursor: pointer;
                 color: #ec407a;
             }
         }
-        .concat-item{ font-size: 1.8rem; }
+        .concat-item{ font-size: 1.5rem; }
         .music-item{
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
 
         .setting-item{

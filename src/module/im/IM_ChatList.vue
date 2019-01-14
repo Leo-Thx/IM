@@ -1,6 +1,17 @@
 <template>
     <div class="im_chatlist border-right">
-        <ul class="m-0 p-0">
+        <div class="search p-2 border-bottom">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control form-control-sm">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-link">
+                        <i class="zi zi_searchBlack"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="m-0 p-0 h-100">
             <li v-for="(item, index) of size" v-bind:key="index" class="border-bottom">
                 <div class="row m-0 pl-2 pr-1 pt-3 pb-3 chat-item">
                     <div class="col-2">
@@ -38,29 +49,29 @@
     .im_chatlist{
         width: 24%;
         font-size: 11px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        li{
-            list-style: none;
-            &:hover{
-                cursor: pointer;
-                background: #eee;
+        ul{
+            overflow-x: hidden;
+            overflow-y: auto;
+            li{
+                list-style: none;
+                &:hover{
+                    cursor: pointer;
+                    background: #eee;
+                }
+                .chat-item div{ padding: 0; }
+                .uname{ font-size: 13px; }
+                .umessage{
+                    color: #666;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                .msg-time{ font-size: 10px; color: #999; }
             }
         }
 
-        .chat-item div{ padding: 0; }
-        .uname{
-            font-size: 13px;
-        }
-        .umessage{
-            color: #666;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-        .msg-time{
-            font-size: 10px;
-            color: #999;
-        }
+        /*.search{
+            box-shadow: -1px 3px 8px 1px #eee;
+        }*/
     }
 </style>
