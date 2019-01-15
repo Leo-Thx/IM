@@ -27,12 +27,12 @@ app.on('ready', ()=>{
         }
 	);
 
-    // let uri = 'http://localhost:8081';
-	let uri = url.format({
+    let uri = 'http://localhost:8081';
+	/*let uri = url.format({
 		protocol: 'file',
 		slashes: true,
 		pathname: require('path').join(__dirname, 'dist/index.html')
-	});
+	});*/
 
     mainWindow.loadURL(uri);
 

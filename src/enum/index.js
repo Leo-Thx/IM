@@ -10,3 +10,6 @@ export { default as CommonType } from './Common.enum';
 
 // vuex mutations操作类型
 export { default as VueMutationType } from './Vue_MutationTypes.enum';
+
+// 路由名称
+export { default as VueRouterNames } from './Vue_Routers.enum';

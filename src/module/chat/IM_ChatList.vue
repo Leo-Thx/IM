@@ -8,7 +8,7 @@
         </div>
 
         <ul class="m-0 p-0 h-100">
-            <li v-for="(item, index) of size" v-bind:key="index" class="border-bottom">
+            <li v-for="(item, index) of size" v-bind:key="index" class="border-bottom" @click="chatTo(item, index)">
                 <div class="row m-0 pl-2 pr-1 pt-3 pb-3 chat-item">
                     <div class="col-2">
                         <avatar></avatar>
@@ -37,7 +37,12 @@
 			return {
 				size: _.range(20)
             }
-		}
+		},
+        methods: {
+			chatTo(item, index){
+				this.$router.push({name: ''});
+            }
+        }
 	}
 </script>
 

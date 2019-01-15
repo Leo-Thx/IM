@@ -30,7 +30,7 @@
 
 <style type="text/css" lang="scss" scoped>
     .im_chatmain{
-        width: 70%;
+        width: 76%;
         .name{ font-size: 14px; }
 
         .chat-title{

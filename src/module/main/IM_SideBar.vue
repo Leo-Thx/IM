@@ -44,7 +44,7 @@
         /*background-clip: content-box;*/
         .chat-item{ color: #ec407a; }
         .avatar-item{
-            padding: 5px;
+            /*padding: 5px;*/
         }
         .operation-item{
             font-size: 1.8rem; margin-top: 1rem;
