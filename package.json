@@ -44,7 +44,7 @@
       "output": "output"
     },
     "dmg": {},
-    "asar": false
+    "asar": true
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
