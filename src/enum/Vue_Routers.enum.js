@@ -8,14 +8,8 @@ export default {
 		name: 'IM_Main',
 		IM_CHAT: {	// IM chat模块
 			path: 'im_chat',
-			name: 'IM_Chat',
-			IM_DEFAULT: {	// 默认欢迎页面
-				path: ''
-			},
-			IM_CHAT_MAIN: {	// 主聊天界面
-				path: 'im_chatMain/:chatId',
-				name: 'IM_ChatMain'
-			}
-		}
+			name: 'IM_Chat'
+		},
+		IM_MUSIC: {}
 	}
 }

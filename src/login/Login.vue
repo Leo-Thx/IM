@@ -69,7 +69,7 @@
         	login(){
                 this.saveLogin(CommonType.login.ING);
                 this.sendToLogin().then(result=>{
-                    this.$router.push("IM_Main");
+                    this.$router.push('im_main');
                 });
             },
             ...mapMutations({
