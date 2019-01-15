@@ -11,6 +11,7 @@ import { VueRouterNames } from './../enum';
 Vue.use(Router);
 
 export default new Router({
+	mode: 'history',
 	routes: [{
 	  	path: VueRouterNames.LOGIN.path,
 	  	name: VueRouterNames.LOGIN.name,

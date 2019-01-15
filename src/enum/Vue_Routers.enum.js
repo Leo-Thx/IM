@@ -12,8 +12,8 @@ export default {
 			IM_DEFAULT: {	// 默认欢迎页面
 				path: ''
 			},
-			IM_CHAT_MAIN: {	// 主界面
-				path: 'im_chatMain/:id',
+			IM_CHAT_MAIN: {	// 主聊天界面
+				path: 'im_chatMain/:chatId',
 				name: 'IM_ChatMain'
 			}
 		}

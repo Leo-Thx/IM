@@ -28,6 +28,10 @@
 
 <script type="text/javascript">
     import Avatar from './../../components/Avatar';
+    import { VueRouterNames } from './../../enum';
+
+    const { IM_CHAT } = VueRouterNames.IM_MAIN;
+
 	export default {
 		name: 'IM_Chat_List',
         components: {
@@ -40,7 +44,12 @@
 		},
         methods: {
 			chatTo(item, index){
-				this.$router.push({name: ''});
+				this.$router.push({
+                    name: IM_CHAT.IM_CHAT_MAIN.name,
+                    params: {
+						chatId: item
+                    }
+				});
             }
         }
 	}

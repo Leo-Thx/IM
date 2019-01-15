@@ -7,7 +7,7 @@ import IM_ChatMain from './../module/chat/IM_ChatMain';
 const { IM_CHAT, IM_CHAT: {IM_DEFAULT: IM_DEFAULT, IM_CHAT_MAIN} } = VueRouterNames.IM_MAIN;
 
 export default [
-	{ path: '', redirect: { name: 'IM_Chat' }},
+	{ path: '', redirect: { name: IM_CHAT.name }},
 	{
 		path: IM_CHAT.path,
 		name: IM_CHAT.name,
