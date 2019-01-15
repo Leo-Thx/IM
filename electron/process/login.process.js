@@ -16,7 +16,7 @@ module.exports = {
         // 更换窗体配置
         const win = globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN);
         
-        win.setSize(1024, 650);
+        win.setSize(1024, 680);
         win.setResizable(false);
         win.center();
         

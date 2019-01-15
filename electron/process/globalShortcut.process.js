@@ -6,5 +6,10 @@ module.exports = {
             let win = BrowserWindow.getFocusedWindow();
             win.webContents.openDevTools();
         });
+
+		globalShortcutProcess.register("Command+Option+I", function(){
+			let win = BrowserWindow.getFocusedWindow();
+			win.webContents.openDevTools();
+		});
     }
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="im_sidebar p-2 d-flex flex-column position-relative border-right">
+    <div class="im_sidebar p-2 d-flex flex-column position-relative border-right text-center">
         <div class="avatar-item">
             <avatar></avatar>
         </div>
@@ -11,6 +11,10 @@
         </div>
         <div class="operation-item music-item">
             <i class="zi zi_musicBold"></i>
+        </div>
+
+        <div class="operation-item email-item">
+            <i class="zi zi_at"></i>
         </div>
 
         <div class="operation-item setting-item">
@@ -53,7 +57,7 @@
         .music-item{
             font-size: 1.5rem;
         }
-
+        .email-item{ font-size: 1.5rem; }
         .setting-item{
             position: absolute;
             bottom: 2rem; left: 50%;
