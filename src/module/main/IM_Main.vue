@@ -1,5 +1,5 @@
 <template>
-    <div class="im_main d-flex h-100">
+    <div class="im_main d-flex h-100 border-top">
         <im-side-bar></im-side-bar>
         <im-chat-list></im-chat-list>
         <im-chat-main></im-chat-main>
