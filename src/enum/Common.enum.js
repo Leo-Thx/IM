@@ -13,5 +13,12 @@ export default {
 		NOT: -1,	// 未登录
 		ING: 0,		// 登录中
 		LOGIN: 1	// 已登录
+	},
+
+	im_module:	{	// sidebar所处的模块
+		CHAT: 'chat',
+		MUSIC: 'music',
+		CONTACTS: 'contacts',
+		EMAIL: 'email'
 	}
 }

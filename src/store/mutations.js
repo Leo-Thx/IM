@@ -10,5 +10,8 @@ export default {
 	},
 	[VueMutationType.ROOT_SAVE_LOGIN](state, status){
 		state.s_login = status;
+	},
+	[VueMutationType.ROOT_SAVE_MODULE](state, status){
+		state.s_current_module = status;
 	}
 }

@@ -3,17 +3,21 @@
         <div class="avatar-item">
             <avatar></avatar>
         </div>
-        <div class="operation-item chat-item" @click.stop="toChat()">
+        <div class="operation-item chat-item" :class="{'active': currentModule===$options.IM_Module.CHAT}"
+             @click.stop="changeImModule($options.IM_Module.CHAT)">
             <i class="zi zi_newMsg"></i>
         </div>
-        <div class="operation-item concat-item">
+        <div class="operation-item concat-item" :class="{'active': currentModule===$options.IM_Module.CONTACTS}"
+             @click.stop="changeImModule($options.IM_Module.CONTACTS)">
             <i class="zi zi_addressBook"></i>
         </div>
-        <div class="operation-item music-item">
+        <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
+             @click.stop="changeImModule($options.IM_Module.MUSIC)">
             <i class="zi zi_musicBold"></i>
         </div>
 
-        <div class="operation-item email-item">
+        <div class="operation-item email-item" :class="{'active': currentModule===$options.IM_Module.EMAIL}"
+             @click.stop="changeImModule($options.IM_Module.EMAIL)">
             <i class="zi zi_at"></i>
         </div>
 
@@ -24,18 +28,30 @@
 </template>
 
 <script type="text/javascript">
+    import { VueMutationType, CommonType } from './../../enum';
+    import { mapMutations, mapState } from 'vuex';
+
+    import _ from 'lodash';
     import Avatar from './../../components/Avatar';
+
     export default {
     	name: 'IM_Side_Bar',
-        components: {
-    		Avatar
+        components: { Avatar },
+        computed: {
+            ...mapState({
+                currentModule: 's_current_module'
+            })
         },
+        IM_Module: _.cloneDeep(CommonType.im_module),
         data(){
     		return {}
         },
         methods: {
-    		toChat(){   // 进入chat界面
-
+            ...mapMutations({
+                saveCurrentModule: VueMutationType.ROOT_SAVE_MODULE
+            }),
+			changeImModule(type){
+                this.saveCurrentModule(type);
             }
         }
     }
