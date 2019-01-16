@@ -1,5 +1,5 @@
 <template>
-    <div class="im-chat-index">
+    <div class="im-chat-index p-3">
         <h1 class="text-primary">{{ 'Welcome' }}</h1>
         <h2>Essential Links</h2>
         <ul>
@@ -90,5 +90,8 @@
 </script>
 
 <style type="text/css" lang="scss" scoped>
-
+    @import "./../../../static/css/custom";
+    .im-chat-index{
+        background: #fff;
+    }
 </style>

@@ -35,5 +35,8 @@
 </script>
 
 <style type="text/css" lang="scss" scoped>
-
+    @import "./../../../static/css/custom";
+    .im-chat{
+        background: #fff;
+    }
 </style>

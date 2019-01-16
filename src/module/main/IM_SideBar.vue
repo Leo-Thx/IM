@@ -37,17 +37,20 @@
 </script>
 
 <style type="text/css" lang="scss" scoped>
+    @import "./../../../static/css/custom";
     .im_sidebar{
         width: 6%;
+        box-shadow: 5px 0 20px 1px $box-shadow-gray;
+        .avatar-item{ padding: 3px; }
         .operation-item{
             margin-top: 1rem;
-            color: #ccc;
+            color: $side-bar-text;
             &:hover{
                 cursor: pointer;
-                color: #ec407a;
+                color: $side-bar;
             }
             &.active{
-                color: #ec407a;
+                color: $side-bar-active;
             }
         }
         .chat-item{ font-size: 1.5rem; }
