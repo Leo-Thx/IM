@@ -11,10 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "./../static/css/app.scss";
-    @import "./../static/css/custom";
-    @import "~bootstrap/scss/bootstrap";
-
+    @import "./../static/css/app";
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
