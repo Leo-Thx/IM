@@ -8,7 +8,7 @@
         </div>-->
 
         <ul class="m-0 p-0 h-100">
-            <li v-for="(item, index) of size" v-bind:key="index" class="border-bottom" @click="chatTo(item, index)">
+            <li v-for="(item, index) of size" v-bind:key="index" :class="{'active':!index}" @click="chatTo(item, index)">
                 <div class="row m-0 pl-2 pr-1 pt-3 pb-3 chat-item">
                     <div class="col-2">
                         <avatar></avatar>
@@ -63,10 +63,12 @@
             overflow-y: auto;
             li{
                 list-style: none;
+                border-bottom: 1px solid $color-grey-100;
                 &:hover{
                     cursor: pointer;
-                    background: #eee;
+                    background: $color-grey-100;
                 }
+                &.active{ background: $color-grey-200; }
                 .chat-item div{ padding: 0; }
                 .uname{ font-size: 13px; }
                 .umessage{
