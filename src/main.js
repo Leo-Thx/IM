@@ -6,7 +6,6 @@ import router from './router'
 import store from './store'
 
 import { mapMutations, mapGetters } from 'vuex';
-
 import { VueMutationType, CommonType } from './enum';
 
 Vue.config.productionTip = false;

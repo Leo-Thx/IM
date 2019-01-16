@@ -1,6 +1,6 @@
 <template>
     <div class="im-chat-index">
-        <h1>{{ 'Welcome' }}</h1>
+        <h1 class="text-primary">{{ 'Welcome' }}</h1>
         <h2>Essential Links</h2>
         <ul>
             <li>

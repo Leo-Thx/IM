@@ -55,6 +55,7 @@
         .music-item{ font-size: 1.5rem; }
         .email-item{ font-size: 1.5rem; }
         .setting-item{
+            font-size: 1.8rem;
             position: absolute;
             bottom: 2rem; left: 50%;
             transform: translateX(-50%)

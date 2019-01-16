@@ -11,11 +11,15 @@
     "build": "node build/build.js",
     "distwin": "electron-builder --win --x64",
     "distmac": "electron-builder",
-    "start": "electron ."
+    "start": "electron .",
+    "buildbt": ""
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11",
+    "popper.js": "^1.14.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

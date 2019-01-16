@@ -27,6 +27,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+	  'jquery' : path.resolve(__dirname, './../node_modules/jquery/src/jquery'),
+	  'bootstrap': path.resolve(__dirname, './../node_modules/bootstrap'),
+	  'lodash': path.resolve(__dirname, './../node_modules/lodash')
     }
   },
   module: {
