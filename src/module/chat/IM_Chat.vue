@@ -1,9 +1,12 @@
 <template>
     <div class="im-chat d-flex h-100 border-top">
-        <im-chat-list v-on:toChat="enterToChat"></im-chat-list>
-
         <im-chat-index v-if="isIndex"></im-chat-index>
-        <im-chat-main v-else></im-chat-main>
+
+        <template v-else>
+            <im-chat-list v-on:toChat="enterToChat"></im-chat-list>
+            <im-chat-main></im-chat-main>
+        </template>
+
     </div>
 </template>
 

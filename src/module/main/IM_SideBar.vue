@@ -39,24 +39,20 @@
 <style type="text/css" lang="scss" scoped>
     .im_sidebar{
         width: 6%;
-        /*justify-content: space-between;*/
         background: linear-gradient(#fff, #fff, #eee, #ddd, #ccc);
-        /*background-clip: content-box;*/
-        .chat-item{ color: #ec407a; }
-        .avatar-item{
-            /*padding: 5px;*/
-        }
         .operation-item{
-            font-size: 1.8rem; margin-top: 1rem;
+            margin-top: 1rem;
             &:hover{
                 cursor: pointer;
                 color: #ec407a;
             }
+            &.active{
+                color: #ec407a;
+            }
         }
+        .chat-item{ font-size: 1.8rem; }
         .concat-item{ font-size: 1.5rem; }
-        .music-item{
-            font-size: 1.5rem;
-        }
+        .music-item{ font-size: 1.5rem; }
         .email-item{ font-size: 1.5rem; }
         .setting-item{
             position: absolute;
