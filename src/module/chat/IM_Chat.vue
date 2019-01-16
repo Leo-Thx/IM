@@ -1,9 +1,12 @@
 <template>
-    <div class="im-chat d-flex h-100 border-top">
-        <im-chat-index v-if="isIndex"></im-chat-index>
+    <div class="im-chat d-flex w-100 h-100">
+        <im-chat-list v-on:toChat="enterToChat"></im-chat-list>
+
+        <template v-if="isIndex">
+            <im-chat-index></im-chat-index>
+        </template>
 
         <template v-else>
-            <im-chat-list v-on:toChat="enterToChat"></im-chat-list>
             <im-chat-main></im-chat-main>
         </template>
 
@@ -37,6 +40,6 @@
 <style type="text/css" lang="scss" scoped>
     @import "./../../../static/css/custom";
     .im-chat{
-        background: #fff;
+
     }
 </style>

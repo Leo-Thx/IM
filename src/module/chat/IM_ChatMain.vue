@@ -1,6 +1,6 @@
 <template>
-    <div class="im_chatmain d-flex flex-column h-100">
-        <div class="border-bottom text-left pl-2 chat-title">
+    <div class="im_chatmain d-flex ml-1 flex-column h-100">
+        <div class="text-left pl-2 chat-title">
             <i class="zi zi_arrowLeft"></i>
             <div class="d-inline-block name ml-1">测试人员</div>
         </div>
@@ -29,6 +29,7 @@
 </script>
 
 <style type="text/css" lang="scss" scoped>
+    @import "./../../../static/css/custom";
     .im_chatmain{
         width: 76%;
         .name{ font-size: 14px; }
@@ -37,20 +38,22 @@
             height: 40px;
             i{ line-height: 2.5; }
             i, div{ vertical-align: baseline; }
+            box-shadow:0 5px 10px -5px $color-grey-300;
         }
 
         .chat-list{
-            background: #eee;
+            //background: $color-grey-100;
         }
 
         .chat-input{
             height: 18rem; font-size: .8rem;
             .toolbar{
+                color: $color-grey-600;
                 i{
                     &:hover{
                         cursor: pointer;
-                        background: #eee;
-                        color: #e91e63;
+                        background: $color-grey-100;
+                        color: $color-blue-600;
                     }
                     font-size: 1.1rem;
                     line-height: 1.1rem;

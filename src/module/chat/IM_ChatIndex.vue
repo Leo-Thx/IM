@@ -1,5 +1,5 @@
 <template>
-    <div class="im-chat-index p-3">
+    <div class="im-chat-index ml-1 p-3">
         <h1 class="text-primary">{{ 'Welcome' }}</h1>
         <h2>Essential Links</h2>
         <ul>

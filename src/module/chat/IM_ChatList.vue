@@ -1,11 +1,11 @@
 <template>
-    <div class="im_chatlist border-right">
-        <div class="search border-bottom text-center">
+    <div class="im-chat-list">
+        <!--<div class="search border-bottom text-center">
             <input type="text" class="form-control form-control-sm d-inline-block w-75">
             <button type="button" class="btn btn-link p-0">
                 <i class="zi zi_searchBlack"></i>
             </button>
-        </div>
+        </div>-->
 
         <ul class="m-0 p-0 h-100">
             <li v-for="(item, index) of size" v-bind:key="index" class="border-bottom" @click="chatTo(item, index)">
@@ -16,7 +16,7 @@
                     <div class="col-10 pl-2 d-flex flex-column justify-content-around">
                         <div class="row m-0">
                             <div class="col-8 uname">测试</div>
-                            <div class="col-4 msg-time text-right mdui-text-color-green">2018/12/34</div>
+                            <div class="col-4 msg-time text-right">2018/12/34</div>
                         </div>
                         <div class="umessage">我发送了{{item}}条消息我发送了</div>
                     </div>
@@ -49,9 +49,15 @@
 </script>
 
 <style type="text/css" lang="scss" scoped>
-    .im_chatlist{
+    @import "./../../../static/css/custom";
+    .im-chat-list{
         width: 24%;
         font-size: 11px;
+        background: linear-gradient(#fff, #fff, #FAFAFA);
+        /*box-shadow: 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset;*/
+        // box-shadow:5px 7px 10px -4px $color-grey-500, 5px 7px 10px -4px  $color-grey-500;
+        box-shadow:5px 0 8px -5px $color-grey-400;
+        //border-right: 1px solid $color-grey-200;
         ul{
             overflow-x: hidden;
             overflow-y: auto;
@@ -74,7 +80,6 @@
         }
 
         .search{
-            /*box-shadow: -1px 3px 8px 1px #eee;*/
             height: 40px;
         }
     }

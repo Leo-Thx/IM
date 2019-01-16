@@ -3,7 +3,7 @@
         <div class="avatar-item">
             <avatar></avatar>
         </div>
-        <div class="operation-item chat-item">
+        <div class="operation-item chat-item" @click.stop="toChat()">
             <i class="zi zi_newMsg"></i>
         </div>
         <div class="operation-item concat-item">
@@ -32,6 +32,11 @@
         },
         data(){
     		return {}
+        },
+        methods: {
+    		toChat(){   // 进入chat界面
+
+            }
         }
     }
 </script>
@@ -40,17 +45,17 @@
     @import "./../../../static/css/custom";
     .im_sidebar{
         width: 6%;
-        box-shadow: 5px 0 20px 1px $box-shadow-gray;
+        box-shadow: -1px 0 5px 3px $color-grey-300;
         .avatar-item{ padding: 3px; }
         .operation-item{
             margin-top: 1rem;
-            color: $side-bar-text;
+            color: $color-grey-600;
             &:hover{
                 cursor: pointer;
-                color: $side-bar;
+                color: $color-blue-600;
             }
             &.active{
-                color: $side-bar-active;
+                color: $color-blue-a400;
             }
         }
         .chat-item{ font-size: 1.5rem; }
