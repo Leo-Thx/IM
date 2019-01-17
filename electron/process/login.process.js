@@ -14,11 +14,13 @@ module.exports = {
         // 建立socket
         
         // 更换窗体配置
-        const win = globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN);
-        
+        let win = globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN);
+
         win.setSize(1024, 680);
         win.setResizable(false);
         win.center();
+
+        win = null;
         
         event.sender.send(IPC_EventType.buildReply(IPC_EventType.LOGIN));
         
