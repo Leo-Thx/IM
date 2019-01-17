@@ -5,25 +5,25 @@
         </div>
         <div class="operation-item chat-item" :class="{'active': currentModule===$options.IM_Module.CHAT}"
              @click.stop="changeImModule($options.IM_Module.CHAT)">
-            <i class="zi zi_newMsg"></i>
+            <i class="iconfont im-message"></i>
         </div>
         <div class="operation-item concat-item" :class="{'active': currentModule===$options.IM_Module.CONTACTS}"
              @click.stop="changeImModule($options.IM_Module.CONTACTS)">
-            <i class="zi zi_addressBook"></i>
+            <i class="iconfont im-usergroup"></i>
         </div>
 
         <div class="operation-item email-item" :class="{'active': currentModule===$options.IM_Module.EMAIL}"
              @click.stop="changeImModule($options.IM_Module.EMAIL)">
-            <i class="zi zi_at"></i>
+            <i class="iconfont im-Email-Folder"></i>
         </div>
 
         <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
              @click.stop="changeImModule($options.IM_Module.MUSIC)">
-            <i class="zi zi_musicBold"></i>
+            <i class="iconfont im-music"></i>
         </div>
 
         <div class="operation-item setting-item">
-            <i class="zi zi_tmWhmcs"></i>
+            <i class="iconfont im-setting"></i>
         </div>
     </div>
 </template>

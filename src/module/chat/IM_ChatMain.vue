@@ -9,13 +9,13 @@
         </div>
         <div class="chat-input d-flex flex-column m-1 rounded">
             <div class="toolbar d-flex ml-2 mr-2">
-                <i class="fa fa-meh-o"></i>
-                <i class="fa fa-bell-o"></i>
-                <i class="fa fa-file-o"></i>
-                <i class="fa fa-file-image-o"></i>
-                <i class="fa fa-cut"></i>
-                <i class="fa fa-envelope-o"></i>
-                <i class="fa fa-send-o float-right text-danger ml-auto mr-1"></i>
+                <i class="iconfont im-emojisicon"></i>
+                <i class="iconfont im-bell-ring"></i>
+                <i class="iconfont im-fill222"></i>
+                <i class="iconfont im-image"></i>
+                <i class="iconfont im-cut"></i>
+                <i class="iconfont im-email"></i>
+                <i class="iconfont im-send text-danger ml-auto mr-1"></i>
             </div>
             <div class="send-input h-100 p-2" contenteditable="true"></div>
         </div>
