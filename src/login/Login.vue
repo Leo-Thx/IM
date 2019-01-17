@@ -1,10 +1,9 @@
 <template>
     <div class="login-container position-relative">
-        <!--<div class="background"></div>-->
         <div class="position-absolute w-100 first-level"></div>
 
         <div class="content container-fluid h-100">
-            <div class="row avatar p-1 mt-4 mb-4 ml-auto mr-auto">
+            <div class="row avatar p-1 mt-5 mb-4 ml-auto mr-auto">
                 <img src="../../resource/user/image/avatar.jpeg"/>
             </div>
             <div class="row m-4 mt-5">
@@ -104,7 +103,7 @@
     }
 
     .login-container{
-        height: 100%; overflow: hidden;
+        height: 100%;
         .avatar{
             /* conic：锥形渐变 mask */
             width: 5rem; height: 5rem; border-radius: 50%;
@@ -124,11 +123,9 @@
             filter: blur(2rem);
         }
         .first-level{
-            height: 30%;
+            height: 90px;
             z-index: -1;
-            background: linear-gradient(to right, #fff, #fff, $color-grey-50, $color-grey-300);
-            transform: rotate(-19.5deg) scaleX(1.5);
-            top: -85px;
+            background: linear-gradient(to bottom, #fff, #fff, $color-grey-50, $color-grey-200);
         }
         .content{
             position: absolute; top: 0;
