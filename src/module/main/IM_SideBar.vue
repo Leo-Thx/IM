@@ -11,14 +11,15 @@
              @click.stop="changeImModule($options.IM_Module.CONTACTS)">
             <i class="zi zi_addressBook"></i>
         </div>
-        <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
-             @click.stop="changeImModule($options.IM_Module.MUSIC)">
-            <i class="zi zi_musicBold"></i>
-        </div>
 
         <div class="operation-item email-item" :class="{'active': currentModule===$options.IM_Module.EMAIL}"
              @click.stop="changeImModule($options.IM_Module.EMAIL)">
             <i class="zi zi_at"></i>
+        </div>
+
+        <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
+             @click.stop="changeImModule($options.IM_Module.MUSIC)">
+            <i class="zi zi_musicBold"></i>
         </div>
 
         <div class="operation-item setting-item">
