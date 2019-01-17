@@ -17,10 +17,5 @@ module.exports = {
 	    LOGIN: loginProcess,
         GLOBAL_SHORT_CUT: globalShortCutProcess,
         MENU: menuProcess
-    },
-	crateWindow(config, url){
-		const win = new BrowserWindow(config);
-		win.loadURL(url);
-		return win;
-	}
+    }
 };

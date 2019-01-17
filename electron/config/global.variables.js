@@ -1,4 +1,4 @@
-const varibles = new Map();
+const variables = new Map();
 
 module.exports = {
     KEY_NAMES: {
@@ -12,8 +12,8 @@ module.exports = {
         LOGIN: 'login',     // 登录
         IM_MAIN: 'im_main', // IM主窗口
     },
-    set: (key, value)=>varibles.set(key, value),
-    get: key=>varibles.get(key),
-    keys: ()=>varibles.keys(),
-    getAll: ()=>varibles.values()
+    set: (key, value)=>variables.set(key, value),
+    get: key=>variables.get(key),
+    keys: ()=>variables.keys(),
+    getAll: ()=>variables.values()
 };

@@ -8,8 +8,7 @@
 
         </div>
         <div class="chat-input d-flex flex-column m-1 border rounded">
-            <div class="send-input h-100 p-2" contenteditable="true"></div>
-            <div class="toolbar d-flex border-top ml-2 mr-2">
+            <div class="toolbar d-flex border-bottom ml-2 mr-2">
                 <i class="fa fa-meh-o"></i>
                 <i class="fa fa-bell-o"></i>
                 <i class="fa fa-file-o"></i>
@@ -18,6 +17,7 @@
                 <i class="fa fa-envelope-o"></i>
                 <i class="fa fa-send-o float-right text-danger ml-auto mr-1"></i>
             </div>
+            <div class="send-input h-100 p-2" contenteditable="true"></div>
         </div>
     </div>
 </template>

@@ -1,15 +1,23 @@
-const { globalShortcut: globalShortcutProcess, BrowserWindow } = require('electron');
+const { globalShortcut, BrowserWindow } = require('electron');
 
 module.exports = {
     init(){
-        globalShortcutProcess.register("Control+Alt+I", function(){
-            let win = BrowserWindow.getFocusedWindow();
-            win.webContents.openDevTools();
-        });
+    	const macDevTools = 'Command+Option+I',
+			winDevTools = 'Control+Alt+I';
 
-		globalShortcutProcess.register("Command+Option+I", function(){
-			let win = BrowserWindow.getFocusedWindow();
-			win.webContents.openDevTools();
-		});
+    	let devToolsKey = winDevTools;
+
+    	if( process.platform === "darwin" ){
+			devToolsKey = macDevTools;
+		}
+
+    	if( globalShortcut.isRegistered(devToolsKey) ){
+			console.info('already registered');
+		} else {
+			globalShortcut.register(devToolsKey, function(){
+				let win = BrowserWindow.getFocusedWindow();
+				win.webContents.openDevTools();
+			});
+		}
     }
 };
