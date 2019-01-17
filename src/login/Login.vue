@@ -73,12 +73,14 @@
                 this.saveLogin(CommonType.login.ING);
                 this.sendToLogin().then(()=>{
                     this.$nextTick(()=>{
-						this.$router.push('im_main');
+						this.$router.push('im_main/im_chat');
+						this.saveCurrentModule(CommonType.im_module.CHAT);
                     });
                 });
             },
             ...mapMutations({
-                saveLogin: VueMutationType.ROOT_SAVE_LOGIN
+                saveLogin: VueMutationType.ROOT_SAVE_LOGIN,
+				saveCurrentModule: VueMutationType.ROOT_SAVE_MODULE
             })
         }
     }

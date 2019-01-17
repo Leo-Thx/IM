@@ -52,6 +52,7 @@
             }),
 			changeImModule(type){
                 this.saveCurrentModule(type);
+				this.$router.push(`im_${type}`);
             }
         }
     }

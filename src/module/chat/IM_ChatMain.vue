@@ -7,8 +7,8 @@
         <div class="chat-list h-100">
 
         </div>
-        <div class="chat-input d-flex flex-column m-1 border rounded">
-            <div class="toolbar d-flex border-bottom ml-2 mr-2">
+        <div class="chat-input d-flex flex-column m-1 rounded">
+            <div class="toolbar d-flex ml-2 mr-2">
                 <i class="fa fa-meh-o"></i>
                 <i class="fa fa-bell-o"></i>
                 <i class="fa fa-file-o"></i>
@@ -32,10 +32,8 @@
     @import "./../../../static/css/custom";
     .im_chatmain{
         width: 76%;
-        .name{ font-size: 14px; }
-
         .chat-title{
-            height: 40px;
+            height: 40px; font-size: 13px;
             i{ line-height: 2.5; }
             i, div{ vertical-align: baseline; }
             box-shadow:0 5px 10px -5px $color-grey-300;
@@ -47,8 +45,10 @@
 
         .chat-input{
             height: 18rem; font-size: .8rem;
+            border: 1px solid $color-grey-200;
             .toolbar{
                 color: $color-grey-600;
+                border-bottom: 1px solid $color-grey-200;
                 i{
                     &:hover{
                         cursor: pointer;

@@ -8,7 +8,7 @@
         </div>-->
 
         <ul class="m-0 p-0 h-100">
-            <li v-for="(item, index) of size" v-bind:key="index" :class="{'active':!index}" @click="chatTo(item, index)">
+            <li v-for="(item, index) of size" v-bind:key="index" :class="{'active':!index}" class="pl-2" @click="chatTo(item, index)">
                 <div class="row m-0 pl-2 pr-1 pt-3 pb-3 chat-item">
                     <div class="col-2">
                         <avatar></avatar>
@@ -53,7 +53,8 @@
     .im-chat-list{
         width: 24%;
         font-size: 11px;
-        background: linear-gradient(#fff, #fff, #FAFAFA);
+        /*background: linear-gradient(#fff, #fff, #FAFAFA);*/
+        /*background: #fcfcfc;*/
         /*box-shadow: 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset;*/
         // box-shadow:5px 7px 10px -4px $color-grey-500, 5px 7px 10px -4px  $color-grey-500;
         box-shadow:5px 0 8px -5px $color-grey-400;
@@ -63,12 +64,12 @@
             overflow-y: auto;
             li{
                 list-style: none;
-                border-bottom: 1px solid $color-grey-100;
                 &:hover{
                     cursor: pointer;
                     background: $color-grey-100;
                 }
                 &.active{ background: $color-grey-200; }
+                .chat-item{ border-bottom: 1px solid $color-grey-100; }
                 .chat-item div{ padding: 0; }
                 .uname{ font-size: 13px; }
                 .umessage{
