@@ -1,13 +1,13 @@
 <template>
     <div class="im-chat-list">
-        <!--<div class="search border-bottom text-center">
-            <input type="text" class="form-control form-control-sm d-inline-block w-75">
-            <button type="button" class="btn btn-link p-0">
-                <i class="zi zi_searchBlack"></i>
-            </button>
-        </div>-->
+        <div class="search border-bottom pt-2 text-center">
+            <div class="input-group">
+                <i class="iconfont im-search ml-1 position-absolute"></i>
+                <input type="text" class="w-100 p-1 pl-4 pr-4 rounded" name="search">
+            </div>
+        </div>
 
-        <ul class="m-0 p-0 h-100">
+        <ul class="m-0 p-0">
             <li v-for="(item, index) of size" v-bind:key="index" :class="{'active':!index}" class="pl-2" @click="chatTo(item, index)">
                 <div class="row m-0 pl-2 pr-1 pt-3 pb-3 chat-item">
                     <div class="col-2">
@@ -60,6 +60,7 @@
         box-shadow:5px 0 8px -5px $color-grey-400;
         //border-right: 1px solid $color-grey-200;
         ul{
+            height: calc(100% - 45px);
             overflow-x: hidden;
             overflow-y: auto;
             li{
@@ -68,7 +69,7 @@
                     cursor: pointer;
                     background: $color-grey-100;
                 }
-                &.active{ background: $color-grey-200; }
+                &.active{ background: $color-grey-100; }
                 .chat-item{ border-bottom: 1px solid $color-grey-100; }
                 .chat-item div{ padding: 0; }
                 .uname{ font-size: 13px; }
@@ -83,7 +84,18 @@
         }
 
         .search{
-            height: 40px;
+            height: 45px;
+            .input-group{
+                width: 70%; margin: 0 auto;
+                i{ font-size: 1.1rem; }
+            }
+            input{
+                background: $color-grey-100;
+                border: 1px solid $color-grey-200;
+                &:focus{
+                    outline: none;
+                }
+            }
         }
     }
 </style>

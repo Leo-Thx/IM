@@ -55,9 +55,9 @@
                         background: $color-grey-100;
                         color: $color-blue-600;
                     }
-                    font-size: 1.1rem;
-                    line-height: 1.1rem;
-                    padding: .5rem .7rem .8rem;
+                    /*font-size: .8rem;*/
+                    /*line-height: 1.1rem;*/
+                    padding: .4rem .7rem .8rem;
                     border-radius: 3px;
                 }
             }

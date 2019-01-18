@@ -3,26 +3,12 @@
         <div class="avatar-item">
             <avatar></avatar>
         </div>
-        <div class="operation-item chat-item" :class="{'active': currentModule===$options.IM_Module.CHAT}"
-             @click.stop="changeImModule($options.IM_Module.CHAT)">
-            <i class="iconfont im-message"></i>
+        <div v-for="(menu, index) of $options.IM_Module" :key="index" v-if="!menu.forbidden"
+             :class="[menu.class, currentModule===menu.name ? 'active' : '']" class="operation-item"
+             @click.stop="changeImModule(menu.name)">
+            <i class="iconfont" :class="menu.icon"></i>
         </div>
-        <div class="operation-item concat-item" :class="{'active': currentModule===$options.IM_Module.CONTACTS}"
-             @click.stop="changeImModule($options.IM_Module.CONTACTS)">
-            <i class="iconfont im-usergroup"></i>
-        </div>
-
-        <div class="operation-item email-item" :class="{'active': currentModule===$options.IM_Module.EMAIL}"
-             @click.stop="changeImModule($options.IM_Module.EMAIL)">
-            <i class="iconfont im-Email-Folder"></i>
-        </div>
-
-        <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
-             @click.stop="changeImModule($options.IM_Module.MUSIC)">
-            <i class="iconfont im-icon-test"></i>
-        </div>
-
-        <div class="operation-item setting-item">
+        <div class="operation-item menu-setting-item">
             <i class="iconfont im-setting1"></i>
         </div>
     </div>
@@ -67,6 +53,7 @@
         .avatar-item{ padding: 3px; }
         .operation-item{
             margin-top: 1rem;
+            font-size: 1.2rem;
             color: $color-grey-600;
             &:hover{
                 cursor: pointer;
@@ -76,11 +63,7 @@
                 color: $color-blue-a400;
             }
         }
-        .chat-item{ font-size: 1.2rem; }
-        .concat-item{ font-size: 1.2rem; }
-        .music-item{ font-size: 1.2rem; }
-        .email-item{ font-size: 1.2rem; }
-        .setting-item{
+        .menu-setting-item{
             font-size: 1.2rem;
             position: absolute;
             bottom: 2rem; left: 50%;

@@ -5,7 +5,7 @@ import Login from './../login/Login.vue'
 import IM_Main from './../module/main/IM_Main'
 
 import IM_Chat from './../module/chat/IM_Chat';
-import IM_Contacts from './../module/concats/IM_Contacts';
+import IM_Contact from './../module/concat/IM_Contact';
 import IM_Email from './../module/email/IM_Email';
 import IM_Music from './../module/music/IM_Music';
 
@@ -19,9 +19,9 @@ const ChatRouter = [{
 	}
 ];
 const ContactsRouter = [{
-	path: 'im_contacts',
-	name: 'IM_Contacts',
-	component: IM_Contacts
+	path: 'im_contact',
+	name: 'IM_Contact',
+	component: IM_Contact
 }];
 
 const EmailRouter = [{

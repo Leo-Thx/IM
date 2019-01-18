@@ -16,9 +16,35 @@ export default {
 	},
 
 	im_module:	{	// sidebar所处的模块
-		CHAT: 'chat',
-		MUSIC: 'music',
-		CONTACTS: 'contacts',
-		EMAIL: 'email'
+		CHAT: {
+			name: 'chat',
+			class: 'menu-chat-item',
+			icon: 'im-message'
+		},
+		CONTACT: {
+			name: 'contact',
+			class: 'menu-contact-item',
+			icon: 'im-usergroup'
+		},
+		EMAIL: {
+			name: 'email',
+			class: 'menu-emil-item',
+			icon: 'im-Email-Folder'
+		},
+		MUSIC: {
+			name: 'music',
+			class: 'menu-music-item',
+			icon: 'im-icon-test'
+		},
+		FOLDER: {
+			name: 'folder',
+			class: 'menu-folder-item',
+			icon: 'im-folder'
+		},
+		CALENDAR: {
+			name: 'calendar',
+			class: 'menu-calendar-item',
+			icon: 'im-Calendar'
+		},
 	}
 }
