@@ -1,5 +1,5 @@
 <template>
-    <div class="im-chat d-flex w-100 h-100">
+    <div class="im-chat-container d-flex w-100 h-100">
         <im-chat-list v-on:toChat="enterToChat"></im-chat-list>
 
         <template v-if="isIndex">
@@ -39,7 +39,7 @@
 
 <style type="text/css" lang="scss" scoped>
     @import "./../../../static/css/custom";
-    .im-chat{
+    .im-chat-container{
 
     }
 </style>

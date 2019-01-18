@@ -19,11 +19,11 @@
 
         <div class="operation-item music-item" :class="{'active': currentModule===$options.IM_Module.MUSIC}"
              @click.stop="changeImModule($options.IM_Module.MUSIC)">
-            <i class="iconfont im-music"></i>
+            <i class="iconfont im-icon-test"></i>
         </div>
 
         <div class="operation-item setting-item">
-            <i class="iconfont im-setting"></i>
+            <i class="iconfont im-setting1"></i>
         </div>
     </div>
 </template>
@@ -76,12 +76,12 @@
                 color: $color-blue-a400;
             }
         }
-        .chat-item{ font-size: 1.5rem; }
+        .chat-item{ font-size: 1.2rem; }
         .concat-item{ font-size: 1.2rem; }
         .music-item{ font-size: 1.2rem; }
         .email-item{ font-size: 1.2rem; }
         .setting-item{
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             position: absolute;
             bottom: 2rem; left: 50%;
             transform: translateX(-50%)

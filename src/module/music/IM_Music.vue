@@ -1,5 +1,5 @@
 <template>
-    <div class="im-music w-100"></div>
+    <div class="im-music-container w-100"></div>
 </template>
 
 <script type="text/javascript">
