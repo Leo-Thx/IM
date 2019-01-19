@@ -1,5 +1,5 @@
 <template>
-    <div class="im-contacts-container w-100"></div>
+    <div class="im-contacts-container h-100"></div>
 </template>
 
 <script type="text/javascript">

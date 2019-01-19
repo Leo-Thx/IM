@@ -18,7 +18,7 @@
                             <div class="col-8 uname">测试</div>
                             <div class="col-4 msg-time text-right">2018/12/34</div>
                         </div>
-                        <div class="umessage">我发送了{{item}}条消息我发送了</div>
+                        <div class="umessage">我发送了{{item}}条消息我发送了哈哈哈哈哈</div>
                     </div>
                 </div>
             </li>
@@ -51,7 +51,7 @@
 <style type="text/css" lang="scss" scoped>
     @import "./../../../static/css/custom";
     .im-chat-list{
-        width: 24%;
+        width: 230px;
         font-size: 11px;
         //background: linear-gradient(#fff, #fff, #FAFAFA);
         /*box-shadow: 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset, 0 0 0 0 #fff inset;*/
@@ -73,7 +73,7 @@
                 &.active{ background: $color-grey-100; }
                 .chat-item{ border-bottom: 1px solid $color-grey-100; }
                 .chat-item div{ padding: 0; }
-                .uname{ font-size: 13px; }
+                .uname{ font-size: 12px; }
                 .umessage{
                     color: #666;
                     white-space: nowrap;

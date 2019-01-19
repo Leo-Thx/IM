@@ -93,5 +93,6 @@
     @import "./../../../static/css/custom";
     .im-chat-index{
         background: #fff;
+        width: calc(100% - 230px);
     }
 </style>

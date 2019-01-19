@@ -8,6 +8,12 @@
              @click.stop="changeImModule(menu.name)">
             <i class="iconfont" :class="menu.icon"></i>
         </div>
+        
+        <div class="operation-item menu-music-item" :class="[currentModule==='music' ? 'active' : '']"
+             @click.stop="changeImModule('music')">
+            <i class="iconfont im-icon-test"></i>
+        </div>
+        
         <div class="operation-item menu-setting-item">
             <i class="iconfont im-setting1"></i>
         </div>
@@ -48,12 +54,12 @@
 <style type="text/css" lang="scss" scoped>
     @import "./../../../static/css/custom";
     .im_sidebar{
-        width: 6%;
+        width: 60px;
         box-shadow: -1px 0 5px 3px $color-grey-300;
         .avatar-item{ padding: 3px; }
         .operation-item{
-            margin-top: 1rem;
-            font-size: 1.2rem;
+            margin-top: .8rem;
+            font-size: 1.3rem;
             color: $color-grey-600;
             &:hover{
                 cursor: pointer;
@@ -61,6 +67,12 @@
             }
             &.active{
                 color: $color-blue-a400;
+            }
+        }
+        .menu-music-item {
+            .im-icon-test {
+                font-size: 1.5rem;
+                border-radius: 50%;
             }
         }
         .menu-setting-item{

@@ -1,5 +1,5 @@
 <template>
-    <div class="im-email-container w-100"></div>
+    <div class="im-email-container h-100"></div>
 </template>
 
 <script type="text/javascript">

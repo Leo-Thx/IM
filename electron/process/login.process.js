@@ -16,7 +16,7 @@ module.exports = {
         // 更换窗体配置
         let win = globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN);
 
-        win.setSize(1024, 680);
+        win.setSize(1100, 700);
         win.setResizable(false);
         win.center();
 

@@ -31,11 +31,11 @@ export default {
 			class: 'menu-emil-item',
 			icon: 'im-Email-Folder'
 		},
-		MUSIC: {
+		/*MUSIC: {
 			name: 'music',
 			class: 'menu-music-item',
 			icon: 'im-icon-test'
-		},
+		},*/
 		FOLDER: {
 			name: 'folder',
 			class: 'menu-folder-item',

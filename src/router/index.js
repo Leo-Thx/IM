@@ -8,6 +8,8 @@ import IM_Chat from './../module/chat/IM_Chat';
 import IM_Contact from './../module/concat/IM_Contact';
 import IM_Email from './../module/email/IM_Email';
 import IM_Music from './../module/music/IM_Music';
+import IM_Folder from './../module/folder/IM_Folder';
+import IM_Calendar from './../module/calendar/IM_Calendar';
 
 
 const ChatRouter = [{
@@ -36,6 +38,18 @@ const MusicRouter = [{
 	component: IM_Music
 }];
 
+const FolderRouter = [{
+    path: 'im_folder',
+    name: 'IM_Folder',
+    component: IM_Folder
+}];
+
+const CalendarRouter = [{
+    path: 'im_calendar',
+    name: 'IM_Calendar',
+    component: IM_Calendar
+}];
+
 Vue.use(Router);
 
 export default new Router({
@@ -47,6 +61,6 @@ export default new Router({
 		path: '/im_main',
 		name: 'IM_Main',
 		component: IM_Main,
-		children : [...ChatRouter, ...ContactsRouter, ...EmailRouter, ...MusicRouter]
+		children : [...ChatRouter, ...ContactsRouter, ...EmailRouter, ...MusicRouter, ...FolderRouter, ...CalendarRouter]
 	}]
 });
