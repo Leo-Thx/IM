@@ -74,7 +74,7 @@
                 this.sendToLogin().then(()=>{
                     this.$nextTick(()=>{
 						this.$router.push('im_main/im_chat');
-						this.saveCurrentModule(CommonType.im_module.CHAT);
+						this.saveCurrentModule(CommonType.im_module.CHAT.name);
                     });
                 });
             },

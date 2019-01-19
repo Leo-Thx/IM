@@ -14,6 +14,9 @@
 </template>
 
 <script type="text/javascript">
+    import { VueMutationType } from './../../enum';
+    
+    import { mapState, mapMutations } from 'vuex';
     // 首页显示
     import ImChatIndex from './../chat/IM_ChatIndex';
     // 左侧列表
@@ -25,14 +28,20 @@
     	name: 'IM_Chat',
 		components:{ ImChatIndex, ImChatList, ImChatMain },
         data(){
-    		return {
-    			isIndex: true
-            }
+    		return {}
+        },
+        computed: {
+            ...mapState({
+                isIndex: state => state.imChat.im_chat_isIndex
+            })
         },
         methods: {
     		enterToChat(chatId){
-                this.isIndex = false;
-            }
+                this.saveIndex(false);
+            },
+            ...mapMutations('imChat', {
+                saveIndex: VueMutationType.IM_CHAT_IS_INDEX
+            })
         }
     }
 </script>
