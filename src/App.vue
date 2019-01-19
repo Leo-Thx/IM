@@ -13,9 +13,10 @@ export default {
 <style lang="scss">
     @import "./../static/css/app";
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
+        border-top: 1px solid $color-grey-100;
     }
 </style>

@@ -49,7 +49,7 @@
     @import "./../../../static/css/custom";
     .im_sidebar{
         width: 6%;
-        //box-shadow: -1px 0 5px 3px $color-grey-300;
+        box-shadow: -1px 0 5px 3px $color-grey-300;
         .avatar-item{ padding: 3px; }
         .operation-item{
             margin-top: 1rem;
