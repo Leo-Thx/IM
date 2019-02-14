@@ -5,8 +5,22 @@
 </template>
 
 <script>
+import io from "socket.io-client";
+
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+    const _io = io('http://127.0.0.1:7001/');
+    _io.on('connect', function(){
+      console.log('链接成功');
+    });
+    _io.on('disconnect', function(){
+      console.log('断开连级');
+    });
+    _io.on('res', function(){
+      console.info(arguments);
+    });
+  }
 }
 </script>
 
