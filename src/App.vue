@@ -13,6 +13,7 @@ export default {
     const _io = io('http://127.0.0.1:7001/');
     _io.on('connect', function(){
       console.log('链接成功');
+      _io.emit('server', "发送一条消息");
     });
     _io.on('disconnect', function(){
       console.log('断开连级');
