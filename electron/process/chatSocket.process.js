@@ -5,13 +5,14 @@ const io = require('socket.io-client');
  *  存入 io.managers 缓存中[内部生成key = io]
  *  return io.socket()[manager.socket()]
  */
-const socket = io('http://127.0.0.1:7001/custom', {
+const socket = io('http://localhost:7001/dynamic-101', {
     query: {
         token: '000token123wqe'
     },
     // reconnection: false, 
-    transports: ['websocket']
-    // path: '/customPath'
+    transports: ['polling', 'websocket'],
+    path: '/customPath'
+    // path: '/dynamic-101'
 });
 
 // const manager = new io.Manager('http://127.0.0.1:7001?token=111token123wqe', {autoConnect: false});
@@ -53,3 +54,6 @@ socket.on('connect_error', function(error){
  * disconnect
  */
 
+socket.on('hello', function(){
+    console.info('hello, ', arguments);
+});

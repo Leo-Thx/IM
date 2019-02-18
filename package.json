@@ -12,7 +12,10 @@
     "distwin": "electron-builder --win --x64",
     "distmac": "electron-builder",
     "start": "electron .",
-    "buildbt": ""
+    "buildbt": "",
+
+    "server": "node ./electron/process/chatServer.process.js",
+    "client": "node ./electron/process/chatSocket.process.js"
   },
   "dependencies": {
     "animejs": "^3.0.1",
