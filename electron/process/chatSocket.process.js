@@ -5,14 +5,14 @@ const io = require('socket.io-client');
  *  存入 io.managers 缓存中[内部生成key = io]
  *  return io.socket()[manager.socket()]
  */
-const socket = io('http://localhost:7001/singleChat', {
+const socket = io('http://localhost:7001/chat', {
     query: {
         token: '000token123wqe',
-        roomId: 'first2'
+        roomId: 'first1'
     },
     // reconnection: false, 
-    transports: ['polling', 'websocket'],
-    path: '/chat'
+    transports: ['websocket', 'polling'],
+    path: '/singleChat'
 });
 
 // const manager = new io.Manager('http://127.0.0.1:7001?token=111token123wqe', {autoConnect: false});
