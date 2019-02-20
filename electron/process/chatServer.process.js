@@ -8,7 +8,7 @@
  *  1. parentNsps[Map]{fn: ParentNamespace}: server.of函数调用 为正则或函数 所产生的多个字命名空间[动态命名空间]
  *  2. nsps[Object]{name: Namespace}: 解析后的名字空间
  *  3. _adapter: 存储传入的适配器或默认的适配器adapter[socket.io-adapter]
- *  3. sockets[of('/')]: 处理默认名字空间 并进行connect监听
+ *  3. sockets[of('/')]: 默认名字空间 并进行connect监听
  *      - new Namespace(server, '/')
  *  4. 根据情况调用attatch|listen: 创建httpServer服务器 this.httpServer
  *      - initEngine this.eio = engine.attach(srv, opts);
@@ -39,13 +39,12 @@
  */
 /**
  * socket.js function(nsp, client, query)
- *  1. nsp, server, adapter, id[nsp.name+#+client.id], rooms={}, handshake
+ *  1. nsp, server, adapter, id[[nsp.name.#]client.id], rooms={}, handshake
  *  2. onconnect(): 
  *      - this.nsp.connected[this.id] = this;   名字空间上存储自身
  *      - this.join(this.id)  加入一个房间
  *          this.adapter.addAll(this.id)
  *          this.rooms[this.id] = this.id
- * 
  */
 
 const io = require('socket.io');
@@ -70,13 +69,14 @@ let serverSocket = io(7001,  {
 //     console.info(newNamespace.connected);
 // });
 
+console.info(serverSocket.nsps);
 // 客户端连接的时候必须指定路径和nsp
 serverSocket.of('/chat').on('connect', socket=>{
     let roomId = socket.handshake.query.roomId
-    socket.join(roomId);
+    // socket.join(roomId);
 
-    let defaultNsp = serverSocket.of('/');
-    console.info(defaultNsp);
+    // let defaultNsp = serverSocket.of('/');
+    // console.info(serverSocket.of('/chat'));
 
     // 会广播指定空间，指定房间的所有socket
     // serverSocket.of('/singleChat').emit('joinmsg', '一个新的成员加入');   // 广播指定名字空间
