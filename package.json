@@ -9,14 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-
     "distwin": "electron-builder --win --x64",
     "distmac": "electron-builder",
-    "start": "electron .",
-    "buildbt": "",
-
-    "server": "node ./electron/process/chatServer.process.js",
-    "client": "node ./electron/process/chatSocket.process.js"
+    "start": "electron ."
   },
   "private": true,
   "build": {
@@ -55,6 +50,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
+    "lodash": "^4.17.11",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
@@ -64,10 +60,12 @@
     "@angular/cli": "~7.3.3",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "electron": "^4.0.6",
+    "electron-builder": "^20.38.5",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.0.0",
