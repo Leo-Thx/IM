@@ -1,3 +1,4 @@
+const socketConfig = require('./socket.config');
 const io = require('socket.io-client');
 /**
  * io() 调用会生成一个manager
@@ -10,14 +11,10 @@ const socket = io('http://localhost:7001/chat', {
         token: '000token123wqe',
         roomId: 'first1'
     },
-    // reconnection: false, 
+    reconnection: false, 
     transports: ['websocket', 'polling'],
-    // path: '/singleChat'
+    path: '/singleChat'
 });
-
-// const manager = new io.Manager('http://127.0.0.1:7001?token=111token123wqe', {autoConnect: false});
-// const socket = manager.socket('/custom');
-// manager.open();
 
 
 socket.on('connect', function(){

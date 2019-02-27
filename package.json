@@ -11,7 +11,10 @@
     "e2e": "ng e2e",
     "distwin": "electron-builder --win --x64",
     "distmac": "electron-builder",
-    "start": "electron ."
+    "start": "electron .",
+
+    "server": "node ./electron/socket/chatServer.js",
+    "client": "node ./electron/socket/chatSocket.js"
   },
   "private": true,
   "build": {
@@ -52,6 +55,7 @@
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
     "rxjs": "~6.3.3",
+    "socket.io": "^2.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

@@ -26,17 +26,17 @@ app.on('ready', ()=>{
             // width: 350, height: 500,
             webPreferences: {
                 nodeIntegration: false,
-                preload: path.join(__dirname, 'electron/preload/main.preload.js')
+                preload: path.join(__dirname, 'electron/render/main.preload.js')
             }
         }
 	);
 
-    // let uri = 'http://localhost:4200';
-	let uri = url.format({
-		protocol: 'file',
-		slashes: true,
-		pathname: require('path').join(__dirname, 'dist/IM/index.html')
-	});
+    let uri = 'http://localhost:4200';
+	// let uri = url.format({
+	// 	protocol: 'file',
+	// 	slashes: true,
+	// 	pathname: require('path').join(__dirname, 'dist/IM/index.html')
+	// });
 
     mainWindow.loadURL(uri);
 
