@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-const IPC_Event = require('./IPC_EventType');
+const IPC_Event = require('../common/IPC_EventType');
 
 module.exports.AngularElectron = new class AngularElectron{
 	constructor() {

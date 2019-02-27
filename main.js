@@ -3,15 +3,19 @@ const url = require('url');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const _ = require('lodash');
 
-// process事件类型
-const ProcessEventType = require('./electron/Process_EventType');
+// processor事件类型
+// const ProcessorEventType = require('./electron/main/processor.event');
 
-// 进程监听
-const MainProcess = require('./electron/main.process');
+// 主进程处理器
+const MainProcessor = require('./electron/main/main.processor');
+
 /* 定义部分全局变量 */
-const globalVariable = global["globalVariable"] = require('./electron/config/global.variables');
+const globalVariable = global["globalVariable"] = require('./electron/main/global.variables');
+
+// 设置是否已经登录
 globalVariable.set(globalVariable.KEY_NAMES.LOGIN, true);
-globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_WINDOW_NAMES.LOGIN);   //
+// 设置当前正处于哪个窗体
+globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_WINDOW_NAMES.LOGIN);
 
 
 let mainWindow = null;	// 主要窗口
@@ -46,7 +50,8 @@ app.on('ready', ()=>{
  
 	globalVariable.set(globalVariable.KEY_NAMES.REFERENCE_IM_WIN, mainWindow);  // 设置主要窗体实例
 	
-    // MainProcess.init(); // 初始化process
-    
+    MainProcessor.init(); // 初始化进程处理
+	
+	// 可能部分情况下不需要打包该目录
 	BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
 });
