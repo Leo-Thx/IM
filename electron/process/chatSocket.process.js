@@ -12,7 +12,7 @@ const socket = io('http://localhost:7001/chat', {
     },
     // reconnection: false, 
     transports: ['websocket', 'polling'],
-    path: '/singleChat'
+    // path: '/singleChat'
 });
 
 // const manager = new io.Manager('http://127.0.0.1:7001?token=111token123wqe', {autoConnect: false});
@@ -22,6 +22,9 @@ const socket = io('http://localhost:7001/chat', {
 
 socket.on('connect', function(){
     console.log('连接成功:', socket.id);
+    setTimeout(()=>{
+        socket.send('测试');
+    }, 5000);
 });
 
 // 服务器或客户端丢失连接的原因
