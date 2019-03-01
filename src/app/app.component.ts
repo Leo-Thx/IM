@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NetworkService } from './share/network/network.service';
 
 @Component({
     selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'IM';
+    constructor(service: NetworkService) {
+        console.log(service);
+    }
 }
