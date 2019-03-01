@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { LoginService } from './login.service';
 
 @Component({
     selector: 'app-login',
@@ -8,5 +9,8 @@ import { Component } from "@angular/core";
     ]
 })
 export class LoginComponent {
-    constructor() {}
+    title = 'loginComponent';
+    constructor(private loginSvc: LoginService) {
+        console.log(loginSvc);
+    }
 }

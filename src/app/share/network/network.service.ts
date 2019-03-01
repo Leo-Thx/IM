@@ -17,6 +17,7 @@ export class NetworkService {
     constructor(httpClient: HttpClient, config?: INetworkConfig ) {
         this.config = config;
         this.httpClient = httpClient;
+        console.log(config);
     }
 
     post(url: string, params: ParamType) {}

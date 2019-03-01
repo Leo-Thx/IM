@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRouterModule } from './router/app-routing.module';
 import { ShareModule } from './share/share.module';
 import { networkConfig } from './config/network.config';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -13,8 +14,10 @@ import { networkConfig } from './config/network.config';
     ],
     imports: [
         BrowserModule,
+        ShareModule.forRoot(networkConfig),
         AppRouterModule,
-        ShareModule.forRoot(networkConfig)
+
+        LoginModule
     ],
     providers: [],
     bootstrap: [AppComponent]
