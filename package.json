@@ -12,7 +12,6 @@
     "distwin": "electron-builder --win --x64",
     "distmac": "electron-builder",
     "start": "electron .",
-
     "server": "node ./electron/socket/chatServer.js",
     "client": "node ./electron/socket/chatSocket.js"
   },
@@ -52,7 +51,9 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "rxjs": "~6.3.3",
     "socket.io": "^2.2.0",
