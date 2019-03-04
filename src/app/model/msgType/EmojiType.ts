@@ -3,7 +3,7 @@ import { MsgTypeEnum } from 'src/app/config/app.enum';
 import { MsgTextType } from './TextType';
 
 /**
- * 纯文本消息类型
+ * Emoji消息类型
  * @extends MsgTextType
  */
 export class MsgEmojiType extends MsgTextType {

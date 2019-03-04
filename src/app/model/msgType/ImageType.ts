@@ -6,13 +6,10 @@ import { MsgTypeEnum } from 'src/app/config/app.enum';
  * 图片消息类型
  * @attrs   包含的扩展字段
  *  extend: {
- *      name: string
- *      size: number
  *      width: number
  *      height: number
- *      percent: number
  *  }
- * @extends BaseMsgType
+ * @extends MsgFileType
  */
 export class MsgImageType extends MsgFileType {
     /**
