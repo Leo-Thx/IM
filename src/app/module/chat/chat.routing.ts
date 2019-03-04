@@ -9,11 +9,12 @@ export const chatRoutes: Routes = [
         path: 'chat', 
         component: ChatComponent, 
         pathMatch: 'full', 
-        outlet: 'chat',
+        // outlet: 'chat',
         children: [
-            { path: 'chatList', component: ChatListComponent, pathMatch: 'full', outlet: 'chatList' },
-            { path: 'chatMain', component: ChatMainComponent, pathMatch: 'full', outlet: 'chatMain' },
-            { path: 'chatInput', component: ChatInputComponent, pathMatch: 'full', outlet: 'chatInput' }
+            { path: '', component: ChatListComponent, pathMatch: 'full', outlet: 'chatList' },
+            // { path: '', component: ChatListComponent, pathMatch: 'full' },
+            { path: '', component: ChatMainComponent, pathMatch: 'full', outlet: 'chatMain' },
+            { path: '', component: ChatInputComponent, pathMatch: 'full', outlet: 'chatInput' }
         ]
     }
 ];
