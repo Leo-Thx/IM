@@ -16,7 +16,7 @@ module.exports = {
         globalShortCut.init();
         menu.setAppMenu();
 
-        socket.init({});
+        // socket.init({});
         // 初始化socket
         login.event.on(ProcessorEvent.RENDER_IM_MAIN, (userInfo)=>{
             socket.init(userInfo);
