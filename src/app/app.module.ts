@@ -6,6 +6,7 @@ import { AppRouterModule } from './router/app-routing.module';
 import { ShareModule } from './share/share.module';
 import { networkConfig } from './config/network.config';
 import { LoginModule } from './login/login.module';
+import { ChatModule } from './module/chat/chat.module';
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { LoginModule } from './login/login.module';
     imports: [
         BrowserModule,
         ShareModule.forRoot(networkConfig),
-        AppRouterModule,
 
-        LoginModule
+        LoginModule,
+        ChatModule,
+        AppRouterModule
     ],
     providers: [],
     bootstrap: [AppComponent]

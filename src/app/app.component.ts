@@ -1,9 +1,10 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { NetworkService } from './share/network/network.service';
 
+
 declare global {
     interface Window {
-        $AE: any;
+        $NgEl: any;
     }
 }
 
@@ -18,7 +19,7 @@ export class AppComponent implements AfterViewInit {
         console.log(service);
     }
     ngAfterViewInit() {
-        // console.log((window as any).$AE);
-        console.log( window.$AE );
+        // console.log((window as any).$NgEl);
+        // console.log( window.$NgEl );
     }
 }

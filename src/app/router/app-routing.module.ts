@@ -6,14 +6,19 @@
 
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'}
+    {path: '', redirectTo: 'chat', pathMatch: 'full'}
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: environment.production === true }
+        )
     ],
     exports: [
         RouterModule
