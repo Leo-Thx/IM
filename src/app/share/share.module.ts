@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NetworkService } from './network/network.service';
@@ -15,7 +15,11 @@ import { HttpUploaderService } from './service/Uploader.service';
 @NgModule({
     imports: [
         CommonModule,
-        HttpClientModule    // 拦截器与引入HttpClientModule在同一个位置
+        HttpClientModule,    // 拦截器与引入HttpClientModule在同一个位置
+        HttpClientXsrfModule.withOptions({  // 自定义XSRF攻击名字
+            cookieName: 'My-Xsrf-Cookie',
+            headerName: 'My-Xsrf-Header',
+        })
     ],
     exports: [
         CommonModule,
