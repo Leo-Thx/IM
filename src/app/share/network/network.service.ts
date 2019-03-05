@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { INetworkConfig } from 'src/app/config/network.config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { throwError, Observable } from 'rxjs';
+import { catchError, retry, tap } from 'rxjs/operators';
 
 type ParamValueType = boolean | string | number | null | undefined | Date | Array<any>;
 export interface ParamType {
@@ -13,6 +15,7 @@ export interface ParamType {
 export class NetworkService {
     private config: INetworkConfig = {} as INetworkConfig;
     private httpClient: HttpClient;
+
     // constructor() {}
     constructor(httpClient: HttpClient, config?: INetworkConfig ) {
         this.config = config;
@@ -20,15 +23,55 @@ export class NetworkService {
         console.log(config);
     }
 
-    post(url: string, params: ParamType) {}
+    post(url: string, params: ParamType) {
+        
+    }
+
+    urlParams() {
+        let headers = new HttpHeaders({ // HttpHeaders不可变
+            'Content-Type': 'application/json'
+        });
+        headers = headers.set('Auth', "always");
+        return this.httpClient.get('', {
+            headers,
+            params: new HttpParams().set('name', '测试')    //HttpParams[url参数] 同上
+        });
+    }
 
     delete() {}
 
     put() {}
 
-    get(url: string, params: ParamType) {
-        return this.httpClient.get(url, {
+    get<T>(url: string, params: ParamType): Observable<T>{
+        return this.httpClient.get<T>(url, {
+            // responseType: "text",
             headers: {}
-        });
+        }).pipe(
+            retry(2),
+            catchError(this.handleError)
+        );
+
+        return this.httpClient.post<T>(url, params, {})
+            .pipe(
+                tap(
+                    data => this.log(data), 
+                    error => this.handleError(error)
+                )
+        );
+    }
+
+    
+    private handleError( error: HttpErrorResponse ) {
+        if ( error.error instanceof ErrorEvent ) {  // 客户端或网络错误
+            console.error("");
+        } else {    // 服务端错误
+            console.error(error.status);
+        }
+
+        // 其他错误
+        return throwError('');
+    }
+    private log( data ) {
+
     }
 }

@@ -1,3 +1,5 @@
+import { HttpHeaders } from '@angular/common/http';
+
 export interface INetworkConfig {
     protocol?: string;
     host?: string;
@@ -11,3 +13,8 @@ export let networkConfig: INetworkConfig = {
     host: '127.0.0.1',
     port: 8080
 };
+
+export let jsonHeader = new HttpHeaders({
+    "Content-Type": 'application/json',
+    "Authorization": 'my-auth-token'
+});

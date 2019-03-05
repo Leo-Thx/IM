@@ -1,23 +1,32 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NetworkService } from './network/network.service';
 import { networkFactory } from './network/network.service.provider';
 import { INetworkConfig } from '../config/network.config';
+import { httpInterceptorProviders } from './http-interceptors';
+import { AuthService } from './service/Auth.service';
+import { HttpLogService } from './service/HttpLog.service';
+import { HttpCacheService } from './service/HttpCache.service';
 
 @NgModule({
     imports: [
         CommonModule,
-        HttpClientModule
+        HttpClientModule    // 拦截器与引入HttpClientModule在同一个位置
     ],
     exports: [
         CommonModule,
         HttpClientModule,
         FormsModule
     ],
-    providers: []
+    providers: [
+        AuthService,
+        HttpLogService,
+        HttpCacheService,
+        httpInterceptorProviders
+    ]
 })
 export class ShareModule {
     /**
