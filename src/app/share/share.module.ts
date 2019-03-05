@@ -10,6 +10,7 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { AuthService } from './service/Auth.service';
 import { HttpLogService } from './service/HttpLog.service';
 import { HttpCacheService } from './service/HttpCache.service';
+import { HttpUploaderService } from './service/Uploader.service';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { HttpCacheService } from './service/HttpCache.service';
         AuthService,
         HttpLogService,
         HttpCacheService,
+        HttpUploaderService,
         httpInterceptorProviders
     ]
 })

@@ -14,7 +14,7 @@ export interface ParamType {
 // })
 export class NetworkService {
     private config: INetworkConfig = {} as INetworkConfig;
-    private httpClient: HttpClient;
+    httpClient: HttpClient;
 
     // constructor() {}
     constructor(httpClient: HttpClient, config?: INetworkConfig ) {
@@ -61,7 +61,7 @@ export class NetworkService {
     }
 
     
-    private handleError( error: HttpErrorResponse ) {
+    handleError( error: HttpErrorResponse ) {
         if ( error.error instanceof ErrorEvent ) {  // 客户端或网络错误
             console.error("");
         } else {    // 服务端错误
@@ -71,7 +71,7 @@ export class NetworkService {
         // 其他错误
         return throwError('');
     }
-    private log( data ) {
+    log( data ) {
 
     }
 }
