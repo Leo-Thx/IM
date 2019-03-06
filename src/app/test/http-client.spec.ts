@@ -15,4 +15,8 @@ describe("HttpClient Testing", ()=>{
         httpClient = TestBed.get(HttpClient);
         httpTestingController = TestBed.get(HttpTestingController); 
     });
+
+    it('can test Httpclient.get', ()=>{
+        
+    });
 });
