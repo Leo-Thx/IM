@@ -2,11 +2,11 @@ import { Component, AfterViewInit } from '@angular/core';
 import { NetworkService } from './share/network/network.service';
 
 
-declare global {
-    interface Window {
-        $NgEl: any;
-    }
-}
+// declare global {
+//     interface Window {
+//         $NgEl: any;
+//     }
+// }
 
 @Component({
     selector: 'app-root',
