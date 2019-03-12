@@ -1,4 +1,6 @@
-import { BaseMsgType, IMsgTypeCof } from './MsgType.base';
+import { BaseMsgType } from './BaseMsgType';
+import { IMsgTypeCof } from './config';
+
 import { MsgTypeEnum } from 'src/app/config/app.enum';
 
 /**

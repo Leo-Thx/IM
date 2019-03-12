@@ -18,9 +18,9 @@ export enum MsgStateEnum {
 // 文件状态
 export enum MsgFileStateEnum {
     INITIAL         = 0,    // 初始化
-    UPLOADING       = 1,    // 发送中
-    ERROR           = 2,    // 错误
-    UPLOADED        = 3     // 已发送
+    UPLOADING       = 1,    // 正在上传
+    ERROR           = 2,    // 上传失败
+    UPLOADED        = 3     // 上传成功
 }
 
 // 消息是否撤回[功能暂时不做]

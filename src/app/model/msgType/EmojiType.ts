@@ -1,9 +1,9 @@
-import { BaseMsgType, IMsgTypeCof } from './MsgType.base';
+import { IMsgTypeCof } from './config';
 import { MsgTypeEnum } from 'src/app/config/app.enum';
 import { MsgTextType } from './TextType';
 
 /**
- * Emoji消息类型
+ * Emoji消息类型[用文字代替图片做占位符]
  * @extends MsgTextType
  */
 export class MsgEmojiType extends MsgTextType {
