@@ -16,6 +16,10 @@ const globalVariable = global["globalVariable"] = require('./electron/main/globa
 globalVariable.set(globalVariable.KEY_NAMES.LOGIN, true);
 // 设置当前正处于哪个窗体
 globalVariable.set(globalVariable.KEY_NAMES.CURRENT_WINDOW, globalVariable.VAR_WINDOW_NAMES.LOGIN);
+// 设置项目根路径
+globalVariable.set(globalVariable.KEY_NAMES.ROOT_PATH, path.join(__dirname));
+// 设置electron服务路径
+globalVariable.set(globalVariable.KEY_NAMES.ELECTORN_PATH, path.join(__dirname, 'electron'));
 
 
 let mainWindow = null;	// 主要窗口
@@ -25,7 +29,7 @@ app.on('ready', ()=>{
             show: false,
             // width: 350, height: 500,
             webPreferences: {
-                // nodeIntegration: false,
+                nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
             }
         }

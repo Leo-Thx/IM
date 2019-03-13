@@ -14,6 +14,10 @@ module.exports = {
         USER_INFO : 'user_info',
         
         REFERENCE_IM_WIN: 'reference_im_win',   // 主窗口实例
+        CAPTURE_IM_WIN: 'capture_im_win',       // 截屏窗体实例
+
+        ROOT_PATH:  'root_path',                // 根路径   [考虑加密之后]
+        ELECTORN_PATH:  'electron_path',        // electron目录
     },
 
     /**
@@ -26,6 +30,7 @@ module.exports = {
 
     set: (key, value)=>variables.set(key, value),
     get: key=>variables.get(key),
+    remove: key=>variables.delete(key),
     keys: ()=>variables.keys(),
-    getAll: ()=>variables.values()
+    getAll: ()=>variables.values(),
 };
