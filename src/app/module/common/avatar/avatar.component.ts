@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { IMsgExtendType } from 'src/app/model/msgType';
 
 @Component({
     selector: 'avatar',

@@ -5,9 +5,10 @@
 const REPLAY = "_reply";
 
 module.exports = {
-    LOGIN: "login", // 登录窗体触发登录事件
-
     // 服务器下发事件
+    buildReply: type => type + REPLAY,
 
-    buildReply: type => type + REPLAY
+    
+    LOGIN: 'login', // 登录窗体触发登录事件
+    CAPTURE_SREEN: 'capture-screen',    // 截屏
 };

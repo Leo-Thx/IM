@@ -61,3 +61,11 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+// import { NgElectron } from './app/config/ngElectron';
+// declare global { 
+//     interface Window { 
+//         readonly $NgEl: NgElectron;
+//     } 
+// } 

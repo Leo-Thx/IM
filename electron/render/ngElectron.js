@@ -1,4 +1,5 @@
-const { ipcRenderer } = require('electron');
+const electron = require('electron');
+const { ipcRenderer, desktopCapturer } = electron;
 const IPC_Event = require('../common/IPC_EventType');
 
 /**
@@ -21,5 +22,12 @@ module.exports.AngularElectron = new class AngularElectron{
         
             ipcRenderer.send(IPC_Event.LOGIN, {account, pwd});
         });
-    }
+	}
+	getDesktopCapturer() {
+		return desktopCapturer;
+	}
+	getIpcRenderer(){
+		// return electron.ipcRenderer;
+		return require('electron').ipcRenderer;
+	}
 };

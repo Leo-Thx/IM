@@ -1,9 +1,8 @@
-const ProcessBase = require('./processor.base');
-
 const IPC_EventType = require('./../../common/IPC_EventType');
 const ProcessorEvent = require('./../processor.event');
+const EventEmitter = require('events');
 
-const processorEvent = new ProcessBase();
+const _event = new EventEmitter();
 
 module.exports = {
 	loginHandler(event, data){
@@ -22,7 +21,7 @@ module.exports = {
         event.sender.send(IPC_EventType.buildReply(IPC_EventType.LOGIN));
         
         // 通知主进程进行相应初始化操作
-        processorEvent.emit(ProcessorEvent.RENDER_IM_MAIN, data);
+        _event.emit(ProcessorEvent.RENDER_IM_MAIN, data);
 	},
-    event: processorEvent
+    event: _event
 };

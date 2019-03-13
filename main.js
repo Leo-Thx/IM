@@ -25,7 +25,7 @@ app.on('ready', ()=>{
             show: false,
             // width: 350, height: 500,
             webPreferences: {
-                nodeIntegration: false,
+                // nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
             }
         }
@@ -41,7 +41,8 @@ app.on('ready', ()=>{
     mainWindow.loadURL(uri);
 
 	mainWindow.on('ready-to-show', (event)=>{
-	    mainWindow.show();
+		mainWindow.show();
+		mainWindow.webContents.openDevTools();
 	});
 
 	/*mainWindow.webContents.on('dom-ready', function(event){

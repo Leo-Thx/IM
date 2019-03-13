@@ -11,7 +11,11 @@ const socket = require('./../socket/chat');
 
 module.exports = {
 	init(){
-		ipcMain.on(IPC_Event.LOGIN, login.loginHandler);
+        // 登录
+        ipcMain.on(IPC_Event.LOGIN, login.loginHandler);
+        
+        // 截屏
+        ipcMain.on(IPC_Event.CAPTURE_SREEN, globalShortCut.captureScreen);
 		
         globalShortCut.init();
         menu.setAppMenu();

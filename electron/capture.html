@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>测试截图</title>
+    </head>
+    <style type="text/css">
+html, body, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-canvas {
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+
+.size-info {
+    position: absolute;
+    color: #ffffff;
+    font-size: 12px;
+    background: rgba(40, 40, 40, 0.8);
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-family: Arial Consolas sans-serif;
+    display: none;
+    z-index: 2;
+}
+
+.toolbar {
+    position: absolute;
+    color: #343434;
+    font-size: 12px;
+    background: #f5f5f5;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: Arial Consolas sans-serif;
+    display: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    align-items: center;
+}
+
+.toolbar .iconfont {
+    font-size: 24px;
+    padding: 2px 5px;
+}
+
+    </style>
+    <body>
+        <div id="js-bg" class="bg"></div>
+        <div id="js-mask" class="mask"></div>
+        <canvas id="js-canvas" class="image-canvas"></canvas>
+        <div id="js-size-info" class="size-info"></div>
+        <div id="js-toolbar" class="toolbar">
+            <div class="iconfont icon-zhongzhi" id="js-tool-reset"></div>
+            <div class="iconfont icon-xiazai" id="js-tool-save"></div>
+            <div class="iconfont icon-guanbi" id="js-tool-close"></div>
+            <div class="iconfont icon-duihao" id="js-tool-ok"></div>
+        </div>
+        <script type="text/javascript">
+            // capture-renderer.js
+
+const { ipcRenderer, clipboard, nativeImage, remote, desktopCapturer, screen } = require('electron')
+const Event = require('events')
+const fs = require('fs')
+
+const { bounds: { width, height }, scaleFactor } = screen.getPrimaryDisplay()
+const $canvas = document.getElementById('js-canvas')
+const $bg = document.getElementById('js-bg')
+const $sizeInfo = document.getElementById('js-size-info')
+const $toolbar = document.getElementById('js-toolbar')
+
+const $btnClose = document.getElementById('js-tool-close')
+const $btnOk = document.getElementById('js-tool-ok')
+const $btnSave = document.getElementById('js-tool-save')
+const $btnReset = document.getElementById('js-tool-reset')
+
+// console.time('capture')
+desktopCapturer.getSources({
+    types: ['screen'],
+    thumbnailSize: {
+        width: width * scaleFactor,
+        height: height * scaleFactor,
+    }
+}, (error, sources) => {
+    console.timeEnd('capture')
+    let imgSrc = sources[0].thumbnail.toDataURL()
+    // console.info(imgSrc);
+    // let capture = new CaptureRenderer($canvas, $bg, imgSrc, scaleFactor)
+    let nI = nativeImage.createFromDataURL(imgSrc);
+    // console.info(nI);
+    clipboard.writeImage(nI);
+})
+
+        </script>
+    </body>
+</html>
