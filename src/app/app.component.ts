@@ -16,6 +16,14 @@ export class AppComponent implements AfterViewInit {
     constructor(public service: NetworkService) {
         // console.log(service);
         // console.warn(this.deskSvc);
+
+        // let descktopCap: DesktopCapturer = window.$NgEl.getDesktopCapturer();
+        // descktopCap.getSources({
+		// 	types: ['screen'],
+		// 	thumbnailSize: { width:1, height: 1 }
+		// }, (error, sources)=>{
+		// 	console.info(sources);
+		// })
     }
     @ViewChild('video') videoEl: ElementRef;
 
@@ -28,13 +36,15 @@ export class AppComponent implements AfterViewInit {
         ipcRenderer.send('capture-screen');
     }
 
-    click1(){
+    onClick1(){
         let descktopCap: DesktopCapturer = window.$NgEl.getDesktopCapturer();
         descktopCap.getSources({
-            types: ['window', 'screen'] // 屏幕或窗口
+            types: ['window', 'screen'], // 屏幕或窗口
+            thumbnailSize: {
+                width:1, height: 1
+            }
         }, (error, sources)=>{
             let music = sources.find(item=>item.name === '网易云音乐');
-            
             navigator.mediaDevices.getUserMedia({
                 audio: false,
                 video: {

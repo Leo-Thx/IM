@@ -9,6 +9,13 @@ const menu = require('./processor/menu');
 
 const socket = require('./../socket/chat');
 
+/**
+ * platform.js  根据平台进行加载 上层组件针对该接口编程
+ *      window.js
+ *      macos.js
+ *      linux.js
+ */
+
 module.exports = {
 	init(){
         // 登录
