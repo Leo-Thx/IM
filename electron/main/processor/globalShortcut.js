@@ -2,6 +2,7 @@ const electron = require('electron');
 const { globalShortcut, BrowserWindow } = electron;
 // const EventEmitter = require('events');
 const path = require('path');
+const url = require('url');
 // const _event = new EventEmitter;
 
 /**
@@ -55,7 +56,7 @@ module.exports = {
 				scaleFactor = display.scaleFactor,
 				captureWin = new BrowserWindow({
 					webPreferences: {
-						// zoomFactor: 1 / scaleFactor,
+						// zoomFactor: 4,
 						// nodeIntegration: false,
 						// preload: path.join(elPath, 'capture/capture.preload.js')
 					},
@@ -66,25 +67,34 @@ module.exports = {
 					height: display.bounds.height,
 					transparent: true,
 					frame: false,				// topBar
-					// skipTaskbar: true,			// 是否在任务栏显示窗体
-					// autoHideMenuBar: true,		// 隐藏菜单栏
+					skipTaskbar: true,			// 是否在任务栏显示窗体
+					autoHideMenuBar: true,		// 隐藏菜单栏
 					movable: false,				// 
 					resizable: false,			//
 					enableLargerThanScreen: true,
 					hasShadow: false,
-				});
 
+					show: false,
+				});
+				
 			captureWin._screenId = screenId;
 	
 			captureWin.setAlwaysOnTop(true, 'screen-saver');	// 置顶显示
 			captureWin.setVisibleOnAllWorkspaces(true);	// mac 
 			captureWin.setFullScreenable(false);		// 不允许最大化
 			
-			captureWin.loadFile(path.join(elPath, 'capture/capture.html'));
-			// captureWin.on('ready-to-show', ()=>{
-				// captureWin.show();
+			let uri = url.format({
+				protocol: 'file',
+				slashes: true,
+				pathname: path.join(elPath, 'capture/index.html')
+			});
+
+			captureWin.loadURL(uri);
+
+			captureWin.on('ready-to-show', ()=>{
+				captureWin.show();
 				// captureWin.openDevTools();
-			// });
+			});
 
 			captureWin.on('closed', () => {
 				// let index = captureWins.indexOf(captureWin)

@@ -8,31 +8,33 @@ const { Menu } = require('./menu/menu');
 class Capture {
     constructor(){
         this.querySelector();
-        
-        // 当前窗体
-        this.currentWindow = remote.getCurrentWindow();
 
-        // 当前窗体所在的屏幕
+        this.currentWindow = remote.getCurrentWindow();
         this.currentScreen = screen.getAllDisplays().find(item=>item.id === this.currentWindow._screenId);
 
         this.scaleFactor = this.currentScreen.scaleFactor;      // 缩放
         this.screenWidth = this.currentScreen.bounds.width;     // 宽度
         this.screenHeight = this.currentScreen.bounds.height;   // 高度
 
-        this.init().then(()=>{
-            this.bindEvents();
-        
-            this.menue = new Menu();    // 可以操作的按钮
+        this.init().then(()=>{        
             this.zone = new CaptureZone( this );
+            this.menue = new Menu(this, this.zone);    // 可以操作的按钮
+
+            setTimeout(()=>this.bindEvents(), 200);
         });
     }
 
     querySelector(){
+        this.$canvasContainer = document.getElementById('canvas-container');
         this.$canvas = document.getElementById('js-canvas');
+        this.$context = this.$canvas.getContext('2d');
+
         this.$bg = document.getElementById('js-bg');
         this.$mask = document.getElementById('js-mask');
         this.$sizeInfo = document.getElementById('js-size-info');
         this.$toolbar = document.getElementById('js-toolbar');
+
+        // this.$test = document.getElementById('test');
     }
 
     bindEvents() {
@@ -40,31 +42,47 @@ class Capture {
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp   = this.onMouseUp.bind(this);
 
-        this.$bg.addEventListener('mousedown', this.onMouseDown);
-        this.$bg.addEventListener('mousemove', this.onMouseMove);
-        this.$bg.addEventListener('mouseup', this.onMouseUp);
+        this.$mask.addEventListener('mousedown', this.onMouseDown);
+        this.$mask.addEventListener('mousemove', this.onMouseMove);
+        this.$mask.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
         // pageX[文档坐标], clientX[浏览器内容区域左上角，不含滚动条可工具栏], offsetX[], screenX[显示器]
-        
         this.rectangle = {};
         ({ pageX: this.rectangle.startX, pageY: this.rectangle.startY } = event);
+        this.mousedowned = true;
+        // this.$test.style.left = event.pageX;
+        // this.$test.style.top = event.pageY;
     }
 
     onMouseMove(event){
+        if( this.mousedowned ) {
+            let rectangle = this.rectangle;
+            ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
 
+            rectangle.width = rectangle.endX - rectangle.startX;
+            rectangle.height = rectangle.endY - rectangle.startY;
+
+            this.zone.drawRectangle();
+        }
     }
 
     onMouseUp(event){
-        let rectangle = this.rectangle;
-        ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
+        if( this.mousedowned ) {
+            // let rectangle = this.rectangle;
+            // ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
 
-        rectangle.width = rectangle.endX - rectangle.startX;
-        rectangle.height = rectangle.endY - rectangle.startY;
+            // rectangle.width = rectangle.endX - rectangle.startX;
+            // rectangle.height = rectangle.endY - rectangle.startY;
+
+            // this.zone.drawRectangle();
+        }
+        
+        this.mousedowned = false;
     }
     
-    init(){   // 绘制屏幕到js-bg
+    init(){
         return new Promise(resolve=>{
             desktopCapturer.getSources({ 
                 types: ['screen'],      // type有window，则display_id没有
