@@ -1,75 +1,111 @@
-const { ipcRenderer, clipboard, nativeImage, remote, desktopCapturer, screen } = require('electron');
-const Event = require('events');
-const fs = require('fs');
+const { remote, desktopCapturer, screen } = require('electron');
+// const Event = require('events');
+// const fs = require('fs');
 
-const { getCurrentScreen } = require('./utils');
-const Menu = require('./menu/menu');
-const { bounds: { width, height }, scaleFactor } = screen.getPrimaryDisplay()
+const { CaptureZone } = require('./capture-zone');
+const { Menu } = require('./menu/menu');
 
 class Capture {
     constructor(){
-        this.$canvas = document.getElementById('js-canvas');
-        this.$bg = document.getElementById('js-bg');
-        this.$sizeInfo = document.getElementById('js-size-info');
-        this.$toolbar = document.getElementById('js-toolbar');
-
-        this.$btnClose = document.getElementById('js-tool-close');
-        this.$btnOk = document.getElementById('js-tool-ok');
-        this.$btnSave = document.getElementById('js-tool-save');
-        this.$btnReset = document.getElementById('js-tool-reset');
-
-        // 可以操作的按钮
-        this.menue = new Menu();
+        this.querySelector();
+        
         // 当前窗体
         this.currentWindow = remote.getCurrentWindow();
 
         // 当前窗体所在的屏幕
         this.currentScreen = screen.getAllDisplays().find(item=>item.id === this.currentWindow._screenId);
 
-        this.scaleFactor = this.currentScreen.scaleFactor;  // 缩放
-        this.screenWidth = this.currentScreen.bounds.width; // 宽度
+        this.scaleFactor = this.currentScreen.scaleFactor;      // 缩放
+        this.screenWidth = this.currentScreen.bounds.width;     // 宽度
         this.screenHeight = this.currentScreen.bounds.height;   // 高度
 
-        this.init();
-    }
-
-    async init(){   // 绘制屏幕到js-bg
-        desktopCapturer.getSources({ 
-            types: ['screen'],      // type有window，则display_id没有
-            // thumbnailSize: this.currentScreen.size,
-            thumbnailSize: {
-                width: this.screenWidth * this.scaleFactor,
-                height: this.screenHeight * this.scaleFactor
-            },
-        }, (error, sources)=>{
-            let selectSource = sources.find(source=>source.display_id == this.currentScreen.id);
-            this.handlestream(selectSource.thumbnail.toDataURL());
-            // navigator.getUserMedia({     // navigator.mediaDevices.getUserMedia
-            //     audio: false,
-            //     video: {
-            //         mandatory: {
-            //             chromeMediaSource: 'desktop',
-            //             chromeMediaSourceId: selectSource.id,
-            //             minWidth: 1280,
-            //             maxWidth: this.currentScreen.size.width,
-            //             minHeight: 720,
-            //             maxHeight: this.currentScreen.size.height
-            //         }
-            //     }
-            // }, (stream)=>{
-            //     this.handlestream(stream);
-            // }, error=>{
-            //     console.info(error);
-            // });
+        this.init().then(()=>{
+            this.bindEvents();
+        
+            this.menue = new Menu();    // 可以操作的按钮
+            this.zone = new CaptureZone( this );
         });
     }
 
-    handlestream(url){
-        this.$bg.style.backgroundImage = `url('${url}')`;
-        this.$bg.style.backgroundSize = `100% 100%`;
+    querySelector(){
+        this.$canvas = document.getElementById('js-canvas');
+        this.$bg = document.getElementById('js-bg');
+        this.$mask = document.getElementById('js-mask');
+        this.$sizeInfo = document.getElementById('js-size-info');
+        this.$toolbar = document.getElementById('js-toolbar');
     }
 
-    handlestream2( stream ){
+    bindEvents() {
+        this.onMouseDown = this.onMouseDown.bind(this);
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.onMouseUp   = this.onMouseUp.bind(this);
+
+        this.$bg.addEventListener('mousedown', this.onMouseDown);
+        this.$bg.addEventListener('mousemove', this.onMouseMove);
+        this.$bg.addEventListener('mouseup', this.onMouseUp);
+    }
+
+    onMouseDown(event){
+        // pageX[文档坐标], clientX[浏览器内容区域左上角，不含滚动条可工具栏], offsetX[], screenX[显示器]
+        
+        this.rectangle = {};
+        ({ pageX: this.rectangle.startX, pageY: this.rectangle.startY } = event);
+    }
+
+    onMouseMove(event){
+
+    }
+
+    onMouseUp(event){
+        let rectangle = this.rectangle;
+        ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
+
+        rectangle.width = rectangle.endX - rectangle.startX;
+        rectangle.height = rectangle.endY - rectangle.startY;
+    }
+    
+    init(){   // 绘制屏幕到js-bg
+        return new Promise(resolve=>{
+            desktopCapturer.getSources({ 
+                types: ['screen'],      // type有window，则display_id没有
+                // thumbnailSize: this.currentScreen.size,
+                thumbnailSize: {
+                    width: this.screenWidth * this.scaleFactor,
+                    height: this.screenHeight * this.scaleFactor
+                },
+            }, (error, sources)=>{
+                let selectSource = sources.find(source=>source.display_id == this.currentScreen.id),
+                    url = selectSource.thumbnail.toDataURL();
+    
+                this.imgsrc = url;
+                this.$bg.style.backgroundImage = `url('${url}')`;
+                this.$bg.style.backgroundSize = `100% 100%`;
+                document.body.style.opacity = 1;    // 禁用透明
+
+                resolve();
+    
+                // navigator.getUserMedia({     // navigator.mediaDevices.getUserMedia
+                //     audio: false,
+                //     video: {
+                //         mandatory: {
+                //             chromeMediaSource: 'desktop',
+                //             chromeMediaSourceId: selectSource.id,
+                //             minWidth: 1280,
+                //             maxWidth: this.currentScreen.size.width,
+                //             minHeight: 720,
+                //             maxHeight: this.currentScreen.size.height
+                //         }
+                //     }
+                // }, (stream)=>{
+                //     this.handlestream(stream);
+                // }, error=>{
+                //     console.info(error);
+                // });
+            });
+        });
+    }
+
+    handlestream( stream ){
         let video = document.createElement('video'), self = this;
         // video.style.cssText = 'position:absolute;top:-10000px;left:-10000px;'
         video.addEventListener('loadedmetadata', function loadedmetadata(event){
@@ -116,6 +152,5 @@ document.addEventListener('DOMContentLoaded', function(){
 //         clipboard.writeImage(nI);
 //     });
 
-console.time('capture')
     new Capture();
 });
