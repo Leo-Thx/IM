@@ -30,11 +30,13 @@ class Circle extends EventEmitter {
     onMouseDown(){
         console.info('onMouseDown');
     }
+    
     onMouseMove(){
         console.info('onMouseMove');
     }
+
     onMouseUp(event){
-        this.emit('e-mouseup');
+        this.emit('operate-mouseup');
     }
 }
 
