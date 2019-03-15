@@ -1,6 +1,11 @@
 const EventEmitter = require('events');
 const { CIRCLES } = require('./config');
 
+const EventType = {
+    MouseUp: 'operate-mouseup',
+    MouseDown: 'operate-mousedown'
+};
+
 class Circle extends EventEmitter {
     constructor(container, type, cursor) {
         super();
@@ -27,16 +32,27 @@ class Circle extends EventEmitter {
         this.node.addEventListener('mouseup', this.onMouseUp);
     }
 
-    onMouseDown(){
-        console.info('onMouseDown');
+    onMouseDown(event){
+        // console.info('onMouseDown');
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.emit(EventType.MouseDown, {
+            type: this.type,
+            operate: this,
+            startX: event.pageX,
+            startY: event.pageY,
+            event
+        });
     }
-    
-    onMouseMove(){
-        console.info('onMouseMove');
+
+    onMouseMove(event){
+        // console.info('onMouseMove');
     }
 
     onMouseUp(event){
-        this.emit('operate-mouseup');
+        // console.info('onMouseUp');
+        this.emit(EventType.MouseUp);
     }
 }
 
@@ -97,7 +113,7 @@ Object.assign(Circle, {
 });
 
 
-module.exports = function(container){
+module.exports.Circle = function(container){
     let result = {};
     CIRCLES.forEach(circle=>{
         let Ctor = Circle[ `Circle${circle.type}` ];
@@ -106,3 +122,5 @@ module.exports = function(container){
     return result;
 };
 
+
+module.exports.EventType = EventType;

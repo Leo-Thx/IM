@@ -44,7 +44,7 @@ class Capture {
 
         this.$mask.addEventListener('mousedown', this.onMouseDown);
         this.$mask.addEventListener('mousemove', this.onMouseMove);
-        this.$mask.addEventListener('mouseup', this.onMouseUp);
+        // this.$mask.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
