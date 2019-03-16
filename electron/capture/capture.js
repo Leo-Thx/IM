@@ -1,6 +1,5 @@
-const { remote, desktopCapturer, screen } = require('electron');
-// const Event = require('events');
-// const fs = require('fs');
+const { remote, desktopCapturer, screen, ipcRenderer } = require('electron');
+const IPC_EventType = require('./../common/IPC_EventType');
 
 const { CaptureZone } = require('./capture-zone');
 const { Menu } = require('./capture-menu');
@@ -29,6 +28,13 @@ class Capture {
             this.zone.on('drawScreenshot', (left, top, widht, height)=>{
                 this.$mask.removeEventListener('mousedown', this.onMouseDown);
             });
+        });
+
+        ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{
+            console.info(event);
+            this.$mask.removeEventListener('mousedown', this.onMouseDown);
+            this.$mask.removeEventListener('mousemove', this.onMouseMove);
+            this.$mask.removeEventListener('mouseup', this.onMouseUp);
         });
     }
 

@@ -18,6 +18,7 @@ module.exports = {
 
         ROOT_PATH:  'root_path',                // 根路径   [考虑加密之后]
         ELECTORN_PATH:  'electron_path',        // electron目录
+        // SCREEN_SHOT_WIN:  'screen_shot_win',    // 已经截屏的窗口，防止在另外的窗口还能进行其他操作
     },
 
     /**

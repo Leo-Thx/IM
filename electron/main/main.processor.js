@@ -21,12 +21,14 @@ module.exports = {
         // 登录
         ipcMain.on(IPC_Event.LOGIN, login.loginHandler);
         
-        // 截屏
-        ipcMain.on(IPC_Event.CAPTURE_SREEN, globalShortCut.captureScreen);
-        ipcMain.on(IPC_Event.CAPTURE_SREEN_OK, globalShortCut.closeAllCaptureWins.bind(globalShortCut));
-        ipcMain.on(IPC_Event.CAPTURE_SREEN_CLOSE, globalShortCut.closeAllCaptureWins.bind(globalShortCut));
-		
         globalShortCut.init();
+        // 截屏
+        ipcMain.on(IPC_Event.CAPTURE_SCREEN, globalShortCut.captureScreen);
+        ipcMain.on(IPC_Event.CAPTURE_SCREEN_OK, globalShortCut.closeAllCaptureWins);
+        ipcMain.on(IPC_Event.CAPTURE_SCREEN_CLOSE, globalShortCut.closeAllCaptureWins);
+        ipcMain.on(IPC_Event.CAPTURE_SCREEN_DRAWED, globalShortCut.isDrawScreenshot)
+        
+        
         menu.setAppMenu();
 
         // socket.init({});

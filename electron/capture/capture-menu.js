@@ -29,7 +29,7 @@ class Menu extends EventEmitter {
 
     menuSave(event){
         console.info('save');   // 执行下载
-        
+
         let url = this.capture.$canvas.toDataURL(),
             a = document.createElement('a'),
             mEvent = new MouseEvent('click');
@@ -41,7 +41,7 @@ class Menu extends EventEmitter {
 
     menuClose(event){
         console.info('close');
-        ipcRenderer.send(IPC_EventType.CAPTURE_SREEN_CLOSE, {});
+        ipcRenderer.send(IPC_EventType.CAPTURE_SCREEN_CLOSE, {});
     }
     menuOk(event){
         console.info('ok');
@@ -50,7 +50,7 @@ class Menu extends EventEmitter {
         let ni = nativeImage.createFromDataURL(this.capture.$canvas.toDataURL());
         clipboard.writeImage(ni);
 
-        ipcRenderer.send(IPC_EventType.CAPTURE_SREEN_OK, {});
+        ipcRenderer.send(IPC_EventType.CAPTURE_SCREEN_OK, {});
     }
 
     static init( capture, zone ) {

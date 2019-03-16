@@ -10,8 +10,11 @@ module.exports = {
 
     
     LOGIN: 'login', // 登录窗体触发登录事件
-    CAPTURE_SREEN: 'capture-screen',    // 截屏
-    
-    CAPTURE_SREEN_OK: 'capture-screen-ok',      // ok按钮发回
-    CAPTURE_SREEN_CLOSE: 'capture-screen-close',  
+
+    CAPTURE_SCREEN: 'capture-screen',            // 截屏事件发出，开启多窗口
+    CAPTURE_SCREEN_OK: 'capture-screen-ok',      // ok按钮发回
+    CAPTURE_SCREEN_CLOSE: 'capture-screen-close',  // 直接关闭
+    CAPTURE_SCREEN_DRAWED: 'capture-screen-drawed',  // 已经绘制，主要处理多屏幕时另外屏幕还能操作[render->main]
+    CAPTURE_SCREEN_LOCK_ALL: 'capture-screen-lock-all', // main->render 窗体锁定
+    CAPTURE_SCREEN_RESET: 'capture-screen-reset',    // 激活所有被锁定的窗口
 };

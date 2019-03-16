@@ -1,5 +1,7 @@
+const { ipcRenderer, remote } = require('electron');
 const EventEmitter = require('events');
 const { Circle, EventType } = require('./circle-operate');
+const IPC_EventType = require('./../common/IPC_EventType');
 
 class CaptureZone extends EventEmitter {
     constructor( capture ) {
@@ -104,6 +106,11 @@ class CaptureZone extends EventEmitter {
             });
 
             this.$toolbar.style.display = 'block';
+
+            // 通知主进程锁定其他窗口
+            ipcRenderer.send(IPC_EventType.CAPTURE_SCREEN_DRAWED, {
+                screeId: remote.getCurrentWindow()._screenId
+            });
         }
     }
 
