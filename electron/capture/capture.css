@@ -4,6 +4,11 @@ html, body, div {
     box-sizing: border-box;
 }
 
+.init-canvas{
+    position: absolute;
+    z-index: -1;
+}
+
 .bg {
     position: absolute;
     top: 0;
@@ -31,7 +36,7 @@ html, body, div {
     left: 200px;
     top: 100px; */
 
-    border: 2px solid #67bade;
+    border: 1px solid #67bade;
     font-size: 0;
     z-index: 1;
     cursor: move;

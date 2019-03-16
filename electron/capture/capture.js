@@ -18,11 +18,17 @@ class Capture {
         this.screenWidth = this.currentScreen.bounds.width;     // 宽度
         this.screenHeight = this.currentScreen.bounds.height;   // 高度
 
+        this.rectangle = {};
+
         this.init().then(()=>{        
             this.zone = new CaptureZone( this );
             this.menue = new Menu(this, this.zone);    // 可以操作的按钮
 
             setTimeout(()=>this.bindEvents(), 200);
+
+            this.zone.on('drawScreenshot', ()=>{
+                this.$mask.removeEventListener('mousedown', this.onMouseDown);
+            });
         });
     }
 
@@ -33,7 +39,7 @@ class Capture {
 
         this.$bg = document.getElementById('js-bg');
         this.$mask = document.getElementById('js-mask');
-        this.$sizeInfo = document.getElementById('js-size-info');
+        // this.$sizeInfo = document.getElementById('js-size-info');
         this.$toolbar = document.getElementById('js-toolbar');
     }
 
@@ -49,7 +55,6 @@ class Capture {
 
     onMouseDown(event){
         // pageX[文档坐标], clientX[浏览器内容区域左上角，不含滚动条可工具栏], offsetX[], screenX[显示器]
-        this.rectangle = {};
         ({ pageX: this.rectangle.startX, pageY: this.rectangle.startY } = event);
         this.mousedowned = true;
         this.zone.resetOperate();

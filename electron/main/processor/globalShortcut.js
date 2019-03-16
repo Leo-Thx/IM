@@ -41,6 +41,7 @@ module.exports = {
 		});
 	},
 
+	// 处理多个屏幕只能有一个截图
 	captureScreen(event){
 		const elPath = globalVariable.get(globalVariable.KEY_NAMES.ELECTORN_PATH);
 		let screen = electron.screen,
@@ -65,8 +66,8 @@ module.exports = {
 					y: display.bounds.y,
 					width: display.bounds.width,
 					height: display.bounds.height,
-					// transparent: true,
-					// frame: false,				// topBar
+					transparent: true,
+					frame: false,				// topBar
 					skipTaskbar: true,			// 是否在任务栏显示窗体
 					autoHideMenuBar: true,		// 隐藏菜单栏
 					movable: false,				// 
@@ -79,8 +80,8 @@ module.exports = {
 				
 			captureWin._screenId = screenId;
 	
-			captureWin.setAlwaysOnTop(true, 'screen-saver');	// 置顶显示
-			captureWin.setVisibleOnAllWorkspaces(true);	// mac 
+			// captureWin.setAlwaysOnTop(true, 'screen-saver');	// 置顶显示
+			// captureWin.setVisibleOnAllWorkspaces(true);	// mac 
 			captureWin.setFullScreenable(false);		// 不允许最大化
 			
 			let uri = url.format({

@@ -17,7 +17,10 @@ class CaptureZone extends EventEmitter {
         this.onMouseUp   = this.onMouseUp.bind(this);
         this.onMouseDown = this.onMouseDown.bind(this);
 
-        this.moveCapture = false;   // 记录
+        this.moveCapture = false;   // 记录是否在选取内进行移动
+        this.drawScreenshot = false;    // 是否已经绘制选区
+
+        this.$sizeInfo = document.getElementById('js-size-info');
 
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
@@ -53,6 +56,15 @@ class CaptureZone extends EventEmitter {
 
             let movedX = pageX - moveX, movedY = pageY - moveY;
 
+            // 跑出去的半个操作点 + 2px的左右边框
+            let newX = rectangle.startX + movedX,
+                newY = rectangle.startY + movedY,
+                {screenWidth, screenHeight} = this.capture;
+
+            if( newX + rectangle.width >= screenWidth - 5 ) return false;
+            if( newY + rectangle.height >= screenHeight - 5 ) return false;
+
+            // console.info(rectangle);
             rectangle.startX += movedX;
             rectangle.startY += movedY;
 
@@ -89,6 +101,8 @@ class CaptureZone extends EventEmitter {
     async init() {
         this.$canvas = document.createElement('canvas');
         this.$ctx = this.$canvas.getContext('2d');
+        // this.$initCanvas = document.getElementById('init-canvas');
+        // this.$initCanvas.append(this.$canvas);
 
         let image = await new Promise(resolve=>{
             let image = new Image;
@@ -127,7 +141,8 @@ class CaptureZone extends EventEmitter {
             context = this.capture.$context,
             { rectangle: {startX, startY, width, height}, scaleFactor } = this.capture;
         
-        let imageData = this.$ctx.getImageData(startX * scaleFactor, startY * scaleFactor, width * scaleFactor, height * scaleFactor);
+        // 未追踪 出现 后面两个参数是NaN
+        let imageData = this.$ctx.getImageData(startX * scaleFactor + scaleFactor, startY * scaleFactor + scaleFactor, width * scaleFactor, height * scaleFactor);
 
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
@@ -139,7 +154,18 @@ class CaptureZone extends EventEmitter {
         canvasContainer.style.top = `${startY}px`;
         canvasContainer.style.display = 'block';
 
+        this.$sizeInfo.style.display = 'block';
+        this.$sizeInfo.textContent = `${width} * ${height}`;
+        this.$sizeInfo.style.left = `${startX}px`;
+        this.$sizeInfo.style.top = `${startY - 30}px`;
+
         context.putImageData(imageData, 0, 0);
+
+        // 如果绘制成功，则外层不能再次绘制
+        if( !this.drawScreenshot ) {
+            this.drawScreenshot = true;
+            this.emit('drawScreenshot');
+        }
     }
 }
 
