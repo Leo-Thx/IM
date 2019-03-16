@@ -23,6 +23,8 @@ module.exports = {
         
         // 截屏
         ipcMain.on(IPC_Event.CAPTURE_SREEN, globalShortCut.captureScreen);
+        ipcMain.on(IPC_Event.CAPTURE_SREEN_OK, globalShortCut.closeAllCaptureWins.bind(globalShortCut));
+        ipcMain.on(IPC_Event.CAPTURE_SREEN_CLOSE, globalShortCut.closeAllCaptureWins.bind(globalShortCut));
 		
         globalShortCut.init();
         menu.setAppMenu();

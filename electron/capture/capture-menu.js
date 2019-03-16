@@ -1,4 +1,6 @@
+const { clipboard, nativeImage, ipcRenderer } = require('electron');
 const EventEmitter = require('events');
+const IPC_EventType = require('./../common/IPC_EventType');
 
 const prefix = 'menu-'
 const menues = [
@@ -24,14 +26,31 @@ class Menu extends EventEmitter {
     menuReset(event){
         console.info('reset');
     }
+
     menuSave(event){
-        console.info('save');
+        console.info('save');   // 执行下载
+        
+        let url = this.capture.$canvas.toDataURL(),
+            a = document.createElement('a'),
+            mEvent = new MouseEvent('click');
+
+        a.download = 'photo';
+        a.href = url;
+        a.dispatchEvent(mEvent);
     }
+
     menuClose(event){
         console.info('close');
+        ipcRenderer.send(IPC_EventType.CAPTURE_SREEN_CLOSE, {});
     }
     menuOk(event){
         console.info('ok');
+
+        // 由于存在分辨比率问题，这里只做一个临时方案
+        let ni = nativeImage.createFromDataURL(this.capture.$canvas.toDataURL());
+        clipboard.writeImage(ni);
+
+        ipcRenderer.send(IPC_EventType.CAPTURE_SREEN_OK, {});
     }
 
     static init( capture, zone ) {

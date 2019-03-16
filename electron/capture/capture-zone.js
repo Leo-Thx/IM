@@ -1,4 +1,3 @@
-const { clipboard, nativeImage } = require('electron');
 const EventEmitter = require('events');
 const { Circle, EventType } = require('./circle-operate');
 

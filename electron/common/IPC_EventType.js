@@ -11,4 +11,7 @@ module.exports = {
     
     LOGIN: 'login', // 登录窗体触发登录事件
     CAPTURE_SREEN: 'capture-screen',    // 截屏
+    
+    CAPTURE_SREEN_OK: 'capture-screen-ok',      // ok按钮发回
+    CAPTURE_SREEN_CLOSE: 'capture-screen-close',  
 };

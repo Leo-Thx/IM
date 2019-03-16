@@ -30,15 +30,19 @@ module.exports = {
 		}
 
 		globalShortcut.register('Esc', ()=>{
-			let captureWins = globalVariable.get(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);
-            if(captureWins) {
-                Reflect.ownKeys(captureWins).forEach(screenId=>{
-					captureWins[ screenId ].close();
-					captureWins[ screenId ] = null;
-				});
-			}
-			globalVariable.remove(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);
+			this.closeAllCaptureWins();
 		});
+	},
+
+	closeAllCaptureWins() {
+		let captureWins = globalVariable.get(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);
+		if(captureWins) {
+			Reflect.ownKeys(captureWins).forEach(screenId=>{
+				captureWins[ screenId ].close();
+				captureWins[ screenId ] = null;
+			});
+		}
+		globalVariable.remove(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);
 	},
 
 	// 处理多个屏幕只能有一个截图
