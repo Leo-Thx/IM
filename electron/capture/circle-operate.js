@@ -1,5 +1,4 @@
 const EventEmitter = require('events');
-const { CIRCLES } = require('./config');
 
 const EventType = {
     MouseUp: 'operate-mouseup',
@@ -46,6 +45,7 @@ class Circle extends EventEmitter {
 
     onMouseUp(event){
         this.emit(EventType.MouseUp);
+        console.info(' Circle.mouseUp ');
     }
 }
 
@@ -139,6 +139,20 @@ Object.assign(Circle, {
     CircleLeft
 });
 
+
+const CIRCLES = [
+    { type: 'LeftTop', cursor: 'nwse-resize'},   
+    { type: 'RightBottom', cursor: 'nwse-resize'},
+
+    { type: 'RightTop', cursor: 'nesw-resize' },
+    { type: 'LeftBottom', cursor: 'nesw-resize' },
+
+    { type: 'Top', cursor: 'ns-resize' },
+    { type: 'Bottom', cursor: 'ns-resize' },
+    
+    { type: 'Right', cursor: 'ew-resize' },
+    { type: 'Left', cursor: 'ew-resize' },
+];
 
 module.exports.Circle = function(container, zone, capture){
     let result = {};

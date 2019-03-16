@@ -3,7 +3,7 @@ const { remote, desktopCapturer, screen } = require('electron');
 // const fs = require('fs');
 
 const { CaptureZone } = require('./capture-zone');
-const { Menu } = require('./menu/menu');
+const { Menu } = require('./capture-menu');
 
 // todo 未处理鼠标拖动离开屏幕
 
@@ -22,11 +22,11 @@ class Capture {
 
         this.init().then(()=>{        
             this.zone = new CaptureZone( this );
-            this.menue = new Menu(this, this.zone);    // 可以操作的按钮
+            this.menus = Menu.init(this, this.zone);    // 可以操作的按钮
 
             setTimeout(()=>this.bindEvents(), 200);
 
-            this.zone.on('drawScreenshot', ()=>{
+            this.zone.on('drawScreenshot', (left, top, widht, height)=>{
                 this.$mask.removeEventListener('mousedown', this.onMouseDown);
             });
         });
@@ -40,7 +40,7 @@ class Capture {
         this.$bg = document.getElementById('js-bg');
         this.$mask = document.getElementById('js-mask');
         // this.$sizeInfo = document.getElementById('js-size-info');
-        this.$toolbar = document.getElementById('js-toolbar');
+        // this.$toolbar = document.getElementById('js-toolbar');
     }
 
     bindEvents() {

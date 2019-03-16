@@ -49,6 +49,7 @@ html, body, div {
     background: #fff;
     border: 2px solid #67bade;
     border-radius: 50%; 
+    display: none;
 }
 .circle-lefttop{
     left: -5px; top: -5px;
@@ -110,7 +111,9 @@ html, body, div {
     align-items: center;
 }
 
+.toolbar { transform: translateX(-100%); }
 .toolbar .iconfont {
     font-size: 24px;
     padding: 2px 5px;
+    cursor: pointer;
 }

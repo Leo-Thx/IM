@@ -1,6 +1,6 @@
 const { clipboard, nativeImage } = require('electron');
 const EventEmitter = require('events');
-const { Circle, EventType } = require('./operate/circle');
+const { Circle, EventType } = require('./circle-operate');
 
 class CaptureZone extends EventEmitter {
     constructor( capture ) {
@@ -18,9 +18,10 @@ class CaptureZone extends EventEmitter {
         this.onMouseDown = this.onMouseDown.bind(this);
 
         this.moveCapture = false;   // 记录是否在选取内进行移动
-        this.drawScreenshot = false;    // 是否已经绘制选区
+        this.isDrawScreenshot = false;    // 是否已经绘制选区
 
         this.$sizeInfo = document.getElementById('js-size-info');
+        this.$toolbar = document.getElementById('js-toolbar');
 
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
@@ -91,6 +92,20 @@ class CaptureZone extends EventEmitter {
         this.capture.mousedowned = false;
         this.moveCapture = false;
         this.operate = null;
+        
+        console.info(' Zone.mouseUp ');
+
+        if( !this.isDrawScreenshot ){
+            this.emit('drawScreenshot');
+            this.isDrawScreenshot = true;
+
+            Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
+                let circle = this.circleOperate[ circleName ];
+                circle.node.style.display = 'block';
+            });
+
+            this.$toolbar.style.display = 'block';
+        }
     }
 
     resetOperate(){
@@ -161,11 +176,8 @@ class CaptureZone extends EventEmitter {
 
         context.putImageData(imageData, 0, 0);
 
-        // 如果绘制成功，则外层不能再次绘制
-        if( !this.drawScreenshot ) {
-            this.drawScreenshot = true;
-            this.emit('drawScreenshot');
-        }
+        this.$toolbar.style.left = `${startX + width}px`;
+        this.$toolbar.style.top = `${startY + height + 10}px`;
     }
 }
 
