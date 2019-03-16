@@ -65,8 +65,8 @@ module.exports = {
 					y: display.bounds.y,
 					width: display.bounds.width,
 					height: display.bounds.height,
-					transparent: true,
-					frame: false,				// topBar
+					// transparent: true,
+					// frame: false,				// topBar
 					skipTaskbar: true,			// 是否在任务栏显示窗体
 					autoHideMenuBar: true,		// 隐藏菜单栏
 					movable: false,				// 

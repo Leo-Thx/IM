@@ -35,8 +35,6 @@ class Capture {
         this.$mask = document.getElementById('js-mask');
         this.$sizeInfo = document.getElementById('js-size-info');
         this.$toolbar = document.getElementById('js-toolbar');
-
-        // this.$test = document.getElementById('test');
     }
 
     bindEvents() {
@@ -54,27 +52,16 @@ class Capture {
         this.rectangle = {};
         ({ pageX: this.rectangle.startX, pageY: this.rectangle.startY } = event);
         this.mousedowned = true;
-        // this.$test.style.left = event.pageX;
-        // this.$test.style.top = event.pageY;
+        this.zone.resetOperate();
     }
 
     // 处理外部拉动
     onMouseMove(event){
-        this.mousedowned && this.zone.calcPoint( this, event );
+        this.mousedowned && this.zone.calcPoint(this, {endX: event.pageX, endY: event.pageY});
     }
 
     // 防止直接单击导致拖动出现问题
     onMouseUp(event){
-        if( this.mousedowned ) {
-            // let rectangle = this.rectangle;
-            // ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
-
-            // rectangle.width = rectangle.endX - rectangle.startX;
-            // rectangle.height = rectangle.endY - rectangle.startY;
-
-            // this.zone.drawRectangle();
-        }
-        
         this.mousedowned = false;
     }
     

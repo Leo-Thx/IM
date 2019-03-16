@@ -15,8 +15,9 @@ class CaptureZone extends EventEmitter {
         // this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp   = this.onMouseUp.bind(this);
+        this.onMouseDown = this.onMouseDown.bind(this);
 
-        this.circleMoused = false;   // 标志鼠标是否按下
+        this.moveCapture = false;   // 记录
 
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
@@ -25,11 +26,11 @@ class CaptureZone extends EventEmitter {
                 // 操作点弹起
                 circle.on(EventType.MouseUp, this.onMouseUp);
 
-                // 操作点按下 目前暂时只处理右下角
+                // 操作点按下
                 circle.on(EventType.MouseDown, ({operate})=>{
                     this.capture.mousedowned = true;
                     this.operate = operate; // 记录操作的按钮
-                    this.circleMoused = true;
+                    this.moveCapture = false;
                 });
             });
 
@@ -37,21 +38,52 @@ class CaptureZone extends EventEmitter {
             let canvasContainer = this.capture.$canvasContainer;
             canvasContainer.addEventListener('mousemove', this.onMouseMove);
             canvasContainer.addEventListener('mouseup', this.onMouseUp);
+            canvasContainer.addEventListener('mousedown', this.onMouseDown);
         });
     }
 
     onMouseMove(event){
         if( this.capture.mousedowned ) {
-            this.calcPoint( this.capture, event );
-            
-        } else {    // 进行普通的平移
+            this.calcPoint( this.capture, {endX: event.pageX, endY: event.pageY} );
 
+        } else if( this.moveCapture ){    // 进行普通的平移
+            let {moveX, moveY} = this,
+                {pageX, pageY} = event,
+                rectangle = this.capture.rectangle;
+
+            let movedX = pageX - moveX, movedY = pageY - moveY;
+
+            rectangle.startX += movedX;
+            rectangle.startY += movedY;
+
+            rectangle.endX += movedX;
+            rectangle.endY += movedY;
+
+            rectangle.width = rectangle.endX - rectangle.startX;
+            rectangle.height = rectangle.endY - rectangle.startY;
+
+            this.moveX = pageX;
+            this.moveY = pageY;
+
+            this.drawRectangle();
         }
+    }
+
+    onMouseDown(event) {
+        this.moveCapture = true;
+        this.moveX = event.pageX;
+        this.moveY = event.pageY;
     }
 
     onMouseUp(event){
         this.capture.mousedowned = false;
+        this.moveCapture = false;
         this.operate = null;
+    }
+
+    resetOperate(){
+        this.operate = null;
+        this.moveCapture = false;
     }
 
     async init() {
@@ -73,9 +105,15 @@ class CaptureZone extends EventEmitter {
         // clipboard.writeImage(ni);
     }
 
-    calcPoint( capture, event ){
+    calcPoint( capture, point ){
         let rectangle = capture.rectangle;
-        ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
+
+        // 如果是circle已经按下
+        if( this.operate ) {
+            this.operate.calcRectangle(rectangle, point);
+        } else {
+            ({ endX: rectangle.endX, endY: rectangle.endY } = point);
+        }
 
         rectangle.width = rectangle.endX - rectangle.startX;
         rectangle.height = rectangle.endY - rectangle.startY;

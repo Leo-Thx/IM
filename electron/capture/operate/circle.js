@@ -53,11 +53,20 @@ class CircleLeftTop extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
+
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.startX = endX;
+        rectangle.startY = endY;
+    }
 }
 
 class CircleTop extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
+    }
+
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.startY = endY;
     }
 }
 
@@ -65,11 +74,20 @@ class CircleRightTop extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
+
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.startY = endY;
+        rectangle.endX = endX;
+    }
 }
 
 class CircleRight extends Circle{
     constructor( container, type, cursor ){
         super( container, type, cursor )
+    }
+
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.endX = endX;
     }
 }
 
@@ -77,21 +95,35 @@ class CircleRightBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.endX = endX;
+        rectangle.endY = endY;
+    }
 }
 
 class CircleBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.endY = endY;
+    }
 }
 class CircleLeftBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.startX = endX;
+        rectangle.endY = endY;
+    }
 }
 class CircleLeft extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
+    }
+    calcRectangle( rectangle, {endX, endY} ) {
+        rectangle.startX = endX;
     }
 }
 

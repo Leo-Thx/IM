@@ -12,14 +12,6 @@ html, body, div {
     height: 100%;
 }
 
-.test {
-    position: absolute;
-    background: #fff;
-    left: 0;
-    top: 0;
-    border: 1px solid #343434;
-}
-
 .mask {
     position: absolute;
     top: 0;
@@ -39,6 +31,8 @@ html, body, div {
     left: 200px;
     top: 100px; */
 
+    border: 2px solid #67bade;
+    font-size: 0;
     z-index: 1;
     cursor: move;
 }
@@ -68,15 +62,15 @@ html, body, div {
     cursor: ew-resize;
 }
 .circle-rightbottom{
-    top: 100%; right: -5px; transform: translateY(-100%);
+    top: 100%; right: -5px; transform: translateY(-50%);
     cursor: nwse-resize;
 }
 .circle-bottom{
-    left: 50%; top: 100%; transform: translate(-100%, -100%);
+    left: 50%; top: 100%; transform: translateY(-50%);
     cursor: ns-resize;
 }
 .circle-leftbottom{
-    left: -5px; top: 100%; transform: translateY(-100%);
+    left: -5px; top: 100%; transform: translateY(-50%);
     cursor: nesw-resize;
 }
 .circle-left{
