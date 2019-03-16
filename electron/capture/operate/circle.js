@@ -3,19 +3,22 @@ const { CIRCLES } = require('./config');
 
 const EventType = {
     MouseUp: 'operate-mouseup',
-    MouseDown: 'operate-mousedown'
+    MouseDown: 'operate-mousedown',
+    MouseMove: 'operate-mouseMove'
 };
 
 class Circle extends EventEmitter {
-    constructor(container, type, cursor) {
+    constructor(container, type, cursor, zone, capture) {
         super();
 
         this.container = container;
         this.cursor = cursor;
         this.type = type;
 
+        this.zone = zone;
+        this.capture = capture;
+
         this.cssClass = 'circle-' + type.toLowerCase();
-        this.mousedowned = false;   // 标志鼠标是否按下
 
         let node = document.createElement('div');
         node.classList.add('operate-circle', this.cssClass);
@@ -24,52 +27,43 @@ class Circle extends EventEmitter {
         this.container.append(node);
 
         this.onMouseDown = this.onMouseDown.bind(this);
-        this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp   = this.onMouseUp.bind(this);
 
         this.node.addEventListener('mousedown', this.onMouseDown);
-        this.node.addEventListener('mousemove', this.onMouseMove);
         this.node.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
-        // console.info('onMouseDown');
         event.preventDefault();
         event.stopPropagation();
 
         this.emit(EventType.MouseDown, {
             type: this.type,
             operate: this,
-            startX: event.pageX,
-            startY: event.pageY,
             event
         });
     }
 
-    onMouseMove(event){
-        // console.info('onMouseMove');
-    }
-
     onMouseUp(event){
-        // console.info('onMouseUp');
         this.emit(EventType.MouseUp);
     }
 }
 
 class CircleLeftTop extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 
 class CircleTop extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
+
 class CircleRightTop extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 
@@ -78,25 +72,26 @@ class CircleRight extends Circle{
         super( container, type, cursor )
     }
 }
+
 class CircleRightBottom extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 
 class CircleBottom extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 class CircleLeftBottom extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 class CircleLeft extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 }
 
@@ -113,11 +108,11 @@ Object.assign(Circle, {
 });
 
 
-module.exports.Circle = function(container){
+module.exports.Circle = function(container, zone, capture){
     let result = {};
     CIRCLES.forEach(circle=>{
         let Ctor = Circle[ `Circle${circle.type}` ];
-        result[ circle.type ] = new Ctor(container, circle.type, circle.cursor);
+        result[ circle.type ] = new Ctor(container, circle.type, circle.cursor, zone, capture);
     });
     return result;
 };

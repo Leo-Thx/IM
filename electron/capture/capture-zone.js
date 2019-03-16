@@ -9,21 +9,49 @@ class CaptureZone extends EventEmitter {
         this.$canvas = null;    // 当前屏幕截图
         this.$ctx = null;       // 上下文对象
 
-        this.circleOperate = Circle(capture.$canvasContainer);
+        this.circleOperate = Circle(capture.$canvasContainer, this, capture);
         this.capture = capture; //
+
+        // this.onMouseDown = this.onMouseDown.bind(this);
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.onMouseUp   = this.onMouseUp.bind(this);
+
+        this.circleMoused = false;   // 标志鼠标是否按下
 
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
                 let circle = this.circleOperate[ circleName ];
-                circle.on(EventType.MouseUp, ()=>{
-                    this.capture.onMouseUp();
-                });
 
-                circle.on(EventType.MouseDown, (event)=>{
-                    console.info(event);
+                // 操作点弹起
+                circle.on(EventType.MouseUp, this.onMouseUp);
+
+                // 操作点按下 目前暂时只处理右下角
+                circle.on(EventType.MouseDown, ({operate})=>{
+                    this.capture.mousedowned = true;
+                    this.operate = operate; // 记录操作的按钮
+                    this.circleMoused = true;
                 });
             });
+
+            // 处理往内部拉动
+            let canvasContainer = this.capture.$canvasContainer;
+            canvasContainer.addEventListener('mousemove', this.onMouseMove);
+            canvasContainer.addEventListener('mouseup', this.onMouseUp);
         });
+    }
+
+    onMouseMove(event){
+        if( this.capture.mousedowned ) {
+            this.calcPoint( this.capture, event );
+            
+        } else {    // 进行普通的平移
+
+        }
+    }
+
+    onMouseUp(event){
+        this.capture.mousedowned = false;
+        this.operate = null;
     }
 
     async init() {
@@ -43,6 +71,16 @@ class CaptureZone extends EventEmitter {
         // console.info(image.width, image.height);
         // let ni = nativeImage.createFromDataURL(this.$canvas.toDataURL());
         // clipboard.writeImage(ni);
+    }
+
+    calcPoint( capture, event ){
+        let rectangle = capture.rectangle;
+        ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
+
+        rectangle.width = rectangle.endX - rectangle.startX;
+        rectangle.height = rectangle.endY - rectangle.startY;
+
+        this.drawRectangle();
     }
 
     drawRectangle() {   

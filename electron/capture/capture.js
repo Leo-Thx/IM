@@ -5,6 +5,8 @@ const { remote, desktopCapturer, screen } = require('electron');
 const { CaptureZone } = require('./capture-zone');
 const { Menu } = require('./menu/menu');
 
+// todo 未处理鼠标拖动离开屏幕
+
 class Capture {
     constructor(){
         this.querySelector();
@@ -44,7 +46,7 @@ class Capture {
 
         this.$mask.addEventListener('mousedown', this.onMouseDown);
         this.$mask.addEventListener('mousemove', this.onMouseMove);
-        // this.$mask.addEventListener('mouseup', this.onMouseUp);
+        this.$mask.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
@@ -56,18 +58,12 @@ class Capture {
         // this.$test.style.top = event.pageY;
     }
 
+    // 处理外部拉动
     onMouseMove(event){
-        if( this.mousedowned ) {
-            let rectangle = this.rectangle;
-            ({ pageX: rectangle.endX, pageY: rectangle.endY } = event);
-
-            rectangle.width = rectangle.endX - rectangle.startX;
-            rectangle.height = rectangle.endY - rectangle.startY;
-
-            this.zone.drawRectangle();
-        }
+        this.mousedowned && this.zone.calcPoint( this, event );
     }
 
+    // 防止直接单击导致拖动出现问题
     onMouseUp(event){
         if( this.mousedowned ) {
             // let rectangle = this.rectangle;
