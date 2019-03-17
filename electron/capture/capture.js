@@ -6,6 +6,14 @@ const { Menu } = require('./capture-menu');
 
 // todo 未处理鼠标拖动离开屏幕
 
+/**
+ * 借鉴：
+ *  1. 拖动选区时 隐藏底部操作按钮，但不动之后在进行显示
+ *  2. 使用普通div控制选取跟随鼠标拖动，在具体的确认之后在生成截图
+ *  3. 对截图进行自定义绘制之后，不在允许进行拖动，但是可以放大或缩小
+ *  4. 处理鼠标反向拉动问题
+ */
+
 class Capture {
     constructor(){
         this.querySelector();
@@ -17,6 +25,8 @@ class Capture {
         this.screenWidth = this.currentScreen.bounds.width;     // 宽度
         this.screenHeight = this.currentScreen.bounds.height;   // 高度
 
+        console.info( this.scaleFactor, this.screenHeight, this.screenWidth );
+
         this.rectangle = {};
 
         this.init().then(()=>{        
@@ -25,9 +35,9 @@ class Capture {
 
             setTimeout(()=>this.bindEvents(), 200);
 
-            this.zone.on('drawScreenshot', (left, top, widht, height)=>{
-                this.$mask.removeEventListener('mousedown', this.onMouseDown);
-            });
+            // this.zone.on('drawScreenshot', (left, top, widht, height)=>{
+            //     this.$mask.removeEventListener('mousedown', this.onMouseDown);
+            // });
         });
 
         ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{
@@ -74,6 +84,26 @@ class Capture {
     // 防止直接单击导致拖动出现问题
     onMouseUp(event){
         this.mousedowned = false;
+
+        console.info(' Capture.mouseUp ');
+
+        this.$mask.removeEventListener('mousedown', this.onMouseDown);
+        let zone = this.zone;
+        if( !zone.isDrawScreenshot ){   // 
+            zone.isDrawScreenshot = true;
+
+            Reflect.ownKeys(zone.circleOperate).forEach(circleName=>{
+                let circle = zone.circleOperate[ circleName ];
+                circle.node.style.display = 'block';
+            });
+            
+            zone.$toolbar.style.display = 'block';  // 显示分辨率大小
+            
+            // 通知主进程锁定其他窗口
+            ipcRenderer.send(IPC_EventType.CAPTURE_SCREEN_DRAWED, {
+                screeId: remote.getCurrentWindow()._screenId
+            });
+        }
     }
     
     init(){
@@ -91,7 +121,7 @@ class Capture {
     
                 this.imgsrc = url;
                 this.$bg.style.backgroundImage = `url('${url}')`;
-                this.$bg.style.backgroundSize = `100% 100%`;
+                this.$bg.style.backgroundSize = `${this.screenWidth}px ${this.screenHeight}px`;
                 document.body.style.opacity = 1;    // 禁用透明
 
                 resolve();
@@ -163,6 +193,6 @@ document.addEventListener('DOMContentLoaded', function(){
 //         let nI = nativeImage.createFromDataURL(imgSrc);
 //         clipboard.writeImage(nI);
 //     });
-
-    new Capture();
 });
+
+new Capture();

@@ -4,6 +4,8 @@ html, body, div {
     box-sizing: border-box;
 }
 
+html, body { height: 100%; }
+
 .init-canvas{
     position: absolute;
     z-index: -1;
@@ -29,14 +31,8 @@ html, body, div {
 .image-canvas {
     position: absolute;
     display: none;
-    
-    /* width: 300px;
-    height: 300px;
-    background: rgba(0, 0, 0, 0.247);
-    left: 200px;
-    top: 100px; */
 
-    border: 1px solid #67bade;
+    /* border: 1px solid #67bade; */
     font-size: 0;
     z-index: 1;
     cursor: move;
@@ -45,42 +41,43 @@ html, body, div {
 
 .operate-circle{
     position: absolute;
-    width: 10px; height: 10px;
-    background: #fff;
-    border: 2px solid #67bade;
-    border-radius: 50%; 
+    /* width: 10px; height: 10px; */
+    width: 5px; height: 5px;
+    background: #67bade;
+    /* border: 2px solid #67bade; */
+    /* border-radius: 50%;  */
     display: none;
 }
 .circle-lefttop{
-    left: -5px; top: -5px;
+    left: 0px; top: 0px;
     cursor: nwse-resize;
 }
 .circle-top{
-    left: 50%; top:-5px; transform: translateX(-50%);
+    left: 50%; top:0px; transform: translateX(-50%);
     cursor: ns-resize;
 }
 .circle-righttop{
-    top: -5px; right: -5px;
+    top: 0px; right: 0px;
     cursor: nesw-resize;
 }
 .circle-right{
-    top: 50%; right: -5px; transform: translateY(-50%);
+    top: 50%; right: 0px; transform: translateY(-50%);
     cursor: ew-resize;
 }
 .circle-rightbottom{
-    top: 100%; right: -5px; transform: translateY(-50%);
+    top: 100%; right: 0px; transform: translateY(-100%);
     cursor: nwse-resize;
 }
 .circle-bottom{
-    left: 50%; top: 100%; transform: translateY(-50%);
+    left: 50%; top: 100%; transform: translateY(-100%);
     cursor: ns-resize;
 }
 .circle-leftbottom{
-    left: -5px; top: 100%; transform: translateY(-50%);
+    left: 0px; top: 100%; transform: translateY(-100%);
     cursor: nesw-resize;
 }
 .circle-left{
-    left: -5px; top: 50%; transform: translateY(-50%);
+    left: 0px; top: 50%; transform: translateY(-50%);
     cursor: ew-resize;
 }
 
@@ -111,7 +108,7 @@ html, body, div {
     align-items: center;
 }
 
-.toolbar { transform: translateX(-100%); }
+/* .toolbar { transform: translateX(-100%); } */
 .toolbar .iconfont {
     font-size: 24px;
     padding: 2px 5px;

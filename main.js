@@ -46,7 +46,7 @@ app.on('ready', ()=>{
 
 	mainWindow.on('ready-to-show', (event)=>{
 		mainWindow.show();
-		mainWindow.webContents.openDevTools();
+		// mainWindow.webContents.openDevTools();
 	});
 
 	/*mainWindow.webContents.on('dom-ready', function(event){
@@ -59,4 +59,8 @@ app.on('ready', ()=>{
 	
 	// 可能部分情况下不需要打包该目录
 	BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
+});
+
+app.on('window-all-closed', ()=>{
+	app.exit(0);
 });

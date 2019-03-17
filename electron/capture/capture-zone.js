@@ -39,7 +39,6 @@ class CaptureZone extends EventEmitter {
                 });
             });
 
-            // 处理往内部拉动
             let canvasContainer = this.capture.$canvasContainer;
             canvasContainer.addEventListener('mousemove', this.onMouseMove);
             canvasContainer.addEventListener('mouseup', this.onMouseUp);
@@ -47,6 +46,8 @@ class CaptureZone extends EventEmitter {
         });
     }
 
+    // 在平移的时候会出现跟手问题，建议在最后生成图片的时候进行截图生成
+     // 处理往内部拉动
     onMouseMove(event){
         if( this.capture.mousedowned ) {
             this.calcPoint( this.capture, {endX: event.pageX, endY: event.pageY} );
@@ -58,13 +59,16 @@ class CaptureZone extends EventEmitter {
 
             let movedX = pageX - moveX, movedY = pageY - moveY;
 
-            // 跑出去的半个操作点 + 2px的左右边框
+            //// 跑出去的半个操作点 + 2px的左右边框 unused
             let newX = rectangle.startX + movedX,
                 newY = rectangle.startY + movedY,
                 {screenWidth, screenHeight} = this.capture;
 
-            if( newX + rectangle.width >= screenWidth - 5 ) return false;
-            if( newY + rectangle.height >= screenHeight - 5 ) return false;
+                
+            if( newX + rectangle.width >= screenWidth ) return false;
+            if( newY + rectangle.height >= screenHeight ) return false;
+            if( newX <= 0 ) return false;
+            if( newY <= 0 ) return false;
 
             // console.info(rectangle);
             rectangle.startX += movedX;
@@ -73,8 +77,8 @@ class CaptureZone extends EventEmitter {
             rectangle.endX += movedX;
             rectangle.endY += movedY;
 
-            rectangle.width = rectangle.endX - rectangle.startX;
-            rectangle.height = rectangle.endY - rectangle.startY;
+            // rectangle.width = rectangle.endX - rectangle.startX;
+            // rectangle.height = rectangle.endY - rectangle.startY;
 
             this.moveX = pageX;
             this.moveY = pageY;
@@ -160,10 +164,15 @@ class CaptureZone extends EventEmitter {
         let canvasContainer = this.capture.$canvasContainer,
             canvas = this.capture.$canvas,
             context = this.capture.$context,
-            { rectangle: {startX, startY, width, height}, scaleFactor } = this.capture;
+            { rectangle: {startX, startY, width, height}, scaleFactor, screenWidth, screenHeight } = this.capture;
         
         // 未追踪 出现 后面两个参数是NaN
-        let imageData = this.$ctx.getImageData(startX * scaleFactor + scaleFactor, startY * scaleFactor + scaleFactor, width * scaleFactor, height * scaleFactor);
+        let imageData = this.$ctx.getImageData(
+            Math.floor( startX * scaleFactor ), 
+            Math.floor( startY * scaleFactor ), 
+            Math.floor( width * scaleFactor ),
+            Math.floor( height * scaleFactor )
+        );
 
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
@@ -181,9 +190,15 @@ class CaptureZone extends EventEmitter {
         this.$sizeInfo.style.top = `${startY - 30}px`;
 
         context.putImageData(imageData, 0, 0);
+        
+        
+        this.$toolbar.style.right = `${screenWidth - startX - width}px`;
+        this.$toolbar.style.top = `${startY + height + 5}px`;
 
-        this.$toolbar.style.left = `${startX + width}px`;
-        this.$toolbar.style.top = `${startY + height + 10}px`;
+        if( this.isDrawScreenshot ){    // 如果已经绘制，主要处理超出边界的情况
+            let tbHeight = this.$toolbar.offsetHeight;
+            if( startY + height + tbHeight + 5 > screenHeight ) this.$toolbar.style.top = `${startY + height - 5 - tbHeight}px`;
+        }
     }
 }
 
