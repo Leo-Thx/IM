@@ -1,3 +1,39 @@
+$main : #333333;
+$second: #db3d7a;
+
 .login-container {
-    color: red;
+    background: #000;
+    padding: 10px 20px 0; 
+
+    height: 100%;
+    font-size: 12px;
+
+    color: #fff;
+    .title-bar{
+        display: inline-block;
+        span{ 
+            float: left; padding: 1px 6px; 
+            background: $main;
+        }
+        .active{ background: $second; }
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    .main-content {
+        width: 90%; margin: 0 auto;
+        p{ font-size: 16px; text-align: center; }
+        .cell { margin-bottom: 10px; }
+        label{ color: #fff; display: block; font-size: 14px; }
+        input{ 
+            font-size: 14px;
+            border: none; outline: none; 
+            width: 100%;
+            background: transparent;
+            padding: 2px 0 2px 0;
+            color: $second;
+            caret-color: $second;
+            border-bottom: 1px solid #fff;
+        }
+    }
 }
