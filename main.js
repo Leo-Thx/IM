@@ -21,7 +21,6 @@ globalVariable.set(globalVariable.KEY_NAMES.ROOT_PATH, path.join(__dirname));
 // 设置electron服务路径
 globalVariable.set(globalVariable.KEY_NAMES.ELECTORN_PATH, path.join(__dirname, 'electron'));
 
-
 let mainWindow = null;	// 主要窗口
 
 app.on('ready', ()=>{
@@ -62,5 +61,10 @@ app.on('ready', ()=>{
 });
 
 app.on('window-all-closed', ()=>{
+	app.exit(0);
+});
+
+
+app.on('gpu-process-crashed', ()=>{
 	app.exit(0);
 });

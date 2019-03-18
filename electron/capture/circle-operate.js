@@ -1,9 +1,7 @@
 const EventEmitter = require('events');
 
 const EventType = {
-    MouseUp: 'operate-mouseup',
-    MouseDown: 'operate-mousedown',
-    MouseMove: 'operate-mouseMove'
+    MouseDown: 'operate-mousedown'
 };
 
 class Circle extends EventEmitter {
@@ -26,10 +24,7 @@ class Circle extends EventEmitter {
         this.container.append(node);
 
         this.onMouseDown = this.onMouseDown.bind(this);
-        this.onMouseUp   = this.onMouseUp.bind(this);
-
         this.node.addEventListener('mousedown', this.onMouseDown);
-        // this.node.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
@@ -41,11 +36,6 @@ class Circle extends EventEmitter {
             operate: this,
             event
         });
-    }
-
-    onMouseUp(event){
-        this.emit(EventType.MouseUp);
-        console.info(' Circle.mouseUp ');
     }
 }
 

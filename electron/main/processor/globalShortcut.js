@@ -48,8 +48,7 @@ const Shortcut = {
 	},
 
 	// 锁定非绘制截图的窗体
-	isDrawScreenshot(event, payload) {
-		// console.info(arguments);
+	lockAllCaptureWins(event, payload) {
 		// globalVariable.set(globalVariable.KEY_NAMES.SCREEN_SHOT_WIN, payload.screeId);	// 不需存储，直接发送即可
 
 		let captureWins = globalVariable.get(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);

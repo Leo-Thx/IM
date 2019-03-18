@@ -6,11 +6,12 @@ const { Menu } = require('./capture-menu');
 
 /**
  * 借鉴：
- *  1. 拖动选区时 隐藏底部操作按钮，但不动之后在进行显示
- *  2. 使用普通div控制选取跟随鼠标拖动，在具体的确认之后在生成截图
- *  3. 对截图进行自定义绘制之后，不在允许进行拖动，但是可以放大或缩小
+ *  1. 拖动选区时 隐藏底部操作按钮，但不动之后在进行显示 √
+ *  2. 使用普通div控制选取跟随鼠标拖动，在具体的确认之后在生成截图 √
+ *  3. 对截图进行自定义绘制之后，不在允许进行拖动，但是可以放大或缩小 √
  *  4. 处理鼠标反向拉动问题
- *  5. 应该处理在bg初始化背景之后在进行显示
+ *  5. 应该处理在bg初始化背景之后在进行显示 √
+ *  6. 在下载时由于窗体在最前面，导致弹出的文件存储框无法置顶显示
  */
 
 class Capture {
@@ -42,14 +43,14 @@ class Capture {
             this.zone = new CaptureZone( this );
             this.menus = Menu.init(this, this.zone);    // 可以操作的按钮
 
-            setTimeout(()=>this.bindEvents(), 200);
+            this.bindEvents();
 
-            this.zone.once('init-complete', ()=>{   // 
+            this.zone.once('init-complete', ()=>{   // 背景初始化完成 [考虑是否放到主进程批量等待]
                 this.currentWindow.show();
             });
         });
 
-        ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{
+        ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{    // 锁定
             this.$maskMain.removeEventListener('mousedown', this.onMouseDown);
             document.body.removeEventListener('mousemove', this.onMouseMove);
             document.body.removeEventListener('mouseup', this.onMouseUp);

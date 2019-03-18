@@ -1,7 +1,6 @@
-const { ipcRenderer, remote } = require('electron');
 const EventEmitter = require('events');
 const { Circle, EventType } = require('./circle-operate');
-const IPC_EventType = require('./../common/IPC_EventType');
+
 
 /**
  * 选区：选中区域 + operate + menu
@@ -29,9 +28,6 @@ class CaptureZone extends EventEmitter {
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
                 let circle = this.circleOperate[ circleName ];
-
-                // 操作点弹起
-                circle.on(EventType.MouseUp, this.onMouseUp);
 
                 // 操作点按下
                 circle.on(EventType.MouseDown, ({operate})=>{

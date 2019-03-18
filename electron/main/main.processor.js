@@ -1,4 +1,4 @@
-const { BrowserWindow, ipcMain } = require('electron');
+const { ipcMain } = require('electron');
 
 const IPC_Event = require('../common/IPC_EventType');
 const ProcessorEvent = require('./processor.event');
@@ -26,7 +26,7 @@ module.exports = {
         ipcMain.on(IPC_Event.CAPTURE_SCREEN, globalShortCut.captureScreen);
         ipcMain.on(IPC_Event.CAPTURE_SCREEN_OK, globalShortCut.closeAllCaptureWins);
         ipcMain.on(IPC_Event.CAPTURE_SCREEN_CLOSE, globalShortCut.closeAllCaptureWins);
-        ipcMain.on(IPC_Event.CAPTURE_SCREEN_DRAWED, globalShortCut.isDrawScreenshot)
+        ipcMain.on(IPC_Event.CAPTURE_SCREEN_DRAWED, globalShortCut.lockAllCaptureWins);
         
         
         menu.setAppMenu();

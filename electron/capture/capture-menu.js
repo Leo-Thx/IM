@@ -4,7 +4,8 @@ const IPC_EventType = require('./../common/IPC_EventType');
 
 const prefix = 'menu-'
 const menues = [
-    'reset', 'save', 'close', 'ok'
+    // 'reset', 
+    'save', 'close', 'ok'
 ];
 
 class Menu extends EventEmitter {
@@ -20,6 +21,10 @@ class Menu extends EventEmitter {
         let methodName = menuName.replace(/-(\w)/, (mstr, $1)=>$1.toUpperCase());
         this.$node.addEventListener('click', (event)=>{
             this[ methodName ](event);
+
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
         });
     }
 
@@ -75,5 +80,5 @@ class Menu extends EventEmitter {
 }
 
 module.exports.Menu = Menu;
-module.exports.menues = menues;
-module.exports.prefix = prefix;
+module.exports.MenuEnum = menues;
+module.exports.MenuPrefix = prefix;
