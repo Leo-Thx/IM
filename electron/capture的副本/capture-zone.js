@@ -3,9 +3,6 @@ const EventEmitter = require('events');
 const { Circle, EventType } = require('./circle-operate');
 const IPC_EventType = require('./../common/IPC_EventType');
 
-/**
- * 选区：选中区域 + operate + menu
- */
 class CaptureZone extends EventEmitter {
     constructor( capture ) {
         super();
@@ -16,6 +13,7 @@ class CaptureZone extends EventEmitter {
         this.circleOperate = Circle(capture.$canvasContainer, this, capture);
         this.capture = capture; //
 
+        // this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp   = this.onMouseUp.bind(this);
         this.onMouseDown = this.onMouseDown.bind(this);
@@ -25,8 +23,6 @@ class CaptureZone extends EventEmitter {
 
         this.$sizeInfo = document.getElementById('js-size-info');
         this.$toolbar = document.getElementById('js-toolbar');
-
-        // this.rectangleSize = {};
 
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
@@ -130,6 +126,8 @@ class CaptureZone extends EventEmitter {
     async init() {
         this.$canvas = document.createElement('canvas');
         this.$ctx = this.$canvas.getContext('2d');
+        // this.$initCanvas = document.getElementById('init-canvas');
+        // this.$initCanvas.append(this.$canvas);
 
         let image = await new Promise(resolve=>{
             let image = new Image;
@@ -162,43 +160,11 @@ class CaptureZone extends EventEmitter {
         this.drawRectangle();
     }
 
-    // 计算大小信息 // 自己判断位置
-    calcSizeInfo(width, height, startX, startY){
-        this.$sizeInfo.style.display = 'block';
-        this.$sizeInfo.textContent = `${width} * ${height}`;
-        this.$sizeInfo.style.left = `${startX}px`;
-        this.$sizeInfo.style.top = `${startY - 30}px`;
-    }
-
-    // 按钮位置和大小
-    calcToolbar(){
-        let { rectangle: {startX, startY, width, height}, screenWidth } = this.capture;
-        this.$toolbar.style.right = `${screenWidth - startX - width}px`;
-        this.$toolbar.style.top = `${startY + height + 5}px`;
-    }
-
-    drawCanvasZone(){   // 绘制选区，不进行图片绘制
-        let canvasContainer = this.capture.$canvasContainer,
-            { rectangle: {startX, startY, width, height}, screenWidth } = this.capture;
-
-        canvasContainer.style.left = `${startX}px`;
-        canvasContainer.style.top = `${startY}px`;
-        canvasContainer.style.width = `${width}px`;
-        canvasContainer.style.height = `${height}px`;
-
-        this.calcSizeInfo(width, height, startX, startY);   // 计算最终大小
-        this.calcToolbar();
-
-        Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
-            let circle = this.circleOperate[ circleName ];
-            circle.node.style.display = 'block';
-        });
-    }
-
     drawRectangle() {   
-        let canvas = this.capture.$canvas,
+        let canvasContainer = this.capture.$canvasContainer,
+            canvas = this.capture.$canvas,
             context = this.capture.$context,
-            { rectangle: {startX, startY, width, height}, scaleFactor } = this.capture;
+            { rectangle: {startX, startY, width, height}, scaleFactor, screenWidth, screenHeight } = this.capture;
         
         // 未追踪 出现 后面两个参数是NaN
         let imageData = this.$ctx.getImageData(
@@ -214,7 +180,25 @@ class CaptureZone extends EventEmitter {
         canvas.width = width * scaleFactor;
         canvas.height = height * scaleFactor;
 
+        canvasContainer.style.left = `${startX}px`;
+        canvasContainer.style.top = `${startY}px`;
+        canvasContainer.style.display = 'block';
+
+        this.$sizeInfo.style.display = 'block';
+        this.$sizeInfo.textContent = `${width} * ${height}`;
+        this.$sizeInfo.style.left = `${startX}px`;
+        this.$sizeInfo.style.top = `${startY - 30}px`;
+
         context.putImageData(imageData, 0, 0);
+        
+        
+        this.$toolbar.style.right = `${screenWidth - startX - width}px`;
+        this.$toolbar.style.top = `${startY + height + 5}px`;
+
+        if( this.isDrawScreenshot ){    // 如果已经绘制，主要处理超出边界的情况
+            let tbHeight = this.$toolbar.offsetHeight;
+            if( startY + height + tbHeight + 5 > screenHeight ) this.$toolbar.style.top = `${startY + height - 5 - tbHeight}px`;
+        }
     }
 }
 
