@@ -84,7 +84,6 @@ class Capture {
         // pageX[文档坐标], clientX[浏览器内容区域左上角，不含滚动条可工具栏], offsetX[], screenX[显示器]
         ({ pageX: this.rectangle.startX, pageY: this.rectangle.startY } = event);
         this.mousedowned = true;    // 标志已经开始处理
-        // this.zone.resetOperate();
     }
 
     // 处理外部拉动
@@ -142,13 +141,17 @@ class Capture {
         this.$maskLeft.style.height = `${screenHeight - (screenHeight - pageY) - startY}px`;
     }
 
-    // 防止直接单击导致拖动出现问题
+    // 处理直接点击截取整张图片
     onMouseUp(event){
         this.mousedowned = false;
         let zone = this.zone, { pageX, pageY } = event;
 
         if( zone.isDrawScreenshot === false ){
+            // 直接卸载掉，由选区进行控制
             this.$maskMain.removeEventListener('mousedown', this.onMouseDown);
+            document.body.removeEventListener('mouseup', this.onMouseUp);
+            document.body.removeEventListener('mousemove', this.onMouseMove);
+
             zone.isDrawScreenshot = true;   // 标志已经绘制选区
 
             this.rectangle.endX = pageX;

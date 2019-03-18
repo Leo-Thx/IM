@@ -29,7 +29,7 @@ class Circle extends EventEmitter {
         this.onMouseUp   = this.onMouseUp.bind(this);
 
         this.node.addEventListener('mousedown', this.onMouseDown);
-        this.node.addEventListener('mouseup', this.onMouseUp);
+        // this.node.addEventListener('mouseup', this.onMouseUp);
     }
 
     onMouseDown(event){
@@ -54,9 +54,20 @@ class CircleLeftTop extends Circle{
         super( container, type, cursor, zone, capture )
     }
 
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.startX = endX;
-        rectangle.startY = endY;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.startX = event.pageX;
+        rectangle.startY = event.pageY;
+
+        rectangle.height = rectangle.endY - rectangle.startY;
+        rectangle.width = rectangle.endX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.left = `${event.pageX}px`;
+        $canvasContainer.style.top = `${event.pageY}px`;
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
 
@@ -65,8 +76,16 @@ class CircleTop extends Circle{
         super( container, type, cursor, zone, capture )
     }
 
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.startY = endY;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.startY = event.pageY;
+        rectangle.height = rectangle.endY - rectangle.startY;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.top = `${event.pageY}px`;
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
 
@@ -75,19 +94,36 @@ class CircleRightTop extends Circle{
         super( container, type, cursor, zone, capture )
     }
 
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.startY = endY;
-        rectangle.endX = endX;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.startY = event.pageY;
+        rectangle.endX = event.pageX;
+
+        rectangle.height = rectangle.endY - rectangle.startY;
+        rectangle.width = rectangle.endX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.top = `${event.pageY}px`;
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
 
 class CircleRight extends Circle{
-    constructor( container, type, cursor ){
-        super( container, type, cursor )
+    constructor(container, type, cursor, zone, capture) {
+        super( container, type, cursor, zone, capture )
     }
 
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.endX = endX;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.endX = event.pageX;
+        rectangle.width = event.pageX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
 
@@ -95,9 +131,18 @@ class CircleRightBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.endX = endX;
-        rectangle.endY = endY;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.endY = event.pageY;
+        rectangle.endX = event.pageX;
+        rectangle.height = rectangle.endY - rectangle.startY;
+        rectangle.width = rectangle.endX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
+
     }
 }
 
@@ -105,25 +150,52 @@ class CircleBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.endY = endY;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.endY = event.pageY;
+        rectangle.height = rectangle.endY - rectangle.startY;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
+
 class CircleLeftBottom extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.startX = endX;
-        rectangle.endY = endY;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.startX = event.pageX;
+        rectangle.endY = event.pageY;
+
+        rectangle.height = rectangle.endY - rectangle.startY;
+        rectangle.width = rectangle.endX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.left = `${event.pageX}px`;
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
+
 class CircleLeft extends Circle{
     constructor(container, type, cursor, zone, capture) {
         super( container, type, cursor, zone, capture )
     }
-    calcRectangle( rectangle, {endX, endY} ) {
-        rectangle.startX = endX;
+    calcRectangle( event ) {
+        let { rectangle, $canvasContainer } = this.capture;
+        rectangle.startX = event.pageX;
+        rectangle.width = rectangle.endX - rectangle.startX;
+        
+        this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+
+        $canvasContainer.style.left = `${event.pageX}px`;
+        $canvasContainer.style.width = `${rectangle.width}px`;
+        $canvasContainer.style.height = `${rectangle.height}px`;
     }
 }
 
