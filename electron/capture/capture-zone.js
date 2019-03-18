@@ -44,6 +44,8 @@ class CaptureZone extends EventEmitter {
             // canvasContainer.addEventListener('mousemove', this.onMouseMove);
             // canvasContainer.addEventListener('mouseup', this.onMouseUp);
             canvasContainer.addEventListener('mousedown', this.onMouseDown);
+
+            this.emit('init-complete', {});
         });
     }
 

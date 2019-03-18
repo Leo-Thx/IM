@@ -68,11 +68,11 @@ const Shortcut = {
 		let screen = electron.screen,
 			captureWins = {};
 		
-		let primary = screen.getPrimaryDisplay();		// 获取主窗口
-		let allDisplays = [ primary ];
+		// let primary = screen.getPrimaryDisplay();		// 获取主窗口
+		// let allDisplays = [ primary ];
 		// console.info(primary);
 
-		// let allDisplays = screen.getAllDisplays();	// 获取所有可用窗口
+		let allDisplays = screen.getAllDisplays();	// 获取所有可用窗口
 		allDisplays.forEach((display)=>{
 			let screenId = display.id,
 				scaleFactor = display.scaleFactor,
@@ -114,7 +114,7 @@ const Shortcut = {
 			captureWin.loadURL(uri);
 
 			captureWin.on('ready-to-show', ()=>{
-				captureWin.show();
+				// captureWin.show();
 				// captureWin.openDevTools();
 			});
 

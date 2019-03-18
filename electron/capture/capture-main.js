@@ -10,6 +10,7 @@ const { Menu } = require('./capture-menu');
  *  2. 使用普通div控制选取跟随鼠标拖动，在具体的确认之后在生成截图
  *  3. 对截图进行自定义绘制之后，不在允许进行拖动，但是可以放大或缩小
  *  4. 处理鼠标反向拉动问题
+ *  5. 应该处理在bg初始化背景之后在进行显示
  */
 
 class Capture {
@@ -17,6 +18,12 @@ class Capture {
         this.querySelector();
 
         this.currentWindow  = remote.getCurrentWindow();
+        
+        // this.currentWindow.on('ready-to-show', (event)=>{
+        //     this.currentWindow.show();
+        //     this.currentWindow.webContents.openDevTools();
+        // });
+
         this.currentScreen  = screen.getAllDisplays().find(item=>item.id === this.currentWindow._screenId);
 
         this.scaleFactor    = this.currentScreen.scaleFactor;       // 缩放
@@ -37,16 +44,16 @@ class Capture {
 
             setTimeout(()=>this.bindEvents(), 200);
 
-            // this.zone.on('drawScreenshot', ()=>{
-            //     this.$maskMain.removeEventListener('mousedown', this.onMouseDown);
-            // });
+            this.zone.once('init-complete', ()=>{   // 
+                this.currentWindow.show();
+            });
         });
 
-        // ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{
-        //     this.$maskMain.removeEventListener('mousedown', this.onMouseDown);
-        //     this.$maskMain.removeEventListener('mousemove', this.onMouseMove);
-        //     this.$maskMain.removeEventListener('mouseup', this.onMouseUp);
-        // });
+        ipcRenderer.on(IPC_EventType.CAPTURE_SCREEN_LOCK_ALL, (event)=>{
+            this.$maskMain.removeEventListener('mousedown', this.onMouseDown);
+            document.body.removeEventListener('mousemove', this.onMouseMove);
+            document.body.removeEventListener('mouseup', this.onMouseUp);
+        });
     }
 
     querySelector(){
