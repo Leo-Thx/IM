@@ -4,8 +4,6 @@ const IPC_EventType = require('../common/IPC_EventType');
 const { CaptureZone } = require('./capture-zone');
 const { Menu } = require('./capture-menu');
 
-// todo 未处理鼠标拖动离开屏幕
-
 /**
  * 借鉴：
  *  1. 拖动选区时 隐藏底部操作按钮，但不动之后在进行显示
@@ -97,8 +95,10 @@ class Capture {
                 // 计算围栏位置和大小
                 this.calcPointMaskFence( event );
 
-                let { startX, startY } = this.rectangle;
-                this.zone.calcSizeInfo(pageX - startX, pageY - startY, startX, startY);
+                this.rectangle.width = pageX - this.rectangle.startX;
+                this.rectangle.height = pageY - this.rectangle.startY;
+
+                this.zone.calcSizeInfo();
             });
         }
     }

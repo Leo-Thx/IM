@@ -26,8 +26,6 @@ class CaptureZone extends EventEmitter {
         this.$sizeInfo = document.getElementById('js-size-info');
         this.$toolbar = document.getElementById('js-toolbar');
 
-        // this.rectangleSize = {};
-
         this.init().then(()=>{
             Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
                 let circle = this.circleOperate[ circleName ];
@@ -37,16 +35,15 @@ class CaptureZone extends EventEmitter {
 
                 // 操作点按下
                 circle.on(EventType.MouseDown, ({operate})=>{
-                    // this.capture.mousedowned = true;
                     this.operate = operate; // 记录操作的按钮
                     this.moveCapture = false;   // 取消移动
                 });
             });
 
-            // let canvasContainer = this.capture.$canvasContainer;
+            let canvasContainer = capture.$canvasContainer;
             // canvasContainer.addEventListener('mousemove', this.onMouseMove);
             // canvasContainer.addEventListener('mouseup', this.onMouseUp);
-            // canvasContainer.addEventListener('mousedown', this.onMouseDown);
+            canvasContainer.addEventListener('mousedown', this.onMouseDown);
         });
     }
 
@@ -54,57 +51,54 @@ class CaptureZone extends EventEmitter {
     // 处理往内部拉动
     onMouseMove(event){
         if( this.operate != null ) {    // operate放大或缩小
-            let canvasContainer = this.capture.$canvasContainer,
-                { pageX: endX, pageY: endY } = event,       // 鼠标所在位置
-                { rectangle: {startX, startY, width, height} } = this.capture;
-
+            let { rectangle: {startX, startY, width, height} } = this.capture;
             // 1. 对应的operate进行操作即可
                 // 计算围栏
                 // 计算canvasContainer
             this.operate.calcRectangle(event);
             // 2. 隐藏toolbar
-            this.$toolbar.style.display = 'none';
+            this.calcToolbar();
+            // 计算最终大小
+            this.calcSizeInfo(width, height, startX, startY);
 
-            this.calcSizeInfo(width, height, startX, startY);   // 计算最终大小
-        }
-    }
+        } else if( this.moveCapture === true ) {
+            this.calcToolbar();
 
-    onMouseMove1(event){
-        if( this.capture.mousedowned ) {
-            this.calcPoint( this.capture, {endX: event.pageX, endY: event.pageY} );
-
-        } else if( this.moveCapture ){    // 进行普通的平移
             let {moveX, moveY} = this,
                 {pageX, pageY} = event,
-                rectangle = this.capture.rectangle;
+                { rectangle, $canvasContainer } = this.capture,
+                movedX = pageX - moveX, 
+                movedY = pageY - moveY;
 
-            let movedX = pageX - moveX, movedY = pageY - moveY;
-
-            //// 跑出去的半个操作点 + 2px的左右边框 unused
             let newX = rectangle.startX + movedX,
                 newY = rectangle.startY + movedY,
                 {screenWidth, screenHeight} = this.capture;
 
-                
-            if( newX + rectangle.width >= screenWidth ) return false;
-            if( newY + rectangle.height >= screenHeight ) return false;
-            if( newX <= 0 ) return false;
-            if( newY <= 0 ) return false;
+            if( newX + rectangle.width >= screenWidth ) newX = screenWidth - rectangle.width;
+            if( newY + rectangle.height >= screenHeight ) newY = screenHeight - rectangle.height;
+            
+            if( newX <= 0 ) newX = 0;
+            if( newY <= 0 ) newY = 0;
 
-            // console.info(rectangle);
-            rectangle.startX += movedX;
-            rectangle.startY += movedY;
+            rectangle.startX = newX;
+            rectangle.startY = newY;
 
-            rectangle.endX += movedX;
-            rectangle.endY += movedY;
-
-            // rectangle.width = rectangle.endX - rectangle.startX;
-            // rectangle.height = rectangle.endY - rectangle.startY;
+            rectangle.endX = newX + rectangle.width;
+            rectangle.endY = newY + rectangle.height;
 
             this.moveX = pageX;
             this.moveY = pageY;
 
-            this.drawRectangle();
+            // rectangle.height = rectangle.endY - rectangle.startY;
+            // rectangle.width = rectangle.endX - rectangle.startX;
+            
+            this.capture.calcPointMaskFence({pageX: rectangle.endX, pageY: rectangle.endY});
+            this.calcSizeInfo(rectangle.width, rectangle.height, rectangle.startX, rectangle.startY);
+
+            $canvasContainer.style.left = `${rectangle.startX}px`;
+            $canvasContainer.style.top = `${rectangle.startY}px`;
+            $canvasContainer.style.width = `${rectangle.width}px`;
+            $canvasContainer.style.height = `${rectangle.height}px`;
         }
     }
 
@@ -115,33 +109,10 @@ class CaptureZone extends EventEmitter {
     }
 
     onMouseUp(event){
-        this.capture.mousedowned = false;
         this.moveCapture = false;
         this.operate = null;
-        
+        this.calcToolbar( true );
         console.info(' Zone.mouseUp ');
-
-        // if( !this.isDrawScreenshot ){
-        //     this.emit('drawScreenshot');
-        //     this.isDrawScreenshot = true;
-
-        //     Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
-        //         let circle = this.circleOperate[ circleName ];
-        //         circle.node.style.display = 'block';
-        //     });
-
-        //     this.$toolbar.style.display = 'block';
-
-        //     // 通知主进程锁定其他窗口
-        //     ipcRenderer.send(IPC_EventType.CAPTURE_SCREEN_DRAWED, {
-        //         screeId: remote.getCurrentWindow()._screenId
-        //     });
-        // }
-    }
-
-    resetOperate(){
-        this.operate = null;
-        this.moveCapture = false;
     }
 
     async init() {
@@ -163,37 +134,26 @@ class CaptureZone extends EventEmitter {
         // clipboard.writeImage(ni);
     }
 
-    calcPoint( capture, point ){
-        let rectangle = capture.rectangle;
-
-        // 如果是circle已经按下
-        if( this.operate ) {
-            this.operate.calcRectangle(rectangle, point);
-        } else {
-            ({ endX: rectangle.endX, endY: rectangle.endY } = point);
-        }
-
-        rectangle.width = rectangle.endX - rectangle.startX;
-        rectangle.height = rectangle.endY - rectangle.startY;
-
-        this.drawRectangle();
-    }
-
     // 计算大小信息 // 自己判断位置
-    calcSizeInfo(width, height, startX, startY){
+    calcSizeInfo(){
+        let { width, height, startX, startY } = this.capture.rectangle;
         this.$sizeInfo.style.display = 'block';
         this.$sizeInfo.textContent = `${width} * ${height}`;
         this.$sizeInfo.style.left = `${startX}px`;
         this.$sizeInfo.style.top = `${startY - 30}px`;
+
+        if( startY <= 30 ) this.$sizeInfo.style.top = '5px';
     }
 
     // 按钮位置和大小
-    calcToolbar(){
-        let { rectangle: {startX, startY, width, height}, screenWidth } = this.capture;
+    calcToolbar(show = false){
+        let { rectangle: {startX, startY, width, height}, screenWidth, screenHeight } = this.capture;
+
         this.$toolbar.style.right = `${screenWidth - startX - width}px`;
         this.$toolbar.style.top = `${startY + height + 5}px`;
 
-        this.$toolbar.style.display = 'block';
+        this.$toolbar.style.display = show ? 'block' : 'none';
+        if( startY + height + 40 >=  screenHeight ) this.$toolbar.style.top = `${startY + height - 40}px`;
     }
 
     drawCanvasZone(){   // 绘制选区，不进行图片绘制
@@ -206,7 +166,7 @@ class CaptureZone extends EventEmitter {
         canvasContainer.style.height = `${height}px`;
 
         this.calcSizeInfo(width, height, startX, startY);   // 计算最终大小
-        this.calcToolbar();
+        this.calcToolbar( true );
 
         Reflect.ownKeys(this.circleOperate).forEach(circleName=>{
             let circle = this.circleOperate[ circleName ];

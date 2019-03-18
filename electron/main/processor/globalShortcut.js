@@ -101,8 +101,8 @@ const Shortcut = {
 				
 			captureWin._screenId = screenId;
 	
-			// captureWin.setAlwaysOnTop(true, 'screen-saver');	// 置顶显示
-			// captureWin.setVisibleOnAllWorkspaces(true);	// mac 
+			captureWin.setAlwaysOnTop(true, 'screen-saver');	// 置顶显示
+			captureWin.setVisibleOnAllWorkspaces(true);	// mac 
 			captureWin.setFullScreenable(false);		// 不允许最大化
 			
 			let uri = url.format({

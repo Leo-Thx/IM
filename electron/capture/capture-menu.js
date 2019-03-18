@@ -30,6 +30,8 @@ class Menu extends EventEmitter {
     menuSave(event){
         console.info('save');   // 执行下载
 
+        this.zone.drawRectangle();
+        
         let url = this.capture.$canvas.toDataURL(),
             a = document.createElement('a'),
             mEvent = new MouseEvent('click');
@@ -46,6 +48,8 @@ class Menu extends EventEmitter {
     menuOk(event){
         console.info('ok');
 
+        this.zone.drawRectangle();
+        
         // 由于存在分辨比率问题，这里只做一个临时方案
         let ni = nativeImage.createFromDataURL(this.capture.$canvas.toDataURL());
         clipboard.writeImage(ni);
