@@ -13,4 +13,7 @@ export class LoginComponent {
     constructor(private loginSvc: LoginService) {
         console.log(loginSvc);
     }
+    test(event: MouseEvent) {
+        
+    }
 }

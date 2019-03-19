@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -15,10 +16,13 @@ import { ChatModule } from './module/chat/chat.module';
     ],
     imports: [
         BrowserModule,
-        ShareModule.forRoot(networkConfig),
+        BrowserAnimationsModule,
 
-        LoginModule,
+        ShareModule.forRoot(networkConfig),     // 唯一网络服务
+
+        LoginModule,            
         ChatModule,
+
         AppRouterModule
     ],
     providers: [],
