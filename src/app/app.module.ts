@@ -8,7 +8,7 @@ import { ShareModule } from './share/share.module';
 import { networkConfig } from './config/network.config';
 import { LoginModule } from './login/login.module';
 import { ChatModule } from './module/chat/chat.module';
-import { MaterialShareModule } from './share-material/shareMaterial.module';
+import { ShareMaterialModule } from './material-module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { MaterialShareModule } from './share-material/shareMaterial.module';
         BrowserModule,
         BrowserAnimationsModule,
 
-        MaterialShareModule,                    // UI共享模块
+        ShareMaterialModule,                    // UI共享模块
         ShareModule.forRoot(networkConfig),     // 唯一网络服务
 
         LoginModule,            
