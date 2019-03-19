@@ -13,7 +13,7 @@ export class LoginComponent {
     constructor(private loginSvc: LoginService) {
         console.log(loginSvc);
     }
-    test(event: MouseEvent) {
-        
+    onClick(event: MouseEvent){
+        console.info(event);
     }
 }
