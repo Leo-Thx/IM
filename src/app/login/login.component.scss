@@ -3,13 +3,15 @@ $second: #db3d7a;
 
 .login-container {
     background: $main;
-    padding: 20px; 
+    padding: 20px 20px 0; 
 
     height: 100%;
+    box-sizing: border-box;
 
     color: #fff;
     .title-bar{
         display: inline-block;
+        font-size: 14px;
         span{ 
             float: left; padding: 1px 6px; 
             background: #5D5C5C;
@@ -22,9 +24,11 @@ $second: #db3d7a;
 
     .main-content {
         width: 90%; margin: 0 auto;
-        p{ font-size: 16px; text-align: center; }
+        p{ font-size: 16; text-align: center; }
         // .cell { margin-bottom: 20px; }
         // label{ color: #fff; display: block; font-size: 14px; }
+        input{ font-size: 14px; }
+        .mat-form-field{ width: 100%; }
         // input{ 
         //     font-size: 14px;
         //     border: none; outline: none; 
@@ -45,14 +49,6 @@ $second: #db3d7a;
         //         }
         //     }
         // }
-
-        .animate {
-            animation: ripple 0.65s linear;
-        }
-        
-        @keyframes ripple {
-            100% {opacity: 0; transform: scale(2.5);}
-        }
         
         // .button {
         //     width: 100%; color: #fff;
@@ -68,6 +64,6 @@ $second: #db3d7a;
         //         cursor: pointer;
         //     }
         // }
-        button{width: 100%;}
+        button{width: 100%; margin-top: 20px;}
     }
 }

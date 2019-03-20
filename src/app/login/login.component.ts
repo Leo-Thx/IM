@@ -4,6 +4,13 @@ import { LoginService } from './login.service';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted = form && form.submitted;
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    }
+}
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -13,13 +20,14 @@ import {ErrorStateMatcher} from '@angular/material/core';
 })
 export class LoginComponent {
     title = 'loginComponent';
+
     emailFormControl = new FormControl('', [
         Validators.required,
         Validators.email,
-      ]);
+    ]);
     
-      matcher = new MyErrorStateMatcher();
-      
+    matcher = new MyErrorStateMatcher();
+
     constructor(private loginSvc: LoginService) {
         console.log(loginSvc);
     }
@@ -28,9 +36,3 @@ export class LoginComponent {
     }
 }
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-      const isSubmitted = form && form.submitted;
-      return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-    }
-  }
