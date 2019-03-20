@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient, HttpClientXsrfModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NetworkService } from './network/network.service';
 import { networkFactory } from './network/network.service.provider';
@@ -11,11 +11,15 @@ import { AuthService } from './service/Auth.service';
 import { HttpLogService } from './service/HttpLog.service';
 import { HttpCacheService } from './service/HttpCache.service';
 import { HttpUploaderService } from './service/Uploader.service';
+import { ShareMaterialModule } from '../material-module';
 
+/**
+ * 共享模块 [todo:测试惰性模块加载此模块会不会报错]
+ */
 @NgModule({
     imports: [
         CommonModule,
-        HttpClientModule,    // 拦截器与引入HttpClientModule在同一个位置
+        HttpClientModule,                   // 拦截器与引入HttpClientModule在同一个位置
         HttpClientXsrfModule.withOptions({  // 自定义XSRF攻击名字
             cookieName: 'My-Xsrf-Cookie',
             headerName: 'My-Xsrf-Header',
@@ -24,13 +28,16 @@ import { HttpUploaderService } from './service/Uploader.service';
     exports: [
         CommonModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        ShareMaterialModule
     ],
     providers: [
         AuthService,
         HttpLogService,
         HttpCacheService,
         HttpUploaderService,
+        
         httpInterceptorProviders
     ]
 })
