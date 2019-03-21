@@ -1,4 +1,4 @@
-import { INetworkConfig } from 'src/app/config/network.config';
+import { INetworkConfig } from 'src/app/share/network/network.config';
 import { NetworkService } from './network.service';
 import { HttpClient } from '@angular/common/http';
 

@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { NgElectron, IPC_EventType } from './ipc';
 
 /**
  * IPC服务，用来与NgElectron交互
@@ -8,5 +9,7 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class IpcService {
-
+    constructor(public ngElectron: NgElectron, public ipcEvent: IPC_EventType) {
+        
+    }
 }

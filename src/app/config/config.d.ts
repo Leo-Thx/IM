@@ -1,3 +1,5 @@
+import { NgElectron, IPC_EventType } from "../share/ipc/ipc";
+
 /**
  * declare module|namespace 只有在内部 export后，成员才能访问
  * 同一个命名空间的时候做文件分割的时候，三斜线引入即可
@@ -6,30 +8,6 @@
  *      为了支持CommonJS和AMD的exports, TypeScript提供了export=语法， 但是仅对ts编译后可用
  * 编译器首先尝试去查找相应路径下的.ts，.tsx再或者.d.ts。 如果这些文件都找不到，编译器会查找 外部模块声明
  */
-
-/// <reference types="electron" />
-import { DesktopCapturer, IpcRenderer } from 'electron';
-
-/**
- * IPC 交互对前端的描述文件
- */
-declare class NgElectron {
-    Class: NgElectron;
-    constructor();
-    static init(): void;
-    static login(account: string, pwd: string):void;
-    getDesktopCapturer(): DesktopCapturer;  // 获取截图功能
-    getIpcRenderer(): IpcRenderer;          // 获取渲染进程IPC
-}
-
-/**
- * IPC 事件类型
- */
-declare interface IPC_EventType {
-    readonly buildReply: (type: string)=>string;
-    readonly LOGIN: string;
-    readonly CAPTURE_SREEN: string;
-} 
 
 
 /**

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { INetworkConfig } from 'src/app/config/network.config';
+import { INetworkConfig } from 'src/app/share/network/network.config';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';

@@ -5,13 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NetworkService } from './network/network.service';
 import { networkFactory } from './network/network.service.provider';
-import { INetworkConfig } from '../config/network.config';
+import { INetworkConfig } from './network/network.config';
 import { httpInterceptorProviders } from './http-interceptors';
 import { AuthService } from './service/Auth.service';
 import { HttpLogService } from './service/HttpLog.service';
 import { HttpCacheService } from './service/HttpCache.service';
 import { HttpUploaderService } from './service/Uploader.service';
 import { ShareMaterialModule } from '../material-module';
+
+import { IpcService } from './ipc/Ipc.service';
+import { NgElInjectionToken, IPCEventInjectionToken } from './ipc/ipc.config';
+import { IpcServiceFactory } from './ipc/ipc.service.provider';
+
 
 /**
  * 共享模块 [todo:测试惰性模块加载此模块会不会报错]
@@ -60,9 +65,16 @@ export class ShareModule {
         return {
             ngModule: ShareModule,
             providers: [
+                // 网络服务
                 { provide: INetworkConfig, useValue: nwConfig },
-                { provide: NetworkService, useFactory: networkFactory, deps: [ INetworkConfig, HttpClient ] }
+                { provide: NetworkService, useFactory: networkFactory, deps: [ INetworkConfig, HttpClient ] },
+
+                // ipc服务
+                { provide: NgElInjectionToken, useValue: window.$NgEl },
+                { provide: IPCEventInjectionToken, useValue: window.$IpcEvent},
+                { provide: IpcService, useFactory: IpcServiceFactory, deps: [ NgElInjectionToken, IPCEventInjectionToken ] }
             ]
         };
     }
 }
+

@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRouterModule } from './router/app-routing.module';
 import { ShareModule } from './share/share.module';
-import { networkConfig } from './config/network.config';
+import { networkConfig } from './share/network/network.config';
 import { LoginModule } from './login/login.module';
 import { ChatModule } from './module/chat/chat.module';
 import { ShareMaterialModule } from './material-module';
