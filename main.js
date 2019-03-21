@@ -57,7 +57,7 @@ app.on('ready', ()=>{
     MainProcessor.init(); // 初始化进程处理
 	
 	// 可能部分情况下不需要打包该目录
-	BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
+	// BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
 });
 
 app.on('window-all-closed', ()=>{

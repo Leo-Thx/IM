@@ -3,6 +3,7 @@ import { LoginService } from './login.service';
 
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { IpcService } from '../share/ipc/Ipc.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -36,8 +37,8 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
 
     matcher = new MyErrorStateMatcher();
 
-    constructor(private loginSvc: LoginService, private fb: FormBuilder) {
-        console.log(loginSvc);
+    constructor(private loginSvc: LoginService, private fb: FormBuilder, ipcSvc: IpcService) {
+        console.log(loginSvc, ipcSvc);
         this.user = {};
 
         this.useFormBuilder();

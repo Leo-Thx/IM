@@ -9,7 +9,10 @@ import { NgElectron, IPC_EventType } from './ipc';
     providedIn: 'root'
 })
 export class IpcService {
-    constructor(public ngElectron: NgElectron, public ipcEvent: IPC_EventType) {
-        
+    private ngElectron = window.$NgEl;
+    private ipcEvent = window.$IpcEvent;
+
+    constructor() {
+        console.info(this);
     }
 }

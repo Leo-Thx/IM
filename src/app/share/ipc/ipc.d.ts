@@ -3,7 +3,7 @@ import { DesktopCapturer, IpcRenderer } from 'electron';
 /**
  * IPC 交互对前端的描述文件
  */
-declare class NgElectron {
+export declare class NgElectron {
     Class: NgElectron;
     constructor();
     static init(): void;
@@ -15,7 +15,7 @@ declare class NgElectron {
 /**
  * IPC 事件类型
  */
-declare interface IPC_EventType {
+export declare interface IPC_EventType {
     readonly buildReply: (type: string)=>string;
     readonly LOGIN: string;
     readonly CAPTURE_SREEN: string;
