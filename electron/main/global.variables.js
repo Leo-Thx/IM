@@ -1,5 +1,6 @@
 /**
  * 该文件提供整个应用共有的全局变量 !WeakMap
+ * 除main.js 之外，其他js不予许加载该文件
  */
 
 const variables = new Map();
@@ -10,15 +11,16 @@ module.exports = {
      */
     KEY_NAMES: {
         LOGIN: 'login',                         // 是否已经登录
-        CURRENT_WINDOW: 'current_window',       // 当前处于哪个窗口
+        WINDOW_CURRENT: 'current_window',       // 当前处于哪个窗口
         USER_INFO : 'user_info',
         
         REFERENCE_IM_WIN: 'reference_im_win',   // 主窗口实例
         CAPTURE_IM_WIN: 'capture_im_win',       // 截屏窗体实例
 
-        ROOT_PATH:  'root_path',                // 根路径   [考虑加密之后]
-        ELECTORN_PATH:  'electron_path',        // electron目录
-        // SCREEN_SHOT_WIN:  'screen_shot_win',    // 已经截屏的窗口，防止在另外的窗口还能进行其他操作
+        PATH_ROOT:  'root_path',                // 根路径   [考虑加密之后]
+        PATH_ELECTORN:  'electron_path',        // electron目录
+
+        APP_PLATFORM: 'app_platform',           // 当前应用所用平台
     },
 
     /**

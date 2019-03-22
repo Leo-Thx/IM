@@ -1,9 +1,9 @@
 const electron = require('electron');
-const { globalShortcut, BrowserWindow } = electron;
+const { globalShortcut, BrowserWindow, app } = electron;
 // const EventEmitter = require('events');
 const path = require('path');
 const url = require('url');
-const IPC_EventType = require('./../../common/IPC_EventType');
+const IPC_EventType = require('../../common/IPC_EventType');
 // const _event = new EventEmitter;
 
 /**
@@ -11,6 +11,12 @@ const IPC_EventType = require('./../../common/IPC_EventType');
  */
 const Shortcut = {
 	init(){
+		this.bindAppEvent();
+		this.registerAll();
+		this.isRegistered = true;
+	},
+
+	registerAll(){
 		// 各个平台需要桥接
 		const macDevTools = 'Command+Option+I',
 		winDevTools = 'Control+Alt+I';
@@ -33,6 +39,14 @@ const Shortcut = {
 		globalShortcut.register('Esc', ()=>{
 			Shortcut.closeAllCaptureWins();
 		});
+	},
+	unRegisterAll(){
+		globalShortcut.unregisterAll();	// 全部注销
+	},
+
+	bindAppEvent() {
+		app.on('browser-window-focus', (event, window)=>{});
+		app.on('browser-window-blur', (event, window)=>{});
 	},
 
 	// 关闭所有的截屏操作
