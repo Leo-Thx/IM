@@ -8,7 +8,11 @@ const { Notification, BrowserWindow, app } = require('electron');
  *      linux.js
  */
 class IM_Platform {
-    constructor () {}
+    constructor () {
+        this.Keys = {
+            Esc: 'Esc'
+        };
+    }
 
     // 初始化
     _init() {
@@ -21,6 +25,7 @@ class IM_Platform {
         this.osPlatform = new this.osPlatformConstructor();
         if( this.osPlatform ) this.osPlatform.init();
 
+        Object.assign(this.Keys, this.osPlatformConstructor.Keys);
     }
 
     init() {}

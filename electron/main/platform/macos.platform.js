@@ -8,6 +8,9 @@ module.exports = class MacOsPlatform extends IM_Platform {
     init() {}
 };
 
+module.exports.Keys = {
+    DevTools: 'Command+Option+I'
+};
 
 
 // app.on('activate', (event, visible)=>{

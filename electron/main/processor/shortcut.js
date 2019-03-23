@@ -1,52 +1,49 @@
 const electron = require('electron');
 const { globalShortcut, BrowserWindow, app } = electron;
-// const EventEmitter = require('events');
+const EventEmitter = require('events');
 const path = require('path');
 const url = require('url');
 const IPC_EventType = require('../../common/IPC_EventType');
-// const _event = new EventEmitter;
 
 /**
  * 主要处理各种按键
  */
 const Shortcut = {
-	init(){
+	init( platform ){
+		this._event = new EventEmitter;
+
+		this.os = platform.os;
+		this.platform = platform;
+		this.osplatform = platform.osplatform;
+
 		this.bindAppEvent();
-		this.registerAll();
 		this.isRegistered = true;
 	},
 
 	registerAll(){
-		// 各个平台需要桥接
-		const macDevTools = 'Command+Option+I',
-		winDevTools = 'Control+Alt+I';
+		let {Esc, DevTools} = this.platform.Keys;
 
-		let devToolsKey = winDevTools;
+		globalShortcut.register(DevTools, function(){
+			let win = BrowserWindow.getFocusedWindow();
+			win && win.webContents.openDevTools();
+		});
 
-		if( process.platform === "darwin" ){
-			devToolsKey = macDevTools;
-		}
-
-		if( globalShortcut.isRegistered(devToolsKey) ){
-			console.info('already registered');
-		} else {
-			globalShortcut.register(devToolsKey, function(){
-				let win = BrowserWindow.getFocusedWindow();
-				win && win.webContents.openDevTools();
-			});
-		}
-
-		globalShortcut.register('Esc', ()=>{
+		globalShortcut.register(Esc, ()=>{
 			Shortcut.closeAllCaptureWins();
 		});
 	},
+
 	unRegisterAll(){
 		globalShortcut.unregisterAll();	// 全部注销
 	},
 
 	bindAppEvent() {
-		app.on('browser-window-focus', (event, window)=>{});
-		app.on('browser-window-blur', (event, window)=>{});
+		app.on('browser-window-focus', (event, window)=>{
+			this.registerAll();
+		});
+		app.on('browser-window-blur', (event, window)=>{
+			this.unRegisterAll();
+		});
 	},
 
 	// 关闭所有的截屏操作

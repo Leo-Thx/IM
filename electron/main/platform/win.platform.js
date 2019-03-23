@@ -7,3 +7,7 @@ module.exports = class WinPlatform extends IM_Platform {
 
     init() {}
 };
+
+module.exports.Keys = {
+    DevTools: 'Control+Alt+I'
+};
