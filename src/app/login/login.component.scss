@@ -1,69 +1,38 @@
-$main : #333333;
-$second: #db3d7a;
-
 .login-container {
-    background: $main;
-    padding: 20px 20px 0; 
-
     height: 100%;
-    box-sizing: border-box;
-
-    color: #fff;
-    .title-bar{
-        display: inline-block;
-        font-size: 14px;
-        span{ 
-            float: left; padding: 1px 6px; 
-            background: #5D5C5C;
-            color: #3D3D3D;
+    background: #00000001;
+    .top-bar{
+        img{ width: 100%; }
+        font-size: 0;
+        opacity: .75;
+        .toolbar{
+            height: 24px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            opacity: .5;
+            background: #fff;
         }
-        .active{ background: $second; color: #fff; }
-        overflow: hidden;
-        border-radius: 5px;
     }
-
     .main-content {
-        width: 90%; margin: 0 auto;
-        p{ font-size: 16; text-align: center; }
-        // .cell { margin-bottom: 20px; }
-        // label{ color: #fff; display: block; font-size: 14px; }
-        input{ font-size: 14px; }
+        margin: 0 16px;
+        position: relative;
+        top: -32px;
+        .avatar{ 
+            font-size: 0; text-align: center;
+            img{ width: 72px; height: 72px; border-radius: 50%; border: 8px solid; color: #fff; }
+            overflow: hidden;
+            margin: -64px auto 0;
+        }
+        .content {
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            box-shadow: 5px 5px 30px 0px rgba(0, 0, 0, .2);
+        }
         .mat-form-field{ width: 100%; }
-        // input{ 
-        //     font-size: 14px;
-        //     border: none; outline: none; 
-        //     width: 100%;
-        //     background: transparent;
-        //     padding: 2px 0 2px 0;
-        //     color: $second; // 
-        //     caret-color: #787878;    // 光标
-        //     border-bottom: 1px solid #787878;
-
-        //     &[type=checkbox]{
-        //         width: initial;
-        //         + label {
-        //             display: inline;
-        //             color: #787878;
-        //             margin-left: 7px;
-        //             &:hover{ cursor: pointer; }
-        //         }
-        //     }
-        // }
         
-        // .button {
-        //     width: 100%; color: #fff;
-        //     background: $second;
-        //     text-align: center;
-        //     line-height: 35px;
-        //     border-radius: 4px;
-        //     border: none;
-        //     outline: none;
-        //     overflow: hidden;
-        //     &:hover{
-        //         opacity: 0.87;
-        //         cursor: pointer;
-        //     }
-        // }
-        button{width: 100%; margin-top: 20px;}
+        button{width: 100%; margin-top: 32px;}
     }
 }

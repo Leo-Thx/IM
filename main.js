@@ -28,7 +28,7 @@ let mainWindow = null;	// 主要窗口
 app.on('ready', ()=>{
     mainWindow = new BrowserWindow({
             show: false,
-            width: 350, height: 500,
+            width: 350, height: 540,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
