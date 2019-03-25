@@ -1,60 +1,100 @@
 <div class="login-container">
-    <!-- 顶部背景卡片 -->
-    <div class="top-bar">
-        <img src="../../assets/login/timg.jpeg" />
-        <div class="toolbar"></div>
-    </div>
-    <!-- 主体部分使用 -->
-    <div class="main-content">
-        <div class="content">
-            <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
-            <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
-            <div class="avatar">
-                <img src="../../assets/login/top.jpeg" >
-            </div>
-
-            <form class="example-form">
-                <div class="cell">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>账号</mat-label>
-                        <input matInput placeholder="请输入账号" [formControl]="accountCtrl" name="account">
-                    </mat-form-field>
-                </div>
-    
-                <div class="cell">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>密码</mat-label>
-                        <input type="password" matInput name="password" [(ngModel)]="user.password" placeholder="请输入密码">
-                    </mat-form-field>
-                </div>
-    
-                <div class="cell">
-                    <mat-checkbox color="primary">记住密码</mat-checkbox>
-                </div>
-            </form>
-
-            <button mat-raised-button color="primary">登录</button>
-
-            <!-- 卡片底部 -->
+    <form class="login-form">
+        <div class="top-bar">
+            <img src="../../assets/login/timg.jpeg" />
         </div>
+        <div class="main-content">
+            <mat-card>
+                <mat-card-content>
+                    <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
+                    <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
+                    <div class="avatar">
+                        <img src="../../assets/login/top.jpeg" >
+                    </div>
+                    <div class="cell">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>账号</mat-label>
+                            <input matInput placeholder="请输入账号" [formControl]="accountCtrl" name="account">
+                        </mat-form-field>
+                    </div>
         
+                    <div class="cell">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>密码</mat-label>
+                            <input type="password" matInput name="password" [(ngModel)]="user.password" placeholder="请输入密码">
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="cell">
+                        <mat-checkbox color="primary">记住密码</mat-checkbox>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions align="start">
+                    <button mat-raised-button color="primary" class="example-full-width">登录</button>
+                </mat-card-actions>
+                <mat-card-footer>
+                    <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </form>
 
-        <!-- formGroupName 必须在fromGroup的指令里面 -->
-        <form style="display:none;" [formGroup]="groupCtrl">
-            <input type="text" formControlName="firstName" />
-            <input type="text" formControlName="lastName" />
-        </form>
+    <form class="register-form">
+        <div class="top-bar">
+            <img src="../../assets/login/timg.jpeg" />
+        </div>
+        <div class="main-content">
+            <mat-card>
+                <mat-card-content>
+                    <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
+                    <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
+                    <div class="avatar">
+                        <img src="../../assets/login/top.jpeg" >
+                    </div>
+                    <div class="cell">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>账号</mat-label>
+                            <input matInput placeholder="请输入账号" [formControl]="accountCtrl" name="account">
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="cell">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>密码</mat-label>
+                            <input type="password" matInput name="password" [(ngModel)]="user.password" placeholder="请输入密码">
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="cell">
+                        <mat-checkbox color="primary">记住密码</mat-checkbox>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions align="start">
+                    <button mat-raised-button color="primary" class="example-full-width">登录</button>
+                </mat-card-actions>
+                <mat-card-footer>
+                    <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </form>
+    
+    <!-- formGroupName 必须在fromGroup的指令里面 -->
+    <form style="display:none;" [formGroup]="groupCtrl">
+        <input type="text" formControlName="firstName" />
+        <input type="text" formControlName="lastName" />
+    </form>
 
-        <form [formGroup]="groupObject" style="display:none;">
-            <input type="text" formControlName="firstName" />
-            <input type="text" formControlName="lastName" />
-            <div formArrayName="aliases">
-                <div *ngFor="let aliase of aliases.controls; let i = index ;">
-                    <label>aliase
-                        <input type="text" [formControlName]="i"/>
-                    </label>
-                </div>
+    <form [formGroup]="groupObject" style="display:none;">
+        <input type="text" formControlName="firstName" />
+        <input type="text" formControlName="lastName" />
+        <div formArrayName="aliases">
+            <div *ngFor="let aliase of aliases.controls; let i = index ;">
+                <label>aliase
+                    <input type="text" [formControlName]="i"/>
+                </label>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+
 </div>

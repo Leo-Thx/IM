@@ -1,6 +1,7 @@
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
 const _ = require('lodash');
+const url = require('url');
 
 // processor事件类型
 const ProcessorEventType = require('./electron/main/processor.event');
@@ -28,7 +29,9 @@ let mainWindow = null;	// 主要窗口
 app.on('ready', ()=>{
     mainWindow = new BrowserWindow({
             show: false,
-            width: 350, height: 540,
+			width: 400, height: 640,
+			title: '',
+			// frame: false,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
@@ -36,12 +39,12 @@ app.on('ready', ()=>{
         }
 	);
 
-    let uri = 'http://localhost:4200';
-	// let uri = url.format({
-	// 	protocol: 'file',
-	// 	slashes: true,
-	// 	pathname: require('path').join(__dirname, 'dist/IM/index.html')
-	// });
+	var uri = url.format({
+		protocol: 'file',
+		slashes: true,
+		pathname: require('path').join(__dirname, 'dist/IM/index.html')
+	});
+	var uri = 'http://localhost:4200';
 
     mainWindow.loadURL(uri);
 
