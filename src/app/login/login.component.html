@@ -1,4 +1,13 @@
-<div class="login-container">
+<div class="login-container" 
+    (@openClose.start)="onAnimationEvent($event)"
+    (@openClose.done)="onAnimationEvent($event)"
+    >
+    <!-- <div *ngIf="isOpen" [@flyInOut]="isOpen ? 'in': ''" >11111</div> -->
+
+    <!-- <div @myInsertRemoveTrigger *ngIf="isOpen">
+        <p>The box is inserted</p>
+    </div> -->
+
     <form class="login-form">
         <div class="top-bar">
             <img src="../../assets/login/timg.jpeg" />
@@ -30,7 +39,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-raised-button color="primary" class="example-full-width">登录</button>
+                    <button mat-raised-button color="primary" class="example-full-width" (click)="onClick($event)">登录</button>
                 </mat-card-actions>
                 <mat-card-footer>
                     <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button>
