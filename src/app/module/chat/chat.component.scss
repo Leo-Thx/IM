@@ -4,5 +4,11 @@
     }
     .chatMain{
         flex: 1;
+        app-chat-main{
+            flex: 1;
+        }
+        app-chat-input{
+            height: 160px;
+        }
     }
 }
