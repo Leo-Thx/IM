@@ -3,17 +3,27 @@
     .top-bar{
         img{ width: 100%; }
         font-size: 0;
-        opacity: .55;
+        height: 360px; 
+        margin-top: -80px;
+        overflow: hidden;
+        // opacity: .85;
     }
     .main-content {
-        margin: 0 24px;
+        margin: 0 320px;
         position: relative;
-        top: -32px;
+        // position: absolute;
+        top: -72px;
+        // .content{ background: rgba(255, 255, 255, .85); }
         .avatar{ 
             font-size: 0; text-align: center;
-            img{ width: 96px; height: 96px; border-radius: 50%; border: 8px solid; color: #fff; }
+            img{ 
+                width: 80px; height: 80px; 
+                border-radius: 50%; border: 8px solid; color: #fff; 
+                box-shadow: 3px 0px 10px 0 rgba(0, 0, 0, .15);
+            }
+            padding-bottom: 8px;
             overflow: hidden;
-            margin: -64px auto 32px;
+            margin: -56px auto 8px;
         }
         .example-full-width{ width: 100%; }
         .mat-card-footer{
@@ -29,14 +39,6 @@
         &.showin{
             display: block;
             animation: showin 1s;
-        }
-    }
-    @keyframes showin {
-        0% {
-            right: calc(100% - 56px);
-        }
-        100%{
-            right: 0;
         }
     }
 }

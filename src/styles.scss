@@ -6,6 +6,8 @@
 // @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; 
 // @import '~@angular/material/prebuilt-themes/purple-green.css';
 
+@import './custom-theme.scss';
+
 html, body{
     height: 100%;
 }
@@ -17,3 +19,6 @@ body {
         box-sizing: border-box;
     }
 }
+
+
+// 预定义一些常用样式: 圆角、阴影等...
