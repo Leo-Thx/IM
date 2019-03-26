@@ -1,9 +1,8 @@
 .chat-container {
-    display: flex;
-    .chatList, .chatMain, .chatInput{
-        // flex: 1;
-    }
     .chatList{
-        width: 72px;
+        width: 240px;
+    }
+    .chatMain{
+        flex: 1;
     }
 }

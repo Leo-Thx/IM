@@ -36,7 +36,7 @@
     "one-variable-per-declaration": false,
     "no-trailing-whitespace": false,
     "comment-format": [
-      false, 
+      false,
       "check-space"
     ],
     "no-console": [
@@ -58,8 +58,7 @@
     "no-use-before-declare": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
-      true,
-      // "as-needed"
+      true
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,

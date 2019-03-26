@@ -1,3 +1,6 @@
 .chat-main-container{
     background: blue;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: calc(100vh - 200px);
 }

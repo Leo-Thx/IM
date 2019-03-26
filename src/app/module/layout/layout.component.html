@@ -1,8 +1,13 @@
-<div class="layout-container">
-    fxLayout="row wrap"
+<div class="layout-container d-flex h-100">
+    <!-- 菜单栏，常驻 -->
+    <div class="layout-sidenav">
+        <app-sidenav></app-sidenav>
+    </div>
 
-    <a [routerLink]="['./chat']">销售员信息</a>
+    <!-- 其他侧边栏可放置 -->
 
-    <app-sidenav></app-sidenav>
-    <router-outlet></router-outlet>
+    <!-- 主界面载入页面 -->
+    <div class="layout-main">
+        <router-outlet></router-outlet>
+    </div>
 </div>

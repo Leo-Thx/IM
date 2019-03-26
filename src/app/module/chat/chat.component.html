@@ -1,21 +1,15 @@
-<div class="chat-container">
-    chat-container
-    
+<div class="chat-container d-flex h-100">
     <!-- <mat-sidenav-container>
         <mat-sidenav>Start</mat-sidenav>
         <mat-sidenav-content>Main</mat-sidenav-content>
     </mat-sidenav-container> -->
 
     <div class="chatList">
-        <!-- <router-outlet name="chatList"></router-outlet> -->
         <app-chat-list></app-chat-list>
     </div>
-    <div class="chatMain">
-        <!-- <router-outlet name="chatMain"></router-outlet> -->
+
+    <div class="chatMain d-flex flex-column">
         <app-chat-main></app-chat-main>
-    </div>
-    <div class="chatInput">
-        <!-- <router-outlet name="chatInput"></router-outlet> -->
         <app-chat-input></app-chat-input>
     </div>
 
