@@ -1,8 +1,22 @@
 <div class="chat-container">
     chat-container
     
-    <!-- <router-outlet></router-outlet> -->
-    <router-outlet name="chatList"></router-outlet>
-    <router-outlet name="chatMain"></router-outlet>
-    <router-outlet name="chatInput"></router-outlet>
+    <!-- <mat-sidenav-container>
+        <mat-sidenav>Start</mat-sidenav>
+        <mat-sidenav-content>Main</mat-sidenav-content>
+    </mat-sidenav-container> -->
+
+    <div class="chatList">
+        <!-- <router-outlet name="chatList"></router-outlet> -->
+        <app-chat-list></app-chat-list>
+    </div>
+    <div class="chatMain">
+        <!-- <router-outlet name="chatMain"></router-outlet> -->
+        <app-chat-main></app-chat-main>
+    </div>
+    <div class="chatInput">
+        <!-- <router-outlet name="chatInput"></router-outlet> -->
+        <app-chat-input></app-chat-input>
+    </div>
+
 </div>

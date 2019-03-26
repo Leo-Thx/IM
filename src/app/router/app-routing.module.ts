@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'}
+    {path: '', redirectTo: 'layout/chat', pathMatch: 'full'},
+    // {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({

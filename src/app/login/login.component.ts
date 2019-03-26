@@ -5,6 +5,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormArra
 import {ErrorStateMatcher} from '@angular/material/core';
 import { IpcService } from '../share/ipc/Ipc.service';
 import { state, style, trigger, transition, animate, keyframes } from '@angular/animations';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -88,7 +89,12 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
 
     matcher = new MyErrorStateMatcher();
 
-    constructor(private loginSvc: LoginService, private fb: FormBuilder, ipcSvc: IpcService) {
+    constructor(
+        private loginSvc: LoginService, 
+        private fb: FormBuilder, 
+        ipcSvc: IpcService, 
+        public router: Router
+    ) {
         console.log(loginSvc, ipcSvc);
         
         this.user = {};
@@ -118,7 +124,8 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
     goLogin(event: MouseEvent){
         // console.info(event);
         // this.isOpen = !this.isOpen;
-        
+        // 经过ipc到后台登录 进行socket连接
+        this.router.navigateByUrl('layout/chat');
     }
     
     ngAfterViewInit() {

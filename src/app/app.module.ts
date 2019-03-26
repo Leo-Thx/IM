@@ -7,8 +7,8 @@ import { AppRouterModule } from './router/app-routing.module';
 import { ShareModule } from './share/share.module';
 import { networkConfig } from './share/network/network.config';
 import { LoginModule } from './login/login.module';
-import { ChatModule } from './module/chat/chat.module';
 import { ShareMaterialModule } from './material-module';
+import { LayoutModule } from './module/layout/layout.module';
 
 
 @NgModule({
@@ -22,8 +22,8 @@ import { ShareMaterialModule } from './material-module';
         ShareMaterialModule,                    // UI共享模块
         ShareModule.forRoot(networkConfig),     // 唯一网络服务
 
-        LoginModule,            
-        ChatModule,
+        LoginModule,  
+        LayoutModule,
 
         AppRouterModule
     ],
