@@ -6,7 +6,8 @@
 // @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; 
 // @import '~@angular/material/prebuilt-themes/purple-green.css';
 
-@import './custom-theme.scss';
+// 或放入到angular.json中
+// @import './custom-theme.scss';
 
 html, body{
     height: 100%;

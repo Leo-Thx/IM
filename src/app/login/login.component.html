@@ -13,7 +13,7 @@
             <img src="./assets/login/back.jpg" />
         </div>
         <div class="main-content">
-            <mat-card class="content">
+            <mat-card class="content mat-elevation-z10">
                 <mat-card-content>
                     <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
                     <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
@@ -39,7 +39,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-raised-button color="primary" class="example-full-width" (click)="onClick($event)">登录</button>
+                    <button mat-raised-button color="primary" class="example-full-width" (click)="goLogin($event)">登录</button>
                 </mat-card-actions>
                 <mat-card-footer>
                     <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button>

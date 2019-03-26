@@ -115,9 +115,10 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
         this.aliases.push(this.fb.control(''));
     }
 
-    onClick(event: MouseEvent){
-        console.info(event);
-        this.isOpen = !this.isOpen;
+    goLogin(event: MouseEvent){
+        // console.info(event);
+        // this.isOpen = !this.isOpen;
+        
     }
     
     ngAfterViewInit() {
