@@ -1,0 +1,17 @@
+.sidenav-conatainer{
+    ul {
+        list-style: none;
+		li{
+			border-left: 4px solid;
+			border-color: transparent;
+			line-height: 1;
+			font-size: 0;
+			&.active{
+				border-color: red;
+				border-top-left-radius: 2px;
+				border-bottom-left-radius: 2px;
+			}
+		}
+    }
+
+}

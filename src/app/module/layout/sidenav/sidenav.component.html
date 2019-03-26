@@ -1,3 +1,10 @@
-<div class="sidenav-conatainer">
-    sidenav
+<div class="sidenav-conatainer h-100 border-right">
+	<div class="rounded">
+		<img src="./assets/login/top.jpeg" class="w-100">
+	</div>
+    <ul class="p-0 text-center">
+        <li *ngFor="let menu of menus; let i = index;" class="mb-4 p-2" [class.active]="i === 2">
+            <i class="material-icons">{{menu.icon}}</i>
+        </li>
+    </ul>
 </div>
