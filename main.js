@@ -35,7 +35,9 @@ app.on('ready', ()=>{
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
-            }
+			},
+			resizable: false,
+			maximizable: false
         }
 	);
 

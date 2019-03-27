@@ -125,7 +125,7 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
         // console.info(event);
         // this.isOpen = !this.isOpen;
         // 经过ipc到后台登录 进行socket连接
-        this.router.navigateByUrl('layout/chat');
+        // this.router.navigateByUrl('layout/chat');
     }
     
     ngAfterViewInit() {

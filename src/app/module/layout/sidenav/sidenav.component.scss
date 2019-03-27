@@ -1,17 +1,39 @@
 .sidenav-conatainer{
+	// border-right-color: #eee;
+	box-shadow: 2px 2px 2px #eee;
+	user-select: none;
     ul {
-        list-style: none;
+		list-style: none;
+		// height: calc(100% - 72px);
 		li{
-			border-left: 4px solid;
-			border-color: transparent;
-			line-height: 1;
 			font-size: 0;
+			color: #888;
 			&.active{
-				border-color: red;
-				border-top-left-radius: 2px;
-				border-bottom-left-radius: 2px;
+				.active-bar{
+					position: absolute;
+					left: 0; top: 0;
+					height: 100%;width: 4px;
+					background-color: #333333;
+					border-top-left-radius: 3px;
+					border-bottom-left-radius: 3px;
+				}
+				background: linear-gradient(to right, #ddd, #eee, #fff);
+				color: #333333;
+			}
+			&.last{
+				align-items: flex-end;
+			}
+			&:hover{
+				cursor: pointer;
+				// background-color: #eee;
+			}
+			.mat-badge-medium.mat-badge-above .mat-badge-content{ 
+				top: -8px; 
+				right: -16px;
 			}
 		}
     }
-
+	.avatar{
+		height: 72px;
+	}
 }

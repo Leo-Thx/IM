@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-// 
-@import "./../node_modules/bootstrap/scss/bootstrap.scss";
+//
+// @import "./../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "./../node_modules/bootstrap/scss/bootstrap-grid.scss";
 
 // 字体图标
-@import "./../node_modules/material-design-icons/iconfont/material-icons.css";
+// @import "./../node_modules/material-design-icons/iconfont/material-icons.css";
 
-// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
-// @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; 
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 // @import '~@angular/material/prebuilt-themes/purple-green.css';
 
 // 或放入到angular.json中
@@ -17,7 +18,7 @@ html, body{
     height: 100%;
 }
 
-body { 
+body {
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
     * {
@@ -25,5 +26,74 @@ body {
     }
 }
 
+$rateStep: 8px !default;
+$halfRateStep: 4px !default;
 
 // 预定义一些常用样式: 圆角、阴影等...
+
+// 百分比宽高
+@for $index from 1 through 100 {
+    .w-#{$index} { width : $index * 1% ; }
+    .h-#{$index} { height: $index * 1%; }
+}
+
+.flex { display: flex; }
+.flex-column {
+    @extend .flex;
+    flex-direction: column;
+}
+
+
+// 边框
+// border-top: 1px solid;
+@each $var in (top, right, bottom, left) {
+    .border-#{$var} {
+        border-#{$var}-width: 1px;
+        border-#{$var}-style: solid;
+    }
+}
+
+// 内填充和边距
+// m0 - m8, p0-p8
+@each $key, $value in (m: margin, p: padding) {
+    @for $rate from 0 through 8 {
+        .#{$key}-#{$rate} {
+            #{$value}: $rate * $rateStep;
+        }
+    }
+// mt-0 - mt-8, pt-0 - pt-8
+    @each $direction, $dirValue in (t:top, r:right, b:bottom, l:left) {
+        @for $rate from 0 through 8 {
+            .#{$key}#{$direction}-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $rateStep;
+            }
+        }
+    }
+}
+
+// 文字对齐方式
+@each $var in (left, center, right) {
+    .text-#{$var}{ text-align: #{$var} }
+}
+
+// 圆角
+.rounded {
+    border-radius: $halfRateStep;
+}
+@each $lfKey, $lfValue in (l:left, r:right) {
+    @each $tbKey, $tbValue in (t:top, b:bottom) {
+        // rounded-lt, rounded-lb
+        .rounded-#{$tbKey}#{$lfKey}-radius {
+            // border-top-left-radius: 
+            // border-bottom-left-radius: 
+            border-#{$tbValue}-#{$lfValue}-radius: $halfRateStep;
+        }
+    }
+}
+
+
+@each $var in (absolute, relative, static, fixed) {
+    .position-#{$var}{
+        position: #{$var}
+    }
+}

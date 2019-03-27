@@ -11,7 +11,7 @@ const menus = [
     {icon: 'date_range', name: '日程'},
     {icon: 'email', name: '邮箱'},
     {icon: 'library_music', name: '音乐'},
-    {icon: 'settings_applications', name: '设置'}
+    {icon: 'settings_applications', last: true, name: '设置'}
 ];
 
 @Component({
