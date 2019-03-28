@@ -29,7 +29,7 @@ let mainWindow = null;	// 主要窗口
 app.on('ready', ()=>{
     mainWindow = new BrowserWindow({
             show: false,
-			width: 1050, height: 700,
+			width: 1080, height: 720,
 			title: '',
 			// frame: false,
             webPreferences: {

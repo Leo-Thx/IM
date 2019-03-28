@@ -1,13 +1,8 @@
 .sidenav-conatainer{
-	// border-right-color: #eee;
 	box-shadow: 2px 2px 2px #eee;
 	user-select: none;
-    ul {
-		list-style: none;
-		// height: calc(100% - 72px);
-		li{
-			font-size: 0;
-			color: #888;
+	mat-nav-list{
+		a{
 			&.active{
 				.active-bar{
 					position: absolute;
@@ -25,14 +20,14 @@
 			}
 			&:hover{
 				cursor: pointer;
-				// background-color: #eee;
 			}
 			.mat-badge-medium.mat-badge-above .mat-badge-content{ 
 				top: -8px; 
 				right: -16px;
 			}
 		}
-    }
+	}
+	
 	.avatar{
 		height: 72px;
 	}

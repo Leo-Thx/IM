@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, ViewChildren, QueryList } from "@angular/core";
+import { MatNavList, MatListItem } from '@angular/material';
 
 export interface SideNavMenu {
     icon: string;
@@ -21,10 +22,19 @@ const menus = [
         './sidenav.component.scss'
     ]
 })
-export class SideNavComponent {
+export class SideNavComponent implements AfterViewInit{
     public menus: Array<SideNavMenu> = menus;
-    
-    constructor () {
-        
+
+    @ViewChild(MatNavList) public matNavList: MatNavList;
+    @ViewChildren('navAitem') public matListItem: QueryList<MatListItem>;
+
+    constructor () {}
+
+    ngAfterViewInit() {
+        for(let matItem of this.matListItem.toArray() ){
+            let hostEle = matItem._getHostElement(),
+                firstEle = hostEle.firstElementChild;
+            if( firstEle instanceof HTMLDivElement ) firstEle.style.justifyContent="center";
+        }
     }
 }

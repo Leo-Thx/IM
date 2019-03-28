@@ -1,8 +1,8 @@
 <div class="sidenav-conatainer h-100">
-	<div class="p-2 mb-4 avatar">
+	<div class="p-2 mb-3 avatar">
 		<img src="./assets/login/top.jpeg" class="w-100 h-100 rounded">
 	</div>
-    <ul class="p-0 m-0 text-center">
+    <!-- <ul class="p-0 m-0 text-center">
         <li class="mb-2 p-1 position-relative"  matRipple 
             *ngFor="let menu of menus; let i = index;"
             [class.active]="i === 2 && !menu.last"
@@ -14,5 +14,21 @@
                 [matTooltip]="menu.name" matTooltipPosition="right"
             >{{menu.icon}}</mat-icon>
         </li>
-    </ul>
+    </ul> -->
+
+
+    <mat-nav-list>
+        <a mat-list-item #navAitem
+            *ngFor="let menu of menus; let i = index;"
+            [class.active]="i === 2 && !menu.last"
+            [class.last]="menu.last"
+        >
+            <span class="active-bar"></span>
+            <mat-icon class="mat-18" 
+                [matBadgeHidden]="i !== 2" matBadge="99" matBadgeColor="accent"
+                [matTooltip]="menu.name" matTooltipPosition="right"
+            >{{menu.icon}}</mat-icon>
+        </a>
+    </mat-nav-list>
+
 </div>
