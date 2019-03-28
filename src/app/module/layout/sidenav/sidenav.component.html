@@ -1,5 +1,5 @@
 <div class="sidenav-conatainer h-100">
-	<div class="p-2 avatar">
+	<div class="p-2 mb-4 avatar">
 		<img src="./assets/login/top.jpeg" class="w-100 h-100 rounded">
 	</div>
     <ul class="p-0 m-0 text-center">
@@ -9,7 +9,10 @@
             [class.last]="menu.last"
         >
             <span class="active-bar"></span>
-            <mat-icon class="mat-18" [matBadgeHidden]="i !== 2" matBadge="99" matBadgeColor="accent">{{menu.icon}}</mat-icon>
+            <mat-icon class="mat-18" 
+                [matBadgeHidden]="i !== 2" matBadge="99" matBadgeColor="accent"
+                [matTooltip]="menu.name" matTooltipPosition="right"
+            >{{menu.icon}}</mat-icon>
         </li>
     </ul>
 </div>

@@ -1,3 +1,40 @@
 .chat-list-container{
-    // background: red;
+    ul{
+        list-style: none;
+        li{ overflow: hidden; }
+        overflow: auto;
+    }
+    article{
+        font-size: 0;
+        >div{display: inline-block;}
+        .avatar{ 
+            width: 40px; height: 40px; 
+            flex-grow: 0; flex-shrink: 0;   // 主要不进行缩小
+            vertical-align: top;
+            // img{ border-radius: 50%; }
+        }
+        .content {
+            width: calc(100% - 40px);
+            font-size: 12px;
+            overflow: hidden;
+            justify-content: space-between;
+            .title{
+                .subtitle{ float: left; font-size: 14px; }
+                .time{
+                    margin-right: 0; margin-left: auto; 
+                    width: 64px;
+                    color: #aaa;
+                }
+            }
+            .sketch{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #999;
+            }
+            .mat-divider{
+                margin-top: 8px; margin-bottom: 8px;
+            }
+        }
+    }
 }
