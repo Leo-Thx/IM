@@ -1,40 +1,66 @@
 .chat-list-container{
-    ul{
-        list-style: none;
-        li{ overflow: hidden; }
+    .mat-list{
         overflow: auto;
-    }
-    article{
-        font-size: 0;
-        >div{display: inline-block;}
-        .avatar{ 
-            width: 40px; height: 40px; 
-            flex-grow: 0; flex-shrink: 0;   // 主要不进行缩小
-            vertical-align: top;
-            // img{ border-radius: 50%; }
+        padding-top: 0;
+        .title{
+            .subtitle{ float: left; font-size: 14px; }
+            .time{
+                margin-right: 0; margin-left: auto; 
+                width: 64px;
+                color: #aaa;
+                font-size: 12px;
+                float: right;
+                margin-top: 2px;
+            }
         }
-        .content {
-            width: calc(100% - 40px);
-            font-size: 12px;
+        .sketch{
+            white-space: nowrap;
             overflow: hidden;
-            justify-content: space-between;
-            .title{
-                .subtitle{ float: left; font-size: 14px; }
-                .time{
-                    margin-right: 0; margin-left: auto; 
-                    width: 64px;
-                    color: #aaa;
-                }
-            }
-            .sketch{
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                color: #999;
-            }
-            .mat-divider{
-                margin-top: 8px; margin-bottom: 8px;
-            }
+            text-overflow: ellipsis;
+            color: #999;
+            font-size: 12px;
+            margin: 4px 0 0;
         }
     }
+    .mat-list-base .mat-list-item .mat-list-avatar{
+        border-radius: 4px;
+    }
+
+    // ul{
+    //     list-style: none;
+    //     li{ overflow: hidden; }
+    //     overflow: auto;
+    // }
+    // article{
+    //     font-size: 0;
+    //     >div{display: inline-block;}
+    //     .avatar{ 
+    //         width: 40px; height: 40px; 
+    //         flex-grow: 0; flex-shrink: 0;   // 主要不进行缩小
+    //         vertical-align: top;
+    //     }
+    //     .content {
+    //         width: calc(100% - 40px);
+    //         font-size: 12px;
+    //         overflow: hidden;
+    //         justify-content: space-between;
+    //         .title{
+    //             .subtitle{ float: left; font-size: 14px; }
+    //             .time{
+    //                 margin-right: 0; margin-left: auto; 
+    //                 width: 64px;
+    //                 color: #aaa;
+    //             }
+    //         }
+    //         .sketch{
+    //             white-space: nowrap;
+    //             overflow: hidden;
+    //             text-overflow: ellipsis;
+    //             color: #999;
+    //         }
+    //         .mat-divider{
+    //             margin-top: 8px; margin-bottom: 8px;
+    //         }
+    //     }
+    // }
 }

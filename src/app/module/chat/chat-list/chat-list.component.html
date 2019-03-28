@@ -1,5 +1,5 @@
 <div class="chat-list-container h-100">
-    <ul class="p-0 pl-1 m-0 pt-1 h-100">
+    <!-- <ul class="p-0 pl-1 m-0 pt-1 h-100">
         <li class="block pt-1 pb-1" *ngFor="let item of listArray">
             <article>
                 <div class="avatar">
@@ -16,5 +16,79 @@
                 </div>
             </article>
         </li>
-    </ul>
+    </ul> -->
+
+    <mat-list class="h-100">
+        <mat-list-item *ngFor="let item of listArray" #matListItem>
+            <img matListAvatar src="./assets/login/top.jpeg" class="rounded">
+            <h3 matLine class="title">
+                <span class="subtitle">有个人</span>
+                <span class="time">2019-03-28</span>
+            </h3>
+            <p matLine class="sketch">
+                <span>我只是稍微的说了一句话我只是稍微的说了一句话</span>
+            </p>
+            <mat-divider [inset]="true"></mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <!-- <mat-action-list>
+        <button mat-list-item (click)="save()"> Save </button>
+        <button mat-list-item (click)="undo()"> Undo </button>
+    </mat-action-list> -->
+
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let message of messages">
+            <h3 matLine> {{message.from}} </h3>
+            <p matLine>
+            <span> {{message.subject}} </span>
+            <span class="demo-2"> -- {{message.content}} </span>
+            </p>
+        </mat-list-item>
+    </mat-list> -->
+          
+    <!-- three line list -->
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let message of messages">
+            <h3 matLine> {{message.from}} </h3>
+            <p matLine> {{message.subject}} </p>
+            <p matLine class="demo-2"> {{message.content}} </p>
+        </mat-list-item>
+    </mat-list> -->
+
+
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let message of messages">
+            <mat-icon matListIcon>folder</mat-icon>
+            <h3 matLine> {{message.from}} </h3>
+            <p matLine>
+            <span> {{message.subject}} </span>
+            <span class="demo-2"> -- {{message.content}} </span>
+            </p>
+        </mat-list-item>
+    </mat-list> -->
+
+    <!-- <mat-list dense>
+        <mat-list-item> Pepper </mat-list-item>
+        <mat-list-item> Salt </mat-list-item>
+        <mat-list-item> Paprika </mat-list-item>
+    </mat-list> -->
+
+
+    <!-- <mat-list>
+        <h3 matSubheader>Folders</h3>
+        <mat-list-item *ngFor="let folder of messages">
+            <mat-icon matListIcon>folder</mat-icon>
+            <h4 matLine>{{folder.from}}</h4>
+            <p matLine class="demo-2"> {{folder.from}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Notes</h3>
+        <mat-list-item *ngFor="let note of messages">
+            <mat-icon matListIcon>note</mat-icon>
+            <h4 matLine>{{note.from}}</h4>
+            <p matLine class="demo-2"> {{note.from}} </p>
+        </mat-list-item>
+    </mat-list> -->
+
 </div>

@@ -26,7 +26,7 @@ export class SideNavComponent implements AfterViewInit{
     public menus: Array<SideNavMenu> = menus;
 
     @ViewChild(MatNavList) public matNavList: MatNavList;
-    @ViewChildren('navAitem') public matListItem: QueryList<MatListItem>;
+    @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
 
     constructor () {}
 
@@ -36,5 +36,6 @@ export class SideNavComponent implements AfterViewInit{
                 firstEle = hostEle.firstElementChild;
             if( firstEle instanceof HTMLDivElement ) firstEle.style.justifyContent="center";
         }
+        // console.info(this.menus);
     }
 }
