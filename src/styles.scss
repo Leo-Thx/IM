@@ -11,8 +11,12 @@
 // @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 // @import '~@angular/material/prebuilt-themes/purple-green.css';
 
+
+@import './scss/variables';
+
 // 或放入到angular.json中
-// @import './custom-theme.scss';
+// @import './scss/custom-theme.scss';
+
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
@@ -45,9 +49,6 @@ body {
         box-sizing: border-box;
     }
 }
-
-$rateStep: 8px !default;
-$halfRateStep: 4px !default;
 
 // 预定义一些常用样式: 圆角、阴影等...
 
@@ -84,14 +85,20 @@ $halfRateStep: 4px !default;
 @each $key, $value in (m: margin, p: padding) {
     @for $rate from 0 through 8 {
         .#{$key}-#{$rate} {
-            #{$value}: $rate * $rateStep;
+            #{$value}: $rate * $pixelUnit;
         }
     }
 // mt-0 - mt-8, pt-0 - pt-8
     @each $direction, $dirValue in (t:top, r:right, b:bottom, l:left) {
         @for $rate from 0 through 8 {
             .#{$key}#{$direction}-#{$rate} {
-                #{$value}-#{$dirValue}: $rate * $rateStep;
+                #{$value}-#{$dirValue}: $rate * $pixelUnit;
+            }
+            .#{$key}#{$direction}-sm-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $smallPixelUnit;
+            }
+            .#{$key}#{$direction}-mn-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $miniPixelUnit;
             }
         }
     }
@@ -104,7 +111,7 @@ $halfRateStep: 4px !default;
 
 // 圆角
 .rounded {
-    border-radius: $halfRateStep;
+    border-radius: $smallPixelUnit;
 }
 @each $lfKey, $lfValue in (l:left, r:right) {
     @each $tbKey, $tbValue in (t:top, b:bottom) {
@@ -112,7 +119,7 @@ $halfRateStep: 4px !default;
         .rounded-#{$tbKey}#{$lfKey}-radius {
             // border-top-left-radius: 
             // border-bottom-left-radius: 
-            border-#{$tbValue}-#{$lfValue}-radius: $halfRateStep;
+            border-#{$tbValue}-#{$lfValue}-radius: $smallPixelUnit;
         }
     }
 }
