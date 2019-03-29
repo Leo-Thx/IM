@@ -32,37 +32,37 @@ export class AppComponent implements AfterViewInit {
     }
 
     onClick(){
-        let ipcRenderer = window.$NgEl.getIpcRenderer();
-        ipcRenderer.send('capture-screen');
+        // let ipcRenderer = window.$NgEl.getIpcRenderer();
+        // ipcRenderer.send('capture-screen');
     }
 
     onClick1(){
-        let descktopCap: DesktopCapturer = window.$NgEl.getDesktopCapturer();
-        descktopCap.getSources({
-            types: ['window', 'screen'], // 屏幕或窗口
-            thumbnailSize: {
-                width:1, height: 1
-            }
-        }, (error, sources)=>{
-            let music = sources.find(item=>item.name === '网易云音乐');
-            navigator.mediaDevices.getUserMedia({
-                audio: false,
-                video: {
-                    mandatory: {
-                      chromeMediaSource: 'desktop',
-                      chromeMediaSourceId: music.id,
-                      minWidth: 1280,
-                      maxWidth: 1280,
-                      minHeight: 720,
-                      maxHeight: 720
-                    }
-                  } as MediaTrackConstraints
-            }).then((stream)=>{
-                this.handlestream(stream);
-            }).catch(error=>{
-                console.info(error);
-            });
-        });
+        // let descktopCap: DesktopCapturer = window.$NgEl.getDesktopCapturer();
+        // descktopCap.getSources({
+        //     types: ['window', 'screen'], // 屏幕或窗口
+        //     thumbnailSize: {
+        //         width:1, height: 1
+        //     }
+        // }, (error, sources)=>{
+        //     let music = sources.find(item=>item.name === '网易云音乐');
+        //     navigator.mediaDevices.getUserMedia({
+        //         audio: false,
+        //         video: {
+        //             mandatory: {
+        //               chromeMediaSource: 'desktop',
+        //               chromeMediaSourceId: music.id,
+        //               minWidth: 1280,
+        //               maxWidth: 1280,
+        //               minHeight: 720,
+        //               maxHeight: 720
+        //             }
+        //           } as MediaTrackConstraints
+        //     }).then((stream)=>{
+        //         this.handlestream(stream);
+        //     }).catch(error=>{
+        //         console.info(error);
+        //     });
+        // });
     }
     handlestream( stream ){
         const video = this.videoEl.nativeElement;
