@@ -92,10 +92,10 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
     constructor(
         private loginSvc: LoginService, 
         private fb: FormBuilder, 
-        ipcSvc: IpcService, 
+        public ipcSvc: IpcService, 
         public router: Router
     ) {
-        console.log(loginSvc, ipcSvc);
+        console.log(this.loginSvc, this.ipcSvc);
         
         this.user = {};
         this.useFormBuilder();

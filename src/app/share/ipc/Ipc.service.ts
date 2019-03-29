@@ -9,10 +9,16 @@ import { NgElectron, IPC_EventType } from './ipc';
     providedIn: 'root'
 })
 export class IpcService {
-    private ngElectron = window.$NgEl;
-    private ipcEvent = window.$IpcEvent;
+    private ngElectron: NgElectron;
+    private ipcEvent: IPC_EventType;
 
     constructor() {
-        console.info(this);
+        this.ngElectron = window.$NgEl;
+        this.ipcEvent = window.$IpcEvent;
+    }
+
+    // 退出应用
+    exitApp() {
+        this.ngElectron.Class.exitApp();
     }
 }

@@ -19,9 +19,11 @@ class IM_Platform {
         this.os = globalVariable.get(globalVariable.KEY_NAMES.APP_PLATFORM);
         this.osPlatformConstructor = IM_Platform;   // 默认给自己 防止报错
 
+        // 
         if( this.os === 'darwin' ) this.osPlatformConstructor = require('./macos.platform');
         else if( this.os === 'win32' ) this.osPlatformConstructor =  require('./win.platform');
         
+        // 构造具体的平台处理实例
         this.osPlatform = new this.osPlatformConstructor();
         if( this.osPlatform ) this.osPlatform.init();
 
@@ -73,6 +75,13 @@ class IM_Platform {
         })
 
         noti.show();
+    }
+
+    exitApp(){
+        let allWins = BrowserWindow.getAllWindows();
+        for(let win of allWins){
+            win.close();
+        }
     }
 };
 

@@ -16,6 +16,10 @@ const MainBootstrap = {
         // 初始化平台代码
         platform._init();
 
+        // 应用本身事件监听 --- start -----
+        ipcMain.on(IPC_Event.EXIT_APP, platform.exitApp);
+        // ----------------- end  ------
+
         // 登录
         ipcMain.on(IPC_Event.LOGIN, login.loginHandler);
         

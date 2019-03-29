@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { IpcService } from 'src/app/share/ipc/Ipc.service';
 
 @Component({
     selector: 'app-topbar',
@@ -8,5 +9,10 @@ import { Component } from "@angular/core";
     ]
 })
 export class AppTopBarComponent {
-    constructor() {}
+    constructor(public ipcSvc: IpcService) {}
+    minimizable(){}
+    // 关闭窗口
+    closeWindow(){
+        this.ipcSvc.exitApp();
+    }
 }

@@ -32,11 +32,14 @@ app.on('ready', ()=>{
 			width: 1080, height: 720,
 			title: '',
 			frame: false,
+			useContentSize: true,
+			backgroundColor: "#FEFEFE",
 			skipTaskbar: true,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
 			},
+			// titleBarStyle: global.process.platform === 'darwin' ? 'hidden' : 'default',
 			// titleBarStyle: 'hiddenInset',
 			// titleBarStyle: 'hidden',
 			// titleBarStyle: 'customButtonsOnHover',
@@ -45,6 +48,7 @@ app.on('ready', ()=>{
 			maximizable: false
         }
 	);
+	// mainWindow = new BrowserWindow(browserStyle);
 
 	var uri = url.format({
 		protocol: 'file',

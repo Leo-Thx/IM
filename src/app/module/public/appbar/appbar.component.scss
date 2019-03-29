@@ -8,11 +8,17 @@
     position: fixed;
     width: 100%; left: 0; top: 0;
     color: #fff;
-    .material-icons{
-        font-size: 18px;
-        user-select: none;
+    z-index: 1000;
+    &:hover{
+        cursor: pointer;
+    }
+    .action-menu{
+        float: right; font-size: 0;
     }
     .mat-icon{
         width: 18px; height: 18px;
+        // line-height: 1;
+        font-size: 18px;
+        user-select: none;
     }
 }

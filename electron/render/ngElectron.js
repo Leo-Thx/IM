@@ -8,12 +8,14 @@ const IPC_Event = require('../common/IPC_EventType');
 module.exports.AngularElectron = new class AngularElectron{
 	constructor() {
 		this.Class = AngularElectron;
+		this.config = this.Class.init();
 	}
 	static init(){
 		return {
 			os: process.platform
 		}
 	}
+
 	static login(account, pwd){
 	    return new Promise((resolve)=>{
             ipcRenderer.once(IPC_Event.buildReply(IPC_Event.LOGIN), function(event, data){
@@ -23,11 +25,14 @@ module.exports.AngularElectron = new class AngularElectron{
             ipcRenderer.send(IPC_Event.LOGIN, {account, pwd});
         });
 	}
-	getDesktopCapturer() {
-		return desktopCapturer;
-	}
-	getIpcRenderer(){
+
+	static getDesktopCapturer() { return desktopCapturer; }
+	static getIpcRenderer(){
 		// return electron.ipcRenderer;
 		return require('electron').ipcRenderer;
+	}
+
+	static exitApp() {
+		ipcRenderer.send(IPC_Event.EXIT_APP);
 	}
 };
