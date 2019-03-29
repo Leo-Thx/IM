@@ -1,0 +1,18 @@
+@import './../../../../scss/variables';
+
+.app-topbar{
+    height: 3 * $pixelUnit;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.2);;
+    -webkit-app-region: drag;
+    position: fixed;
+    width: 100%; left: 0; top: 0;
+    color: #fff;
+    .material-icons{
+        font-size: 18px;
+        user-select: none;
+    }
+    .mat-icon{
+        width: 18px; height: 18px;
+    }
+}

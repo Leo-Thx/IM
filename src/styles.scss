@@ -84,19 +84,31 @@ body {
 // m0 - m8, p0-p8
 @each $key, $value in (m: margin, p: padding) {
     @for $rate from 0 through 8 {
+        // m-0
         .#{$key}-#{$rate} {
             #{$value}: $rate * $pixelUnit;
+        }
+        // m-sm-0
+        .#{$key}-sm-#{$rate} {
+            #{$value}: $rate * $smallPixelUnit;
+        }
+        // m-mn-0
+        .#{$key}-mn-#{$rate} {
+            #{$value}: $rate * $miniPixelUnit;
         }
     }
 // mt-0 - mt-8, pt-0 - pt-8
     @each $direction, $dirValue in (t:top, r:right, b:bottom, l:left) {
         @for $rate from 0 through 8 {
+            // mt-1
             .#{$key}#{$direction}-#{$rate} {
                 #{$value}-#{$dirValue}: $rate * $pixelUnit;
             }
+            // mt-sm-1
             .#{$key}#{$direction}-sm-#{$rate} {
                 #{$value}-#{$dirValue}: $rate * $smallPixelUnit;
             }
+            // mt-mn-1
             .#{$key}#{$direction}-mn-#{$rate} {
                 #{$value}-#{$dirValue}: $rate * $miniPixelUnit;
             }

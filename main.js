@@ -31,11 +31,16 @@ app.on('ready', ()=>{
             show: false,
 			width: 1080, height: 720,
 			title: '',
-			// frame: false,
+			frame: false,
+			skipTaskbar: true,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')
 			},
+			// titleBarStyle: 'hiddenInset',
+			// titleBarStyle: 'hidden',
+			// titleBarStyle: 'customButtonsOnHover',
+			// icon
 			resizable: false,
 			maximizable: false
         }
