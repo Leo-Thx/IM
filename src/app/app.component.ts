@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { NetworkService } from './share/network/network.service';
-import { DesktopCapturer } from 'electron';
+import { Router, Event, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 // ContentChild, ContentChildren    // 投影
 // ViewChild, ViewChildren          // 视图
@@ -13,7 +13,14 @@ import { DesktopCapturer } from 'electron';
 })
 export class AppComponent implements AfterViewInit {
     title = 'IM';
-    constructor(public service: NetworkService) {
+    public currentClasses = {
+        'pt-3': false
+    }
+    constructor(
+        public service: NetworkService, 
+        public router: Router,
+        public activatedRouter: ActivatedRoute
+    ) {
         // console.log(service);
         // console.warn(this.deskSvc);
 
@@ -23,7 +30,19 @@ export class AppComponent implements AfterViewInit {
 		// 	thumbnailSize: { width:1, height: 1 }
 		// }, (error, sources)=>{
 		// 	console.info(sources);
-		// })
+        // })
+        // 查看文档进行过滤
+
+       this.router.events.subscribe((event)=>{
+            if( event instanceof NavigationEnd ){
+                this.currentClasses['pt-3'] = false;
+                if( event.urlAfterRedirects !== '/login' ) this.currentClasses['pt-3'] = true;;
+            }
+       });
+
+        this.activatedRouter.url.subscribe(url=>{
+            console.info(url);
+        });
     }
     @ViewChild('video') videoEl: ElementRef;
 
