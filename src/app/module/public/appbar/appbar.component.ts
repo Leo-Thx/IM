@@ -13,6 +13,10 @@ export class AppTopBarComponent {
     minimizable(){}
     // 关闭窗口
     closeWindow(){
-        this.ipcSvc.exitApp();
+        // this.ipcSvc.exitApp();
+        alert(1111);
+    }
+    onClick(){
+        alert(111);
     }
 }

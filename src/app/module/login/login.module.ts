@@ -3,14 +3,12 @@ import { LoginService } from './login.service';
 import { RouterModule } from '@angular/router';
 import { loginRoutes } from './login.routing';
 import { LoginComponent } from './login.component';
-import { ShareModule } from '../share/share.module';
-import { PublicComponentModule } from '../module/public/public.module';
+import { ShareModule } from 'src/app/share/share.module';
 
 @NgModule({
     imports: [ 
         RouterModule.forChild(loginRoutes), 
-        ShareModule,
-        PublicComponentModule
+        ShareModule
     ],
     providers: [ LoginService ],
     declarations: [ LoginComponent ],

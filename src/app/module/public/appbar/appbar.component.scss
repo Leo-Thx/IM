@@ -1,14 +1,14 @@
 @import './../../../../scss/variables';
 
 .app-topbar{
-    height: 3 * $pixelUnit;
-    font-size: 14px;
-    background: rgba(0, 0, 0, 0.2);;
+    height: 5 * $pixelUnit;
+    // font-size: 14px;
+    // background: rgba(0, 0, 0, 0.2);;
     -webkit-app-region: drag;
-    position: fixed;
-    width: 100%; left: 0; top: 0;
-    color: #fff;
-    z-index: 1000;
+    // position: fixed;
+    // width: 100%; left: 0; top: 0;
+    // color: #fff;
+    // z-index: 1000;
     &:hover{
         cursor: pointer;
     }
@@ -16,9 +16,9 @@
         float: right; font-size: 0;
     }
     .mat-icon{
-        width: 18px; height: 18px;
+        // width: 18px; height: 18px;
         // line-height: 1;
-        font-size: 18px;
+        // font-size: 18px;
         user-select: none;
     }
 }

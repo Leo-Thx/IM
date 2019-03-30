@@ -19,7 +19,7 @@ import { ShareModule } from 'src/app/share/share.module';
     ],
     providers: [ ChatService ],
     imports: [ 
-        // RouterModule.forChild(chatRoutes),
+        RouterModule.forChild(chatRoutes),
         ShareModule
     ],
     exports: [

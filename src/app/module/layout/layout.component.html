@@ -1,20 +1,7 @@
-<div class="layout-container flex h-100 pt-3">
-    <!-- <mat-sidenav-container class="example-container">
-        <mat-sidenav opened mode="side">11111</mat-sidenav>
-        <mat-sidenav opened mode="side" position="end">End content</mat-sidenav>
-        Implicit main content
-    </mat-sidenav-container> -->
-    <app-topbar></app-topbar>
+<div class="layout-container flex-column h-100">
+    <!-- 顶部导航 -->
+    <ng-content select=".app-bar"></ng-content>
 
-    <!-- 菜单栏，常驻 -->
-    <nav class="layout-sidenav">
-        <app-sidenav></app-sidenav>
-    </nav>
-
-    <!-- 其他侧边栏可放置 -->
-
-    <!-- 主界面载入页面 -->
-    <div class="layout-main">
-        <router-outlet></router-outlet>
-    </div>
+    <!-- 主界面组件载入 -->
+    <ng-content select=".app-main"></ng-content>
 </div>

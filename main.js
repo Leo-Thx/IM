@@ -34,7 +34,7 @@ app.on('ready', ()=>{
 			frame: false,
 			useContentSize: true,
 			backgroundColor: "#FEFEFE",
-			skipTaskbar: true,
+			// skipTaskbar: true,
             webPreferences: {
                 nodeIntegration: false,
                 preload: path.join(__dirname, 'electron/render/main.preload.js')

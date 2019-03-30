@@ -3,9 +3,9 @@ import { LoginService } from './login.service';
 
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { IpcService } from '../share/ipc/Ipc.service';
 import { state, style, trigger, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
+import { IpcService } from 'src/app/share/ipc/Ipc.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -122,10 +122,9 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
     }
 
     goLogin(event: MouseEvent){
-        // console.info(event);
         // this.isOpen = !this.isOpen;
         // 经过ipc到后台登录 进行socket连接
-        this.router.navigateByUrl('layout/chat');
+        this.router.navigateByUrl('main');
     }
     
     ngAfterViewInit() {
