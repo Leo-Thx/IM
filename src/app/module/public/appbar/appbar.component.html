@@ -1,11 +1,21 @@
-<div class="app-topbar w-100">
-    <div class="action-menu">
-        <mat-icon class="mat-18" matRipple>remove</mat-icon>
-        <mat-icon (click)="minimizable($event)" matRipple>fullscreen_exit</mat-icon>
-        <mat-icon class="mat-18" matRipple>fullscreen</mat-icon>
-        <mat-icon (click)="closeWindow($event)" matRipple>close</mat-icon>
-        <button mat-button (click)="onClick($event)">Action</button>
-
-        <div class="inline-block" (click)="onClick($event)">jdlsjfldsjfs</div>
+<div class="app-topbar w-100 flex">
+    
+    <div class="app-icon h-100 p-sm-1">
+        <img src="./assets/logo/logoIconForWin@2x.png" class="w-100">
     </div>
+    
+    <div class="app-region h-100"></div>
+
+    <!-- 时间，日历下拉框，电池，wifi -->
+    <div class="time">
+        <span class="currentTime">{{currentTime | date:'mediumTime'}}</span>
+    </div>
+
+    <div class="app-menu">
+        <mat-icon (click)="minimizable($event)" matRipple>remove</mat-icon>
+        <!-- <mat-icon (click)="minimizable($event)" matRipple>fullscreen_exit</mat-icon> -->
+        <mat-icon (click)="maximizable($event)" matRipple>fullscreen</mat-icon>
+        <mat-icon (click)="closeWindow($event)" matRipple>close</mat-icon>
+    </div>
+
 </div>

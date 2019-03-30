@@ -138,7 +138,7 @@ body {
 
 
 @each $var in (absolute, relative, static, fixed) {
-    .position-#{$var}{
+    .#{$var}{
         position: #{$var}
     }
 }

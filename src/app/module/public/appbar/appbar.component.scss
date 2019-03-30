@@ -1,24 +1,33 @@
 @import './../../../../scss/variables';
+@import './../../../../scss/common.mixin';
 
 .app-topbar{
-    height: 5 * $pixelUnit;
-    // font-size: 14px;
-    // background: rgba(0, 0, 0, 0.2);;
-    -webkit-app-region: drag;
-    // position: fixed;
-    // width: 100%; left: 0; top: 0;
-    // color: #fff;
-    // z-index: 1000;
-    &:hover{
-        cursor: pointer;
+    height: 3 * $pixelUnit;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%; left: 0; top: 0;
+    color: #fff;
+    justify-content: space-between;
+
+    .app-icon{width: 3 * $pixelUnit;}
+    .app-region{
+        -webkit-app-region: drag;
+        flex-grow: 1;
     }
-    .action-menu{
-        float: right; font-size: 0;
+    
+    .time{
+        @include unselect;
+        span{vertical-align: middle;}
+        
     }
+
+    .app-menu{
+        font-size: 0;
+    }
+
     .mat-icon{
-        // width: 18px; height: 18px;
-        // line-height: 1;
-        // font-size: 18px;
-        user-select: none;
+        &:hover{
+            cursor: pointer;
+        }
+        @include unselect;
     }
 }

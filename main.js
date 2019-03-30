@@ -43,7 +43,7 @@ app.on('ready', ()=>{
 			// titleBarStyle: 'hiddenInset',
 			// titleBarStyle: 'hidden',
 			// titleBarStyle: 'customButtonsOnHover',
-			// icon
+			icon: path.join(app.getAppPath(), 'logo/logoIconForWin@2x.png'),
 			resizable: false,
 			maximizable: false
         }
