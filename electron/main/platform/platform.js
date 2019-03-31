@@ -1,4 +1,5 @@
-const { Notification, BrowserWindow, app } = require('electron');
+const { Notification, BrowserWindow, app, Tray, Menu } = require('electron');
+const path = require('path');
 
 /**
  * 不使用鸭子类型校验 强制接口实现
@@ -8,10 +9,11 @@ const { Notification, BrowserWindow, app } = require('electron');
  *      linux.js
  */
 class IM_Platform {
-    constructor () {
+    constructor (mainBootstrap) {
         this.Keys = {
             Esc: 'Esc'
         };
+        this.mainBootstrap = mainBootstrap;
     }
 
     // 初始化
@@ -19,15 +21,41 @@ class IM_Platform {
         this.os = globalVariable.get(globalVariable.KEY_NAMES.APP_PLATFORM);
         this.osPlatformConstructor = IM_Platform;   // 默认给自己 防止报错
 
+        // 创建系统托盘图标
+        this.createSysTray();
+
         // 
         if( this.os === 'darwin' ) this.osPlatformConstructor = require('./macos.platform');
         else if( this.os === 'win32' ) this.osPlatformConstructor =  require('./win.platform');
         
         // 构造具体的平台处理实例
-        this.osPlatform = new this.osPlatformConstructor();
-        if( this.osPlatform ) this.osPlatform.init();
+        this.osPlatform = new this.osPlatformConstructor(this);
+        if( this.osPlatform ) this.osPlatform.init();   // 进行对应平台代码的初始化
 
+        // 混入不同平台的按键
         Object.assign(this.Keys, this.osPlatformConstructor.Keys);
+
+    }
+
+    // 创建系统托盘
+    createSysTray(){
+        let tray = new Tray(path.join(app.getAppPath(), 'logo/logoIconForWin@2x.png'));
+        const contextMenu = Menu.buildFromTemplate([
+            { 
+                label: '退出', 
+                type: 'normal', 
+                click: e=>{
+                    this.exitApp();
+                }
+            }
+        ]);
+        tray.setToolTip('应用的名字');
+        tray.setContextMenu(contextMenu);
+
+        tray.on('click', function(){    //托盘图标点击
+            console.info('click');
+        });
+        this.tray = tray;
     }
 
     init() {}
@@ -38,11 +66,13 @@ class IM_Platform {
     // win, percent: 小数
     setProgressBar( win, percent ) {
         if( win instanceof BrowserWindow ) {
-            win.setProgressBar( percent );
+            win.setProgressBar(percent, {
+                mode: 'indeterminate'
+            });
         }
     }
     
-    // 未保证兼容性，用渲染进程HTML5通知代替
+    // 实验功能, 未保证兼容性，用渲染进程HTML5通知代替
     showMainNotification(){
         let noti = new Notification({
             title: '侧二十',
@@ -76,7 +106,10 @@ class IM_Platform {
 
         noti.show();
     }
+    
 
+
+    // 应用退出处理
     exitApp(){
         let allWins = BrowserWindow.getAllWindows();
         for(let win of allWins){

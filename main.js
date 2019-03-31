@@ -72,21 +72,10 @@ app.on('ready', ()=>{
 	
 	MainBootstrap.init(); // 初始化进程处理
 	
-	// MainBootstrap.PROCESSOR_INSTANCE.PLATFORM.setProgressBar(mainWindow, 0.4);
+	// MainBootstrap.PROCESSOR_INSTANCE.PLATFORM.setProgressBar(mainWindow, 1);
 	
 	// 可能部分情况下不需要打包该目录
 	// BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
-
-	// let tray = new Tray(path.join(app.getAppPath(), 'logo/logo.ico'))
-	let tray = new Tray(path.join(app.getAppPath(), 'logo/logoIconForWin@2x.png'));
-	const contextMenu = Menu.buildFromTemplate([
-		{ label: 'Item1', type: 'radio' },
-		{ label: 'Item2', type: 'radio' },
-		{ label: 'Item3', type: 'radio', checked: true },
-		{ label: 'Item4', type: 'radio' }
-	])
-	tray.setToolTip('This is my application.')
-	tray.setContextMenu(contextMenu)
 });
 
 app.on('window-all-closed', ()=>{

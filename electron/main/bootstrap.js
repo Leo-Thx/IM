@@ -14,7 +14,7 @@ const socket = require('../socket/chat');
 const MainBootstrap = {
     init(){
         // 初始化平台代码
-        platform._init();
+        platform._init(this);
 
         // 应用本身事件监听 --- start -----
         ipcMain.on(IPC_Event.EXIT_APP, platform.exitApp);
@@ -31,6 +31,7 @@ const MainBootstrap = {
         ipcMain.on(IPC_Event.CAPTURE_SCREEN_DRAWED, shortcut.lockAllCaptureWins);
         // --------- end ----------
         
+        // 应用按钮配置
         menu.setAppMenu();
 
         // socket.init({});
@@ -38,6 +39,8 @@ const MainBootstrap = {
         login.event.on(ProcessorEvent.RENDER_IM_MAIN, (userInfo)=>{
             socket.init(userInfo);
         });
+
+        // platform.showMainNotification();
     },
     
     PROCESSOR_INSTANCE: {

@@ -2,8 +2,9 @@ const { IM_Platform } = require('./platform');
 const { app } = require('electron');
 
 module.exports = class MacOsPlatform extends IM_Platform {
-    constructor() {
+    constructor(parent) {
         super();
+        this.parent = parent;
     }
     init() {}
 };
