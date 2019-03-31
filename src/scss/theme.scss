@@ -31,11 +31,53 @@ $my-app-accent:  mat-palette($mat-pink);
 // 警告
 $my-app-warn: mat-palette($mat-pink);
 
+// $mat-light-theme-foreground: (
+//   base:              black,
+//   divider:           $dark-dividers,
+//   dividers:          $dark-dividers,
+//   disabled:          $dark-disabled-text,
+//   disabled-button:   rgba(black, 0.26),
+//   disabled-text:     $dark-disabled-text,
+//   elevation:         black,
+//   hint-text:         $dark-disabled-text,
+//   secondary-text:    $dark-secondary-text,
+//   icon:              rgba(black, 0.54),
+//   icons:             rgba(black, 0.54),
+//   text:              rgba(black, 0.87),
+//   slider-min:        rgba(black, 0.87),
+//   slider-off:        rgba(black, 0.26),
+//   slider-off-active: rgba(black, 0.38),
+// );
+
+
+// $mat-light-theme-background: (
+//   status-bar: map_get($mat-grey, 300),
+//   app-bar:    map_get($mat-grey, 100),
+//   background: map_get($mat-grey, 50),
+//   hover:      rgba(black, 0.04),
+//   card:       white,
+//   dialog:     white,
+//   disabled-button: rgba(black, 0.12),
+//   raised-button: white,
+//   focused-button: $dark-focused,
+//   selected-button: map_get($mat-grey, 300),
+//   selected-disabled-button: map_get($mat-grey, 400),
+//   disabled-button-toggle: map_get($mat-grey, 200),
+//   unselected-chip: map_get($mat-grey, 300),
+//   disabled-list-option: map_get($mat-grey, 200),
+// );
+
+
 // 利用自定义颜色组装自定义主题
 $my-app-theme:   mat-light-theme($my-app-primary, $my-app-accent);
 
 // Include the default theme styles.
 // 设置主题颜色使其生效
 @include angular-material-theme($my-app-theme);
+
+// angular-material-theme
+// mat-light-theme
+// $mat-light-theme-foreground
+// $mat-light-theme-background
 
 
