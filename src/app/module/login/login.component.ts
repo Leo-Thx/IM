@@ -6,6 +6,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import { state, style, trigger, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
+import { MatSnackBar } from '@angular/material';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -93,9 +94,10 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
         private loginSvc: LoginService, 
         private fb: FormBuilder, 
         public ipcSvc: IpcService, 
-        public router: Router
+        public router: Router,
+        public snackBar: MatSnackBar
     ) {
-        console.log(this.loginSvc, this.ipcSvc);
+        // console.log(this.loginSvc, this.ipcSvc);
         
         this.user = {};
         this.useFormBuilder();
@@ -122,6 +124,7 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
     }
 
     goLogin(event: MouseEvent){
+        this.snackBar.open('登录成功', 'Undo');
         // this.isOpen = !this.isOpen;
         // 经过ipc到后台登录 进行socket连接
         this.router.navigateByUrl('main');

@@ -1,7 +1,10 @@
 .sidenav-conatainer{
 	box-shadow: 2px 2px 2px #eee;
 	user-select: none;
-	mat-nav-list{
+	.mat-nav-list{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
 		a{
 			&.active{
 				.active-bar{
@@ -16,7 +19,8 @@
 				color: #333333;
 			}
 			&.last{
-				align-items: flex-end;
+                margin-top: auto;
+                margin-bottom: 0;
 			}
 			&:hover{
 				cursor: pointer;

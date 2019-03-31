@@ -1,5 +1,5 @@
-<div class="sidenav-conatainer h-100">
-	<div class="p-2 mb-1 avatar">
+<div class="sidenav-conatainer h-100 flex-column">
+    <div class="p-2 mb-1 avatar">
 		<img src="./assets/login/top.jpeg" class="w-100 h-100 rounded">
     </div>
     
@@ -10,10 +10,30 @@
             [class.last]="menu.last"
         >
             <span class="active-bar"></span>
-            <mat-icon class="mat-18" 
-                [matBadgeHidden]="i !== 0" matBadge="99" matBadgeColor="accent"
+            <mat-icon [matBadgeHidden]="i !== 0" matBadge="99" matBadgeColor="accent"
                 [matTooltip]="menu.name" matTooltipPosition="right"
             >{{menu.icon}}</mat-icon>
+        </a>
+
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="keepSlient()">
+                <mat-icon>notifications_off</mat-icon>
+                <span>静音</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>more_horiz</mat-icon>
+                <span>设置</span>
+            </button>
+            <button mat-menu-item (click)="exitApp()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>退出应用</span>
+            </button>
+        </mat-menu>
+
+        <a mat-list-item #matListItem class="last" [matMenuTriggerFor]="appMenu">
+            <span class="active-bar"></span>
+            <mat-icon [matTooltip]="settingMenu.name" matTooltipPosition="right"
+            >{{settingMenu.icon}}</mat-icon>
         </a>
     </mat-nav-list>
 
