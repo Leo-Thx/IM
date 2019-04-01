@@ -127,8 +127,8 @@ body {
 }
 @each $lfKey, $lfValue in (l:left, r:right) {
     @each $tbKey, $tbValue in (t:top, b:bottom) {
-        // rounded-lt, rounded-lb
-        .rounded-#{$tbKey}#{$lfKey}-radius {
+        // rounded-tl, rounded-bl
+        .rounded-#{$tbKey}#{$lfKey} {
             // border-top-left-radius: 
             // border-bottom-left-radius: 
             border-#{$tbValue}-#{$lfValue}-radius: $smallPixelUnit;

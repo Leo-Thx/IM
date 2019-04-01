@@ -1,4 +1,17 @@
+@import './../../../../scss/variables';
+
 .chat-main-container{
-    // background: blue;
-    // box-shadow: 0px 2px 0 #eee;
+    $titleHeight: 4 * $pixelUnit;
+    .title {
+        height: $titleHeight;
+        line-height: $titleHeight;
+        box-shadow: 0px 1px 5px #eee;
+        font-size: 14px;
+    }
+    .main{
+        height: calc(100% - 32px);
+        overflow: auto;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
 }

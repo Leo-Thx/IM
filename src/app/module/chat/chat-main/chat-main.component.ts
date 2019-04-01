@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ChatMainService } from './chat-main.service';
+import { MsgTypeEnum } from 'src/app/config/app.enum';
 
 @Component({
     selector: 'app-chat-main',
@@ -10,7 +11,11 @@ import { ChatMainService } from './chat-main.service';
     providers: [ ChatMainService ]
 })
 export class ChatMainComponent {
-    constructor(private chatMainSvc: ChatMainService) {
+    // 消息类型
+    public msgTypeEnum: MsgTypeEnum;
+    public types = [MsgTypeEnum.TEXT, MsgTypeEnum.EMOJI, MsgTypeEnum.IMAGE, MsgTypeEnum.FILE];
 
+    constructor(private chatMainSvc: ChatMainService) {
+        this.msgTypeEnum = MsgTypeEnum.TEXT;
     }
 }

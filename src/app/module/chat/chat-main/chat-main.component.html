@@ -1,3 +1,9 @@
-<div class="chat-main-container h-100">
-    
+<div class="chat-main-container h-100 flex-column">
+    <div class="title pl-2">这是标题</div>
+
+    <!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
+    <div class="main p-2">
+        <app-chat-msg direction="left"></app-chat-msg>
+        <app-chat-msg direction="right"></app-chat-msg>
+    </div>
 </div>

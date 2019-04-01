@@ -10,13 +10,15 @@ import { ChatMainComponent } from './chat-main/chat-main.component';
 import { ChatInputComponent } from './chat-input/chat-input.component';
 import { ShareModule } from 'src/app/share/share.module';
 import { PublicComponentModule } from '../public/public.module';
+import { ChatMsgComponent } from './widget/chatMsg/chatMsg.component';
 
 @NgModule({
     declarations: [ 
         ChatComponent, 
         ChatListComponent, 
         ChatMainComponent, 
-        ChatInputComponent 
+        ChatInputComponent,
+        ChatMsgComponent
     ],
     providers: [ ChatService ],
     imports: [ 

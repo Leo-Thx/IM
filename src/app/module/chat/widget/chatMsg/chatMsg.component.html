@@ -1,0 +1,11 @@
+<div class="chat-msg flex mb-2" [ngClass]="currentMsgClass()">
+    <app-avatar *ngIf="direction==='left'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
+    <div class="main flex-column ml-1 mr-1">
+        <span class="title block">你的名字</span>
+        <div class="content p-1 mt-sm-1">
+            这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+            这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+        </div>
+    </div>
+    <app-avatar *ngIf="direction==='right'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
+</div>

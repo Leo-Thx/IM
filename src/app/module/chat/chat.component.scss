@@ -5,10 +5,11 @@
     }
     .chatMain{
         flex: 1;
-        app-chat-main{
+        .chat-main{
             flex: 1;
+            overflow: hidden;
         }
-        app-chat-input{
+        .chat-input{
             height: 180px;
         }
     }

@@ -1,0 +1,36 @@
+@import 'src/scss/variables';
+
+.chat-msg{
+    font-size: 12px;
+    align-items: flex-start;
+    max-width: 70%;
+    &.right{
+        margin-left: auto;
+        .title{ text-align: right ;}
+        .content{
+            border-top-left-radius: $smallPixelUnit;
+        }
+    }
+
+    &.left{
+        .content{
+            border-top-right-radius: $smallPixelUnit;
+        }
+    }
+
+    .avatar{
+        width: 5 * $pixelUnit;
+        height: 5 * $pixelUnit;
+        flex-shrink: 0;
+    }
+    .content{
+        background: #eee;
+        word-break: break-all;
+        border-bottom-left-radius: $smallPixelUnit;
+        border-bottom-right-radius: $smallPixelUnit;
+    }
+    .title{
+        color: #999;
+        font-size: 13px;
+    }
+}
