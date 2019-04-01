@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewInit, ViewChildren, QueryList } from "@angular/core";
 import { MatNavList, MatListItem, MatSnackBar } from '@angular/material';
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
+import { Router } from '@angular/router';
 
 export interface SideNavMenu {
     icon: string;
@@ -34,7 +35,11 @@ export class SideNavComponent implements AfterViewInit{
     @ViewChild(MatNavList) public matNavList: MatNavList;
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
 
-    constructor (public ipcSvc: IpcService, public snackBar: MatSnackBar) {}
+    constructor (
+        public ipcSvc: IpcService, 
+        public snackBar: MatSnackBar,
+        public router: Router
+    ) {}
 
     ngAfterViewInit() {
         // 侧边栏图标居中显示
@@ -43,6 +48,12 @@ export class SideNavComponent implements AfterViewInit{
                 firstEle = hostEle.firstElementChild;
             if( firstEle instanceof HTMLDivElement ) firstEle.style.justifyContent="center";
         }
+    }
+
+    logout(){
+        // 清除所有缓存数据
+        // this.router.navigateByUrl('chat');
+        this.router.navigate(['/login']);
     }
 
     exitApp(){

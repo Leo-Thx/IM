@@ -4,11 +4,13 @@ import { MainComponent } from './main.component';
 import { RouterModule } from '@angular/router';
 import { mainRoutes } from './main.routing';
 import { SideNavComponent } from './sidenav/sidenav.component';
+import { PublicComponentModule } from '../public/public.module';
 
 @NgModule({
     imports: [
         RouterModule.forChild(mainRoutes),
-        ShareModule
+        ShareModule,
+        PublicComponentModule
     ],
     declarations: [
         MainComponent,

@@ -9,6 +9,7 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatMainComponent } from './chat-main/chat-main.component';
 import { ChatInputComponent } from './chat-input/chat-input.component';
 import { ShareModule } from 'src/app/share/share.module';
+import { PublicComponentModule } from '../public/public.module';
 
 @NgModule({
     declarations: [ 
@@ -20,7 +21,8 @@ import { ShareModule } from 'src/app/share/share.module';
     providers: [ ChatService ],
     imports: [ 
         RouterModule.forChild(chatRoutes),
-        ShareModule
+        ShareModule,
+        PublicComponentModule
     ],
     exports: [
         // ChatListComponent,

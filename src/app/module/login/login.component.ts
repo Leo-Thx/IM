@@ -124,7 +124,9 @@ export class LoginComponent implements AfterViewInit, OnInit, OnChanges, DoCheck
     }
 
     goLogin(event: MouseEvent){
-        this.snackBar.open('登录成功', 'Undo');
+        this.snackBar.open('登录成功', undefined, {
+            duration: 1000
+        });
         // this.isOpen = !this.isOpen;
         // 经过ipc到后台登录 进行socket连接
         this.router.navigateByUrl('main');
