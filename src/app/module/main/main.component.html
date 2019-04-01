@@ -1,12 +1,16 @@
 <div class="main-container flex h-100">
-    <!-- 菜单栏，常驻 -->
-    <nav class="sidenav h-100">
-        <app-sidenav></app-sidenav>
-    </nav>
-
-    <!-- 主界面载入页面 -->
-    <div class="main h-100">
-        <router-outlet></router-outlet>
-    </div>
-
+    <mat-drawer-container class="w-100">
+        <mat-drawer class="left-drawer" #drawer mode="over">&nbsp;</mat-drawer>
+        <mat-drawer-content class="flex h-100">
+            <!-- 菜单栏，常驻 -->
+            <nav class="sidenav h-100">
+                <app-sidenav (showPersonal)="drawer.open()"></app-sidenav>
+            </nav>
+        
+            <!-- 主界面载入页面 -->
+            <div class="main h-100">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
 </div>

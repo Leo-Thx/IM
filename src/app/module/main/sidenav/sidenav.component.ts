@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ViewChildren, QueryList } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, ViewChildren, QueryList, Output, EventEmitter } from "@angular/core";
 import { MatNavList, MatListItem, MatSnackBar } from '@angular/material';
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
 import { Router } from '@angular/router';
@@ -31,6 +31,9 @@ const settingMenu = {
 export class SideNavComponent implements AfterViewInit{
     public menus: Array<SideNavMenu> = menus;
     public settingMenu = settingMenu;
+
+    // 单击头像需要打开左侧抽屉以显示个人基本信息
+    @Output('showPersonal') public showInfo = new EventEmitter<boolean>();
 
     @ViewChild(MatNavList) public matNavList: MatNavList;
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
@@ -71,6 +74,9 @@ export class SideNavComponent implements AfterViewInit{
         snackBarRef.onAction().subscribe(() => {
             console.log('The snack-bar action was triggered!');
         });
-        
+    }
+
+    openPersonalInfo(){
+        this.showInfo.emit(true);
     }
 }

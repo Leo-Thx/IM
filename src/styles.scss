@@ -61,7 +61,7 @@ body {
 
 @each $var in (block, flex, inline, inline-block, inline-flex, table) {
     .#{$var}{
-        display: #{$var};
+        display: #{$var} !important;
     }
 }
 
