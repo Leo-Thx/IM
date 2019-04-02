@@ -5,6 +5,7 @@ import { ChatModule } from '../chat/chat.module';
 import { PublicComponentModule } from '../public/public.module';
 import { LoginModule } from '../login/login.module';
 import { MainMoule } from '../main/main.module';
+import { ConcatsModule } from '../concats/concats.module';
 
 @NgModule({
     imports: [ 
@@ -15,7 +16,9 @@ import { MainMoule } from '../main/main.module';
         
         LoginModule,
         MainMoule,
-        ChatModule
+
+        ChatModule,
+        ConcatsModule
     ],
     declarations: [
         LayoutComponent

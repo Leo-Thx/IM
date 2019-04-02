@@ -31,7 +31,7 @@ import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.componen
     ],
     providers: [ ChatService ],
     imports: [ 
-        RouterModule.forChild(chatRoutes),
+        // RouterModule.forChild(chatRoutes),
         ShareModule,
         PublicComponentModule
     ],
