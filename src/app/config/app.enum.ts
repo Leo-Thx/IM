@@ -3,7 +3,7 @@ export const enum MsgTypeEnum {
     TEXT    = 1,    // 文本
     IMAGE   = 2,    // 图片
     FILE    = 3,    // 文件
-    EMOJI   = 4,    // emoji表情
+    EMOJI   = 4,    // emoji表情    [显示需要和文本合并]
     SHAKE   = 5,    // 抖动
     SYSTEM_TIP = 6,    //系统提示
 }

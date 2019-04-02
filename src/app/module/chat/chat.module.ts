@@ -11,6 +11,8 @@ import { ChatInputComponent } from './chat-input/chat-input.component';
 import { ShareModule } from 'src/app/share/share.module';
 import { PublicComponentModule } from '../public/public.module';
 import { ChatMsgComponent } from './widget/chatMsg/chatMsg.component';
+import { ChatTextMsgComponent } from './widget/chatMsg/text/ChatTextMsg.component';
+import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive';
 
 @NgModule({
     declarations: [ 
@@ -18,7 +20,9 @@ import { ChatMsgComponent } from './widget/chatMsg/chatMsg.component';
         ChatListComponent, 
         ChatMainComponent, 
         ChatInputComponent,
-        ChatMsgComponent
+        ChatMsgComponent,
+        ChatTextMsgComponent,
+        ChatMsgRenderDirective
     ],
     providers: [ ChatService ],
     imports: [ 
@@ -30,6 +34,9 @@ import { ChatMsgComponent } from './widget/chatMsg/chatMsg.component';
         // ChatListComponent,
         // ChatMainComponent,
         // ChatInputComponent
+    ],
+    entryComponents: [
+        ChatTextMsgComponent
     ]
 })
 export class ChatModule {

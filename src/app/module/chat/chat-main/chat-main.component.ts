@@ -12,7 +12,7 @@ import { MsgTypeEnum } from 'src/app/config/app.enum';
 })
 export class ChatMainComponent {
     // 消息类型
-    public msgTypeEnum: MsgTypeEnum;
+    public msgTypeEnum: MsgTypeEnum = MsgTypeEnum.TEXT;
     public types = [MsgTypeEnum.TEXT, MsgTypeEnum.EMOJI, MsgTypeEnum.IMAGE, MsgTypeEnum.FILE];
 
     constructor(private chatMainSvc: ChatMainService) {
