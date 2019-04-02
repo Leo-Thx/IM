@@ -11,7 +11,7 @@ export interface SideNavMenu {
 const menus = [
     {icon: 'message', name: '消息', to: 'chat'},
     {icon: 'account_box', name: '联系人', to: 'concats' },
-    {icon: 'date_range', name: '待办', to: ''},
+    {icon: 'date_range', name: '待办', to: 'schedule'},
     {icon: 'email', name: '来往邮件', to: 'email'},
     {icon: 'library_music', name: '音乐', to: 'music'},
     
