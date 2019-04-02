@@ -1,5 +1,7 @@
-<div class="chat-msg flex mb-2" [ngClass]="currentMsgClass">
-    <app-avatar *ngIf="direction==='left'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
+<div class="chat-msg flex mb-2" 
+    [ngClass]="currentMsgClass" [ngClass]="directionClass">
+
+    <app-avatar *ngIf="dir==='left'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
     
     <div class="main flex-column ml-1 mr-1">
         <ng-template ChatMsgRender></ng-template>
@@ -10,6 +12,6 @@
         </div> -->
     </div>
 
-    <app-avatar *ngIf="direction==='right'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
+    <app-avatar *ngIf="dir==='right'" class="avatar block" url="./assets/login/top.jpeg"></app-avatar>
     
 </div>

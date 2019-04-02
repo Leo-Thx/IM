@@ -13,6 +13,8 @@ import { PublicComponentModule } from '../public/public.module';
 import { ChatMsgComponent } from './widget/chatMsg/chatMsg.component';
 import { ChatTextMsgComponent } from './widget/chatMsg/text/ChatTextMsg.component';
 import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive';
+import { ChatImgMsgComponent } from './widget/chatMsg/image/ChatImgMsg.component';
+import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.component';
 
 @NgModule({
     declarations: [ 
@@ -20,8 +22,11 @@ import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive
         ChatListComponent, 
         ChatMainComponent, 
         ChatInputComponent,
+        
         ChatMsgComponent,
         ChatTextMsgComponent,
+        ChatImgMsgComponent,
+        ChatFileMsgComponent,
         ChatMsgRenderDirective
     ],
     providers: [ ChatService ],
@@ -30,13 +35,11 @@ import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive
         ShareModule,
         PublicComponentModule
     ],
-    exports: [
-        // ChatListComponent,
-        // ChatMainComponent,
-        // ChatInputComponent
-    ],
+    exports: [],
     entryComponents: [
-        ChatTextMsgComponent
+        ChatTextMsgComponent,
+        ChatImgMsgComponent,
+        ChatFileMsgComponent
     ]
 })
 export class ChatModule {

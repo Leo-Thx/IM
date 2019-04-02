@@ -3,7 +3,12 @@
 
     <!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
     <div class="main p-2">
-        <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg>
-        <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg>
+        <app-chat-msg 
+            *ngFor="let type of types; trackBy:type"
+            direction="left"
+            [type]="type"
+        ></app-chat-msg>
+        <!-- <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg> -->
+        <!-- <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg> -->
     </div>
 </div>
