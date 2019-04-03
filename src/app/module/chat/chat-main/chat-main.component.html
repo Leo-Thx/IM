@@ -8,6 +8,11 @@
             direction="left"
             [type]="type"
         ></app-chat-msg>
+        <app-chat-msg 
+            *ngFor="let type of types; trackBy:type"
+            direction="right"
+            [type]="type"
+        ></app-chat-msg>
         <!-- <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg> -->
         <!-- <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg> -->
     </div>

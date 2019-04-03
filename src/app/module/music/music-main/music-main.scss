@@ -1,0 +1,21 @@
+@import 'src/scss/variables';
+
+.music-main{
+    background: #fff;
+    .modal{
+        margin: 0 auto;
+        // img{width: 100%;}
+        // 背景图片会自动拷贝到打包目录下，同时改为相对打包路径...
+        position: relative;
+        // background-color: hsla(0,0%,100%,.3);
+        height: 200px;
+        border: 1px solid red;
+        // &::after{
+        //     position: absolute;
+        //     left: 0; top: 0; right: 0; bottom: 0;
+        //     content: '';
+        //     filter: blur(20px);
+        //     margin:-30px;      
+        // }
+    }
+}

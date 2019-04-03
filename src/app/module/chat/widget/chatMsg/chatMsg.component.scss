@@ -6,6 +6,7 @@
     max-width: 70%;
     &.right{
         margin-left: auto;
+        justify-content: flex-end;
         // .title{ text-align: right ;}
         // .content{
         //     border-top-left-radius: $smallPixelUnit;

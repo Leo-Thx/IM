@@ -41,6 +41,7 @@ export class ChatMsgComponent <T extends BaseMsgType> implements OnInit{
             right: direction === 'right'
         };
         this.dir = direction;
+        Object.assign(this.currentMsgClass, this.directionClass);
     }
     public dir: string;
 

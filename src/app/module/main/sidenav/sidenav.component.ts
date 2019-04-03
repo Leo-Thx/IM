@@ -55,7 +55,6 @@ export class SideNavComponent implements AfterViewInit{
 
     logout(){
         // 清除所有缓存数据
-        // this.router.navigateByUrl('chat');
         this.router.navigate(['/login']);
     }
 
