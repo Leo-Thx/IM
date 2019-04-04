@@ -1,45 +1,83 @@
+@import 'src/scss/variables';
+// @import '~@angular/material/theming';
+
 .login-container {
-    // height: 100%;
-    .top-bar{
-        img{ width: 100%; }
-        font-size: 0;
-        height: 360px; 
-        // margin-top: -80px;
-        overflow: hidden;
-        // opacity: .85;
-    }
+    // background-color: #fbfbfb;
     .main-content {
-        margin: 0 360px;
-        position: relative;
-        // position: absolute;
-        top: -152px;
-        // .content{ background: rgba(255, 255, 255, .85); }
+        margin: 0 auto;
         .avatar{ 
-            font-size: 0; text-align: center;
+            font-size: 0;
             img{ 
-                width: 80px; height: 80px; 
-                border-radius: 50%; border: 8px solid; color: #fff; 
+                width: 10 * $pixelUnit; height: 10 * $pixelUnit; 
+                border-radius: 50%; border: $pixelUnit solid; color: #fff; 
                 box-shadow: 3px 0px 10px 0 rgba(0, 0, 0, .15);
             }
-            padding-bottom: 8px;
             overflow: hidden;
-            margin: -56px auto 8px;
         }
-        .example-full-width{ width: 100%; }
-        .loginbtn{ outline: 0; }
         .mat-card-footer{
             text-align: center;
         }
     }
 
-    .register-form{
-        position: absolute;
-        top: 0; height: 100%; width: 100%;
-        background: burlywood;
-        display: none;
-        &.showin{
-            display: block;
-            animation: showin 1s;
+    .info-card{
+        color: #fff;
+        flex-shrink: 0;
+        .content{
+            margin: 0 auto;
+            position: relative;
+            top: 30%;
+            .title{
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .detail{
+                line-height: 1.5;
+            }
+        }
+    }
+    .form-card{
+        flex-shrink: 0;
+        .content{
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
+    .login{
+        z-index: 1;
+        .login-form{
+            background: #fff;
+        }
+        .info-card{
+            // background: linear-gradient(
+            //     145deg,
+            //     rgba(140,167,255,1) 0,
+            //     rgba(139,84,249,1) 50%,
+            //     rgba(131,33,243,1) 100%
+            // );
+            background: linear-gradient(
+                145deg,
+                #c5cae9 0,
+                #7986cb 50%,
+                #3f51b5 100%
+            );
+        }
+    }
+
+    .register{
+        left:60%; top: 0;
+        z-index: 0;
+        opacity: 0;
+        .register-form{
+            background: #fff;
+        }
+        .info-card{
+            background: linear-gradient(
+                145deg,
+                #f8bbd0 0,
+                #f06292 50%,
+                #e91e63 100%
+            );
         }
     }
 }

@@ -1,36 +1,28 @@
-<div class="login-container" 
-    (@openClose.start)="onAnimationEvent($event)"
-    (@openClose.done)="onAnimationEvent($event)"
-    >
-    <!-- <div *ngIf="isOpen" [@flyInOut]="isOpen ? 'in': ''" >11111</div> -->
-    
-    <!-- <div @myInsertRemoveTrigger *ngIf="isOpen">
-        <p>The box is inserted</p>
-    </div> -->
+<div class="login-container h-100 w-100">
 
-    <form class="login-form">
-        <div class="top-bar">
-            <img src="./assets/login/back.jpg" />
-        </div>
-        <div class="main-content">
-            <mat-card class="content mat-elevation-z10">
+    <div class="relative main-content h-100 flex login">
+
+        <form class="relative w-60 h-100 form-card login-form">
+            <mat-card class="content w-50 mat-elevation-z0">
+                <mat-card-title class="text-center">来，一起玩玩吧</mat-card-title>
                 <mat-card-content>
                     <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
                     <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
-                    <div class="avatar">
+                    <div class="avatar text-center pt-1 pb-1">
+                        <!-- 用logo代替 -->
                         <img src="./assets/login/top.jpeg" >
                     </div>
                     <div class="cell">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="w-100">
                             <mat-label>账号</mat-label>
-                            <input matInput placeholder="请输入账号" [formControl]="accountCtrl" name="account">
+                            <input matInput placeholder="请输入账号" name="account">
                         </mat-form-field>
                     </div>
         
                     <div class="cell">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="w-100">
                             <mat-label>密码</mat-label>
-                            <input type="password" matInput name="password" [(ngModel)]="user.password" placeholder="请输入密码">
+                            <input type="password" matInput name="password" placeholder="请输入密码">
                         </mat-form-field>
                     </div>
         
@@ -39,74 +31,68 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions align="start">
-                    <button mat-raised-button color="primary" class="example-full-width" (click)="goLogin($event)">登录</button>
+                    <button mat-raised-button color="primary" class="w-100">登录</button>
                 </mat-card-actions>
                 <mat-card-footer>
-                    <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button>
+                    <!-- <span style="font-size:14px;">没有账号?</span><button mat-button>点击注册</button> -->
                 </mat-card-footer>
             </mat-card>
-        </div>
-    </form>
+        </form>
 
-    <form class="register-form">
-        <div class="top-bar">
-            <img src="./assets/login/timg.jpeg" />
-        </div>
-        <div class="main-content">
-            <mat-card>
-                <mat-card-content>
-                    <!-- Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令 -->
-                    <!-- 当在表单中使用 [(ngModel)] 时，必须要定义 name 属性 -->
-                    <div class="avatar">
-                        <img src="./assets/login/top.jpeg" >
-                    </div>
-                    <div class="cell">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>账号</mat-label>
-                            <input matInput placeholder="请输入账号" [formControl]="accountCtrl" name="account">
-                        </mat-form-field>
-                    </div>
-        
-                    <div class="cell">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>密码</mat-label>
-                            <input type="password" matInput name="password" [(ngModel)]="user.password" placeholder="请输入密码">
-                        </mat-form-field>
-                    </div>
-        
-                    <div class="cell">
-                        <mat-checkbox color="primary">记住密码</mat-checkbox>
-                    </div>
-                </mat-card-content>
-
-                <mat-card-actions align="start">
-                    <button mat-raised-button color="warn" class="example-full-width loginbtn">登录</button>
-                </mat-card-actions>
-
-                <mat-card-footer>
-                    <span style="font-size:12px;">没有账号?</span><button mat-button>点击注册</button>
-                </mat-card-footer>
-
-            </mat-card>
-        </div>
-    </form>
-    
-    <!-- formGroupName 必须在fromGroup的指令里面 -->
-    <form style="display:none;" [formGroup]="groupCtrl">
-        <input type="text" formControlName="firstName" />
-        <input type="text" formControlName="lastName" />
-    </form>
-
-    <form [formGroup]="groupObject" style="display:none;">
-        <input type="text" formControlName="firstName" />
-        <input type="text" formControlName="lastName" />
-        <div formArrayName="aliases">
-            <div *ngFor="let aliase of aliases.controls; let i = index ;">
-                <label>aliase
-                    <input type="text" [formControlName]="i"/>
-                </label>
+        <div class="relative w-40 h-100 text-center info-card">
+            <div class="content w-60">
+                <p class="title">无声无息，感同身受!</p>
+                <p class="detail pt-2 pb-2">是当代年轻人比以往年轻人的心理承受能力要差了吗？不！当代年轻人的崩溃，是一种默不作声的崩溃！</p>
+                <button mat-raised-button class="w-100" (click)="changeToReigster($event)">注册</button>
             </div>
         </div>
-    </form>
 
+    </div>
+
+    <div class="absolute main-content h-100 w-100 flex register" [@toRegister]="isLoginState?'login': 'register'">
+        <div class="relative w-40 h-100 text-center info-card">
+            <div class="content w-60">
+                <p class="title">那一瞬间，绷不住了!</p>
+                <p class="detail pt-2 pb-2">我原先就知道生活艰难，可没想到居然这么他妈的难。不知道为什么，想哭也哭不出来了！你需要认识到工作这事其实一点都不神圣！</p>
+                <button mat-raised-button class="w-100" (click)="changeToLogin($event)">登录</button>
+            </div>
+        </div>
+
+        <form class="relative w-60 h-100 form-card register-form">
+            <mat-card class="content w-50 mat-elevation-z0">
+                <mat-card-title class="text-center">这里，你可能需要一个账号</mat-card-title>
+                <mat-card-content>
+                    <div class="avatar text-center pt-1 pb-1">
+                        <!-- 用logo代替 -->
+                        <img src="./assets/login/top.jpeg" >
+                    </div>
+                    <div class="cell">
+                        <mat-form-field class="w-100">
+                            <mat-label>账号</mat-label>
+                            <input matInput placeholder="请输入账号" name="account">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="cell">
+                            <mat-form-field class="w-100">
+                                <mat-label>邮箱</mat-label>
+                                <input matInput placeholder="请输入邮箱" name="email">
+                            </mat-form-field>
+                        </div>
+        
+                    <div class="cell">
+                        <mat-form-field class="w-100">
+                            <mat-label>密码</mat-label>
+                            <input type="password" matInput name="password" placeholder="请输入密码">
+                        </mat-form-field>
+                    </div>
+        
+                </mat-card-content>
+                <mat-card-actions align="start">
+                    <button mat-raised-button color="primary" class="w-100" color="accent">注册</button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+    
 </div>
