@@ -9,6 +9,8 @@ import { networkConfig } from './share/network/network.config';
 import { ShareMaterialModule } from './material-module';
 import { LayoutModule } from './module/layout/layout.module';
 import { PublicComponentModule } from './module/public/public.module';
+import { StoreModule } from '@ngrx/store';
+import { loginStateReducer } from './ngstore/login/loginState.reducer';
 
 
 @NgModule({
@@ -18,6 +20,10 @@ import { PublicComponentModule } from './module/public/public.module';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+
+        StoreModule.forRoot({
+            loginState: loginStateReducer
+        }),
 
         ShareMaterialModule,                    // UI共享模块
         ShareModule.forRoot(networkConfig),     // 唯一网络服务

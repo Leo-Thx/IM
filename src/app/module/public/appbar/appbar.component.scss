@@ -12,6 +12,9 @@
             height: 0;
         }
     }
+    &.register{
+        color: #999;
+    }
     &::after{
         position: absolute;
         content: '';
