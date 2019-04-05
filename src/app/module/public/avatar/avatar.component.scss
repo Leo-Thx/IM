@@ -1,5 +1,44 @@
+@import "src/scss/variables";
+
 .avatar{
     &:hover{
         cursor: pointer;
+    }
+    img{
+        border: 3px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 5px 10px 4px rgba(0,0,0,.04);
+    }
+    .status{
+        width: 18px;
+        height: 18px;
+        left: -5px;
+        top:50%;
+        transform: translateY(-50%);
+        border: 4px solid #fff;
+        border-radius: 50%;
+        i{
+            font-size: 14px;
+            left: -2px;
+            top:-2px;
+        }
+    }
+
+    &.online{
+        i{ color: #2196F3; }
+        .mat-badge-content{
+            background-color: #e83e8c;
+        }
+    }
+    &.offline{
+        i{ color: #bbb; }
+        .mat-badge-content{
+            background-color: #ffc107;
+        }
+    }
+
+    .mat-badge-content{
+        top:-5px; right: -5px;
+        font-size: 11px;
     }
 }

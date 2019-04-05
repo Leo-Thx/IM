@@ -9,8 +9,9 @@ export interface SideNavMenu {
 }
 
 const menus = [
-    {icon: 'message', name: '消息', to: 'chat'},
-    {icon: 'account_box', name: '联系人', to: 'concats' },
+    {icon: 'chat_bubble_outline', name: '消息', to: 'chat'},
+    {icon: 'account_circle', name: '联系人', to: 'concats' },
+    {icon: 'notifications_none', name: '提醒', to: 'tixing'},
     {icon: 'date_range', name: '待办', to: 'schedule'},
     {icon: 'email', name: '来往邮件', to: 'email'},
     {icon: 'library_music', name: '音乐', to: 'music'},
@@ -18,7 +19,10 @@ const menus = [
 ];
 
 const settingMenu = {
-    icon: 'settings_applications', last: true, name: '设置'
+    icon: 'settings', last: true, name: '设置'
+};
+const exitMenu = {
+    icon: 'power_settings_new', name: '退出'
 };
 
 @Component({
@@ -31,6 +35,7 @@ const settingMenu = {
 export class SideNavComponent implements AfterViewInit{
     public menus: Array<SideNavMenu> = menus;
     public settingMenu = settingMenu;
+    public exitMenu = exitMenu;
 
     // 单击头像需要打开左侧抽屉以显示个人基本信息
     @Output('showPersonal') public showInfo = new EventEmitter<boolean>();

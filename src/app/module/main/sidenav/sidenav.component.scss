@@ -1,22 +1,29 @@
 .sidenav-conatainer{
-	box-shadow: 2px 2px 2px #eee;
+    // box-shadow: 2px 2px 2px #eee;
 	user-select: none;
 	.mat-nav-list{
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        color: #bdbac2;
+        .mat-icon{
+            font-size: 30px;
+            width: auto;
+            height: auto;
+        }
 		a{
+            color: inherit;
 			&.active{
-				.active-bar{
-					position: absolute;
-					left: 0; top: 0;
-					height: 100%;width: 4px;
-					background-color: #333333;
-					border-top-left-radius: 3px;
-					border-bottom-left-radius: 3px;
-				}
-				background: linear-gradient(to right, #ddd, #eee, #fff);
-				color: #333333;
+				// .active-bar{
+				// 	position: absolute;
+				// 	left: 0; top: 0;
+				// 	height: 100%;width: 4px;
+				// 	background-color: #2196F3;
+				// 	border-top-left-radius: 3px;
+				// 	border-bottom-left-radius: 3px;
+				// }
+				// background: linear-gradient(to right, #ddd, #eee, #fff);
+				color: #2196F3;
 			}
 			&.last{
                 margin-top: auto;
@@ -27,12 +34,24 @@
 			}
 			.mat-badge-medium.mat-badge-above .mat-badge-content{ 
 				top: -8px; 
-				right: -16px;
+                right: -16px;
+                background: #e83e8c!important;
 			}
-		}
+        }
 	}
 	
 	.avatar{
 		height: 72px;
 	}
 }
+
+// 设置菜单
+// .mat-menu-item{
+//     color: #bdbac2;
+//     &:hover{
+//         color: #2196F3;
+//     }
+//     .mat-icon{
+//         color: inherit;
+//     }
+// }

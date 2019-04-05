@@ -19,15 +19,22 @@
     </ul> -->
 
     <mat-list class="h-100">
-        <mat-list-item *ngFor="let item of listArray" #matListItem>
-            <app-avatar matListAvatar url="./assets/login/top.jpeg"></app-avatar>
+        <mat-list-item *ngFor="let item of listArray; let i = index;" #matListItem 
+            (click)="toChatItem(item, i, $event)"
+            [class.active]="i===0" [class.online]="i<=2" [class.offline]="i>2">
+
+            <app-avatar matListAvatar 
+                [showStatus]="true" [online]="i < 3" 
+                [showBadge]="true" [badgeCount]="i"
+                url="./assets/login/top.jpeg"></app-avatar>
             <h3 matLine class="title">
                 <span class="subtitle">有个人</span>
                 <span class="time">2019-03-28</span>
             </h3>
-            <p matLine class="sketch">
+            <p matLine class="pt-1 sketch">
                 <span>我只是稍微的说了一句话我只是稍微的说了一句话</span>
             </p>
+
             <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
     </mat-list>

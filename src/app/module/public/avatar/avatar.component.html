@@ -1,5 +1,11 @@
-<div class="avatar w-100 h-100">
-    <img class="w-100 h-100 rounded" [src]="url" (load)="loaded" (error)="error">
+<div class="relative w-100 h-100 avatar" 
+    [class.online]="online" [class.offline]="!online" 
+    [matBadgeHidden]="!_show" [matBadge]="_count" matBadgeColor="accent">
+    
+    <img class="w-100 h-100 rounded1" [src]="url" (load)="loaded" (error)="error">
+    <div class="absolute status" *ngIf="showStatus">
+        <i class="absolute material-icons">fiber_manual_record</i>
+    </div>
 </div>
 
 <!-- <div class="p-2 mb-1 avatar">

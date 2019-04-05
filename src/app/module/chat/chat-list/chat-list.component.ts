@@ -16,8 +16,14 @@ export class ChatListComponent implements AfterViewInit{
 
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
 
-    constructor(private chatlistSvc: ChatListService) {
+    constructor(private chatlistSvc: ChatListService) {}
 
+    itemMouseover($event){
+        console.info($event);
+    }
+
+    toChatItem(item, index, $event){
+        console.info(item, index, event);
     }
 
     ngAfterViewInit(){

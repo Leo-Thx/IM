@@ -32,12 +32,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
             state('login', style({
                 zIndex: 0,
                 opacity: 0,
-                left: '60%'
+                // left: '60%'
             })),
             state('register', style({
                 zIndex: 2,
                 opacity: 1,
-                left: 0
+                // left: 0
             })),
             transition("login=>register", [
                 animate('.5s ease-in-out'),
@@ -100,7 +100,7 @@ export class LoginComponent {
         });
 
         // 经过ipc到后台登录 进行socket连接
-        // this.router.navigateByUrl('main');
+        this.router.navigateByUrl('main');
 
         // Notification.requestPermission(function(status) {    // mac下有效
         //     console.info(status);

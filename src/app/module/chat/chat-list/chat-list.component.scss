@@ -1,13 +1,20 @@
+@import "src/scss/variables";
+
 .chat-list-container{
+    background: #fdfdfd;
     .mat-list{
         overflow: auto;
         padding-top: 0;
+        &:hover{
+            cursor: pointer;
+        }
+        .mat-list-avatar{width: 45px; height: 45px;}
         .title{
-            .subtitle{ float: left; font-size: 14px; }
+            .subtitle{ float: left; font-size: 14px; color: #bdbac2; }
             .time{
                 margin-right: 0; margin-left: auto; 
                 width: 64px;
-                color: #aaa;
+                color: #bdbac2;
                 font-size: 12px;
                 float: right;
                 margin-top: 2px;
@@ -17,13 +24,27 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #999;
             font-size: 12px;
-            margin: 4px 0 0;
+            padding-top: 3 * $smallPixelUnit;
+            color: #bdbac2
         }
-    }
-    .mat-list-base .mat-list-item .mat-list-avatar{
-        border-radius: 4px;
+        .mat-list-item{
+            .mat-divider{
+                border-top-width: 2px;
+                border-top-color: transparent;
+            }
+            &:hover{
+                .mat-divider{border-top-color: #2196F3;}
+            }
+            &.active{
+                .mat-divider{border-top-color: #2196F3;}
+            }
+            &.online{
+                .subtitle{color: #212529;}
+                .sketch{color: #212529;}
+            }
+            // &.offline{}
+        }
     }
 
     // ul{
