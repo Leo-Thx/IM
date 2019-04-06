@@ -9,22 +9,23 @@ import { ConcatsModule } from '../concats/concats.module';
 import { ScheduleModule } from '../schedule/schedule.module';
 import { EmailModule } from '../email/email.module';
 import { MusicModule } from '../music/music.module';
+import { ReminderModule } from '../reminder/reminder.module';
 
 @NgModule({
     imports: [ 
         // RouterModule.forChild(layoutRoutes), 
         ShareModule,
-
         PublicComponentModule,
         
-        LoginModule,
-        MainMoule,
+        LoginModule,    // 主模块
+        MainMoule,      // 主模块
 
         ChatModule,
         ConcatsModule,
         ScheduleModule,
         EmailModule,
-        MusicModule
+        MusicModule,
+        ReminderModule
     ],
     declarations: [
         LayoutComponent

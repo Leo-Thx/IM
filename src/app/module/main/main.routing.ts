@@ -5,6 +5,7 @@ import { ConcatsMainComponent } from '../concats/concats-main/concats-main.compo
 import { MusicMainComponent } from '../music/music-main/music-main.component';
 import { ScheduleMainComponent } from '../schedule/schedule-main/schedule-main.component';
 import { EmailMainComponent } from '../email/email-main/email-main.component';
+import { ReminderMainComponent } from '../reminder/reminder-main/reminder-main.component';
 
 export const mainRoutes: Routes = [
     { 
@@ -19,6 +20,7 @@ export const mainRoutes: Routes = [
             { path: 'schedule', component: ScheduleMainComponent},
             { path: 'email', component: EmailMainComponent},
             { path: 'music', component: MusicMainComponent},
+            { path: 'reminder', component: ReminderMainComponent}
         ]
     }
 ];
