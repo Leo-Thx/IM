@@ -5,11 +5,11 @@ import { ChatInputService } from './chat-input.service';
 const menus = [
     // sentiment_satisfied_alt, insert_emoticon
     {icon: 'face', value:'emoji', name: '表情'},
-    {icon: 'add_photo_alternate', value:'image', name: '图片' },
-    {icon: 'note_add', value:'file', name: '文件'},
-    {icon: 'add_alert', value:'shake', name: '发送窗口抖动'},
-    {icon: 'crop', value:'cut', name: '截图'},
-    {icon: 'email', value:'email', name: '发送邮件'},
+    // {icon: 'add_photo_alternate', value:'image', name: '图片' },
+    // {icon: 'note_add', value:'file', name: '文件'},
+    // {icon: 'waves', value:'shake', name: '发送窗口抖动'},
+    // {icon: 'crop', value:'cut', name: '截图'},
+    // {icon: 'email', value:'email', name: '发送邮件'},
     {icon: 'send', value:'send', name: '发送消息', last: true}
 ];
 

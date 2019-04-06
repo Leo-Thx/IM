@@ -10,7 +10,9 @@ import { Component, Input } from "@angular/core";
 export class AvatarComponent {
     @Input() url: string;
 
+    //是否显示状态
     @Input() showStatus: boolean;
+    // 是否在线
     @Input() online: boolean;
 
     private _show = false;

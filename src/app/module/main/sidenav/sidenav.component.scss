@@ -1,11 +1,13 @@
+@import 'src/scss/variables';
+
 .sidenav-conatainer{
-    // box-shadow: 2px 2px 2px #eee;
+    box-shadow: 2px 2px 2px #fbfbfb;
 	user-select: none;
 	.mat-nav-list{
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        color: #bdbac2;
+        color: $btnInactiveColor;
         .mat-icon{
             font-size: 30px;
             width: auto;
@@ -23,7 +25,7 @@
 				// 	border-bottom-left-radius: 3px;
 				// }
 				// background: linear-gradient(to right, #ddd, #eee, #fff);
-				color: #2196F3;
+				color: $btnActiveColor;
 			}
 			&.last{
                 margin-top: auto;

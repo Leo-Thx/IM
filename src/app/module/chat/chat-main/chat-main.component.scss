@@ -1,15 +1,41 @@
 @import './../../../../scss/variables';
 
 .chat-main-container{
-    $titleHeight: 4 * $pixelUnit;
+    $titleHeight: 6 * $pixelUnit;
     .title {
         height: $titleHeight;
         line-height: $titleHeight;
-        box-shadow: 0px 1px 5px #eee;
+        background: #fff;
+        box-shadow: 0px 1px 0px #fbfbfb;
         font-size: 14px;
+        justify-content: space-between;
+        .info{
+            flex-shrink: 0; flex-grow: 0;
+            line-height: 20px;
+            .avatar{
+                width: 40px;
+                float: left;
+            }
+            .detail{
+                .name{font-weight: 700; font-size: 16px;}
+                .status{
+                    font-weight: 500; font-size: 14px;
+                    color: $btnInactiveColor;
+                }
+            }
+        }
+        .operation{
+            font-size: 0;
+            >.mat-icon-button{
+                color: $btnInactiveColor;
+                &:hover, &:active{
+                    color: $btnActiveColor;
+                }
+            }
+        }
     }
     .main{
-        height: calc(100% - 32px);
+        height: calc(100% - 48px);
         overflow: auto;
         flex-grow: 1;
         flex-shrink: 0;

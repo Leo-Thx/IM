@@ -1,5 +1,54 @@
 <div class="chat-main-container h-100 flex-column">
-    <div class="title pl-2">这是标题</div>
+    <div class="flex title p-sm-1 pl-2">
+        <div class="info">
+            <div class="avatar h-100">
+                <app-avatar url="./assets/login/top.jpeg" [showStatus]="true" [online]="true"></app-avatar>
+            </div>
+            <div class="pl-1 ml-5 detail">
+                <div class="name">Keith Morris</div>
+                <div class="status">在线</div>
+            </div>
+        </div>
+        
+        <div class="operation">
+            <mat-menu #appMenu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>email</mat-icon>
+                    <span>发送邮件</span>
+                </button>
+                <button mat-menu-item disabled>
+                    <mat-icon>phone_in_talk</mat-icon>
+                    <span>发送语音</span>
+                </button>
+                <button mat-menu-item disabled>
+                    <mat-icon>videocam</mat-icon>
+                    <span>发送视频</span>
+                </button>
+            </mat-menu>
+
+            
+            <button mat-icon-button>
+                <mat-icon matTooltip="抖一抖" matTooltipPosition="below">waves</mat-icon>
+            </button>
+
+            <button mat-icon-button>
+                <mat-icon matTooltip="截图" matTooltipPosition="below">crop</mat-icon>
+            </button>
+
+            <button mat-icon-button>
+                <mat-icon matTooltip="免打扰" matTooltipPosition="below">notifications_off</mat-icon>
+            </button>
+
+            <button mat-icon-button>
+                <mat-icon matTooltip="详细" matTooltipPosition="below">info</mat-icon>
+            </button>
+            
+
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon [matTooltip]="'提示'" matTooltipPosition="below">more_vert</mat-icon>
+            </button>
+        </div>
+    </div>
 
     <!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
     <div class="main p-2">
