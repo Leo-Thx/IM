@@ -136,6 +136,10 @@ body {
     .text-#{$var}{ text-align: #{$var} }
 }
 
+@each $var in (top, middle, bottom) {
+    .valign-#{$var}{ vertical-align: #{$var} }
+}
+
 // 圆角
 .rounded {
     border-radius: $smallPixelUnit;
@@ -154,6 +158,6 @@ body {
 
 @each $var in (absolute, relative, static, fixed) {
     .#{$var}{
-        position: #{$var}
+        position: #{$var} !important;
     }
 }

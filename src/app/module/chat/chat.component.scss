@@ -10,7 +10,8 @@
             overflow: hidden;
         }
         .chat-input{
-            height: 160px;
+            // height: 100px;
+            flex-shrink: 0;
         }
     }
 }
