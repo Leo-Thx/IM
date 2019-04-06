@@ -1,8 +1,13 @@
 @import 'src/scss/variables';
 
 .content{
-    background: #eee;
+    background: #f5f5f5;
+    // color: $btnInactiveColor;
     word-break: break-all;
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 400;
+    display: inline-block;
     border-bottom-left-radius: $smallPixelUnit;
     border-bottom-right-radius: $smallPixelUnit;
     &.left{
@@ -10,10 +15,13 @@
     }
     &.right{
         border-top-left-radius: $smallPixelUnit;
+        // background: $btnActiveColor;
+        // color: #fff;
     }
 }
 .title{
     color: #999;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 400;
     &.right{text-align: right;}
 }

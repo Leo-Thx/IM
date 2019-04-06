@@ -1,1 +1,8 @@
 @import './../concreteMsg';
+
+.right{
+    &.content{
+        background: $btnActiveColor;
+        color: #fff;
+    }
+}

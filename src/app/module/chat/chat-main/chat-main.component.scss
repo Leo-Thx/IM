@@ -1,7 +1,7 @@
 @import './../../../../scss/variables';
 
 .chat-main-container{
-    $titleHeight: 6 * $pixelUnit;
+    $titleHeight: 7 * $pixelUnit;
     .title {
         height: $titleHeight;
         line-height: $titleHeight;
@@ -26,6 +26,7 @@
         }
         .operation{
             font-size: 0;
+            line-height: 0;
             >.mat-icon-button{
                 color: $btnInactiveColor;
                 &:hover, &:active{
@@ -35,7 +36,7 @@
         }
     }
     .main{
-        height: calc(100% - 48px);
+        height: calc(100% - 56px);
         overflow: auto;
         flex-grow: 1;
         flex-shrink: 0;
