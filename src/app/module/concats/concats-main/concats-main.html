@@ -6,9 +6,11 @@
             <button mat-icon-button class="absolute searchBtn">
                 <mat-icon>search</mat-icon>
             </button>
-            <button mat-icon-button class="absolute addBtn">
+            
+            <button mat-icon-button class="absolute addBtn" (click)="addConcats($event)">
                 <mat-icon>person_add</mat-icon>
             </button>
+
             <div class="typeSelect text-center">
                 <span matRipple class="inline-block ml-1 mr-1 pt-1 pb-1 pl-2 pr-2"
                     *ngFor="let item of statusArray; let i = index;"
