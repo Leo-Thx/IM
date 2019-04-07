@@ -1,3 +1,46 @@
-<div class="concats-main">
-    concats-main
+<div class="concats-main flex h-100">
+    <!-- 左侧 -->
+    <div class="sidebar w-30 h-100">
+        <div class="search p-2 relative flex-column">
+            <input type="text" class="w-100 pl-5 pt-sm-3 pb-sm-3 rounded" placeholder="搜索">
+            <button mat-icon-button class="absolute searchBtn">
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-icon-button class="absolute addBtn">
+                <mat-icon>person_add</mat-icon>
+            </button>
+            <div class="typeSelect text-center">
+                <span matRipple class="inline-block ml-1 mr-1 pt-1 pb-1 pl-2 pr-2"
+                    *ngFor="let item of statusArray; let i = index;"
+                    [class.active]="activeStatus===item"
+                    (click)="searchListWithStatus(item, $event)"
+                >{{item}}</span>
+            </div>
+        </div>
+    
+        <div class="list">
+            <mat-list class="h-100">
+                <mat-list-item  #matListItem
+                    *ngFor="let item of listArray; let i = index;" 
+                    [class.active]="i===0">
+        
+                    <app-avatar matListAvatar 
+                        [showStatus]="true" [online]="i < 3"
+                        url="./assets/login/top.jpeg"></app-avatar>
+    
+                    <h3 matLine class="title">有个人-{{i}}</h3>
+
+                    <p matLine class="pt-1 sketch">
+                        <span>71661048@qq.com</span>
+                    </p>
+                    
+                    <mat-divider [inset]="true"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+
+    <div class="main w-70">
+        main
+    </div>
 </div>
