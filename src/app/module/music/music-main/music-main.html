@@ -1,5 +1,80 @@
-<div class="music-main h-100">
-    <div class="modal w-50">
-        <!-- <img src="./assets/image/music/two.jpeg"> -->
+<div class="music-main h-100 relative">
+
+    <div class="music-top">
+        <!-- search -->
+        <!-- menu -->
+        <!-- 个人信息 -->
+    </div>
+
+    <div class="music-content">
+
+    </div>
+
+
+    <div class="music-bottom w-100 absolute p-2">
+        <div class="music-detail flex">
+            <img src="./assets/login/top.jpeg" class="cover" alt="">
+            
+            <div class="music-title pl-2">
+                <p class="m-0">这是音乐的名称</p>
+                <span class="block mt-sm-2">我是歌手</span>
+            </div>
+            
+            <div class="control-bar flex">
+                <div class="sequence-bar">
+                    <button mat-icon-button>
+                        <mat-icon>replay</mat-icon>
+                    </button>
+
+                    <button mat-icon-button class="active">
+                        <mat-icon>loop</mat-icon>
+                    </button>
+
+                    <button mat-icon-button >
+                        <mat-icon>all_inclusive</mat-icon>
+                    </button>
+                </div>
+
+                <div class="ml-8 contorl-bar">
+                    <button mat-icon-button >
+                        <mat-icon>skip_previous</mat-icon>
+                    </button>
+                    <button mat-icon-button class="statusControl">
+                        <mat-icon>play_circle_outline</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button >
+                        <mat-icon>pause_circle_outline</mat-icon>
+                    </button> -->
+                    <button mat-icon-button >
+                        <mat-icon>skip_next</mat-icon>
+                    </button>
+                    <button mat-icon-button >
+                        <mat-icon>queue_music</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="relative flex music-bar">
+            <div class="music-progress">
+                <span class="startTime mr-1">00:00</span>
+                <!-- <div class="inprogress"></div> -->
+                <mat-slider class="inprogress" thumbLabel min="1" max="298" step="1" value="30"></mat-slider>
+                <span class="endtime ml-1">4:58</span>
+            </div>
+            <div class="vol-control">
+                <button mat-icon-button>
+                    <mat-icon>volume_up</mat-icon>
+                </button>
+                <mat-slider thumbLabel min="1" max="100" step="1" value="30"></mat-slider>
+                <!-- <button mat-icon-button>
+                    <mat-icon>volume_down</mat-icon>
+                </button>
+                <button mat-icon-button >
+                    <mat-icon>volume_off</mat-icon>
+                </button> -->
+            </div>
+        </div>
     </div>
 </div>

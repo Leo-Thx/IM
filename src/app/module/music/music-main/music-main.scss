@@ -2,20 +2,90 @@
 
 .music-main{
     background: #fff;
-    .modal{
-        margin: 0 auto;
-        // img{width: 100%;}
-        // 背景图片会自动拷贝到打包目录下，同时改为相对打包路径...
-        position: relative;
-        // background-color: hsla(0,0%,100%,.3);
-        height: 200px;
-        border: 1px solid red;
-        // &::after{
-        //     position: absolute;
-        //     left: 0; top: 0; right: 0; bottom: 0;
-        //     content: '';
-        //     filter: blur(20px);
-        //     margin:-30px;      
-        // }
+    .music-top{
+        height: 56px;
+        background: orange;
+    }
+    .music-content{
+        margin-bottom: 96px;
+        background: blue;
+    }
+    .music-bottom{
+        height: 116px;
+        bottom: 0;
+        z-index: 1;
+        box-shadow: 3px 0px 0px 1px #f5f5f5;
+
+        .music-title{
+            span{font-size: 13px; color: $btnInactiveColor;}
+        }
+
+        .cover{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .mat-icon-button{
+            width: 32px; height: 32px;
+            line-height: 1;
+        }
+        .material-icons{
+            font-size: 20px;
+        }
+
+        button{
+            transition: all .3s;
+            margin-right: $pixelUnit;
+            &.active{
+                background-color: $btnActiveColor;
+                color: #fff;
+                opacity: .8;
+            }
+        }
+
+        // 播放形式
+        .sequence-bar{
+            color: $btnInactiveColor;
+        }
+        // 切换
+        .control-bar{
+            color: #646464;
+            margin-right: 0;
+            margin-left: auto;
+            flex-shrink: 0;
+            .statusControl{
+                background: #DF306A;
+                color: #fff;
+            }
+        }
+        // 进度
+        .music-bar{
+            // .mat-slider-horizontal{height: 40px; line-height: 40px;}
+            .music-progress{
+                > * {display: inline-block; vertical-align: middle;}
+                font-size: 12px;
+                .startTime{
+                    width: 48px;
+                }
+                .endTime{
+                    width: 48px;
+                }
+                .inprogress{
+                    width: 680px;
+                    // height: 2px;
+                    // background: $btnInactiveColor;
+                }
+                line-height: 48px;
+            }
+            .vol-control{
+                margin-left: auto;
+                color: $btnInactiveColor;
+                button{
+                    margin-right: 0;
+                }
+            }
+        }
     }
 }
