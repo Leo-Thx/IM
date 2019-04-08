@@ -23,10 +23,18 @@ export class ConcatsMainComponent{
     }
 
     public addConcats($event){
-        this.dialog.open(ConcatsAddDialogComponet, {
+        let dialogRef = this.dialog.open(ConcatsAddDialogComponet, {
             data: {
                 animal: 'panda'
-            }
+            },
+            width: '400px',
+            height: '300px',
+            autoFocus: false,
+            disableClose: true
+        });
+
+        dialogRef.afterClosed().subscribe(result=>{
+            console.info('result : ', result);
         });
     }
 }
