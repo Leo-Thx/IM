@@ -1,7 +1,6 @@
 <div class="sidenav-conatainer h-100 flex-column">
     <div class="p-sm-3 mb-1 avatar">
         <app-avatar url="./assets/login/top.jpeg" (click)="openPersonalInfo()"></app-avatar>
-		<!-- <img src="./assets/login/top.jpeg" class="w-100 h-100 rounded"> -->
     </div>
     
     <mat-nav-list>
@@ -10,9 +9,7 @@
             [routerLink]="[menu.to]" routerLinkActive="active" 
         >
             <span class="active-bar"></span>
-            <mat-icon [matBadgeHidden]="true" matBadge="99" matBadgeColor="accent"
-                [matTooltip]="menu.name" matTooltipPosition="right"
-            >{{menu.icon}}</mat-icon>
+            <mat-icon>{{menu.icon}}</mat-icon>
         </a>
 
         <mat-menu #appMenu="matMenu">
@@ -32,13 +29,11 @@
         
 
         <a mat-list-item #matListItem class="last" [matMenuTriggerFor]="appMenu">
-            <mat-icon [matTooltip]="settingMenu.name" matTooltipPosition="right"
-            >{{settingMenu.icon}}</mat-icon>
+            <mat-icon>{{settingMenu.icon}}</mat-icon>
         </a>
 
         <a mat-list-item #matListItem (click)="exitApp()">
-            <mat-icon [matTooltip]="exitMenu.name" matTooltipPosition="right"
-            >{{exitMenu.icon}}</mat-icon>
+            <mat-icon>{{exitMenu.icon}}</mat-icon>
         </a>
 
     </mat-nav-list>

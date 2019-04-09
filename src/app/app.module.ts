@@ -10,7 +10,6 @@ import { ShareMaterialModule } from './material-module';
 import { LayoutModule } from './module/layout/layout.module';
 import { PublicComponentModule } from './module/public/public.module';
 import { StoreModule } from '@ngrx/store';
-import { loginStateReducer } from './ngstore/login/loginState.reducer';
 
 
 @NgModule({
@@ -21,9 +20,8 @@ import { loginStateReducer } from './ngstore/login/loginState.reducer';
         BrowserModule,
         BrowserAnimationsModule,
 
-        StoreModule.forRoot({
-            loginState: loginStateReducer
-        }),
+        // 全局应用的状态在此配置即可，特性模块在自身中定义
+        StoreModule.forRoot({}),
 
         ShareMaterialModule,                    // UI共享模块
         ShareModule.forRoot(networkConfig),     // 唯一网络服务

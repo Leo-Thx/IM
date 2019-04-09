@@ -9,7 +9,8 @@ import { IpcService } from 'src/app/share/ipc/Ipc.service';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { LoginAction, ReigsterAction } from 'src/app/ngstore/login/loginState.action';
+import { LoginAction, ReigsterAction } from 'src/app/ngstore/login/login.action';
+import { LoginState } from 'src/app/ngstore/login/login.reducer';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -80,7 +81,7 @@ export class LoginComponent {
         public ipcSvc: IpcService, 
         public router: Router,
         public snackBar: MatSnackBar,
-        private store: Store<{loginState: string}> ) {
+        private store: Store<LoginState> ) {
             
         this.user = {};
     }

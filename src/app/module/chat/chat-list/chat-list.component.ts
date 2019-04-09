@@ -10,27 +10,15 @@ import { MatListItem } from '@angular/material';
     ],
     providers: [ChatListService]
 })
-export class ChatListComponent implements AfterViewInit{
-    public listArray = Array.from({length: 15}).fill(1);
+export class ChatListComponent{
+    public listArray = Array.from({length: 5}).fill(1);
     public messages = Array.from({length: 1}).fill({from:'from', subject:'subject', content:'content'});
 
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
 
     constructor(private chatlistSvc: ChatListService) {}
 
-    itemMouseover($event){
-        console.info($event);
-    }
-
     toChatItem(item, index, $event){
         console.info(item, index, event);
-    }
-
-    ngAfterViewInit(){
-        // for(let matItem of this.matListItem.toArray() ){
-        //     let hostEle = matItem._getHostElement(),
-        //         firstEle = hostEle.firstElementChild;
-        //     if( firstEle instanceof HTMLDivElement ) firstEle.style.padding="0 8px";
-        // }
     }
 }
