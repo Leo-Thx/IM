@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
 import { Observable, Subject } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { LoginState } from 'src/app/ngstore/login/login.reducer';
+
+import * as fromRoot from 'src/app/ngrx/reducers';
 
 // 因为之前我们设置标题栏样式-webkit-app-region: drag，这里按钮必须设置样式-webkit-app-region: no-drag，不然按钮将无法选中或点击
 
@@ -14,7 +15,7 @@ import { LoginState } from 'src/app/ngstore/login/login.reducer';
         './appbar.component.scss'
     ]
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit{
     public currentTime: Date;
     private timeSubject: Subject<Date> = new Subject();
     private timer: NodeJS.Timer;
@@ -24,11 +25,11 @@ export class AppTopBarComponent {
     };
 
     // 用于切换文字颜色, 主要是注册右边为白色
-    public loginState$: Observable<LoginState>;
+    public loginState$: Observable<string>;
 
     constructor(
             public ipcSvc: IpcService, public router: Router,
-            private store: Store<LoginState>) {
+            private store: Store<fromRoot.State>) {
                 
         this.timeSubject.subscribe((arg)=>{
             this.currentTime = arg;
@@ -43,11 +44,13 @@ export class AppTopBarComponent {
                 }
             }
        });
-
-       this.loginState$ = store.select('loginState');
-       this.loginState$.subscribe(state=>{
-           if(state) this.currentClasses.register = state.status === 'register';
-       });
+    }
+    
+    ngOnInit(){
+        this.loginState$ = this.store.select(fromRoot.getLoginState);
+        this.loginState$.subscribe(status=>{
+            this.currentClasses.register = status === 'register';
+        });
     }
 
     minimizable(){}
