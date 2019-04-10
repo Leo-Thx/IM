@@ -36,7 +36,8 @@ export function reducer(state = initState, action: login.Actions): State {
 }
 
 export const getOther = (state: State):string => state.other;
-export const getStatus = (state: State):string => {
+export const getStatus = (state: State, props: Object):string => {
+    // console.info(props);
     return state.status;
 };
 

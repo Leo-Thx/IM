@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, from } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
@@ -45,9 +45,9 @@ export class AppTopBarComponent implements OnInit{
             }
        });
     }
-    
+
     ngOnInit(){
-        this.loginState$ = this.store.select(fromRoot.getLoginState);
+        this.loginState$ = this.store.select(fromRoot.getLoginState, { multiply: 2 });
         this.loginState$.subscribe(status=>{
             this.currentClasses.register = status === 'register';
         });
