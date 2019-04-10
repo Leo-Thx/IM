@@ -25,15 +25,18 @@
 */
 
 import * as fromLogin from './login';
-import { ActionReducer, compose, combineReducers, createSelector, Action, createFeatureSelector, MemoizedSelectorWithProps, MemoizedSelector, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import * as fromChat from './chat';
+
+import { ActionReducer, createSelector, Action, createFeatureSelector, MemoizedSelectorWithProps, MemoizedSelector, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment.prod';
 
 // 应用状态
 export interface State {
-    login: fromLogin.State
+    login: fromLogin.State,
+    chat: fromChat.State
 }
 
-// 转换器
+
 // StoreModule.forRoot({
 //     ...reducers
 // }),
@@ -43,8 +46,11 @@ export interface State {
 
 // 注册reducer
 export const reducers: ActionReducerMap<State> = {
-    login: fromLogin.reducer
+    login: fromLogin.reducer,
+    chat: fromChat.reducer
 };
+
+
 export function logger(reducer: ActionReducer<State>): ActionReducer<State>{
     return function (state: State, action: Action): State{
         // console.log('state : ', state);
@@ -52,25 +58,19 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State>{
         return reducer(state, action);
     }
 }
-export const metaReducers: MetaReducer<State>[] = environment.production ? [logger] : [logger];
-
-// const prodReducer: ActionReducer<State> = combineReducers(reducers);
-
-// export function reducer (state: State, action: Action) {
-//     console.info('reducer', state);
-//     return prodReducer(state, action);
-// }
+export const metaReducers: MetaReducer<State>[] = environment.production ? [] : [logger];
 
 
 // createFeatureSelector等同于getLogin获取状态
-export const selectLoginFeature: MemoizedSelector<State, fromLogin.State> = createFeatureSelector<State, fromLogin.State>('login');
-const getlogin = (state: State, props):fromLogin.State=>{
-    // console.info(props);
-    // props.name = 'update';
-    return state.login
-};
-// export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getlogin, fromLogin.getStatus);
-export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(selectLoginFeature, fromLogin.getStatus);
+// export const selectLoginFeature: MemoizedSelector<State, fromLogin.State> = createFeatureSelector<State, fromLogin.State>('login');
+// const getlogin = (state: State, props):fromLogin.State=>state.login;
+const getLogin = createFeatureSelector('login');
+const getChat = createFeatureSelector('chat');
 
-export const getFeatureOther: MemoizedSelectorWithProps<State, Object, { slOther: string; status: string;}> = createSelector(selectLoginFeature, fromLogin.getOtherSelector);
+
+// export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getlogin, fromLogin.getStatus);
+export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getLogin, fromLogin.getStatus);
+// export const getChatState = createSelector(getChat, fromChat.getInitStatus);
+export const getChatId = createSelector(getChat, fromChat.getChatId);
+
 

@@ -13,5 +13,17 @@
             // height: 100px;
             flex-shrink: 0;
         }
+
+        &.init_view{
+            .absolute{
+                font-size: 48px;
+                width: 100px; height: 100px;
+                display: block;
+                left: 0; right: 0;
+                top:0; bottom: 0;
+                margin: auto;
+                color: #ccc;
+            }
+        }
     }
 }

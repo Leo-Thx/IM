@@ -23,9 +23,6 @@ import { reducers, metaReducers } from './ngrx/reducers';
 
         // 全局应用的状态在此配置即可，特性模块在自身中定义
         StoreModule.forRoot(reducers, {metaReducers: metaReducers}),
-        // StoreModule.forRoot({
-        //     ...reducers
-        // }),
 
         ShareMaterialModule,                    // UI共享模块
         ShareModule.forRoot(networkConfig),     // 唯一网络服务

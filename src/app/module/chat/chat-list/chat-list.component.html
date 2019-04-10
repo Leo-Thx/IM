@@ -2,7 +2,7 @@
     <mat-list class="h-100">
         <mat-list-item *ngFor="let item of listArray; let i = index;" #matListItem 
             (click)="toChatItem(item, i, $event)"
-            [class.active]="i===0" [class.online]="i<=2" [class.offline]="i>2">
+            [class.active]="i===chatRoomId" [class.online]="i<=2" [class.offline]="i>2">
 
             <app-avatar matListAvatar 
                 [showStatus]="true" [online]="i < 3" 

@@ -1,12 +1,17 @@
 <div class="chat-container flex h-100">
 
     <div class="chatList">
-        <app-chat-list></app-chat-list>
+        <app-chat-list [chatId]="chatId"></app-chat-list>
     </div>
 
-    <div class="chatMain flex-column">
-        <app-chat-main class="chat-main"></app-chat-main>
-        <app-chat-input class="chat-input"></app-chat-input>
+    <div *ngIf="chatId !== -1" class="chatMain flex-column">
+        <app-chat-main [chatId]="chatId" class="chat-main"></app-chat-main>
+        <app-chat-input [chatId]="chatId" class="chat-input"></app-chat-input>
+    </div>
+
+    <div *ngIf="chatId === -1" class="chatMain init_view relative">
+        <mat-icon class="absolute">forum</mat-icon>
+        <!-- <div class="absolute"></div> -->
     </div>
 
 </div>

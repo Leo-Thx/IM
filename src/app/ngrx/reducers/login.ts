@@ -1,15 +1,12 @@
-
 import * as login from './../actions/login';
 import { createSelector } from '@ngrx/store';
 
 export interface State {
-    status: string,
-    other?: string;
+    status: string
 }
 
-export const initState : State = {
-    status: 'login',
-    other: 'init value'
+const initState : State = {
+    status: 'login'
 };
 
 /**
@@ -18,7 +15,6 @@ export const initState : State = {
  * @param action 
  */
 export function reducer(state = initState, action: login.Actions): State {
-    // console.info(111111111, state);
     switch(action.type) {
         case login.ActionTyps.TO_LOGIN: 
             return {
@@ -35,15 +31,11 @@ export function reducer(state = initState, action: login.Actions): State {
     }
 }
 
-export const getOther = (state: State):string => state.other;
-export const getStatus = (state: State, props: Object):string => {
-    // console.info(props);
-    return state.status;
-};
+export const getStatus = (state: State, props: Object):string => state.status;
 
-export const getOtherSelector = createSelector(getOther, getStatus, (other:string, status:string)=>{
-    return {
-        slOther: other + ' : sel',
-        status: other + ' : ' + status
-    }
-});
+// export const getOtherSelector = createSelector(getOther, getStatus, (other:string, status:string)=>{
+//     return {
+//         slOther: other + ' : sel',
+//         status: other + ' : ' + status
+//     }
+// });
