@@ -74,4 +74,17 @@ export class NetworkService {
     log( data ) {
 
     }
+
+    getMovies(){
+        return new Observable(observer=>{
+            console.info('正在模拟加载...');
+            setTimeout(()=>{
+                console.info('获得数据...');
+                observer.next(
+                    Array.from({length: 5}).fill('Math.random()').
+                        map((name, index)=>({id: index, name}))
+                );
+            }, 3000);
+        });
+    }
 }

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ChatService } from './chat.service';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from 'src/app/ngrx/reducers';
+import * as fromRoot from 'src/app/store/reducers';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

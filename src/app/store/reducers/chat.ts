@@ -1,4 +1,4 @@
-import * as chat from './../actions/chat';
+import * as chat from '../actions/chat';
 
 export interface State {
     // init: boolean,
@@ -11,7 +11,7 @@ const initState: State = {
 } as State;
 
 
-export function reducer( state: State = initState, action: chat.Actions) {
+export function reducer( state: State = initState, action: chat.Actions): State {
     switch( action.type ) {
         case chat.ActionTypes.TO_INIT:
             return {

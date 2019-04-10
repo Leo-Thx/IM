@@ -1,4 +1,4 @@
-import * as login from './../actions/login';
+import * as login from '../actions/login';
 import { createSelector } from '@ngrx/store';
 
 export interface State {

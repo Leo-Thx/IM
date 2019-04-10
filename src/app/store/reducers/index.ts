@@ -26,6 +26,7 @@
 
 import * as fromLogin from './login';
 import * as fromChat from './chat';
+import * as move from './movie';
 
 import { ActionReducer, createSelector, Action, createFeatureSelector, MemoizedSelectorWithProps, MemoizedSelector, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment.prod';
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment.prod';
 // 应用状态
 export interface State {
     login: fromLogin.State,
-    chat: fromChat.State
+    chat: fromChat.State,
+    effect: move.State
 }
 
 
@@ -47,7 +49,8 @@ export interface State {
 // 注册reducer
 export const reducers: ActionReducerMap<State> = {
     login: fromLogin.reducer,
-    chat: fromChat.reducer
+    chat: fromChat.reducer,
+    effect: move.reducer
 };
 
 

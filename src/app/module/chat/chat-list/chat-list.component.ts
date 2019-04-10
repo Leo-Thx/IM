@@ -3,8 +3,8 @@ import { ChatListService } from './chat-list.service';
 import { MatListItem } from '@angular/material';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from 'src/app/ngrx/reducers';
-import * as chat from 'src/app/ngrx/actions/chat';
+import * as fromRoot from 'src/app/store/reducers';
+import * as chat from 'src/app/store/actions/chat';
 
 @Component({
     selector: 'app-chat-list',

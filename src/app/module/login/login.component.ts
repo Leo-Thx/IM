@@ -10,8 +10,8 @@ import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import * as login from 'src/app/ngrx/actions/login';
-import * as fromRoot from 'src/app/ngrx/reducers';
+import * as login from 'src/app/store/actions/login';
+import * as fromRoot from 'src/app/store/reducers';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

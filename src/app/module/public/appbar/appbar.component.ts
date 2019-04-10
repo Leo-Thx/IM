@@ -4,7 +4,7 @@ import { Observable, Subject, from } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
-import * as fromRoot from 'src/app/ngrx/reducers';
+import * as fromRoot from 'src/app/store/reducers';
 
 // 因为之前我们设置标题栏样式-webkit-app-region: drag，这里按钮必须设置样式-webkit-app-region: no-drag，不然按钮将无法选中或点击
 
