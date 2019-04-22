@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
-import { Observable, Subject, from } from 'rxjs';
+import { Observable, Subject, from, timer } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
@@ -17,8 +17,8 @@ import * as fromRoot from 'src/app/store/reducers';
 })
 export class AppTopBarComponent implements OnInit{
     public currentTime: Date;
-    private timeSubject: Subject<Date> = new Subject();
-    private timer: NodeJS.Timer;
+    // private timeSubject: Subject<Date> = new Subject();
+    // private timer: NodeJS.Timer;
     public currentClasses = {
         login: false,
         register: false
@@ -31,10 +31,11 @@ export class AppTopBarComponent implements OnInit{
             public ipcSvc: IpcService, public router: Router,
             private store: Store<fromRoot.State>) {
                 
-        this.timeSubject.subscribe((arg)=>{
-            this.currentTime = arg;
-        });
-        this.timer = setInterval(()=>this.timeSubject.next(new Date), 1000);
+        // this.timeSubject.subscribe((arg)=>{
+        //     this.currentTime = arg;
+        // });
+        // this.timer = setInterval(()=>this.timeSubject.next(new Date), 1000);
+        timer(0, 1000).subscribe(()=>this.currentTime = new Date);
 
         this.router.events.subscribe((event)=>{
             if( event instanceof NavigationEnd ){

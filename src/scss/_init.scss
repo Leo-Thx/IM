@@ -1,0 +1,96 @@
+// 预定义一些常用样式: 圆角、阴影等...
+
+// 百分比宽高
+@for $index from 1 through 100 {
+    .w-#{$index} { width : $index * 1% ; }
+    .h-#{$index} { height: $index * 1%; }
+}
+
+
+@each $var in (block, flex, inline, inline-block, inline-flex, table) {
+    .#{$var}{
+        display: #{$var} !important;
+    }
+}
+
+.flex-column {
+    @extend .flex;
+    flex-direction: column;
+}
+
+
+// 边框
+// border-top: 1px solid;
+@each $var in (top, right, bottom, left) {
+    .border-#{$var} {
+        border-#{$var}-width: 1px;
+        border-#{$var}-style: solid;
+    }
+}
+
+// 内填充和边距
+// m0 - m8, p0-p8
+@each $key, $value in (m: margin, p: padding) {
+    @for $rate from 0 through 8 {
+        // m-0
+        .#{$key}-#{$rate} {
+            #{$value}: $rate * $pixelUnit;
+        }
+        // m-sm-0
+        .#{$key}-sm-#{$rate} {
+            #{$value}: $rate * $smallPixelUnit;
+        }
+        // m-mn-0
+        .#{$key}-mn-#{$rate} {
+            #{$value}: $rate * $miniPixelUnit;
+        }
+    }
+// mt-0 - mt-8, pt-0 - pt-8
+    @each $direction, $dirValue in (t:top, r:right, b:bottom, l:left) {
+        @for $rate from 0 through 8 {
+            // mt-1
+            .#{$key}#{$direction}-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $pixelUnit;
+            }
+            // mt-sm-1
+            .#{$key}#{$direction}-sm-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $smallPixelUnit;
+            }
+            // mt-mn-1
+            .#{$key}#{$direction}-mn-#{$rate} {
+                #{$value}-#{$dirValue}: $rate * $miniPixelUnit;
+            }
+        }
+    }
+}
+
+// 文字对齐方式
+@each $var in (left, center, right) {
+    .text-#{$var}{ text-align: #{$var} }
+}
+
+@each $var in (top, middle, bottom) {
+    .valign-#{$var}{ vertical-align: #{$var} }
+}
+
+// 圆角
+.rounded {
+    border-radius: $smallPixelUnit;
+}
+@each $lfKey, $lfValue in (l:left, r:right) {
+    @each $tbKey, $tbValue in (t:top, b:bottom) {
+        // rounded-tl, rounded-bl
+        .rounded-#{$tbKey}#{$lfKey} {
+            // border-top-left-radius: 
+            // border-bottom-left-radius: 
+            border-#{$tbValue}-#{$lfValue}-radius: $smallPixelUnit;
+        }
+    }
+}
+
+
+@each $var in (absolute, relative, static, fixed) {
+    .#{$var}{
+        position: #{$var} !important;
+    }
+}

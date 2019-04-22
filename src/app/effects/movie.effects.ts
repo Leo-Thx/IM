@@ -17,6 +17,7 @@ export class MovieEffects {
         ofType(moveAction.ActionTypes.GET_ALL_MOVIE),
         mergeMap(()=>this.netSvc.getMovies()
             .pipe(
+                // 难道map中要返回一个action才会进行动作分配？
                 map(movies=>new moveAction.loadSuccessAction(movies as [])),
                 catchError(()=>EMPTY)
             )
