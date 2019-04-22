@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'assets/font/SourceHanSansCN-Bold.css';
+@import 'assets/font/SourceHanSansCN-Regular.css';
+
 // 字体图标
 // @import "./../node_modules/material-design-icons/iconfont/material-icons.css";
 
@@ -16,12 +19,19 @@
 // @import './scss/theme.scss';
 
 @import './scss/variables';
-@import 'assets/css/Source_Han_Sans_CN.scss';
+// @import 'assets/css/Source_Han_Sans_CN.scss';
 @import './scss/_init';
+
+.Shs_Regular {
+    font-family: 'SourceHanSansCN-Regular';
+}
+.Shs_Bold {
+    font-family: 'SourceHanSansCN-Bold';
+}
 
 html, body{
     height: 100%;
-    font-family: 'Shs_Regular';
+    @extend .Shs_Regular;
 }
 
 body {

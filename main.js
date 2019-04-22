@@ -55,7 +55,7 @@ app.on('ready', ()=>{
 		slashes: true,
 		pathname: require('path').join(__dirname, 'dist/IM/index.html')
 	});
-	var uri = 'http://localhost:4200';
+	// var uri = 'http://localhost:4200';
 
     mainWindow.loadURL(uri);
 
