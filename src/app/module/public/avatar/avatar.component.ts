@@ -15,6 +15,15 @@ export class AvatarComponent {
     // 是否在线
     @Input() online: boolean;
 
+    // 头像大小
+    // @Input() size: number;
+
+    // 是否有边框
+    @Input() border: boolean = false;
+
+    // 是否有阴影
+    @Input() shadow: boolean = false;  
+
     private _show = false;
     @Input()
     set showBadge(show){

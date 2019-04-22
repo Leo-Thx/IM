@@ -9,10 +9,10 @@ export interface SideNavMenu {
 }
 
 const menus = [
-    {icon: 'chat_bubble_outline', name: '消息', to: 'chat'},
+    {icon: 'forum', name: '消息', to: 'chat'},
     {icon: 'account_circle', name: '联系人', to: 'concats' },
-    {icon: 'notifications_none', name: '提醒', to: 'reminder'},
-    // {icon: 'date_range', name: '待办', to: 'schedule'},
+    // {icon: 'notifications_none', name: '提醒', to: 'reminder'},
+    {icon: 'date_range', name: '待办', to: 'schedule'},
     // {icon: 'email', name: '我的邮箱', to: 'email'},
     {icon: 'library_music', name: '音乐', to: 'music'},
     

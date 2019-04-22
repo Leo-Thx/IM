@@ -18,9 +18,8 @@
 // 或放入到angular.json中
 // @import './scss/theme.scss';
 
-@import './scss/variables';
-// @import 'assets/css/Source_Han_Sans_CN.scss';
-@import './scss/_init';
+@import './scss/scrollbar';
+@import './scss/init';
 
 .Shs_Regular {
     font-family: 'SourceHanSansCN-Regular';

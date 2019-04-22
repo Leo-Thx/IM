@@ -5,10 +5,10 @@
 }
 
 .sidenav{
-    width: 74px;
+    width: $pixelUnit * 9;
     flex-shrink: 0;
     background: #fff;
-    border-right: 2px solid #fefeff;
+    // border-right: 2px solid #fefeff;
 }
 .main{
     flex-grow: 1;
