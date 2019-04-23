@@ -24,9 +24,6 @@
             //     top: $pixelUnit;
             //     right: 0px;
             // }
-            &:hover{
-                color: $btnActiveColor;
-            }
         }
         textarea{
             border:none;
@@ -45,16 +42,19 @@
     button.file{
         margin-right: 2 * $pixelUnit;
         margin-top: $pixelUnit;
-        background-color: $btnActiveColor;
+        background-color: $primaryColor;
         color: #fff;
-        &:hover{
-            opacity: .8
-        }
+        // &:hover{
+            // opacity: .8
+        // }
+        .mat-icon{width: 18px;}
     }
 
     button.send{
-        top: $pixelUnit;
         margin-left: 2 * $pixelUnit;
         color: $primaryColor;
+        width: 7 * $pixelUnit;
+        height: 7 * $pixelUnit;
+        .mat-icon{width: 36px; height: 36px;}
     }
 }

@@ -2,13 +2,30 @@
 @import "src/scss/common.mixin";
 
 .chat-list-container{
-    // background: #fdfdfd;
-    background:rgba(242,242,242,1);
+    background: #f2f2f2;
+    .search {
+        height: 7 * $pixelUnit;
+        flex-shrink: 0;
+        background: #fff;
+        line-height: 4*$pixelUnit;
+        input{
+            border: none;
+            outline: none;
+            background: #F1F1F1;
+            border-radius: 4 * $pixelUnit;
+        }
+        .searchBtn{
+            color: #8E8E8E;
+            width: 4 * $pixelUnit; height: 4*$pixelUnit;
+            line-height: inherit;
+            right: 3 * $pixelUnit;
+        }
+    }
     .mat-list{
+        flex: 1;
         overflow: auto;
         padding-top: 0;
         &:hover{ cursor: pointer; }
-
         .mat-list-avatar{width: 48px; height: 48px;}
         .title{
             @include f-normal;

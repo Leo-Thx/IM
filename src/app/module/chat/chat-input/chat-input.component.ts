@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject, Input } from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser';
 import { ChatInputService } from './chat-input.service';
+import { MatIconRegistry } from '@angular/material';
 
 
 const menus = [
@@ -25,7 +27,16 @@ export class ChatInputComponent implements OnInit {
     @Input('chatId') public chatRoomId;
 
     public menus: Array<any> = menus;
-    constructor( private chatInputSvc: ChatInputService ) {}
+    constructor( private chatInputSvc: ChatInputService, 
+        iconRegistry: MatIconRegistry, 
+        sanitizer: DomSanitizer ) {
+            // 这里考虑是否需要进行数据缓存
+            iconRegistry.addSvgIcon('send_input',  
+                sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/send_input.svg'));
+                
+            iconRegistry.addSvgIcon('folder_input',
+                sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/folder_input.svg'));
+        }
 
     ngOnInit() {}
 }

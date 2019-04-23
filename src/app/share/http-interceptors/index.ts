@@ -4,7 +4,7 @@ import { AuthHttpInterceptor } from './Auth.interceptor';
 import { LogHttpInterceptor } from './Log.interceptor';
 
 export const httpInterceptorProviders = [
-    { provide: HTTP_INTERCEPTORS, userClass: NoopHttpInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, userClass: AuthHttpInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, userClass: LogHttpInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: NoopHttpInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: LogHttpInterceptor, multi: true }
 ];

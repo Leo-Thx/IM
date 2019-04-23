@@ -1,5 +1,12 @@
-<div class="chat-list-container h-100">
-    <mat-list class="h-100">
+<div class="flex-column chat-list-container h-100">
+    <div class="search relative pl-2 pr-2 pt-sm-3 pb-sm-3">
+        <input type="text" class="w-100 h-100 pr-4 pl-2" placeholder="搜索">
+        <button mat-icon-button class="absolute searchBtn">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+
+    <mat-list class="mat-list">
         <mat-list-item class="relative"
             *ngFor="let item of listArray; let i = index;" #matListItem 
             (click)="toChatItem(item, i, $event)"

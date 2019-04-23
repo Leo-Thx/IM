@@ -17,7 +17,7 @@ import * as chat from 'src/app/store/actions/chat';
 export class ChatListComponent{
     @Input('chatId') chatRoomId;
 
-    public listArray = Array.from({length: 5}).fill(1);
+    public listArray = Array.from({length: 25}).fill(1);
     public messages = Array.from({length: 1}).fill({from:'from', subject:'subject', content:'content'});
 
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
