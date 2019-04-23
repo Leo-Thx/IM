@@ -5,7 +5,7 @@ import { MsgImageType } from 'src/app/model/msgType/ImageType';
     template: `
     <span class="title block" [ngClass]="dirClass">你的名字<span class="time ml-1">12-03-12</span></span>
     <div class="content p-mn-5" [ngClass]="dirClass">
-        图片
+        <img src="./assets/login/top.jpeg" />
     </div>
     `,
     styleUrls: ['./ChatImgMsg.scss']
