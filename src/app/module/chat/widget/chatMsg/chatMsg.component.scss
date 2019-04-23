@@ -7,17 +7,8 @@
     &.right{
         margin-left: auto;
         justify-content: flex-end;
-        // .title{ text-align: right ;}
-        // .content{
-        //     border-top-left-radius: $smallPixelUnit;
-        // }
+        text-align: right;
     }
-
-    // &.left{
-    //     .content{
-    //         border-top-right-radius: $smallPixelUnit;
-    //     }
-    // }
 
     .avatar{
         width: 5 * $pixelUnit;

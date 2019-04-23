@@ -1,27 +1,8 @@
 @import './../concreteMsg';
 
-button.attachment{
-    background-color: $btnActiveColor;
-    color: #fff;
-    &:hover{
-        opacity: .8
-    }
-}
-
 .detail{
     font-size: 12px;
     h5{
         font-size: 14px;
-        color: $btnActiveColor;
-        // a{
-        //     text-decoration: none;
-        //     color: $btnActiveColor;
-        //     &:hover{
-        //         text-decoration: none;
-        //     }
-        // }
-    }
-    span{
-        color: $btnInactiveColor;
     }
 }
