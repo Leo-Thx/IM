@@ -12,7 +12,7 @@
 // @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 // @import '~@angular/material/prebuilt-themes/purple-green.css';
 
-
+@import './scss/common.mixin';
 @import './scss/variables';
 
 // 或放入到angular.json中
@@ -21,16 +21,10 @@
 @import './scss/scrollbar';
 @import './scss/init';
 
-.Shs_Regular {
-    font-family: 'SourceHanSansCN-Regular';
-}
-.Shs_Bold {
-    font-family: 'SourceHanSansCN-Bold';
-}
 
 html, body{
     height: 100%;
-    @extend .Shs_Regular;
+    @include f-normal;
 }
 
 body {

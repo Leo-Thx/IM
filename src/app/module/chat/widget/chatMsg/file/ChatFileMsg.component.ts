@@ -4,7 +4,7 @@ import { MsgFileType } from 'src/app/model/msgType/FileType';
 @Component({
     template: `
     <span class="title block" [ngClass]="dirClass">你的名字<span class="time ml-1">12-03-12</span></span>
-    <div class="flex p-sm-3 mt-sm-1 content" [ngClass]="dirClass">
+    <div class="flex p-mn-5 content" [ngClass]="dirClass">
         <button class="attachment" mat-icon-button>
             <mat-icon>insert_drive_file</mat-icon>
         </button>

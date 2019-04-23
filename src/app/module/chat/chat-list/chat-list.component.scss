@@ -1,4 +1,5 @@
 @import "src/scss/variables";
+@import "src/scss/common.mixin";
 
 .chat-list-container{
     // background: #fdfdfd;
@@ -10,9 +11,9 @@
 
         .mat-list-avatar{width: 48px; height: 48px;}
         .title{
+            @include f-normal;
             .subtitle{ 
                 font-size: 16px;
-                font-weight:400;
             }
             .time{
                 margin-right: 0; 
@@ -24,11 +25,11 @@
             }
         }
         .sketch{
+            @include f-normal;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             font-size: 12px;
-            font-weight: 400;
             padding-top: 3 * $smallPixelUnit;
             color: #656565;
         }

@@ -1,28 +1,35 @@
-@import './../../../../scss/variables';
+@import 'src/scss/variables';
+@import 'src/scss/common.mixin';
 
 .chat-main-container{
     $titleHeight: 7 * $pixelUnit;
+    @include f-normal;
     .title {
         height: $titleHeight;
-        line-height: $titleHeight;
+        // line-height: $titleHeight;
         background: #fff;
-        box-shadow: 0px 1px 0px #fbfbfb;
-        font-size: 14px;
+        // box-shadow: 0px 1px 0px #fbfbfb;
+        box-shadow:0px 1px 1px rgba(0,0,0,0.16);
+        // font-size: 14px;
         justify-content: space-between;
         .info{
             flex-shrink: 0; flex-grow: 0;
-            line-height: 20px;
-            .avatar{
-                width: 40px;
-                float: left;
-            }
-            .detail{
-                .name{font-weight: 700; font-size: 16px;}
-                .status{
-                    font-weight: 500; font-size: 14px;
-                    color: $btnInactiveColor;
-                }
-            }
+            @include f-bold;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 5 * $pixelUnit;
+            // line-height: 25px;
+            // .avatar{
+            //     width: 40px;
+            //     float: left;
+            // }
+            // .detail{
+            //     .name{font-weight: 700; font-size: 16px;}
+            //     .status{
+            //         font-weight: 500; font-size: 14px;
+            //         color: $btnInactiveColor;
+            //     }
+            // }
         }
         .operation{
             font-size: 0;

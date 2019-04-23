@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit, OnDestroy{
         this.viewChatId$ = this.store.select(fromRoot.getChatId);
         this.chatIdSub = this.viewChatId$.subscribe(value=>{
             this.showInitView = value === -1;
-            this.chatId = value;
+            // this.chatId = value;
         });
     }
 

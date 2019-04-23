@@ -4,7 +4,7 @@ import { MsgImageType } from 'src/app/model/msgType/ImageType';
 @Component({
     template: `
     <span class="title block" [ngClass]="dirClass">你的名字<span class="time ml-1">12-03-12</span></span>
-    <div class="content p-sm-3 mt-sm-1" [ngClass]="dirClass">
+    <div class="content p-mn-5" [ngClass]="dirClass">
         图片
     </div>
     `,

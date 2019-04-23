@@ -1,3 +1,12 @@
 @mixin unselect {
     user-select: none;
 }
+
+@mixin f-normal{
+    font-family: 'SourceHanSansCN-Regular';
+    font-weight: 400;
+}
+
+@mixin f-bold {
+    font-family: 'SourceHanSansCN-Bold';
+}
