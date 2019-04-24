@@ -33,40 +33,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
         trigger('toRegister', [
             state('login', style({
                 zIndex: 0,
-                opacity: 0,
-                // left: '60%'
+                opacity: 0
             })),
             state('register', style({
                 zIndex: 2,
-                opacity: 1,
-                // left: 0
+                opacity: 1
             })),
-            transition("login=>register", [
-                animate('.5s ease-in-out'),
-                // query('.content', [
-                //     style({opacity: 0}),
-                //     stagger(0, [
-                //         animate('0.5s ease-in-out', style({
-                //             opacity: 1
-                //         })),
-                //     ])
-                // ]),
-            ]),
-            transition("register=>login", [
-                animate('.5s ease-in-out'),
+            transition("login<=>register", [
+                animate('.1s')
             ])
-        ]),
-        // trigger('registerCardToRegister', [
-        //     state('login', style({
-        //         opacity: 0
-        //     })),
-        //     state('register', style({
-        //         opacity: 1
-        //     })),
-        //     transition("login=>register", [
-        //         animate('2s ease-in-out'),
-        //     ]),
-        // ])
+        ])
     ]
 })
 export class LoginComponent {

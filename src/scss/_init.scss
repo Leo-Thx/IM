@@ -94,3 +94,26 @@
         position: #{$var} !important;
     }
 }
+
+
+
+.login-container{
+    // .mat-form-field.mat-focused .mat-form-field-ripple {
+    //     background-color: #D5D5D5;
+    // }
+    // .mat-form-field.mat-focused .mat-form-field-label {
+    //     color: black;
+    // }
+    .mat-checkbox-checked.mat-primary .mat-checkbox-background{
+        background-color: $primaryColor;
+    }
+
+    .mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {
+        background-color: $primaryColor;
+    }
+
+    .mat-checkbox-inner-container{
+        width: 3 * $pixelUnit;
+        height: 3 * $pixelUnit;
+    }
+}
