@@ -64,7 +64,7 @@
                 div{background: #fff;}
                 span{
                     color: $primaryColor;
-                    margin-left: $smallPixelUnit;
+                    margin-left: $sm-unit;
                     border-bottom: 1px solid $primaryColor;
                     &:hover{cursor: pointer;}
                 }

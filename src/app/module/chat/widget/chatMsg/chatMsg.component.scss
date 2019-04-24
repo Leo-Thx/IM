@@ -11,8 +11,8 @@
     }
 
     .avatar{
-        width: 5 * $pixelUnit;
-        height: 5 * $pixelUnit;
+        width: 5 * $unit;
+        height: 5 * $unit;
         flex-shrink: 0;
     }
 }

@@ -18,10 +18,10 @@
         button{
             color: $btnInactiveColor;
             &.emoji{ 
-                top:$pixelUnit;
+                top:$unit;
             }
             // &.send{
-            //     top: $pixelUnit;
+            //     top: $unit;
             //     right: 0px;
             // }
         }
@@ -30,7 +30,7 @@
             outline: 0px;
             resize: none;
             font-size: 16px;
-            height: 7 * $pixelUnit;
+            height: 7 * $unit;
             line-height: 24px;
             background-color: #f5f5f5;
             &::placeholder{
@@ -40,8 +40,8 @@
     }
 
     button.file{
-        margin-right: 2 * $pixelUnit;
-        margin-top: $pixelUnit;
+        margin-right: 2 * $unit;
+        margin-top: $unit;
         background-color: $primaryColor;
         color: #fff;
         // &:hover{
@@ -51,10 +51,10 @@
     }
 
     button.send{
-        margin-left: 2 * $pixelUnit;
+        margin-left: 2 * $unit;
         color: $primaryColor;
-        width: 7 * $pixelUnit;
-        height: 7 * $pixelUnit;
+        width: 7 * $unit;
+        height: 7 * $unit;
         .mat-icon{width: 36px; height: 36px;}
     }
 }

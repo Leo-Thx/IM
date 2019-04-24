@@ -2,9 +2,9 @@
 // $halfRateStep: 4px !default;
 
 
-$pixelUnit: 8px !default;
-$smallPixelUnit: $pixelUnit / 2;
-$miniPixelUnit: $pixelUnit / 4;
+$unit: 8px !default;
+$sm-unit: $unit / 2;
+$mn-unit: $unit / 4;
 
 $btnActiveColor: #E53F14;
 $btnInactiveColor: #8E8E8E;

@@ -8,8 +8,8 @@
         // box-shadow: 0 5px 10px 4px rgba(0,0,0,.04);
     }
     .status{
-        width: $pixelUnit;
-        height: $pixelUnit;
+        width: $unit;
+        height: $unit;
         right: 4px;
         bottom: 0;
         border-radius: 50%;
@@ -31,8 +31,8 @@
     .mat-badge-content{
         top:0; right: 0;
         font-size: 10px;
-        width: 2 * $pixelUnit;
-        height: 2 * $pixelUnit;
-        line-height: 2 * $pixelUnit;
+        width: 2 * $unit;
+        height: 2 * $unit;
+        line-height: 2 * $unit;
     }
 }

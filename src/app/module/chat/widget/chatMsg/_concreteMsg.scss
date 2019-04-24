@@ -11,7 +11,7 @@
     display: inline-block;
     text-align: left;
 
-    border-radius: $smallPixelUnit;
+    border-radius: $sm-unit;
 
     &::after{
         content: '';

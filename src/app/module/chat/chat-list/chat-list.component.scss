@@ -4,21 +4,21 @@
 .chat-list-container{
     background: #f2f2f2;
     .search {
-        height: 7 * $pixelUnit;
+        height: 7 * $unit;
         flex-shrink: 0;
         background: #fff;
-        line-height: 4*$pixelUnit;
+        line-height: 4*$unit;
         input{
             border: none;
             outline: none;
             background: #F1F1F1;
-            border-radius: 4 * $pixelUnit;
+            border-radius: 4 * $unit;
         }
         .searchBtn{
             color: #8E8E8E;
-            width: 4 * $pixelUnit; height: 4*$pixelUnit;
+            width: 4 * $unit; height: 4*$unit;
             line-height: inherit;
-            right: 3 * $pixelUnit;
+            right: 3 * $unit;
         }
     }
     .mat-list{
@@ -51,7 +51,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-size: 12px;
-            padding-top: 3 * $smallPixelUnit;
+            padding-top: 3 * $sm-unit;
             color: #656565;
         }
         .mat-list-item{

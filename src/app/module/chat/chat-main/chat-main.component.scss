@@ -2,7 +2,7 @@
 @import 'src/scss/common.mixin';
 
 .chat-main-container{
-    $titleHeight: 7 * $pixelUnit;
+    $titleHeight: 7 * $unit;
     @include f-normal;
     .title {
         height: $titleHeight;
@@ -17,7 +17,7 @@
             @include f-bold;
             font-size: 28px;
             font-weight: 500;
-            line-height: 5 * $pixelUnit;
+            line-height: 5 * $unit;
             // line-height: 25px;
             // .avatar{
             //     width: 40px;

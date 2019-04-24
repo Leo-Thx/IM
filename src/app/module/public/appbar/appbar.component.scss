@@ -2,7 +2,7 @@
 @import 'src/scss/common.mixin';
 
 .app-topbar{
-    height: 3 * $pixelUnit;
+    height: 3 * $unit;
     width: 100%; left: 0; top: 0;
     justify-content: space-between;
     &.login{
@@ -26,7 +26,7 @@
         bottom: 0px;
     }
 
-    .app-icon{width: 3 * $pixelUnit;}
+    .app-icon{width: 3 * $unit;}
     .app-region{
         -webkit-app-region: drag;
         flex-grow: 1;
@@ -35,7 +35,7 @@
     .time{
         font-size: 13px;
         @include unselect;
-        line-height: 3 * $pixelUnit;
+        line-height: 3 * $unit;
         color: #8E8E8E;
     }
 

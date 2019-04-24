@@ -45,7 +45,7 @@
 
         button{
             transition: all .3s;
-            margin-right: $pixelUnit;
+            margin-right: $unit;
             &.active{
                 background-color: $btnActiveColor;
                 color: #fff;

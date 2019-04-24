@@ -34,15 +34,15 @@
     @for $rate from 0 through 8 {
         // m-0
         .#{$key}-#{$rate} {
-            #{$value}: $rate * $pixelUnit;
+            #{$value}: $rate * $unit;
         }
         // m-sm-0
         .#{$key}-sm-#{$rate} {
-            #{$value}: $rate * $smallPixelUnit;
+            #{$value}: $rate * $sm-unit;
         }
         // m-mn-0
         .#{$key}-mn-#{$rate} {
-            #{$value}: $rate * $miniPixelUnit;
+            #{$value}: $rate * $mn-unit;
         }
     }
 // mt-0 - mt-8, pt-0 - pt-8
@@ -50,15 +50,15 @@
         @for $rate from 0 through 8 {
             // mt-1
             .#{$key}#{$direction}-#{$rate} {
-                #{$value}-#{$dirValue}: $rate * $pixelUnit;
+                #{$value}-#{$dirValue}: $rate * $unit;
             }
             // mt-sm-1
             .#{$key}#{$direction}-sm-#{$rate} {
-                #{$value}-#{$dirValue}: $rate * $smallPixelUnit;
+                #{$value}-#{$dirValue}: $rate * $sm-unit;
             }
             // mt-mn-1
             .#{$key}#{$direction}-mn-#{$rate} {
-                #{$value}-#{$dirValue}: $rate * $miniPixelUnit;
+                #{$value}-#{$dirValue}: $rate * $mn-unit;
             }
         }
     }
@@ -75,7 +75,7 @@
 
 // 圆角
 .rounded {
-    border-radius: $smallPixelUnit;
+    border-radius: $sm-unit;
 }
 @each $lfKey, $lfValue in (l:left, r:right) {
     @each $tbKey, $tbValue in (t:top, b:bottom) {
@@ -83,7 +83,7 @@
         .rounded-#{$tbKey}#{$lfKey} {
             // border-top-left-radius: 
             // border-bottom-left-radius: 
-            border-#{$tbValue}-#{$lfValue}-radius: $smallPixelUnit;
+            border-#{$tbValue}-#{$lfValue}-radius: $sm-unit;
         }
     }
 }
@@ -113,7 +113,7 @@
     }
 
     .mat-checkbox-inner-container{
-        width: 3 * $pixelUnit;
-        height: 3 * $pixelUnit;
+        width: 3 * $unit;
+        height: 3 * $unit;
     }
 }

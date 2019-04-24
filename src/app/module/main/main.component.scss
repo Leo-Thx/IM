@@ -1,11 +1,11 @@
 @import './../../../scss/variables';
 
 .left-drawer{
-    width: $pixelUnit * 30;
+    width: $unit * 30;
 }
 
 .sidenav{
-    width: $pixelUnit * 9;
+    width: $unit * 9;
     flex-shrink: 0;
     background: #fff;
     // border-right: 2px solid #fefeff;

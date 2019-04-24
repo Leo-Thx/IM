@@ -7,7 +7,7 @@
         box-shadow: 2px 2px 2px #eee;
         overflow: hidden;
         .search{
-            height: 16 * $pixelUnit;
+            height: 16 * $unit;
             box-shadow: 2px 0 2px #eee;
             justify-content: space-between;
             input{
@@ -15,7 +15,7 @@
                 color: $btnInactiveColor;
                 border: none;
                 outline: none;
-                height: 5 * $pixelUnit;
+                height: 5 * $unit;
                 font-size: 14px;
                 line-height: 1;
                 font-weight: 500;
@@ -23,13 +23,13 @@
             button{
                 transition: all .3s;
                 &.searchBtn{
-                    left:2 * $pixelUnit; 
-                    top:2 * $pixelUnit;
+                    left:2 * $unit; 
+                    top:2 * $unit;
                     color: $btnInactiveColor;
                 }
                 &.addBtn{
-                    top:4  * $pixelUnit; 
-                    right: 2 * $pixelUnit;
+                    top:4  * $unit; 
+                    right: 2 * $unit;
                     background: #fff;
                     color: $btnInactiveColor;
                     box-shadow: 0 0 30px 5px rgba(0,0,0,.04);
@@ -73,7 +73,7 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     font-size: 12px;
-                    padding-top: 3 * $smallPixelUnit;
+                    padding-top: 3 * $sm-unit;
                     color: $btnInactiveColor;
                 }
                 .mat-list-item{
