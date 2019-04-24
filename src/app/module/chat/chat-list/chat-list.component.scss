@@ -30,11 +30,15 @@
         .title{
             @include f-normal;
             .subtitle{ 
-                font-size: 16px;
+                font-size: 15px;
+                width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
             }
             .time{
-                margin-right: 0; 
-                margin-left: auto; 
+                // margin-right: 0; 
+                // margin-left: auto; 
                 width: 64px;
                 font-size: 12px;
                 float: right;

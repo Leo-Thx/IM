@@ -18,9 +18,10 @@
     &::after{
         position: absolute;
         content: '';
-        width: 100%;
-        height: 1px;
-        background: rgba(0, 0, 0, 0.05);;
+        width: 70%;
+        height: 2px;
+        // background: rgba(0, 0, 0, 0.05);
+        background-color: $primaryColor;
         left: 0;
         bottom: 0px;
     }
@@ -35,6 +36,7 @@
         font-size: 13px;
         @include unselect;
         line-height: 3 * $pixelUnit;
+        color: #8E8E8E;
     }
 
     .app-menu{
@@ -45,6 +47,7 @@
         &:hover{
             cursor: pointer;
         }
+        color: #8E8E8E;
         @include unselect;
     }
 }
