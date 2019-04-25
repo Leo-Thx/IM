@@ -9,22 +9,13 @@
         flex-direction: column;
         color: $btnInactiveColor;
         .mat-icon{
-            font-size: 30px;
+            font-size: 27px;
             width: auto;
             height: auto;
         }
 		a{
             color: inherit;
 			&.active{
-				// .active-bar{
-				// 	position: absolute;
-				// 	left: 0; top: 0;
-				// 	height: 100%;width: 4px;
-				// 	background-color: #2196F3;
-				// 	border-top-left-radius: 3px;
-				// 	border-bottom-left-radius: 3px;
-				// }
-				// background: linear-gradient(to right, #ddd, #eee, #fff);
 				color: $primaryColor;
 			}
 			&.last{

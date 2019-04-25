@@ -6,12 +6,13 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import { state, style, trigger, transition, animate, keyframes, stagger, query } from '@angular/animations';
 import { Router } from '@angular/router';
 import { IpcService } from 'src/app/share/ipc/Ipc.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatIconRegistry } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
 import * as login from 'src/app/store/actions/login';
 import * as fromRoot from 'src/app/store/reducers';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -58,9 +59,11 @@ export class LoginComponent {
         public ipcSvc: IpcService, 
         public router: Router,
         public snackBar: MatSnackBar,
-        private store: Store<fromRoot.State> ) {
-            
-        this.user = {};
+        private store: Store<fromRoot.State>, 
+        iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ) {
+            this.user = {};
+            iconRegistry.addSvgIcon('icon-logo', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/icon-logo.svg'));
+            iconRegistry.addSvgIcon('pic-banner', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/pic-banner.svg'));
     }
 
     changeToReigster(){

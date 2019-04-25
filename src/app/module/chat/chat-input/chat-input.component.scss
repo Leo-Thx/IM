@@ -55,6 +55,9 @@
         color: $primaryColor;
         width: 7 * $unit;
         height: 7 * $unit;
-        .mat-icon{width: 36px; height: 36px;}
+        .mat-icon{
+            width: auto; height: auto;
+            font-size: 36px; line-height: 1;
+        }
     }
 }

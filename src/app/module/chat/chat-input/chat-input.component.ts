@@ -31,11 +31,11 @@ export class ChatInputComponent implements OnInit {
         iconRegistry: MatIconRegistry, 
         sanitizer: DomSanitizer ) {
             // 这里考虑是否需要进行数据缓存
-            iconRegistry.addSvgIcon('send_input',  
-                sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/send_input.svg'));
+            // iconRegistry.addSvgIcon('send_input',  
+                // sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/send_input.svg'));
                 
-            iconRegistry.addSvgIcon('folder_input',
-                sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/folder_input.svg'));
+            // iconRegistry.addSvgIcon('folder_input',
+                // sanitizer.bypassSecurityTrustResourceUrl('assets/svg/chat/folder_input.svg'));
         }
 
     ngOnInit() {}

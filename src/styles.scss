@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+// 字体
 @import 'assets/font/SourceHanSansCN-Bold.css';
 @import 'assets/font/SourceHanSansCN-Regular.css';
+
+// 图标字体
+@import 'assets/icon/iconfont/iconfont.css';
 
 // 字体图标
 // @import "./../node_modules/material-design-icons/iconfont/material-icons.css";
@@ -32,7 +36,7 @@ body {
     margin: 0;
     overflow: hidden;
     background: #fff;
-    color: #bdbac2;
+    // color: #bdbac2;
     * {
         box-sizing: border-box;
     }

@@ -9,17 +9,17 @@ export interface SideNavMenu {
 }
 
 const menus = [
-    {icon: 'forum', name: '消息', to: 'chat'},
-    {icon: 'account_circle', name: '联系人', to: 'concats' },
+    {icon: 'icon-chat', name: '消息', to: 'chat'},
+    {icon: 'icon-concats', name: '联系人', to: 'concats' },
     // {icon: 'notifications_none', name: '提醒', to: 'reminder'},
-    {icon: 'date_range', name: '待办', to: 'schedule'},
+    {icon: 'icon-schedule', name: '待办', to: 'schedule'},
     // {icon: 'email', name: '我的邮箱', to: 'email'},
-    {icon: 'library_music', name: '音乐', to: 'music'},
+    {icon: 'icon-music', name: '音乐', to: 'music'},
     
 ];
 
 const settingMenu = {
-    icon: 'settings', last: true, name: '设置'
+    icon: 'icon-settings', last: true, name: '设置', to: 'settings'
 };
 const exitMenu = {
     icon: 'power_settings_new', name: '退出'

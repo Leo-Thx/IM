@@ -27,25 +27,29 @@
                 </button>
             </mat-menu>
 
-            
             <button mat-icon-button>
-                <mat-icon matTooltip="抖一抖" matTooltipPosition="below">waves</mat-icon>
+                <mat-icon matTooltip="抖一抖" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-shake"></mat-icon>
             </button>
 
             <button mat-icon-button>
-                <mat-icon matTooltip="截图" matTooltipPosition="below">crop</mat-icon>
+                <mat-icon fontSet="iconfont" fontIcon="icon-email"></mat-icon>
             </button>
 
             <button mat-icon-button>
-                <mat-icon matTooltip="免打扰" matTooltipPosition="below">notifications_off</mat-icon>
+                <!-- <mat-icon matTooltip="免打扰" matTooltipPosition="below">notifications_off</mat-icon> -->
+                <mat-icon matTooltip="截图" matTooltipPosition="below"  fontSet="iconfont" fontIcon="icon-short_cut"></mat-icon>
             </button>
 
             <button mat-icon-button>
-                <mat-icon matTooltip="详细" matTooltipPosition="below">info</mat-icon>
+                <mat-icon fontSet="iconfont" fontIcon="icon-reminder"></mat-icon>
             </button>
+
+            <!-- <button mat-icon-button>
+                <mat-icon>info</mat-icon>
+            </button> -->
             
             <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                <mat-icon >more_vert</mat-icon>
+                <mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>
             </button>
             
         </div>

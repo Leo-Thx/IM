@@ -4,12 +4,12 @@
     </div>
     
     <mat-nav-list>
-        <a class="mb-1" mat-list-item #matListItem
+        <a class="mb-2" mat-list-item #matListItem
             *ngFor="let menu of menus; let i = index;"
             [routerLink]="[menu.to]" routerLinkActive="active" 
         >
-            <span class="active-bar"></span>
-            <mat-icon>{{menu.icon}}</mat-icon>
+            <!-- <span class="active-bar"></span> -->
+            <mat-icon fontSet="iconfont" [fontIcon]="menu.icon"></mat-icon>
         </a>
 
         <mat-menu #appMenu="matMenu">
@@ -29,7 +29,7 @@
         
 
         <a mat-list-item #matListItem class="last" [matMenuTriggerFor]="appMenu">
-            <mat-icon>{{settingMenu.icon}}</mat-icon>
+            <mat-icon fontSet="iconfont" [fontIcon]="settingMenu.icon"></mat-icon>
         </a>
 
         <a mat-list-item #matListItem (click)="exitApp()">

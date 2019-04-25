@@ -3,9 +3,28 @@
 
 .login-container {
     .info-card{
-        color: #F9FAFF;
+        padding-top: 62px;
         flex-shrink: 0;
         @include unselect;
+        background: #F9FAFF;
+        .icon-logo{
+            .mat-icon{
+                height: 215px; width: 120px;
+            }
+        }
+        p{
+            color: #707070;
+            font-size: 24px;
+        }
+        span{
+            color: #DBDBDB;
+            font-size: 18px;
+        }
+        .pic-banner{
+            .mat-icon{
+                width: 417px; height: 262px;
+            }
+        }
     }
 
     .form-card{
