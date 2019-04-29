@@ -15,6 +15,10 @@ import { ChatTextMsgComponent } from './widget/chatMsg/text/ChatTextMsg.componen
 import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive';
 import { ChatImgMsgComponent } from './widget/chatMsg/image/ChatImgMsg.component';
 import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.component';
+import { ListContextMenu } from './widget/menu/list-context.component';
+import { PortalChildComponent } from './PortalChildComponent';
+import { PortalDomComponent } from './PortalDomComponent';
+import { PortalTemplateComponent } from './PortalTempComponent';
 
 @NgModule({
     declarations: [ 
@@ -27,7 +31,12 @@ import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.componen
         ChatTextMsgComponent,
         ChatImgMsgComponent,
         ChatFileMsgComponent,
-        ChatMsgRenderDirective
+        ChatMsgRenderDirective,
+
+        ListContextMenu,
+        PortalChildComponent,
+        PortalDomComponent,
+        PortalTemplateComponent
     ],
     providers: [ ChatService ],
     imports: [ 
@@ -39,7 +48,12 @@ import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.componen
     entryComponents: [
         ChatTextMsgComponent,
         ChatImgMsgComponent,
-        ChatFileMsgComponent
+        ChatFileMsgComponent,
+
+        ListContextMenu,
+        PortalChildComponent,
+        PortalDomComponent,
+        PortalTemplateComponent
     ]
 })
 export class ChatModule {

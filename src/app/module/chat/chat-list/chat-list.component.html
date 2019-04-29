@@ -1,4 +1,4 @@
-<div class="flex-column chat-list-container h-100">
+<div class="flex-column chat-list-container h-100" #listContainer>
     <div class="search relative pl-2 pr-2 pt-sm-3 pb-sm-3">
         <input type="text" class="w-100 h-100 pr-4 pl-2" placeholder="搜索">
         <button mat-icon-button class="absolute searchBtn">
@@ -6,10 +6,21 @@
         </button>
     </div>
 
+    <div class="context-menu">
+        <ng-container #menuOutlet></ng-container>
+    </div>
+    
+    <!-- <ng-template #tmplPortal="cdkPortal" cdkPortal let-obj let-age="age">
+        <h2>ng-template 外部参数 {{obj}} {{age}}</h2>
+    </ng-template>
+    
+    <ng-template cdkPortalHost [cdkPortalOutlet]="tmplPortal"></ng-template> -->
+
     <mat-list class="mat-list">
         <mat-list-item class="relative"
             *ngFor="let item of listArray; let i = index;" #matListItem 
             (click)="toChatItem(item, i, $event)"
+            (contextmenu)="handleContextMenu($event, item, i)"
             [class.active]="i===chatRoomId" [class.online]="i<=2" [class.offline]="i>2">
 
             <app-avatar matListAvatar 

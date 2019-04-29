@@ -1,0 +1,36 @@
+ngTemplate:
+    用于定义模板渲染HTML(模板加载)。定义的模板不会直接显示出来，需要通过其他结构型指令（如 ng-if）或 template-ref 将模块内容渲染到页面中
+    通过TemplateRef或ViewContainerRef引用
+
+    <ng-template #tpl>Hello, ng-template!</ng-template>
+    @ViewChild('tpl') tplRef: TemplateRef<any>;
+    ngAfterViewInit() {
+        this.viewContainerRef.createEmbeddedView(this.tplRef);
+    }
+
+NgTemplateOutlet: 用来显示已有ngTempalte对应的视图，可以通过context设置上下文
+
+NgComponentOutlet: 具体参照文档
+
+ngContent: 
+    映射专用 类似插槽， 其select只能投射直接的子节点
+    ngProjectAs
+        <app-content-section>
+            <ng-container ngProjectAs="app-content-child">
+                <app-content-child [title]="'测试下'"></app-content-child>
+            </ng-container>
+        </app-content-section>
+    @ContentChild, @ContentChildren
+
+ngContainer:
+    单纯的逻辑容器
+
+
+private elementRef: ElementRef 当前组件所在宿主元素
+private appRef: ApplicationRef 当前应用的引用
+private viewContainerRef: ViewContainerRef 表示可以将一个或多个视图附着到组件中的容器
+    <div>
+        <ng-container #virtualContainer></ng-container>
+    </div>
+    @ViewChild('virtualContainer', {read: ViewContainerRef}) virtualContainer: ViewContainerRef;
+    
