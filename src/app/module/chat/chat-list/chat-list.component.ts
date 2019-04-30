@@ -27,7 +27,7 @@ export class ChatListComponent implements OnInit, AfterViewInit{
     @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
     @ViewChild('listContainer') public listContainer: HTMLDivElement;
 
-    public comPortal: ComponentPortal<ListContextMenu>;
+    public menuPortal: ComponentPortal<ListContextMenu>;
 
     // Portal: ComponentPortal, TemplatePortal[:CdkPortal]  [具体需要显示的内容]
     // [I]PortalOutlet: BasePortalOutlet[:CdkPortalOutlet, DomPortalOutlet] [内容插入的位置]
@@ -47,27 +47,25 @@ export class ChatListComponent implements OnInit, AfterViewInit{
         private overlay: Overlay,
         private vcRef: ViewContainerRef,
         private injector: Injector,
-        private componentFactoryResover: ComponentFactoryResolver,
-        overlayContainer: OverlayContainer) {
-            // console.info(overlayContainer);
-            // console.info(overlayContainer.getContainerElement());
+        private componentFactoryResover: ComponentFactoryResolver) {
+            
         }
 
     ngOnInit() {
         // this.overlay.position
-        // const overlayRef = this.overlay.create({
-        //     height: '200px',
-        //     width: '200px'
-        // });
-        // this.comPortal = new ComponentPortal(ListContextMenu);
-        // this.comPortal.attach(overlayRef);
+        const overlayRef = this.overlay.create({
+            // height: '200px',
+            // width: '200px'
+        });
+        this.menuPortal = new ComponentPortal(ListContextMenu);
+        this.menuPortal.attach(overlayRef);
 
         // console.info(this.listContainer);
         // console.info(this.vcRef);
         
-        const comFactory = this.componentFactoryResover.resolveComponentFactory(ListContextMenu);
-        const comRef = this.menuViewRef.createComponent(comFactory);
-        this.listContextMenu = comRef;
+        // const comFactory = this.componentFactoryResover.resolveComponentFactory(ListContextMenu);
+        // const comRef = this.menuViewRef.createComponent(comFactory);
+        // this.listContextMenu = comRef;
     }
 
     ngAfterViewInit() {}

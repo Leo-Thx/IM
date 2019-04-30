@@ -1,4 +1,4 @@
-<div class="flex-column chat-list-container h-100" #listContainer>
+<div class="flex-column chat-list-container h-100" #listContainer CdkOverlayOrigin>
     <div class="search relative pl-2 pr-2 pt-sm-3 pb-sm-3">
         <input type="text" class="w-100 h-100 pr-4 pl-2" placeholder="搜索">
         <button mat-icon-button class="absolute searchBtn">
@@ -9,11 +9,12 @@
     <div class="context-menu">
         <ng-container #menuOutlet></ng-container>
     </div>
-    
+
+    <!-- <app-cdk-overlay></app-cdk-overlay> -->
+
     <!-- <ng-template #tmplPortal="cdkPortal" cdkPortal let-obj let-age="age">
         <h2>ng-template 外部参数 {{obj}} {{age}}</h2>
     </ng-template>
-    
     <ng-template cdkPortalHost [cdkPortalOutlet]="tmplPortal"></ng-template> -->
 
     <mat-list class="mat-list">

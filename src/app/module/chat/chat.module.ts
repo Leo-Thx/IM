@@ -19,6 +19,8 @@ import { ListContextMenu } from './widget/menu/list-context.component';
 import { PortalChildComponent } from './PortalChildComponent';
 import { PortalDomComponent } from './PortalDomComponent';
 import { PortalTemplateComponent } from './PortalTempComponent';
+import { OverlayPanelComponent } from './OverlayPanelComponent';
+import { CdkOverlayComponent } from './CdkOverlayComponent';
 
 @NgModule({
     declarations: [ 
@@ -36,7 +38,9 @@ import { PortalTemplateComponent } from './PortalTempComponent';
         ListContextMenu,
         PortalChildComponent,
         PortalDomComponent,
-        PortalTemplateComponent
+        PortalTemplateComponent,
+        OverlayPanelComponent,
+        CdkOverlayComponent,
     ],
     providers: [ ChatService ],
     imports: [ 
@@ -53,7 +57,10 @@ import { PortalTemplateComponent } from './PortalTempComponent';
         ListContextMenu,
         PortalChildComponent,
         PortalDomComponent,
-        PortalTemplateComponent
+        PortalTemplateComponent,
+
+        OverlayPanelComponent,
+        CdkOverlayComponent,
     ]
 })
 export class ChatModule {
