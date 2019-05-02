@@ -3,14 +3,17 @@
 
 .login-container {
     .info-card{
-        padding-top: 62px;
+        padding-top: 53px;
         flex-shrink: 0;
         @include unselect;
         background: #F9FAFF;
         .icon-logo{
-            .mat-icon{
-                height: 215px; width: 120px;
-            }
+            // .mat-icon{
+            //     height: 215px; width: 120px;
+            // }
+            width: 138px; height: 215px;
+            margin: 0 auto;
+            img{width: 100%;}
         }
         p{
             color: #707070;
@@ -21,9 +24,12 @@
             font-size: 18px;
         }
         .pic-banner{
-            .mat-icon{
-                width: 417px; height: 262px;
-            }
+            // .mat-icon{
+            //     width: 417px; height: 262px;
+            // }
+            width: 417px; height: 282px;
+            margin: 0 auto;
+            img{width: 100%;}
         }
     }
 
@@ -41,6 +47,7 @@
                 margin-bottom: 42px;
                 @include f-bold;
                 @include unselect;
+                font-weight: bold;
             }
             label{
                 display: block;
@@ -48,6 +55,7 @@
                 line-height: 1;
                 @include f-bold;
                 @include unselect;
+                font-weight: bold;
             }
             .input {
                 border: none;

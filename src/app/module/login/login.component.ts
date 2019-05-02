@@ -62,8 +62,8 @@ export class LoginComponent {
         private store: Store<fromRoot.State>, 
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ) {
             this.user = {};
-            iconRegistry.addSvgIcon('icon-logo', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/icon-logo.svg'));
-            iconRegistry.addSvgIcon('pic-banner', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/pic-banner.svg'));
+            // iconRegistry.addSvgIcon('icon-logo', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/icon-logo.svg'));
+            // iconRegistry.addSvgIcon('pic-banner', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/login/pic-banner.svg'));
     }
 
     changeToReigster(){

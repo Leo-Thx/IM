@@ -12,7 +12,7 @@
             border: none;
             outline: none;
             background: #F1F1F1;
-            border-radius: 4 * $unit;
+            border-radius: $sm-unit;
             font-size: 14px;
             @include f-normal;
         }

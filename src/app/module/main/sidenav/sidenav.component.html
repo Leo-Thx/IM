@@ -25,6 +25,11 @@
                 <mat-icon>exit_to_app</mat-icon>
                 <span>注销</span>
             </button>
+
+            <button mat-menu-item (click)="exitApp($event)">
+                <mat-icon>{{exitMenu.icon}}</mat-icon>
+                <span>{{exitMenu.name}}</span>
+            </button>
         </mat-menu>
         
 
@@ -32,9 +37,9 @@
             <mat-icon fontSet="iconfont" [fontIcon]="settingMenu.icon"></mat-icon>
         </a>
 
-        <a mat-list-item #matListItem (click)="exitApp()">
+        <!-- <a mat-list-item #matListItem (click)="exitApp()">
             <mat-icon>{{exitMenu.icon}}</mat-icon>
-        </a>
+        </a> -->
 
     </mat-nav-list>
 
