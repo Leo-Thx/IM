@@ -117,3 +117,10 @@
         height: 3 * $unit;
     }
 }
+
+
+.single-info-dialog-panelClass{
+    .mat-dialog-container{
+        padding: 0 20px;
+    }
+}
