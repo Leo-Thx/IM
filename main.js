@@ -26,6 +26,8 @@ globalVariable.set(globalVariable.KEY_NAMES.APP_PLATFORM, global.process.platfor
 
 let mainWindow = null;	// 主要窗口
 
+// todo 处理mac下菜单，处理渲染进程缩放
+
 app.on('ready', ()=>{
     mainWindow = new BrowserWindow({
             show: false,
@@ -75,7 +77,10 @@ app.on('ready', ()=>{
 	// MainBootstrap.PROCESSOR_INSTANCE.PLATFORM.setProgressBar(mainWindow, 1);
 	
 	// 可能部分情况下不需要打包该目录
-	// BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
+    // BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
+    
+    let s = require('electron').screen
+    console.info( s.getPrimaryDisplay() );
 });
 
 app.on('window-all-closed', ()=>{

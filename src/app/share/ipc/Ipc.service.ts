@@ -25,4 +25,8 @@ export class IpcService {
     exitApp() {
         this.ngElectron.Class.exitApp();
     }
+
+    showChatContext() {
+        this.ngElectron.Class.showChatContext();
+    }
 }

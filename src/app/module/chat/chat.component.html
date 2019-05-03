@@ -1,7 +1,11 @@
-<div class="chat-container flex h-100">
+<div class="relative chat-container flex h-100">
+    <!-- 展示聊天列表记录的菜单 -->
+    <ng-container *ngIf="showChatContext">
+        <app-chatList-menu class="absolute chatContext" [ngStyle]="menuPosition"></app-chatList-menu>
+    </ng-container>
 
     <div class="chatList">
-        <app-chat-list [chatId]="chatId"></app-chat-list>
+        <app-chat-list [chatId]="chatId" (contextEvent)="handleChatListContenxt($event)"></app-chat-list>
     </div>
 
     <div *ngIf="chatId !== -1" class="chatMain flex-column">
@@ -12,5 +16,5 @@
     <div *ngIf="chatId === -1" class="chatMain init_view relative">
         <mat-icon class="absolute">forum</mat-icon>
     </div>
-    
+
 </div>

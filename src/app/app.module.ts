@@ -25,6 +25,8 @@ import { MovieEffects } from './effects/movie.effects';
 
         // 全局应用的状态在此配置即可，特性模块在自身中定义
         StoreModule.forRoot(reducers, {metaReducers: metaReducers}),
+
+        // 将获取数据的过程从组件中直接剥离
         EffectsModule.forRoot([MovieEffects]),
 
         ShareMaterialModule,                    // UI共享模块

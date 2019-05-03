@@ -1,12 +1,13 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NetworkService } from './share/network/network.service';
 import { Router, Event, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 
 import * as fromMovie from './store/reducers/movie';
 import * as moveAction from './store/actions/movie';
 
 import { Store } from '@ngrx/store';
+import { GlobalService } from './share/global/global.service';
 
 // ContentChild, ContentChildren    // 投影
 // ViewChild, ViewChildren          // 视图
@@ -22,9 +23,11 @@ export class AppComponent implements AfterViewInit, OnInit {
     public currentClasses = {
         'pt-3': false
     }
+    public bodyClick$: Observable<MouseEvent>;
     constructor(
         public service: NetworkService, 
         public router: Router,
+        public globalSvc: GlobalService,
         public activatedRouter: ActivatedRoute,
         public store: Store<{effect: fromMovie.Movie[]}>) {
             
@@ -43,11 +46,18 @@ export class AppComponent implements AfterViewInit, OnInit {
         //     console.info(value);
         // });
 
+        // 远程获取的结果
         this.movies$.subscribe(value=>{
             console.info(value);
         });
 
         this.store.dispatch(new moveAction.getAllAction());
+
+        this.bodyClick$ = fromEvent(document.body, 'click') as Observable<MouseEvent>;
+        this.bodyClick$.subscribe((event)=>{
+            this.globalSvc.dispatchBodyClick(event);
+            // console.info(event);
+        });
     }
 
 

@@ -15,7 +15,7 @@ import { ChatTextMsgComponent } from './widget/chatMsg/text/ChatTextMsg.componen
 import { ChatMsgRenderDirective } from './widget/chatMsg/chatMsgRender.directive';
 import { ChatImgMsgComponent } from './widget/chatMsg/image/ChatImgMsg.component';
 import { ChatFileMsgComponent } from './widget/chatMsg/file/ChatFileMsg.component';
-import { ListContextMenu } from './widget/menu/list-context.component';
+import { ChatListContextMenu } from './widget/menu/list-context.component';
 import { PortalChildComponent } from './PortalChildComponent';
 import { PortalDomComponent } from './PortalDomComponent';
 import { PortalTemplateComponent } from './PortalTempComponent';
@@ -35,7 +35,7 @@ import { CdkOverlayComponent } from './CdkOverlayComponent';
         ChatFileMsgComponent,
         ChatMsgRenderDirective,
 
-        ListContextMenu,
+        ChatListContextMenu,
         PortalChildComponent,
         PortalDomComponent,
         PortalTemplateComponent,
@@ -54,7 +54,7 @@ import { CdkOverlayComponent } from './CdkOverlayComponent';
         ChatImgMsgComponent,
         ChatFileMsgComponent,
 
-        ListContextMenu,
+        ChatListContextMenu,
         PortalChildComponent,
         PortalDomComponent,
         PortalTemplateComponent,

@@ -15,6 +15,7 @@ import { ShareMaterialModule } from '../material-module';
 
 import { IpcService } from './ipc/Ipc.service';
 import { NgElInjectionToken, IPCEventInjectionToken } from './ipc/ipc.config';
+import { GlobalService } from './global/global.service';
 
 
 /**
@@ -71,7 +72,10 @@ export class ShareModule {
                 // ipc服务
                 { provide: NgElInjectionToken, useValue: window.$NgEl },
                 { provide: IPCEventInjectionToken, useValue: window.$IpcEvent},
-                { provide: IpcService, useClass: IpcService }
+                { provide: IpcService, useClass: IpcService },
+
+                // 全局服务
+                { provide: GlobalService, useClass: GlobalService}
             ]
         };
     }

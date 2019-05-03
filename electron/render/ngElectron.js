@@ -1,6 +1,7 @@
 const electron = require('electron');
-const { ipcRenderer, desktopCapturer } = electron;
+const { ipcRenderer, desktopCapturer, remote } = electron;
 const IPC_Event = require('../common/IPC_EventType');
+const { Menu, MenuItem } = remote;
 
 /**
  * 主要做渲染和主进程桥接，渲染进程不与主进程直接通讯
@@ -34,5 +35,14 @@ module.exports.AngularElectron = new class AngularElectron{
 
 	static exitApp() {
 		ipcRenderer.send(IPC_Event.EXIT_APP);
-	}
+    }
+    
+    static showChatContext() {
+        const menu = new Menu();
+        menu.append(new MenuItem({ label: 'MenuItem1', click() { console.log('item 1 clicked') } }));
+        menu.append(new MenuItem({ type: 'separator' }));
+        menu.append(new MenuItem({ label: 'MenuItem2', type: 'checkbox', checked: true }));
+
+        menu.popup({ window: remote.getCurrentWindow() })
+    }
 };

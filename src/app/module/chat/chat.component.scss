@@ -1,3 +1,5 @@
+@import "src/scss/variables";
+
 .chat-container {
     .chatList{
         width: 272px;
@@ -27,5 +29,10 @@
                 color: #ccc;
             }
         }
+    }
+    
+    .chatContext{
+        z-index: 1;
+        width: 18 * $unit;
     }
 }

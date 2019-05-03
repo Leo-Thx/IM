@@ -27,6 +27,7 @@
 import * as fromLogin from './login';
 import * as fromChat from './chat';
 import * as move from './movie';
+import * as fromGlobal from './global';
 
 import { ActionReducer, createSelector, Action, createFeatureSelector, MemoizedSelectorWithProps, MemoizedSelector, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment.prod';
@@ -35,7 +36,8 @@ import { environment } from 'src/environments/environment.prod';
 export interface State {
     login: fromLogin.State,
     chat: fromChat.State,
-    effect: move.State
+    effect: move.State,
+    global: fromGlobal.State
 }
 
 
@@ -50,7 +52,8 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
     login: fromLogin.reducer,
     chat: fromChat.reducer,
-    effect: move.reducer
+    effect: move.reducer,
+    global: fromGlobal.reducer
 };
 
 
@@ -69,11 +72,16 @@ export const metaReducers: MetaReducer<State>[] = environment.production ? [] : 
 // const getlogin = (state: State, props):fromLogin.State=>state.login;
 const getLogin = createFeatureSelector('login');
 const getChat = createFeatureSelector('chat');
+const getGlobal = createFeatureSelector('global');
+export { getGlobal };
 
 
-// export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getlogin, fromLogin.getStatus);
 export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getLogin, fromLogin.getStatus);
 // export const getChatState = createSelector(getChat, fromChat.getInitStatus);
 export const getChatId = createSelector(getChat, fromChat.getChatId);
+
+export const getPixelRatio = createSelector(getGlobal, fromGlobal.getDevicePixelRatio);
+
+
 
 
