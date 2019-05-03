@@ -1,11 +1,14 @@
 import * as _global from './../actions/global';
+import { RightDrawerTypeEnum } from 'src/app/config/app.enum';
 
 export interface State {
-    devicePixelRatio: number
+    devicePixelRatio: number;
+    rightDrawerType: RightDrawerTypeEnum;
 }
 
 const initState: State = {
-    devicePixelRatio: window.devicePixelRatio
+    devicePixelRatio: window.devicePixelRatio,
+    rightDrawerType: RightDrawerTypeEnum.NONE
 }
 
 export function reducer(state: State = initState, action: _global.Actions): State {
@@ -15,9 +18,15 @@ export function reducer(state: State = initState, action: _global.Actions): Stat
                 ...state, 
                 devicePixelRatio: window.devicePixelRatio
             };
+        case _global.ActionTypes.SHOW_RIGHT_DRAWER:
+            return {
+                ...state,
+                rightDrawerType: action.payload.type
+            }
         default: return state;
     }
     // return initState;
 }
 
 export const getDevicePixelRatio = (state: State, props?) => state.devicePixelRatio;
+export const getRightDrawerType = (state: State, props?) => state.rightDrawerType;

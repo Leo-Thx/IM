@@ -12,7 +12,7 @@
         </div>
         
         <div class="operation">
-            <mat-menu #appMenu="matMenu">
+            <!-- <mat-menu #appMenu="matMenu">
                 <button mat-menu-item>
                     <mat-icon>alternate_email</mat-icon>
                     <span>发送邮件</span>
@@ -25,7 +25,7 @@
                     <mat-icon>videocam</mat-icon>
                     <span>发送视频</span>
                 </button>
-            </mat-menu>
+            </mat-menu> -->
 
             <button mat-icon-button>
                 <mat-icon matTooltip="抖一抖" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-shake"></mat-icon>
@@ -48,7 +48,7 @@
                 <mat-icon>info</mat-icon>
             </button> -->
             
-            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <button mat-icon-button (click)="showPersonInfo($event)">
                 <mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>
             </button>
             

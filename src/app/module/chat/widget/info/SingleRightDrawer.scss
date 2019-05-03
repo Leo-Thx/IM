@@ -1,0 +1,45 @@
+@import 'src/scss/variables';
+
+.single-container{
+    width: 284px;
+    .avatar{
+        width: 10 * $unit; height: 10 * $unit;
+        border-radius: 50%;
+    }
+    .name{
+        font-size: 26px;
+        font-weight: bold;
+    }
+    .text-detail{
+        >.mat-icon{
+            vertical-align: top;
+            color: $primaryColor;
+            margin-right: $unit;
+        }
+        >span{
+            vertical-align: top; line-height: 3 * $unit; 
+            color: #8E8E8E;
+            font-size: 16px;
+        }
+        margin-bottom: 2 * $unit;
+    }
+
+    .operation{
+        button{
+            margin-top: 2 * $unit;
+            color: white;
+            &.volbtn{
+                background: #C5C5C5;
+            }
+            &.videobtn{
+                background: $primaryColor;
+            }
+        }
+        margin-bottom: 20px;
+    }
+
+    .slide{
+        justify-content: space-between;
+        span{color: #C5C5C5; font-size: 16px;}
+    }
+}

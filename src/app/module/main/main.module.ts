@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { mainRoutes } from './main.routing';
 import { SideNavComponent } from './sidenav/sidenav.component';
 import { PublicComponentModule } from '../public/public.module';
+import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawer.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,12 @@ import { PublicComponentModule } from '../public/public.module';
     ],
     declarations: [
         MainComponent,
-        SideNavComponent
+        SideNavComponent,
+
+        SingleRightDrawerComponent
+    ],
+    entryComponents: [
+        SingleRightDrawerComponent
     ]
 })
 export class MainMoule{}

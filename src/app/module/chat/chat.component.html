@@ -3,6 +3,7 @@
     <ng-container *ngIf="showChatContext">
         <app-chatList-menu class="absolute chatContext" [ngStyle]="menuPosition"></app-chatList-menu>
     </ng-container>
+    <!-- 聊天消息右键菜单 -->
 
     <div class="chatList">
         <app-chat-list [chatId]="chatId" (contextEvent)="handleChatListContenxt($event)"></app-chat-list>

@@ -1,10 +1,12 @@
 <div class="main-container flex h-100">
     <mat-drawer-container class="w-100">
-        <mat-drawer class="left-drawer" #drawer mode="over">&nbsp;</mat-drawer>
+        <!-- 渲染左侧抽屉 -->
+        <mat-drawer class="left-drawer" #leftDrawer mode="over">&nbsp;</mat-drawer>
+
         <mat-drawer-content class="flex h-100">
             <!-- 菜单栏，常驻 -->
             <nav class="sidenav h-100">
-                <app-sidenav (showPersonal)="drawer.open()"></app-sidenav>
+                <app-sidenav (showPersonal)="leftDrawer.open()"></app-sidenav>
             </nav>
         
             <!-- 主界面载入页面 -->
@@ -12,5 +14,11 @@
                 <router-outlet></router-outlet>
             </div>
         </mat-drawer-content>
+
+        <!-- 渲染右侧抽屉 -->
+        <mat-drawer position="end" class="right-drawer" #rightDrawer mode="over">
+            <ng-container #container></ng-container>
+        </mat-drawer>
+
     </mat-drawer-container>
 </div>

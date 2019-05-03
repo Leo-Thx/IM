@@ -35,3 +35,9 @@ export const enum MsgOfflineEnum {
     ONLINE = 0,
     OFFLINE = 1,
 }
+
+// 右侧抽屉需要展示哪种类型
+export const enum RightDrawerTypeEnum {
+    NONE = 0,   // 关闭
+    SINGLE_INFO = 1,    // 单人
+}

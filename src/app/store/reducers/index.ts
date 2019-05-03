@@ -80,8 +80,8 @@ export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = c
 // export const getChatState = createSelector(getChat, fromChat.getInitStatus);
 export const getChatId = createSelector(getChat, fromChat.getChatId);
 
+
 export const getPixelRatio = createSelector(getGlobal, fromGlobal.getDevicePixelRatio);
-
-
+export const getRightDrawerType = createSelector(getGlobal, fromGlobal.getRightDrawerType);
 
 
