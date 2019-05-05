@@ -1,8 +1,8 @@
 <div class="concats-main flex h-100">
     <!-- 左侧 -->
-    <div class="sidebar w-30 h-100">
-        <div class="search p-2 relative flex-column">
-            <input type="text" class="w-100 pl-5 pt-sm-3 pb-sm-3 rounded" placeholder="搜索">
+    <div class="sidebar h-100">
+        <div class="search p-2 pt-sm-3 relative flex-column">
+            <input type="text" class="w-100 h-100 pl-4 pr-2" placeholder="搜索">
             <button mat-icon-button class="absolute searchBtn">
                 <mat-icon>search</mat-icon>
             </button>
@@ -12,7 +12,7 @@
             </button>
 
             <div class="typeSelect text-center">
-                <span matRipple class="inline-block ml-1 mr-1 pt-1 pb-1 pl-2 pr-2"
+                <span matRipple class="inline-block ml-1 mr-1 pt-1 pb-1 pl-1 pr-1"
                     *ngFor="let item of statusArray; let i = index;"
                     [class.active]="activeStatus===item"
                     (click)="searchListWithStatus(item, $event)"

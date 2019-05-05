@@ -6,6 +6,7 @@ import { mainRoutes } from './main.routing';
 import { SideNavComponent } from './sidenav/sidenav.component';
 import { PublicComponentModule } from '../public/public.module';
 import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawer.component';
+import { PersonInfoLeftDrawerComponent } from './drawer/PersonInfoLeftDrawer.component';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawe
         MainComponent,
         SideNavComponent,
 
-        SingleRightDrawerComponent
+        SingleRightDrawerComponent,
+        PersonInfoLeftDrawerComponent
     ],
     entryComponents: [
         SingleRightDrawerComponent

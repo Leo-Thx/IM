@@ -11,7 +11,12 @@
         font-weight: bold;
         >button{
             position: absolute;
-            // vertical-align: top;
+            margin-left: $sm-unit;
+            color: #8E8E8E;
+            width: 24px; height: 24px;
+            .mat-icon{
+                vertical-align: top;
+            }
         }
     }
     .text-detail{

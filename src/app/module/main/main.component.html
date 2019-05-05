@@ -1,7 +1,9 @@
 <div class="main-container flex h-100">
     <mat-drawer-container class="w-100">
         <!-- 渲染左侧抽屉 -->
-        <mat-drawer class="left-drawer" #leftDrawer mode="over">&nbsp;</mat-drawer>
+        <mat-drawer class="left-drawer" #leftDrawer mode="over">
+            <app-person-info-left-drawer></app-person-info-left-drawer>
+        </mat-drawer>
 
         <mat-drawer-content class="flex h-100">
             <!-- 菜单栏，常驻 -->

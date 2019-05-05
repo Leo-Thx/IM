@@ -31,7 +31,7 @@
                 <mat-icon matTooltip="抖一抖" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-shake"></mat-icon>
             </button>
 
-            <button mat-icon-button>
+            <button mat-icon-button [disabled]="true">
                 <mat-icon fontSet="iconfont" fontIcon="icon-email"></mat-icon>
             </button>
 
@@ -41,12 +41,12 @@
             </button>
 
             <button mat-icon-button>
-                <mat-icon fontSet="iconfont" fontIcon="icon-reminder"></mat-icon>
+                <mat-icon matTooltip="免打扰" fontSet="iconfont" fontIcon="icon-reminder"></mat-icon>
             </button>
 
-            <!-- <button mat-icon-button>
-                <mat-icon>info</mat-icon>
-            </button> -->
+            <button mat-icon-button>
+                <mat-icon matTooltip="消息记录" fontSet="iconfont" fontIcon="icon-msg_record"></mat-icon>
+            </button>
             
             <button mat-icon-button (click)="showPersonInfo($event)">
                 <mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>

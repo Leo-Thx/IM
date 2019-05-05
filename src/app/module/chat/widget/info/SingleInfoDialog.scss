@@ -12,6 +12,15 @@
     .name{
         font-size: 20px;
         font-weight: bold;
+        >button{
+            position: absolute;
+            margin-left: $sm-unit;
+            color: #8E8E8E;
+            width: 24px; height: 24px;
+            .mat-icon{
+                vertical-align: top;
+            }
+        }
     }
     .text-detail{
         text-align: left;
@@ -20,6 +29,7 @@
             vertical-align: top;
             color: $primaryColor;
             margin-right: $unit;
+            font-size: 20px;
         }
         >span{
             vertical-align: top; line-height: 3 * $unit; 

@@ -1,0 +1,75 @@
+@import 'src/scss/variables';
+@import 'src/scss/common.mixin';
+
+.box_top{
+    .avatar{
+        width: 10 * $unit; height: 10 * $unit;
+    }
+    .name{
+        font-size: 24px;
+        >button{
+            position: absolute;
+            margin-left: $sm-unit;
+            color: #8E8E8E;
+            width: 24px; height: 24px;
+            .mat-icon{
+                vertical-align: top;
+            }
+        }
+    }
+    .sex{
+        font-size: 16px; color: #8E8E8E;
+        .mat-icon{ color: $primaryColor; }
+    }
+}
+
+.line{
+    border-bottom:1px solid rgba(242,242,242,1);
+}
+
+.text-detail{
+    >.mat-icon{
+        margin-right: $unit;
+        font-size: 22px;
+    }
+    >span{
+        vertical-align: top; line-height: 3 * $unit; 
+        color: #8E8E8E;
+        font-size: 16px;
+    }
+}
+
+.box_middle{
+    .text-detail{
+        >.mat-icon{
+            color: $primaryColor;
+        }
+        &:not(:last-child){ margin-bottom: 2 * $unit; }
+    }
+}
+
+.box_bottom{
+    @include unselect;
+    color: #8E8E8E;
+    .text-detail{
+        padding: $unit 3 * $unit $unit;
+        &:hover{cursor: pointer;}
+        >.mat-icon{
+            color: #8E8E8E;
+        }
+        &.email{
+            .mat-icon{
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.operation{
+    color: #C5C5C5;
+    .logoutbtn{
+        margin-top: 3 * $unit;
+        background: #C5C5C5;
+        color: #fff;
+    }
+}
