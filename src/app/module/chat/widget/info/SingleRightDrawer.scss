@@ -9,12 +9,18 @@
     .name{
         font-size: 26px;
         font-weight: bold;
+        >button{
+            position: absolute;
+            // vertical-align: top;
+        }
     }
     .text-detail{
+        text-align: left;
         >.mat-icon{
             vertical-align: top;
             color: $primaryColor;
             margin-right: $unit;
+            font-size: 24px;
         }
         >span{
             vertical-align: top; line-height: 3 * $unit; 
