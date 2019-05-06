@@ -73,15 +73,21 @@ export const metaReducers: MetaReducer<State>[] = environment.production ? [] : 
 const getLogin = createFeatureSelector('login');
 const getChat = createFeatureSelector('chat');
 const getGlobal = createFeatureSelector('global');
-export { getGlobal };
+// export { getGlobal };
 
 
 export const getLoginState: MemoizedSelectorWithProps<State, Object, string> = createSelector(getLogin, fromLogin.getStatus);
 // export const getChatState = createSelector(getChat, fromChat.getInitStatus);
-export const getChatId = createSelector(getChat, fromChat.getChatId);
+export const getChatTo = createSelector(getChat, fromChat.getChatTo);
 
 
+// 
 export const getPixelRatio = createSelector(getGlobal, fromGlobal.getDevicePixelRatio);
 export const getRightDrawerType = createSelector(getGlobal, fromGlobal.getRightDrawerType);
+export const getRightDrawerData = createSelector(getGlobal, fromGlobal.getRightDrawerData);
+export const getRightDrawer = createSelector(getGlobal, (state: fromGlobal.State, props?)=>({
+    type: state.rightDrawerType,
+    data: state.data
+}));
 
 

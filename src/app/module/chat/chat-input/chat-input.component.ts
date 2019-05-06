@@ -24,7 +24,7 @@ const menus = [
     providers: [ ChatInputService ]
 })
 export class ChatInputComponent implements OnInit {
-    @Input('chatId') public chatRoomId;
+    @Input('chatTo') public chatTo;
 
     public menus: Array<any> = menus;
     constructor( private chatInputSvc: ChatInputService, 

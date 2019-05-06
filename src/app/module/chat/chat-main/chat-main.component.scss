@@ -15,9 +15,19 @@
         .info{
             flex-shrink: 0; flex-grow: 0;
             @include f-bold;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 500;
             line-height: 5 * $unit;
+            span{
+                display: inline-block;
+                vertical-align: top;
+                &:first-child{
+                    max-width: 320px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
         }
         .operation{
             font-size: 0;

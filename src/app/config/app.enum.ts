@@ -40,4 +40,5 @@ export const enum MsgOfflineEnum {
 export const enum RightDrawerTypeEnum {
     NONE = 0,   // 关闭
     SINGLE_INFO = 1,    // 单人
+    GROUP_INFO = 2,     // 多人
 }

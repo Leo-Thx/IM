@@ -24,9 +24,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
     protected showInitView: boolean = true;
 
     // 聊天id
-    protected viewChatId$: Observable<number>;
-    protected chatIdSub: Subscription;
-    protected chatId: number;
+    protected viewChatTo$: Observable<any>;
+    protected chatToSub: Subscription;
+    protected chatTo: Object;
 
     // 页面缩放
     protected devicePixelRatio$: Observable<number>;
@@ -58,10 +58,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
     }
 
     ngOnInit() {
-        this.viewChatId$ = this.store.select(fromRoot.getChatId);
-        this.chatIdSub = this.viewChatId$.subscribe(value=>{
-            this.showInitView = value === -1;
-            this.chatId = value;
+        this.viewChatTo$ = this.store.select(fromRoot.getChatTo);
+        this.chatToSub = this.viewChatTo$.subscribe(value=>{
+           this.chatTo = value;
         });
 
         this.devicePixelRatio$ = this.store.select(fromRoot.getPixelRatio);
@@ -97,6 +96,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
         // overlayRef.attach(new ComponentPortal(ListContextMenu, this.viewContainerRef));
         
         this.bodyClickSubscription = this.globalSvc.subscribeBodyClick(event=>{
+            // 关闭右键菜单
             this.showChatContext = false;
         });
     }
@@ -107,7 +107,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
     }
 
     ngOnDestroy() {
-        this.chatIdSub.unsubscribe();
+        this.chatToSub.unsubscribe();
         this.bodyClickSubscription.unsubscribe();
         this.devicePixelRatioSub.unsubscribe();
     }
@@ -125,7 +125,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
         // this.menuPosition.left = (clientX/this.devicePixelRatio) + 'px';
         // this.menuPosition.top = (clientY/this.devicePixelRatio) + 'px';
         
-        // 如果底部高度不够156
+        // 如果底部高度不够156[菜单高度]
         if( documentClientHeight - top < 156 ) {
             top = top - 156;
         }

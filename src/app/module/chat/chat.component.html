@@ -6,15 +6,15 @@
     <!-- 聊天消息右键菜单 -->
 
     <div class="chatList">
-        <app-chat-list [chatId]="chatId" (contextEvent)="handleChatListContenxt($event)"></app-chat-list>
+        <app-chat-list [chatTo]="chatTo" (contextEvent)="handleChatListContenxt($event)"></app-chat-list>
     </div>
 
-    <div *ngIf="chatId !== -1" class="chatMain flex-column">
-        <app-chat-main [chatId]="chatId" class="chat-main"></app-chat-main>
-        <app-chat-input [chatId]="chatId" class="chat-input"></app-chat-input>
+    <div *ngIf="chatTo.chatId" class="chatMain flex-column">
+        <app-chat-main [chatTo]="chatTo" class="chat-main"></app-chat-main>
+        <app-chat-input [chatTo]="chatTo" class="chat-input"></app-chat-input>
     </div>
 
-    <div *ngIf="chatId === -1" class="chatMain init_view relative">
+    <div *ngIf="!chatTo.chatId" class="chatMain init_view relative">
         <mat-icon class="absolute">forum</mat-icon>
     </div>
 

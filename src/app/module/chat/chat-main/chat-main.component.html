@@ -1,73 +1,53 @@
 <div class="chat-main-container h-100 flex-column">
-    <div class="flex title p-sm-2 pl-2">
-        <div class="info">
-            <!-- <div class="avatar h-100">
-                <app-avatar url="./assets/login/top.jpeg" [showStatus]="true" [online]="true"></app-avatar>
-            </div>
-            <div class="pl-1 ml-5 detail">
-                <div class="name">Keith Morris</div>
-                <div class="status">在线</div>
-            </div> -->
-            Keith Morris
-        </div>
-        
-        <div class="operation">
-            <!-- <mat-menu #appMenu="matMenu">
-                <button mat-menu-item>
-                    <mat-icon>alternate_email</mat-icon>
-                    <span>发送邮件</span>
-                </button>
-                <button mat-menu-item disabled>
-                    <mat-icon>phone_in_talk</mat-icon>
-                    <span>发送语音</span>
-                </button>
-                <button mat-menu-item disabled>
-                    <mat-icon>videocam</mat-icon>
-                    <span>发送视频</span>
-                </button>
-            </mat-menu> -->
+	<div class="flex title p-sm-2 pl-2">
+		<div class="info" *ngIf="chatTo.isGroup; else elseBlock;">
+			<span>Keith Morris、小兵、林一、Selina</span>
+			<span>(13)</span>
+		</div>
 
-            <button mat-icon-button>
-                <mat-icon matTooltip="抖一抖" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-shake"></mat-icon>
-            </button>
+		<ng-template #elseBlock>
+			<div class="info">
+				<span>Keith Morris</span>
+			</div>
+		</ng-template>
 
-            <button mat-icon-button [disabled]="true">
-                <mat-icon fontSet="iconfont" fontIcon="icon-email"></mat-icon>
-            </button>
+		<div class="operation">
+			<ng-container *ngIf="!chatTo.isGroup">
+				<button mat-icon-button>
+					<mat-icon matTooltip="抖一抖" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-shake">
+					</mat-icon>
+				</button>
 
-            <button mat-icon-button>
-                <!-- <mat-icon matTooltip="免打扰" matTooltipPosition="below">notifications_off</mat-icon> -->
-                <mat-icon matTooltip="截图" matTooltipPosition="below"  fontSet="iconfont" fontIcon="icon-short_cut"></mat-icon>
-            </button>
+				<button mat-icon-button [disabled]="true">
+					<mat-icon fontSet="iconfont" fontIcon="icon-email"></mat-icon>
+				</button>
+			</ng-container>
 
-            <button mat-icon-button>
-                <mat-icon matTooltip="免打扰" fontSet="iconfont" fontIcon="icon-reminder"></mat-icon>
-            </button>
+			<button mat-icon-button>
+				<mat-icon matTooltip="截图" matTooltipPosition="below" fontSet="iconfont" fontIcon="icon-short_cut">
+				</mat-icon>
+			</button>
 
-            <button mat-icon-button>
-                <mat-icon matTooltip="消息记录" fontSet="iconfont" fontIcon="icon-msg_record"></mat-icon>
-            </button>
-            
-            <button mat-icon-button (click)="showPersonInfo($event)">
-                <mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>
-            </button>
-            
-        </div>
-    </div>
+			<button mat-icon-button>
+				<mat-icon matTooltip="免打扰" fontSet="iconfont" fontIcon="icon-reminder"></mat-icon>
+			</button>
 
-    <!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
-    <div class="main p-2">
-        <app-chat-msg 
-            *ngFor="let type of types; trackBy:type"
-            direction="left"
-            [type]="type"
-        ></app-chat-msg>
-        <app-chat-msg 
-            *ngFor="let type of types; trackBy:type"
-            direction="right"
-            [type]="type"
-        ></app-chat-msg>
-        <!-- <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg> -->
-        <!-- <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg> -->
-    </div>
+			<button mat-icon-button>
+				<mat-icon matTooltip="消息记录" fontSet="iconfont" fontIcon="icon-msg_record"></mat-icon>
+			</button>
+
+			<button mat-icon-button (click)="showRightDrawerInfo($event)">
+				<mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>
+			</button>
+
+		</div>
+	</div>
+
+	<!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
+	<div class="main p-2">
+		<app-chat-msg *ngFor="let type of types; trackBy:type" direction="left" [type]="type"></app-chat-msg>
+		<app-chat-msg *ngFor="let type of types; trackBy:type" direction="right" [type]="type"></app-chat-msg>
+		<!-- <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg> -->
+		<!-- <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg> -->
+	</div>
 </div>

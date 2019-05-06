@@ -2,12 +2,12 @@ import * as chat from '../actions/chat';
 
 export interface State {
     // init: boolean,
-    chatId: number;
+    chatTo: Object;
 }
 
 const initState: State = {
     // init: true,
-    chatId: -1
+    chatTo: {},
 } as State;
 
 
@@ -16,12 +16,12 @@ export function reducer( state: State = initState, action: chat.Actions): State 
         case chat.ActionTypes.TO_INIT:
             return {
                 ...state,
-                chatId: -1
+                chatTo: {}
             };
         case chat.ActionTypes.TO_CHAT:
             return {
                 ...state,
-                chatId: action.payload.chatId
+                chatTo: action.payload.chatTo
             };
         default:
             return state;
@@ -29,4 +29,4 @@ export function reducer( state: State = initState, action: chat.Actions): State 
 }
 
 // export const getInitStatus = (state: State, props?): boolean => state.init;
-export const getChatId = (state: State, props?) => state.chatId;
+export const getChatTo = (state: State, props?) => state.chatTo;

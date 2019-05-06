@@ -35,7 +35,7 @@
             @include f-normal;
             .subtitle{ 
                 font-size: 15px;
-                width: 100px;
+                width: 120px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: inline-block;
@@ -43,7 +43,7 @@
             .time{
                 // margin-right: 0; 
                 // margin-left: auto; 
-                width: 64px;
+                // width: 64px;
                 font-size: 12px;
                 float: right;
                 line-height: 22px;
@@ -82,11 +82,6 @@
                     visibility: visible;
                 }
             }
-            // &.online{
-                // .subtitle{color: #212529;}
-                // .sketch{color: #212529;}
-            // }
-            // &.offline{}
         }
     }
 }

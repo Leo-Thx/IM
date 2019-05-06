@@ -1,6 +1,7 @@
 @import "src/scss/variables";
 
 .avatar{
+    font-size: 0;
     &:hover{ cursor: pointer; }
     img{
         // border: 3px solid #fff;
@@ -15,17 +16,30 @@
         border-radius: 50%;
     }
 
+    .mat-badge-content{
+        background-color: $primaryColor;
+    }
+
     &.online{
         .status{background: #00FF34;}
-        .mat-badge-content{
-            background-color: $primaryColor;
-        }
+        // .mat-badge-content{
+        //     background-color: $primaryColor;
+        // }
     }
     &.offline{
         .status{background: #939393;}
         // .mat-badge-content{
             // background-color: #ffc107;
         // }
+    }
+
+    .group-2{
+        align-items: center;
+    }
+    .group-3{
+        img:first-child{
+            margin: 0 auto;
+        }
     }
 
     .mat-badge-content{

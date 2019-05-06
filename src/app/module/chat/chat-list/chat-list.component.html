@@ -1,4 +1,4 @@
-<div class="flex-column chat-list-container h-100" #listContainer CdkOverlayOrigin>
+<div class="flex-column chat-list-container h-100" #listContainer>
     <div class="search relative pl-2 pr-2 pt-sm-3 pb-sm-3">
         <input type="text" class="w-100 h-100 pl-4 pr-2" placeholder="搜索">
         <button mat-icon-button class="absolute searchBtn">
@@ -18,16 +18,12 @@
     <ng-template cdkPortalHost [cdkPortalOutlet]="tmplPortal"></ng-template> -->
 
     <mat-list class="mat-list">
-        <mat-list-item class="relative"
-            *ngFor="let item of listArray; let i = index;" #matListItem 
-            (click)="toChatItem(item, i, $event)"
-            (contextmenu)="handleContextMenu($event, item, i)"
-            [class.active]="i===chatRoomId" [class.online]="i<=2" [class.offline]="i>2">
-
+        <!-- <mat-list-item class="relative active" #matListItem>
             <app-avatar matListAvatar 
-                [showStatus]="true" [online]="i < 3" 
-                [showBadge]="true" [badgeCount]="i"
-                url="./assets/login/top.jpeg"></app-avatar>
+                [showStatus]="false"
+                [showBadge]="true" [badgeCount]="10"
+                [isGroup]="true" 
+                [urls]="['./assets/login/top.jpeg', './assets/login/top.jpeg', './assets/login/top.jpeg', './assets/login/top.jpeg']"></app-avatar>
                 
             <div matLine class="title">
                 <span class="subtitle">有个人</span>
@@ -35,9 +31,61 @@
             </div>
 
             <p matLine class="pt-1 sketch">我只是稍微的说了一句话我只是稍微的说了一句话</p>
+        </mat-list-item> -->
+
+        <mat-list-item class="relative"
+            *ngFor="let item of listArray; let i = index;" #matListItem 
+            (click)="toChatItem(item, i, $event)"
+            (contextmenu)="handleContextMenu($event, item, i)"
+            [class.active]="item.chatId===chatTo.chatId">
+
+            <app-avatar matListAvatar 
+                [showStatus]="true" [online]="i < 2" 
+                [showBadge]="true" [badgeCount]="i"
+                [isGroup]="item.isGroup" [urls]="item.urls" 
+                [url]="item.url"></app-avatar>
+                
+            <div matLine class="title">
+                <span class="subtitle">有个人</span>
+                <!-- <span class="time">2019-03-28</span> -->
+                <span class="time">{{i}}天以前</span>
+            </div>
+
+            <p matLine class="pt-1 sketch">我只是稍微的说了一句话我只是稍微的说了一句话</p>
 
             <!-- <mat-divider [inset]="true"></mat-divider> -->
         </mat-list-item>
+
+        <!-- <mat-list-item class="relative" #matListItem>
+            <app-avatar matListAvatar 
+                [showStatus]="false"
+                [showBadge]="true" [badgeCount]="7"
+                [isGroup]="true" 
+                [urls]="['./assets/login/top.jpeg', './assets/login/top.jpeg']"></app-avatar>
+                
+            <div matLine class="title">
+                <span class="subtitle">有个人</span>
+                <span class="time">2019-03-28</span>
+            </div>
+
+            <p matLine class="pt-1 sketch">我只是稍微的说了一句话我只是稍微的说了一句话</p>
+        </mat-list-item> -->
+
+        <!-- <mat-list-item class="relative" #matListItem>
+            <app-avatar matListAvatar 
+                [showStatus]="false"
+                [showBadge]="true" [badgeCount]="8"
+                [isGroup]="true" 
+                [urls]="['./assets/login/top.jpeg', './assets/login/top.jpeg', './assets/login/top.jpeg']"></app-avatar>
+                
+            <div matLine class="title">
+                <span class="subtitle">有个人</span>
+                <span class="time">2019-03-28</span>
+            </div>
+
+            <p matLine class="pt-1 sketch">我只是稍微的说了一句话我只是稍微的说了一句话</p>
+        </mat-list-item> -->
+
     </mat-list>
 
     <!-- <mat-action-list>

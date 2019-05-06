@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
     selector: 'app-avatar',
@@ -7,7 +7,13 @@ import { Component, Input } from "@angular/core";
         './avatar.component.scss'
     ]
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnChanges{
+    ngOnChanges(changes: SimpleChanges) {
+        if(changes.isGroup && changes.isGroup.currentValue === true){
+            this.showStatus = false;
+        }
+    }
+    
     @Input() url: string;
 
     //是否显示状态
@@ -15,14 +21,16 @@ export class AvatarComponent {
     // 是否在线
     @Input() online: boolean;
 
-    // 头像大小
-    // @Input() size: number;
-
-    // 是否有边框
-    @Input() border: boolean = false;
-
-    // 是否有阴影
-    @Input() shadow: boolean = false;  
+    // 多人聊天
+    @Input() isGroup: boolean = false;
+    // 多个头像
+    private urlSize: number;
+    private _urls: string[];
+    @Input()
+    set urls( _arrs ) {
+        this._urls = _arrs;
+        this.urlSize = this._urls.length;
+    }
 
     private _show = false;
     @Input()

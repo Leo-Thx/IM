@@ -8,6 +8,7 @@ import * as globalAction from 'src/app/store/actions/global';
 
 import { MatDrawer } from '@angular/material';
 import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawer.component';
+import { GroupRightDrawerComponnet } from '../chat/widget/info/GroupRightDrawer.component';
 
 @Component({
     selector: 'app-main',
@@ -15,9 +16,10 @@ import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawe
     styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit, OnDestroy{
-    public rightDrawerType$: Observable<RightDrawerTypeEnum>;
+    public rightDrawer$: Observable<any>;
     public rightDrawerSubscription: Subscription;
     public rightDrawerType: RightDrawerTypeEnum = RightDrawerTypeEnum.NONE;
+    public rightDrawerData: any;
 
     @ViewChild('container', {read: ViewContainerRef}) rightViewRef: ViewContainerRef;
     @ViewChild('rightDrawer', {read: MatDrawer}) rightDrawerRef: MatDrawer;
@@ -28,18 +30,17 @@ export class MainComponent implements OnInit, OnDestroy{
         public componentFactoryResolver: ComponentFactoryResolver){}
 
     ngOnInit() {
-        this.rightDrawerType$ = this.store.select(fromRoot.getRightDrawerType);
-        this.rightDrawerSubscription = this.rightDrawerType$.subscribe(v=>{
-            // console.info('打开右侧抽屉类型：', v);
-            this.rightDrawerType = v;
+        this.rightDrawer$ = this.store.select(fromRoot.getRightDrawer);
+        this.rightDrawerSubscription = this.rightDrawer$.subscribe(v=>{
+            // console.info('rightDrawer:', v);
+            this.rightDrawerType = v.type;
+            this.rightDrawerData = v.data;
             this.renderRightDrawer();
         });
 
         // 右侧关闭
         this.rightDrawerClosedStart = this.rightDrawerRef.closedStart.subscribe(()=>{
-            this.store.dispatch(new globalAction.ShowRightDrawerAction({
-                type: RightDrawerTypeEnum.NONE
-            }));
+            this.store.dispatch(new globalAction.CloseRightDrawerAction());
         });
     }
 
@@ -52,6 +53,12 @@ export class MainComponent implements OnInit, OnDestroy{
         // 单个信息
         else if(this.rightDrawerType === RightDrawerTypeEnum.SINGLE_INFO) {
             let comFactory = this.componentFactoryResolver.resolveComponentFactory(SingleRightDrawerComponent);
+            this.rightViewRef.createComponent(comFactory);
+            this.rightDrawerRef.open();
+        } 
+        // 多人聊天信息 
+        else if( this.rightDrawerType === RightDrawerTypeEnum.GROUP_INFO) {
+            let comFactory = this.componentFactoryResolver.resolveComponentFactory(GroupRightDrawerComponnet);
             this.rightViewRef.createComponent(comFactory);
             this.rightDrawerRef.open();
         }

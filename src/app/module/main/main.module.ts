@@ -7,6 +7,7 @@ import { SideNavComponent } from './sidenav/sidenav.component';
 import { PublicComponentModule } from '../public/public.module';
 import { SingleRightDrawerComponent } from '../chat/widget/info/SingleRightDrawer.component';
 import { PersonInfoLeftDrawerComponent } from './drawer/PersonInfoLeftDrawer.component';
+import { GroupRightDrawerComponnet } from '../chat/widget/info/GroupRightDrawer.component';
 
 @NgModule({
     imports: [
@@ -19,10 +20,12 @@ import { PersonInfoLeftDrawerComponent } from './drawer/PersonInfoLeftDrawer.com
         SideNavComponent,
 
         SingleRightDrawerComponent,
-        PersonInfoLeftDrawerComponent
+        PersonInfoLeftDrawerComponent,
+        GroupRightDrawerComponnet
     ],
     entryComponents: [
-        SingleRightDrawerComponent
+        SingleRightDrawerComponent,
+        GroupRightDrawerComponnet
     ]
 })
 export class MainMoule{}

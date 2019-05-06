@@ -19,15 +19,22 @@ import { NgComponentOutlet } from '@angular/common';
     providers: [ChatListService]
 })
 export class ChatListComponent implements OnInit {
-    @Input('chatId') chatRoomId;
+    @Input('chatTo') chatTo;
 
-    public listArray = Array.from({length: 25}).fill(1);
-    public messages = Array.from({length: 1}).fill({from:'from', subject:'subject', content:'content'});
+    public listArray = Array.from({length: 10}).map((v,i)=>{
+        return {
+            chatId: i + 1,
+            isGroup: i>1,
+            url: './assets/login/top.jpeg',
+            urls: Array.from({length: i>4?4: i}).fill('./assets/login/top.jpeg')
+        }
+    });
+    // public messages = Array.from({length: 1}).fill({from:'from', subject:'subject', content:'content'});
 
-    @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
-    @ViewChild('listContainer') public listContainer: HTMLDivElement;
+    // @ViewChildren('matListItem') public matListItem: QueryList<MatListItem>;
+    // @ViewChild('listContainer') public listContainer: HTMLDivElement;
 
-    public menuPortal: ComponentPortal<ChatListContextMenu>;
+    // public menuPortal: ComponentPortal<ChatListContextMenu>;
 
     // Portal: ComponentPortal, TemplatePortal[:CdkPortal]  [具体需要显示的内容]
     // [I]PortalOutlet: BasePortalOutlet[:CdkPortalOutlet, DomPortalOutlet] [内容插入的位置]
@@ -37,9 +44,9 @@ export class ChatListComponent implements OnInit {
 
     // 应该时候从某个元素里面读取读取其他的其他的
     // @ViewChild('virtualContainer', {read: ViewContainerRef}) virtualContainer: ViewContainerRef;
-    @ViewChild('menuOutlet', {read: ViewContainerRef}) menuViewRef: ViewContainerRef;
+    // @ViewChild('menuOutlet', {read: ViewContainerRef}) menuViewRef: ViewContainerRef;
     // @ViewChild('menuOutlet', {read: NgComponentOutlet}) menuOutlet: NgComponentOutlet;
-    public listContextMenu: ChatListContextMenu;
+    // public listContextMenu: ChatListContextMenu;
 
     constructor(
         private chatlistSvc: ChatListService,
@@ -47,15 +54,14 @@ export class ChatListComponent implements OnInit {
         private overlay: Overlay,
         private vcRef: ViewContainerRef,
         private injector: Injector,
-        private componentFactoryResover: ComponentFactoryResolver) {
-            
-        }
+        private componentFactoryResover: ComponentFactoryResolver) {}
 
     ngOnInit() {}
 
     toChatItem(item, index, $event){
         this.store.dispatch(new chat.ToChatAction({
-            chatId: index
+            // chatId: index,
+            chatTo: item
         }));
     }
 

@@ -1,0 +1,25 @@
+@import "src/scss/variables";
+@import "src/scss/common.mixin";
+
+.group-info-container{
+    .search {
+        height: 7 * $unit;
+        flex-shrink: 0;
+        line-height: 4*$unit;
+        input{
+            border: none;
+            outline: none;
+            background: #F1F1F1;
+            border-radius: $sm-unit;
+            font-size: 14px;
+            @include f-normal;
+        }
+        .searchBtn{
+            color: #8E8E8E;
+            width: 4 * $unit; height: 4*$unit;
+            line-height: inherit;
+            top: 12px;
+            right: 0;
+        }
+    }
+}
