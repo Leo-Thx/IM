@@ -98,12 +98,6 @@
 
 
 .login-container{
-    // .mat-form-field.mat-focused .mat-form-field-ripple {
-    //     background-color: #D5D5D5;
-    // }
-    // .mat-form-field.mat-focused .mat-form-field-label {
-    //     color: black;
-    // }
     .mat-checkbox-checked.mat-primary .mat-checkbox-background{
         background-color: $primaryColor;
     }
@@ -118,9 +112,20 @@
     }
 }
 
-
+// 单个个人信息弹层
 .single-info-dialog-panelClass{
     .mat-dialog-container{
         padding: 0 20px;
+    }
+}
+
+// 聊天记录弹层
+.chat-msg-record-dialog-panelClass{
+    .mat-dialog-container{
+        padding: 20px 20px;
+        .mat-tab-body-wrapper{
+            height: 450px;
+            overflow: auto;
+        }
     }
 }

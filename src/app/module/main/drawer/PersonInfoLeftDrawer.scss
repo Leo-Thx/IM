@@ -21,6 +21,15 @@
         font-size: 16px; color: #8E8E8E;
         .mat-icon{ color: $primaryColor; }
     }
+    .status{
+        span{vertical-align: top;}
+        // line-height: 1;
+        .circle{
+            width: 2*$unit; height: 2*$unit;
+            background: #00FF29;
+            border-radius: 50%;
+        }
+    }
 }
 
 .line{
@@ -30,10 +39,12 @@
 .text-detail{
     >.mat-icon{
         margin-right: $unit;
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 24px;
     }
     >span{
-        vertical-align: top; line-height: 3 * $unit; 
+        // vertical-align: top; 
+        line-height: 1; 
         color: #8E8E8E;
         font-size: 16px;
     }

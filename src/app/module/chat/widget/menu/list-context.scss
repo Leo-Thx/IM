@@ -2,7 +2,8 @@
 
 div{
     background:#fff; width:100%;
-    box-shadow: 3px 3px 10px 1px #ddd;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    border-radius: $sm-unit;
     color: #545454;
     padding: $unit 0;
     ul{

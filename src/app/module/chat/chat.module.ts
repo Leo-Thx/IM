@@ -22,6 +22,7 @@ import { PortalTemplateComponent } from './PortalTempComponent';
 import { OverlayPanelComponent } from './OverlayPanelComponent';
 import { CdkOverlayComponent } from './CdkOverlayComponent';
 import { SingleInfoDialog } from './widget/info/SingleInfoDialog.component';
+import { ChatMsgRecordDialog } from './widget/record/ChatMsgRecordDialog.component';
 
 @NgModule({
     declarations: [ 
@@ -38,6 +39,7 @@ import { SingleInfoDialog } from './widget/info/SingleInfoDialog.component';
 
         ChatListContextMenu,
         SingleInfoDialog,
+        ChatMsgRecordDialog,
 
         PortalChildComponent,
         PortalDomComponent,
@@ -59,6 +61,7 @@ import { SingleInfoDialog } from './widget/info/SingleInfoDialog.component';
 
         ChatListContextMenu,
         SingleInfoDialog,
+        ChatMsgRecordDialog,
 
         
         PortalChildComponent,
