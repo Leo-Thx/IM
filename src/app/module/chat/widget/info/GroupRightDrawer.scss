@@ -22,4 +22,60 @@
             right: 0;
         }
     }
+
+    .line{
+        border-bottom:1px solid rgba(242,242,242,1);
+    }
+
+    .group-list{
+        flex-wrap: wrap;
+        margin-right: -15px;
+        height: 180px; overflow: auto;
+        .avatar{
+            width: 5 * $unit; height: 7 * $unit;
+            span{
+                font-size: 12px; width: 5 * $unit;
+                overflow: hidden; white-space: nowrap;
+            }
+            margin-right: 13px;
+        }
+    }
+
+    .group-detail{
+        border-top: 1px solid rgba(242,242,242,1);
+        .content {
+            span{display: block;}
+            .title{color: #C5C5C5; font-size: 16px; line-height: 1;}
+            .name{font-size: 14px;}
+            button{
+                position: absolute;
+                right: 0; top: 0;
+                color: #8E8E8E;
+                width: 24px; height: 24px;
+                .mat-icon{
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+    .group-operation{
+        border-top: 1px solid rgba(242,242,242,1);
+        .slide{
+            justify-content: space-between;
+            span{color: #C5C5C5; font-size: 16px;}
+        }
+        .btn_group{
+            button{
+                margin-top: 2 * $unit;
+                color: white;
+                &.deleteBtn{
+                    background: #C5C5C5;
+                }
+                &.dismissBtn{
+                    background: $primaryColor;
+                }
+            }
+        }
+    }
 }

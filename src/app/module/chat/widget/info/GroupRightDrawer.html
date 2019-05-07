@@ -5,4 +5,66 @@
 			<mat-icon>search</mat-icon>
 		</button>
 	</div>
+
+	<div class="flex group-list">
+		<div class="avatar pb-2 mb-2 relative" *ngFor="let item of listArray; let i = index; trackBy: index">
+			<app-avatar url="./assets/login/top.jpeg"></app-avatar>
+			<span class="absolute">near_me</span>
+		</div>
+	</div>
+
+	<!-- <div class="line mt-2"></div> -->
+
+	<div class="group-detail pt-2">
+		<div class="content relative">
+			<span class="title mb-1">群名</span>
+			<span class="name pr-3">Keith Morris</span>
+			<button mat-icon-button>
+				<mat-icon fontSet="iconfont" fontIcon="icon-self_edit"></mat-icon>
+			</button>
+		</div>
+
+		<div class="content relative mt-2">
+			<span class="title mb-1">群公告</span>
+			<span class="name pr-3">
+				今天把所有的任务都安排
+				好哈!
+				明天有新的任务
+				....</span>
+			<button mat-icon-button>
+				<mat-icon fontSet="iconfont" fontIcon="icon-self_edit"></mat-icon>
+			</button>
+		</div>
+
+		<div class="content relative mt-2">
+			<span class="title mb-1">我在本群的昵称</span>
+			<span class="name pr-3">Fire</span>
+			<button mat-icon-button>
+				<mat-icon fontSet="iconfont" fontIcon="icon-self_edit"></mat-icon>
+			</button>
+		</div>
+	</div>
+
+	<div class="group-operation pt-1 mt-1">
+		<div class="flex slide totop mb-1">
+			<span>置顶聊天</span>
+			<mat-slide-toggle color="warn"></mat-slide-toggle>
+		</div>
+
+		<div class="flex slide totop mb-1">
+			<span>置顶聊天</span>
+			<mat-slide-toggle color="warn"></mat-slide-toggle>
+		</div>
+
+		<div class="flex slide tosilence">
+			<span>消息免打扰</span>
+			<mat-slide-toggle color="warn"></mat-slide-toggle>
+		</div>
+
+		<div class="btn_group mt-2">
+			<button mat-raised-button class="w-100 deleteBtn">删除并退出</button>
+			<button mat-raised-button class="w-100 dismissBtn">解散群组</button>
+		</div>
+	</div>
+
 </div>

@@ -79,8 +79,8 @@ app.on('ready', ()=>{
 	// 可能部分情况下不需要打包该目录
     // BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
     
-    let s = require('electron').screen
-    console.info( s.getPrimaryDisplay() );
+    // let s = require('electron').screen
+    // console.info( s.getPrimaryDisplay() );
 });
 
 app.on('window-all-closed', ()=>{

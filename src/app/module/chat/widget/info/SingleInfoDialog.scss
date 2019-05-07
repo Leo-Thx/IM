@@ -2,12 +2,13 @@
 
 .single-container{
     .closebtn{
-        right:  -2 * $unit;
+        right:  -2 * $unit; top: -3 * $unit;
         color: #C5C5C5;
     }
     .avatar{
         width: 8 * $unit; height: 8 * $unit;
         border-radius: 50%;
+        margin: 3 * $unit auto 0;
     }
     .name{
         font-size: 20px;
