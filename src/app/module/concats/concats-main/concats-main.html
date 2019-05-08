@@ -1,5 +1,4 @@
 <div class="concats-main flex h-100">
-    <!-- 左侧 -->
     <div class="sidebar h-100">
         <div class="search p-2 pt-sm-3 relative flex-column">
             <input type="text" class="w-100 h-100 pl-4 pr-2" placeholder="搜索">
@@ -11,32 +10,29 @@
                 <mat-icon>person_add</mat-icon>
             </button>
 
-            <div class="typeSelect text-center">
-                <span matRipple class="inline-block ml-1 mr-1 pt-1 pb-1 pl-1 pr-1"
-                    *ngFor="let item of statusArray; let i = index;"
-                    [class.active]="activeStatus===item"
-                    (click)="searchListWithStatus(item, $event)"
+            <div class="typeSelect text-center flex">
+                <span *ngFor="let item of statusArray; let i = index;"
+                    [class.active]="statusIndex===i"
+                    (click)="searchListWithStatus(i)"
                 >{{item}}</span>
             </div>
         </div>
     
         <div class="list">
             <mat-list class="h-100">
-                <mat-list-item  #matListItem
-                    *ngFor="let item of listArray; let i = index;" 
-                    [class.active]="i===0">
-        
-                    <app-avatar matListAvatar 
-                        [showStatus]="true" [online]="i < 3"
-                        url="./assets/login/top.jpeg"></app-avatar>
-    
-                    <h3 matLine class="title">有个人-{{i}}</h3>
+                <mat-list-item class="relative"
+                    *ngFor="let item of listArray; let i = index;"
+                    (click)="selectItem(i, item)" 
+                    [class.active]="activeIndex === i">
 
-                    <p matLine class="pt-1 sketch">
-                        <span>71661048@qq.com</span>
-                    </p>
-                    
-                    <mat-divider [inset]="true"></mat-divider>
+                    <app-avatar matListAvatar 
+                        [showStatus]="true" [online]="i < 2"
+                        [isGroup]="item.isGroup" [urls]="item.urls" 
+                        [url]="item.url"></app-avatar>
+                        
+                    <div matLine class="title">
+                        <span class="subtitle">有个人</span>
+                    </div>
                 </mat-list-item>
             </mat-list>
         </div>

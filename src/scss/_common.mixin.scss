@@ -2,6 +2,10 @@
     user-select: none;
 }
 
+@mixin pointer {
+    &:hover{cursor: pointer;}
+}
+
 @mixin f-normal{
     font-family: 'SourceHanSansCN-Regular', 'Microsoft YaHei', '微软雅黑';
     font-weight: 400;

@@ -10,17 +10,30 @@ import { ConcatsAddDialogComponet } from '../concats-add/concats-add.component';
     ]
 })
 export class ConcatsMainComponent{
-    public listArray = Array.from({length: 15}).fill(1);
-    public statusArray = ['All', 'Online', 'Offline'];
-    public activeStatus = 'All';
+    public listArray = Array.from({length: 10}).map((v,i)=>{
+        return {
+            chatId: i + 1,
+            isGroup: i>1,
+            url: './assets/login/top.jpeg',
+            urls: Array.from({length: i>4?4: i}).fill('./assets/login/top.jpeg')
+        }
+    });
 
-    public constructor(public dialog: MatDialog){
+    public statusArray = ['全部', '在线', '离线', '群组'];
+    public statusIndex = 0;
+    
+    public activeIndex = -1;
 
+    public constructor(public dialog: MatDialog){}
+
+    public searchListWithStatus(index: number){
+        this.statusIndex = index;
+    }
+    
+    public selectItem(index, item){
+        this.activeIndex = index;
     }
 
-    public searchListWithStatus(status:'All'| 'Online' | 'Offline'){
-        this.activeStatus = status;
-    }
 
     public addConcats($event){
         let dialogRef = this.dialog.open(ConcatsAddDialogComponet, {
