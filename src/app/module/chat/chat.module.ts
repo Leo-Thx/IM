@@ -23,6 +23,7 @@ import { OverlayPanelComponent } from './OverlayPanelComponent';
 import { CdkOverlayComponent } from './CdkOverlayComponent';
 import { SingleInfoDialog } from './widget/info/SingleInfoDialog.component';
 import { ChatMsgRecordDialog } from './widget/record/ChatMsgRecordDialog.component';
+import { GroupEditDialog } from './widget/dialog/GroupEditDialog.component';
 
 @NgModule({
     declarations: [ 
@@ -40,6 +41,7 @@ import { ChatMsgRecordDialog } from './widget/record/ChatMsgRecordDialog.compone
         ChatListContextMenu,
         SingleInfoDialog,
         ChatMsgRecordDialog,
+        GroupEditDialog,
 
         PortalChildComponent,
         PortalDomComponent,
@@ -62,6 +64,7 @@ import { ChatMsgRecordDialog } from './widget/record/ChatMsgRecordDialog.compone
         ChatListContextMenu,
         SingleInfoDialog,
         ChatMsgRecordDialog,
+        GroupEditDialog,
 
         
         PortalChildComponent,
