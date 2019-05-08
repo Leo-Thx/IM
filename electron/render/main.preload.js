@@ -14,5 +14,5 @@ Reflect.defineProperty(window, '$IpcEvent', {
 })
 
 document.addEventListener('DOMContentLoaded', function(){
-    // console.info(globalVariable.get(globalVariable.KEY_NAMES.REFERENCE_IM_WIN));
+    // console.warn(globalVariable.get(globalVariable.KEY_NAMES));
 });

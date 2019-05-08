@@ -34,6 +34,8 @@ import { OverlayPanelComponent } from './OverlayPanelComponent';
     preserveWhitespaces: false,
 })
 export class CdkOverlayComponent {
+    public isMenuOpen: boolean = false;
+    
     @ViewChild('overlayGlobalTemplate', {read: TemplatePortalDirective}) templateGlobalPortals;
     @ViewChild('connectComponentOrigin') connectComponentOrigin: ElementRef;
 

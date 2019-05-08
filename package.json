@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
-    "build": "ng build --baseHref ./",
+    "build": "ng build --baseHref ./ --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

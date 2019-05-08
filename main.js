@@ -57,7 +57,7 @@ app.on('ready', ()=>{
 		slashes: true,
 		pathname: require('path').join(__dirname, 'dist/IM/index.html')
 	});
-	var uri = 'http://localhost:4200';
+	// var uri = 'http://localhost:4200';
 
     mainWindow.loadURL(uri);
 
@@ -75,9 +75,6 @@ app.on('ready', ()=>{
 	MainBootstrap.init(); // 初始化进程处理
 	
 	// MainBootstrap.PROCESSOR_INSTANCE.PLATFORM.setProgressBar(mainWindow, 1);
-	
-	// 可能部分情况下不需要打包该目录
-    // BrowserWindow.addDevToolsExtension(path.join(__dirname, './extension/augury'));
     
     // let s = require('electron').screen
     // console.info( s.getPrimaryDisplay() );

@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
     // 聊天id
     protected viewChatTo$: Observable<any>;
     protected chatToSub: Subscription;
-    protected chatTo: Object;
+    public chatTo: any;
 
     // 页面缩放
     protected devicePixelRatio$: Observable<number>;
@@ -34,8 +34,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit{
     protected devicePixelRatio: number = 1;
 
     // 聊天列表菜单处理
-    private showChatContext: boolean = false;
-    private menuPosition: {
+    public showChatContext: boolean = false;
+    protected menuPosition: {
         left?: string;
         top?: string
     } = {};

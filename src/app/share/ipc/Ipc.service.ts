@@ -1,6 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import { NgElectron, IPC_EventType } from './ipc';
-import { NgElInjectionToken, IPCEventInjectionToken } from './ipc.config';
+// import { NgElInjectionToken, IPCEventInjectionToken } from './ipc.config';
 
 /**
  * IPC服务，用来与NgElectron交互
@@ -13,12 +13,9 @@ export class IpcService {
     private ngElectron: NgElectron;
     private ipcEvent: IPC_EventType;
 
-    constructor(
-        @Inject(NgElInjectionToken) ngElectron: NgElectron, 
-        @Inject(IPCEventInjectionToken) ipcEvent: IPC_EventType
-    ) {
-        this.ngElectron = ngElectron;
-        this.ipcEvent = ipcEvent;
+    constructor() {
+        this.ngElectron = window.$NgEl;
+        this.ipcEvent = window.$IpcEvent;
     }
 
     // 退出应用

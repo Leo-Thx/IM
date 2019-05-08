@@ -36,7 +36,7 @@
 				<mat-icon matTooltip="消息记录" fontSet="iconfont" fontIcon="icon-msg_record"></mat-icon>
 			</button>
 
-			<button mat-icon-button (click)="showRightDrawerInfo($event)">
+			<button mat-icon-button (click)="showRightDrawerInfo()">
 				<mat-icon fontSet="iconfont" fontIcon="icon-more_vert"></mat-icon>
 			</button>
 
@@ -45,8 +45,8 @@
 
 	<!-- 个人简要信息部分、消息类型展示, 对应菜单操作 -->
 	<div class="main p-2">
-		<app-chat-msg *ngFor="let type of types; trackBy:type" direction="left" [type]="type"></app-chat-msg>
-		<app-chat-msg *ngFor="let type of types; trackBy:type" direction="right" [type]="type"></app-chat-msg>
+		<app-chat-msg *ngFor="let type of types; let i = index;" direction="left" [type]="type"></app-chat-msg>
+		<app-chat-msg *ngFor="let type of types; let i = index;" direction="right" [type]="type"></app-chat-msg>
 		<!-- <app-chat-msg direction="left" [type]="msgTypeEnum"></app-chat-msg> -->
 		<!-- <app-chat-msg direction="right" [type]="msgTypeEnum"></app-chat-msg> -->
 	</div>

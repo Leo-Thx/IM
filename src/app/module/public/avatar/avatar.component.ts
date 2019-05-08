@@ -24,21 +24,21 @@ export class AvatarComponent implements OnChanges{
     // 多人聊天
     @Input() isGroup: boolean = false;
     // 多个头像
-    private urlSize: number;
-    private _urls: string[];
+    public urlSize: number;
+    public _urls: string[];
     @Input()
     set urls( _arrs ) {
         this._urls = _arrs;
         this.urlSize = this._urls.length;
     }
 
-    private _show = false;
+    public _show = false;
     @Input()
     set showBadge(show){
         this._show = !!show;
     }
 
-    private _count = 0;
+    public _count = 0;
     @Input()
     set badgeCount(count){
         this._count = count;
