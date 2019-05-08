@@ -28,7 +28,7 @@
     }
 
     .group-list{
-        flex-wrap: wrap;
+        flex-wrap: wrap; align-content: flex-start;
         margin-right: -15px;
         height: 180px; overflow: auto;
         .avatar{

@@ -1,0 +1,67 @@
+@import 'src/scss/variables';
+
+%b-bottom {
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.group-info{
+    overflow: hidden;
+}
+
+.group_top{
+    box-shadow: 0 1px 0px 0px #F2F2F2;
+    .avatar{
+        width: 8*$unit; height: 8*$unit;
+    }
+    .detail{
+        justify-content: space-around;
+        .name{font-size: 24px;}
+        .info{
+            .mat-icon{color: $primaryColor;}
+            span{color: $unableColor;}
+        }
+    }
+}
+
+.group_middle{
+    height: calc(100% - 96px);
+    aside{
+        width: 270px;
+        flex-shrink: 0;
+        .group-operation{
+            .slide{
+                justify-content: space-between;
+                span{color: #C5C5C5; font-size: 16px;}
+            }
+            .btn_group{
+                button{
+                    margin-top: 2 * $unit;
+                    color: white;
+                    &.sendBtn{
+                        background: $primaryColor;
+                    }
+                    &.deleteBtn{
+                        background: #C5C5C5;
+                    }
+                    &.dismissBtn{
+                        color: #C5C5C5;
+                    }
+                }
+            }
+        }
+    }
+    section{
+        flex: 1; flex-wrap: wrap; align-content: flex-start;
+        overflow: auto;
+        box-shadow: 1px 0px 0px 0px #F2F2F2;
+        .avatar{
+            width: 8*$unit; height: 10*$unit;
+            margin-right: 24px;
+            span{
+                font-size: 12px; width: 8 * $unit;
+                text-align: center;
+                overflow: hidden; white-space: nowrap;
+            }
+        }
+    }
+}

@@ -23,6 +23,8 @@ export class ConcatsMainComponent{
     public statusIndex = 0;
     
     public activeIndex = -1;
+    public selectedItem : any = null;
+    public isGroup: boolean = false;
 
     public constructor(public dialog: MatDialog){}
 
@@ -32,6 +34,8 @@ export class ConcatsMainComponent{
     
     public selectItem(index, item){
         this.activeIndex = index;
+        this.selectedItem = item;
+        this.isGroup = Boolean(item.isGroup);
     }
 
 

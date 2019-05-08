@@ -1,0 +1,48 @@
+<div class="group-info h-100">
+	<div class="flex pt-2 pl-3 pb-2 group_top">
+		<div class="avatar mr-3">
+			<app-avatar [isGroup]="true" [urls]="info.urls"></app-avatar>
+		</div>
+		<div class="detail flex-column">
+			<div class="name">Keith Morris</div>
+			<div class="info">
+				<mat-icon fontSet="iconfont" fontIcon="icon-group_info"></mat-icon>
+				<span>13人</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex group_middle">
+		<section class="pl-3 flex">
+			<div class="avatar pb-2 mt-2 relative" *ngFor="let item of listArray; let i = index; trackBy: index">
+				<app-avatar url="./assets/login/top.jpeg"></app-avatar>
+				<span class="absolute">near_me</span>
+			</div>
+		</section>
+
+		<aside class="pl-3 pr-3">
+			<div class="group-operation pt-1 mt-1">
+				<div class="flex slide totop mb-1">
+					<span>置顶聊天</span>
+					<mat-slide-toggle color="warn"></mat-slide-toggle>
+				</div>
+
+				<div class="flex slide totop mb-1">
+					<span>置顶聊天</span>
+					<mat-slide-toggle color="warn"></mat-slide-toggle>
+				</div>
+
+				<div class="flex slide tosilence">
+					<span>消息免打扰</span>
+					<mat-slide-toggle color="warn"></mat-slide-toggle>
+				</div>
+
+				<div class="btn_group mt-2">
+                    <button mat-raised-button class="w-100 sendBtn">发送消息</button>
+					<button mat-raised-button class="w-100 deleteBtn">删除并退出</button>
+                    <button mat-button class="w-100 dismissBtn">解散群组</button>
+				</div>
+			</div>
+		</aside>
+	</div>
+</div>

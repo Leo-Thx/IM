@@ -38,7 +38,10 @@
         </div>
     </div>
 
-    <div class="main w-70">
-        main
+    <div class="main">
+        <ng-container *ngIf="selectedItem">
+            <app-single-concats-info *ngIf="!isGroup"></app-single-concats-info>
+            <app-group-concats-info *ngIf="isGroup" [data]="selectedItem"></app-group-concats-info>
+        </ng-container>
     </div>
 </div>

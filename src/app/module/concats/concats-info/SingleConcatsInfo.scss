@@ -1,0 +1,42 @@
+@import 'src/scss/variables';
+
+%b-bottom {
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.single_concats {
+    padding-top: 70px;
+    width: 357px; margin: 0 auto;
+    
+    .concats_top{
+        @extend %b-bottom;
+        .avatar{
+            width: 8*$unit; height: 8*$unit;
+        }
+        .detail{
+            justify-content: space-around;
+            .name{font-size: 24px;}
+            .sex{
+                .mat-icon{color: $primaryColor;}
+                span{color: $unableColor;}
+            }
+        }
+    }
+
+    .concats_middle{
+        @extend %b-bottom;
+        .item{
+            overflow: hidden; font-size: 18px;
+            padding-bottom: $unit;
+            label{float: left; color: $unableColor;}
+            .content{padding-left: 11 * $unit;}
+        }
+    }
+
+    .operation{
+        button{
+            background: $primaryColor; color: #fff;
+            width: 30 * $unit; margin: 0 auto;
+        }
+    }
+}

@@ -2,11 +2,9 @@
 @import "src/scss/common.mixin";
 
 .concats-main{
+    background: #fff;
     .sidebar{
-        width: 272px;
-        background: #fff;
-        // box-shadow: 2px 2px 2px #eee;
-        // overflow: hidden;
+        width: 272px; flex-shrink: 0;
         .search{
             height: 108px;
             box-shadow: 0 1px 1px #F1F1F1;
@@ -88,7 +86,7 @@
         }
     }
     
-    // .main{
-        // background: red;
-    // }
+    .main{
+        flex: 1;
+    }
 }
