@@ -15,7 +15,7 @@ module.exports = {
         USER_INFO : 'user_info',
         
         REFERENCE_IM_WIN: 'reference_im_win',   // 主窗口实例
-        CAPTURE_IM_WIN: 'capture_im_win',       // 截屏窗体实例
+        CAPTURE_IM_WIN: 'capture_im_win',       // 截屏窗体实例[一个对象]
 
         PATH_ROOT:  'root_path',                // 根路径   [考虑加密之后]
         PATH_ELECTORN:  'electron_path',        // electron目录

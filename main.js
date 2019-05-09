@@ -4,7 +4,7 @@ const _ = require('lodash');
 const url = require('url');
 
 // processor事件类型
-const ProcessorEventType = require('./electron/main/processor.event');
+// const ProcessorEventType = require('./electron/main/processor.event');
 
 // 主进程处理器
 const MainBootstrap = require('./electron/main/bootstrap');
@@ -35,7 +35,7 @@ app.on('ready', ()=>{
 			title: '',
 			frame: false,
 			useContentSize: true,
-			backgroundColor: "#FEFEFE",
+			backgroundColor: "#FFFFFF",
 			// skipTaskbar: true,
             webPreferences: {
                 nodeIntegration: false,
@@ -57,7 +57,7 @@ app.on('ready', ()=>{
 		slashes: true,
 		pathname: require('path').join(__dirname, 'dist/IM/index.html')
 	});
-	// var uri = 'http://localhost:4200';
+	var uri = 'http://localhost:4200';
 
     mainWindow.loadURL(uri);
 

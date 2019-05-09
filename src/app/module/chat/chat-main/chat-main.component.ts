@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from 'src/app/store/reducers';
 import * as fromGlobal from 'src/app/store/actions/global';
+import { IpcService } from 'src/app/share/ipc/Ipc.service';
 
 @Component({
     selector: 'app-chat-main',
@@ -21,6 +22,7 @@ export class ChatMainComponent {
     public types = [MsgTypeEnum.TEXT, MsgTypeEnum.IMAGE, MsgTypeEnum.FILE];
     constructor(
         private chatMainSvc: ChatMainService, 
+        public ipcSvc: IpcService,
         public store: Store<fromRoot.State>) {}
 
     showRightDrawerInfo(){
@@ -28,5 +30,10 @@ export class ChatMainComponent {
             type: this.chatTo.isGroup ? RightDrawerTypeEnum.GROUP_INFO : RightDrawerTypeEnum.SINGLE_INFO,
             data: this.chatTo
         }));
+    }
+
+    // 截图
+    shortCut(){
+        this.ipcSvc.execShortCut();
     }
 }

@@ -18,7 +18,10 @@ declare class NgElectronConstrutor {
     getDesktopCapturer(): DesktopCapturer;  // 获取截图功能
     getIpcRenderer(): IpcRenderer;          // 获取渲染进程IPC
 
-    showChatContext(): any;
+    // 暂时不使用
+    // showChatContext(): any;
+    
+    execShortCut(): any;
 }
 
 

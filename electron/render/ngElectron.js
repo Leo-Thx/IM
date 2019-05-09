@@ -29,7 +29,6 @@ module.exports.AngularElectron = new class AngularElectron{
 
 	static getDesktopCapturer() { return desktopCapturer; }
 	static getIpcRenderer(){
-		// return electron.ipcRenderer;
 		return require('electron').ipcRenderer;
 	}
 
@@ -37,12 +36,17 @@ module.exports.AngularElectron = new class AngularElectron{
 		ipcRenderer.send(IPC_Event.EXIT_APP);
     }
     
-    static showChatContext() {
-        const menu = new Menu();
-        menu.append(new MenuItem({ label: 'MenuItem1', click() { console.log('item 1 clicked') } }));
-        menu.append(new MenuItem({ type: 'separator' }));
-        menu.append(new MenuItem({ label: 'MenuItem2', type: 'checkbox', checked: true }));
+    // static showChatContext() {
+    //     const menu = new Menu();
+    //     menu.append(new MenuItem({ label: 'MenuItem1', click() { console.log('item 1 clicked') } }));
+    //     menu.append(new MenuItem({ type: 'separator' }));
+    //     menu.append(new MenuItem({ label: 'MenuItem2', type: 'checkbox', checked: true }));
 
-        menu.popup({ window: remote.getCurrentWindow() })
-    }
+    //     menu.popup({ window: remote.getCurrentWindow() })
+	// }
+	
+	// 截屏
+	static execShortCut(){
+		ipcRenderer.send(IPC_Event.CAPTURE_SCREEN);
+	}
 };

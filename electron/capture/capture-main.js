@@ -1,4 +1,5 @@
-const { remote, desktopCapturer, screen, ipcRenderer } = require('electron');
+const { remote, desktopCapturer, ipcRenderer } = require('electron');
+const { screen } = remote;
 const IPC_EventType = require('../common/IPC_EventType');
 
 const { CaptureZone } = require('./capture-zone');
@@ -19,11 +20,6 @@ class Capture {
         this.querySelector();
 
         this.currentWindow  = remote.getCurrentWindow();
-        
-        // this.currentWindow.on('ready-to-show', (event)=>{
-        //     this.currentWindow.show();
-        //     this.currentWindow.webContents.openDevTools();
-        // });
 
         this.currentScreen  = screen.getAllDisplays().find(item=>item.id === this.currentWindow._screenId);
 

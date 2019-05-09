@@ -60,8 +60,6 @@ const Shortcut = {
 
 	// 锁定非绘制截图的窗体
 	lockAllCaptureWins(event, payload) {
-		// globalVariable.set(globalVariable.KEY_NAMES.SCREEN_SHOT_WIN, payload.screeId);	// 不需存储，直接发送即可
-
 		let captureWins = globalVariable.get(globalVariable.KEY_NAMES.CAPTURE_IM_WIN);
 		if(captureWins) {
 			let needToLock = Reflect.ownKeys(captureWins).filter(screenId=>String(screenId) !== String(payload.screeId));
@@ -74,7 +72,7 @@ const Shortcut = {
 
 	// 需要处理多个屏幕只能有一个截图
 	captureScreen(event){
-		const elPath = globalVariable.get(globalVariable.KEY_NAMES.ELECTORN_PATH);
+		const elPath = globalVariable.get(globalVariable.KEY_NAMES.PATH_ELECTORN);
 		let screen = electron.screen,
 			captureWins = {};
 		
@@ -84,13 +82,11 @@ const Shortcut = {
 
 		let allDisplays = screen.getAllDisplays();	// 获取所有可用窗口
 		allDisplays.forEach((display)=>{
-			let screenId = display.id,
-				scaleFactor = display.scaleFactor,
+			let screenId = display.id, // scaleFactor = display.scaleFactor,
 				captureWin = new BrowserWindow({
+					show:false,
 					webPreferences: {
-						// zoomFactor: 4,
-						// nodeIntegration: false,
-						// preload: path.join(elPath, 'capture/capture.preload.js')
+						nodeIntegration: true,
 					},
 					fullscreen: process.platform === 'win32' || undefined,
 					x: display.bounds.x,
@@ -104,9 +100,7 @@ const Shortcut = {
 					movable: false,				// 
 					resizable: false,			//
 					enableLargerThanScreen: true,
-					hasShadow: false,
-
-					show: false,
+					hasShadow: false
 				});
 				
 			captureWin._screenId = screenId;
@@ -123,27 +117,14 @@ const Shortcut = {
 
 			captureWin.loadURL(uri);
 
-			captureWin.on('ready-to-show', ()=>{
-				// captureWin.show();
-				// captureWin.openDevTools();
-			});
-
-			captureWin.on('closed', () => {
-				// let index = captureWins.indexOf(captureWin)
-				// if (index !== -1) {
-					// captureWins.splice(index, 1)
-				// }
-				// captureWins.forEach(win => win.close())
-			});
-
 			// 聚焦当前鼠标所在屏幕
-			let { x, y } = screen.getCursorScreenPoint()
-			if (x >= display.bounds.x && x <= display.bounds.x + display.bounds.width 
-				&& y >= display.bounds.y && y <= display.bounds.y + display.bounds.height) {
-				captureWin.focus()
-			} else {
-				captureWin.blur()
-			}
+			// let { x, y } = screen.getCursorScreenPoint()
+			// if (x >= display.bounds.x && x <= display.bounds.x + display.bounds.width 
+			// 	&& y >= display.bounds.y && y <= display.bounds.y + display.bounds.height) {
+			// 	captureWin.focus()
+			// } else {
+			// 	captureWin.blur()
+			// }
 			
 			captureWins[ screenId ] = captureWin;
 		});
