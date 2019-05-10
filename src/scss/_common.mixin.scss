@@ -7,10 +7,11 @@
 }
 
 @mixin f-normal{
-    font-family: 'SourceHanSansCN-Regular', 'Microsoft YaHei', '微软雅黑';
+    // font-family: 'SourceHanSansCN-Regular', 'Microsoft YaHei', '微软雅黑';
+    font-family: 'Microsoft YaHei', '微软雅黑';
     font-weight: 400;
 }
 
 @mixin f-bold {
-    font-family: 'SourceHanSansCN-Bold', 'Microsoft YaHei', '微软雅黑';
+    font-family: 'Microsoft YaHei', '微软雅黑';
 }

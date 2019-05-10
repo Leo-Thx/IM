@@ -39,7 +39,7 @@ class IM_Platform {
 
     // 创建系统托盘
     createSysTray(){
-        let tray = new Tray(path.join(app.getAppPath(), 'logo/logoIconForWin@2x.png'));
+        let tray = new Tray(path.join(app.getAppPath(), 'logo/logoIconForWin.png'));
         const contextMenu = Menu.buildFromTemplate([
             { 
                 label: '退出', 

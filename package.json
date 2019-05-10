@@ -1,7 +1,11 @@
 {
-  "name": "im",
+  "name": "fchat",
   "version": "0.0.0",
   "main": "main.js",
+  "description": "chat is for free",
+  "author": {
+    "name": "lei.zeng"
+  },
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
@@ -17,7 +21,7 @@
   },
   "private": true,
   "build": {
-    "productName": "product-prefix",
+    "productName": "fchat",
     "appId": "packagename",
     "copyright": "lei.zeng",
     "win": {

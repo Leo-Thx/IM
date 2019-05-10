@@ -44,8 +44,7 @@ app.on('ready', ()=>{
 			// titleBarStyle: global.process.platform === 'darwin' ? 'hidden' : 'default',
 			// titleBarStyle: 'hiddenInset',
 			// titleBarStyle: 'hidden',
-			// titleBarStyle: 'customButtonsOnHover',
-			icon: path.join(app.getAppPath(), 'logo/logoIconForWin@2x.png'),
+			// // titleBarStyle: 'customButtonsOnHover',
 			resizable: false,
 			maximizable: false
         }
@@ -331,4 +330,20 @@ async function newInform(arg) {
 			}
 		}
 	}
+}
+
+// 考虑阿里云icon使用远程
+function sign (obj, secret) {
+	var newObj = {},
+		newKey = Object.keys(obj).sort(),
+		newKeyLength = newKey.length;
+	for (var i = 0; i < newKeyLength; i++) {
+		newObj[newKey[i]] = obj[newKey[i]];
+	}
+	let text = secret;
+	for (var item in newObj) {
+		text += item + newObj[item];
+	}
+	text += secret;
+	return (crypto.createHash('md5').update(text).digest('hex')).toUpperCase();
 }
