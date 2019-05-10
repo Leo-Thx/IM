@@ -105,6 +105,31 @@ class IM_Platform {
         })
 
         noti.show();
+
+
+        // ipcMain.on('Notification', (e, arg) => {
+        //     let myNotification = new Notification({
+        //         title: arg.name,
+        //         body: arg.msg
+        //     });
+    
+        //     myNotification.show();
+        //     myNotification.on('click', () => {
+        //         mainWindow.show();
+        //         mainWindow.webContents.send('changeObj', arg.index);
+        //     })
+        //     let duration = 3500;
+        //     if (arg.duration) {
+        //         duration = arg.duration
+        //     }
+        //     let show = setTimeout(() => {
+        //         clearTimeout(show);
+        //         if (myNotification) {
+        //             myNotification.close()
+        //             myNotification = null;
+        //         }
+        //     }, duration)
+        // })
     }
     
 
